@@ -17,9 +17,11 @@ includes:
 search: true
 ---
 
-# Introduction
-
 # Step One
+
+Here is my first paragraph
+
+# Introduction
 
 Welcome to the BEX API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
 

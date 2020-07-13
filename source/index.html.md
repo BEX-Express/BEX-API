@@ -1,14 +1,12 @@
 ---
-title: API Reference
+title: WayBill API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
   - javascript
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
+  - <a href='https://github.com/acme'>Client libraries</a>
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
@@ -23,20 +21,32 @@ This service is used so as to create a waybill shipping entry into the BEX couri
 allows BEX customers to interface directly their shipping requests and helps to eliminate errors as
 a result of manual data capture or misinterpretation of written content on shipping
 documentation.
-The service allows for the communication of a number of shipping options, such as:Full addressing of both the sending and receiving parties
+The service allows for the communication of a number of The service allows for the communication of a number of shipping options, such as:
+● Full addressing of both the sending and receiving parties
 ● Additional shipping references against which the shipping entry is to be tagged against
 ● Multiple packages and their associated dimensions and weights
 ● Special handling requests such as after-hour deliveries, saturday service or public holidays
 
-# Step One
+# URL
 
-Here is my first paragraph
+Service Relative URL: /api/service/submitwaybillwia
 
-# Introduction
+# Parameters
 
-Welcome to the BEX API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+The parameter requirements for this api call have been broken down into three sub-sections,
+namely:
+1. Addresses
+    This sub-section contains parameters related to the construction of the Waybill and it's routing information
+2. Dimensioning
+3. Service Add-Ons
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+## 1 Addresses
+
+Parameter | FieldType | Required | Case | Example | Description
+--------- | --------- | -------- | ---- | ------- | -----------
+Account No | String | Yes | No | 1110123 | Bex account number to which shipment costs will be allocated
+Swndersref | String | No | No | Order123-456 | Shippers reference linked to the database. This reference can be used for tracking, reporting and invoice requests
+
 
 This example API documentation page was created with [Slate](https://github.com/slatedocs/slate). Feel free to edit it and use it as a base for your own API's documentation.
 

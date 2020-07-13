@@ -17,6 +17,17 @@ includes:
 search: true
 ---
 
+# Overview
+
+This service is used so as to create a waybill shipping entry into the BEX courier database. This
+allows BEX customers to interface directly their shipping requests and helps to eliminate errors as
+a result of manual data capture or misinterpretation of written content on shipping
+documentation.
+The service allows for the communication of a number of shipping options, such as:Full addressing of both the sending and receiving parties
+● Additional shipping references against which the shipping entry is to be tagged against
+● Multiple packages and their associated dimensions and weights
+● Special handling requests such as after-hour deliveries, saturday service or public holidays
+
 # Step One
 
 Here is my first paragraph

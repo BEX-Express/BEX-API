@@ -17,7 +17,7 @@ search: true
 
 # Overview
 
-This service is used so as to create a waybill shipping entry into the BEX courier database. This
+This service is used to create a waybill shipping entry into the BEX courier database. This
 allows BEX customers to interface directly their shipping requests and helps to eliminate errors as
 a result of manual data capture or misinterpretation of written content on shipping
 documentation.

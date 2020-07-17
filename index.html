@@ -311,7 +311,7 @@ a header attribute with the same name.</p>
 <td>Yes</td>
 <td>No</td>
 <td>user123</td>
-<td>Requires a valed username obtained from your account administrator</td>
+<td>Requires a valid username obtained from your account administrator</td>
 </tr>
 <tr>
 <td>Password</td>
@@ -319,10 +319,36 @@ a header attribute with the same name.</p>
 <td>Yes</td>
 <td>Yes</td>
 <td>pass1234</td>
-<td>Requires a valed username obtained from your account administrator</td>
+<td>Requires a valid password obtained from your account administrator</td>
 </tr>
 </tbody></table>
-<h2 id='transportation'>Transportation</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="o">&lt;!</span><span class="nx">DOCTYPE</span> <span class="nx">html</span><span class="o">&gt;</span>
+
+<p>Passwords can be sent in plain-text or encrypted using the Rijndael algorithm. For this to be enabled, a
+cipher will need to be agreed upon and saved against your account for decryption purposes.We are also
+able to supply a .NET example for encryption if needed.</p>
+
+<p>AccountNumber
+Field Type:     STRING
+Required:       No (Unless an encrypted password is used)
+Case Sensitive: No
+Example:        112233</p>
+
+<p>Any valid account number for the user credentials can be used. This field is only required when a
+password is encrypted.
+PartnerID
+Field Type:     INT
+Required:       No (Unless an encrypted password is used)
+Case Sensitive: No
+Example:        123</p>
+
+<p>The PartnerID is a unique identifier that can be provided by your administrator. This is required due to
+the multi-company support which BEX has per database. This field is only required when a password is
+encrypted</p>
+<h2 id='transportation'>Transportation</h2>
+<blockquote>
+<p>Make sure to replace <code>user123</code>and <code>pass123</code> with your API key.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="o">&lt;!</span><span class="nx">DOCTYPE</span> <span class="nx">html</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="nx">html</span> <span class="nx">xmlns</span><span class="o">=</span><span class="dl">"</span><span class="s2">http://www.w3.org/1999/xhtml</span><span class="dl">"</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Login</span> <span class="nx">Example</span><span class="o">&lt;</span><span class="sr">/title</span><span class="err">&gt;
@@ -361,8 +387,6 @@ All URL-based field values must be URL encoded if special characters are used</p
 URL: <code>http://insight.bex.co.za/api/service/login?username=user123&amp;password=pass1234</code></p>
 
 <blockquote>
-<p>Make sure to replace <code>username123</code>and <code>password123</code> with your API key.</p>
-
 <p>Please note that all fields must be URL encoded if special characters are used</p>
 </blockquote>
 <h1 id='waybill-overview-next-section'>Waybill Overview -- Next section</h1>

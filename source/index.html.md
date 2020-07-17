@@ -46,8 +46,9 @@ able to supply a .NET example for encryption if needed.
 
 AccountNumber
 
+--------------- | -----------------------------------------
 Field Type: | STRING
-Required:  |No (Unless an encrypted password is used)
+Required: | No (Unless an encrypted password is used)
 Case Sensitive: | No
 Example: | 112233
 
@@ -56,6 +57,7 @@ password is encrypted.
 
 PartnerID
 
+--------------- | -----------------------------------------
 Field Type: | INT
 Required: | No (Unless an encrypted password is used)
 Case Sensitive: | No

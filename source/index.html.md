@@ -1,5 +1,5 @@
 ---
-title: WayBill API Reference
+title: BEX Webservice Integrations
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - javascript
@@ -16,13 +16,86 @@ includes:
 search: true
 ---
 
-# Overview
+# Introduction
+
+BEX Express provides a comprehensive range of Domestic, Cross Border and International
+ courier services
+
+# Login
+
+## Overview
+
+The service accepts user credentials. After validation, it then returns a valid session token which can be
+used to access additional services. This token string will then be submitted via a cookie called “token” or
+a header attribute with the same name.
+
+## URL
+
+Service Relative URL: `api/service/login`
+
+## Parameters
+
+Parameter | FieldType | Required | Case | Example | Description
+--------- | --------- | -------- | ---- | ------- | -----------
+Username | String | Yes | No | user123 | Requires a valed username obtained from your account administrator
+Password | String |Yes |Yes |pass1234 | Requires a valed username obtained from your account administrator
+
+## Transportation
+
+```javascript
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Login Example</title>
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+</head>
+<body>
+<script type="text/javascript">
+var user = encodeURIComponent('test123'); //encode the username
+var pass = encodeURIComponent('pass1234'); //encode the password
+jQuery.support.cors = true; //this will enable cross domain access for all services
+//call the service using jQuery ajax and passing the parameters
+$.ajax({
+url: 'http://insight.bex.co.za/api/service/login?username=' + user + '&password=' + pass,
+type: 'POST',
+async: false, //dont run asynchronously
+success: function (data) {
+if (data.ex) { //if the network call succeeds, it may still contain an error (ex)
+alert('The following error occured: ' + data.ex); //display the error
+return;
+}a
+lert('Your token is: ' + data.value); //display the valid token
+},
+error: function (ex) { //this will fire for network related issues
+alert(ex.responseText);
+}
+});
+</script>
+</body>
+</html>
+```
+The service supports GET and POST requests.We recommend POST requests to avoid caching issues.
+The service supports URL parameters or JSON parameters in the message body
+All URL-based field values must be URL encoded if special characters are used
+
+Example Service Call using the URL Parameters
+URL: `http://insight.bex.co.za/api/service/login?username=user123&password=pass1234`
+
+
+> Make sure to replace `username123`and `password123` with your API key.
+
+>Please note that all fields must be URL encoded if special characters are used
+
+
+
+
+# Waybill Overview -- Next section
 
 This service is used to create a waybill shipping entry into the BEX courier database. This
 allows BEX customers to interface directly their shipping requests and helps to eliminate errors as
 a result of manual data capture or misinterpretation of written content on shipping
 documentation.
-The service allows for the communication of a number of The service allows for the communication of a number of shipping options, such as:
+The service allows for the communication of a number of shipping options, such as:
 
 * Full addressing of both the sending and receiving parties
 * Additional shipping references against which the shipping entry is to be tagged against
@@ -47,7 +120,7 @@ namely:
 Parameter | FieldType | Required | Case | Example | Description
 --------- | --------- | -------- | ---- | ------- | -----------
 Account No | String | Yes | No | 1110123 | Bex account number to which shipment costs will be allocated
-Swndersref | String | No | No | Order123-456 | Shippers reference linked to the database. This reference can be used for tracking, reporting and invoice requests
+Senders Ref | String | No | No | Order123-456 | Shippers reference linked to the database. This reference can be used for tracking, reporting and invoice requests
 
 
 This example API documentation page was created with [Slate](https://github.com/slatedocs/slate). Feel free to edit it and use it as a base for your own API's documentation.
@@ -55,24 +128,6 @@ This example API documentation page was created with [Slate](https://github.com/
 # Authentication
 
 > To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
 
 ```javascript
 const kittn = require('kittn');
@@ -99,21 +154,6 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 ```ruby
 require 'kittn'
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
 
 ```javascript
 const kittn = require('kittn');

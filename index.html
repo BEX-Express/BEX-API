@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>WayBill API Reference</title>
+    <title>BEX Webservice Integrations</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -219,13 +219,33 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#overview" class="toc-h1 toc-link" data-title="Overview">Overview</a>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
-            <a href="#url" class="toc-h1 toc-link" data-title="URL">URL</a>
+            <a href="#login" class="toc-h1 toc-link" data-title="Login">Login</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#overview" class="toc-h2 toc-link" data-title="Overview">Overview</a>
+                  </li>
+                  <li>
+                    <a href="#url" class="toc-h2 toc-link" data-title="URL">URL</a>
+                  </li>
+                  <li>
+                    <a href="#parameters" class="toc-h2 toc-link" data-title="Parameters">Parameters</a>
+                  </li>
+                  <li>
+                    <a href="#transportation" class="toc-h2 toc-link" data-title="Transportation">Transportation</a>
+                  </li>
+              </ul>
           </li>
           <li>
-            <a href="#parameters" class="toc-h1 toc-link" data-title="Parameters">Parameters</a>
+            <a href="#waybill-overview-next-section" class="toc-h1 toc-link" data-title="Waybill Overview -- Next section">Waybill Overview -- Next section</a>
+          </li>
+          <li>
+            <a href="#url-2" class="toc-h1 toc-link" data-title="URL">URL</a>
+          </li>
+          <li>
+            <a href="#parameters-2" class="toc-h1 toc-link" data-title="Parameters">Parameters</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#1-addresses" class="toc-h2 toc-link" data-title="1 Addresses">1 Addresses</a>
@@ -265,12 +285,92 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='overview'>Overview</h1>
+        <h1 id='introduction'>Introduction</h1>
+<p>BEX Express provides a comprehensive range of Domestic, Cross Border and International
+ courier services</p>
+<h1 id='login'>Login</h1><h2 id='overview'>Overview</h2>
+<p>The service accepts user credentials. After validation, it then returns a valid session token which can be
+used to access additional services. This token string will then be submitted via a cookie called “token” or
+a header attribute with the same name.</p>
+<h2 id='url'>URL</h2>
+<p>Service Relative URL: <code>api/service/login</code></p>
+<h2 id='parameters'>Parameters</h2>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>FieldType</th>
+<th>Required</th>
+<th>Case</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Username</td>
+<td>String</td>
+<td>Yes</td>
+<td>No</td>
+<td>user123</td>
+<td>Requires a valed username obtained from your account administrator</td>
+</tr>
+<tr>
+<td>Password</td>
+<td>String</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>pass1234</td>
+<td>Requires a valed username obtained from your account administrator</td>
+</tr>
+</tbody></table>
+<h2 id='transportation'>Transportation</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="o">&lt;!</span><span class="nx">DOCTYPE</span> <span class="nx">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">html</span> <span class="nx">xmlns</span><span class="o">=</span><span class="dl">"</span><span class="s2">http://www.w3.org/1999/xhtml</span><span class="dl">"</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Login</span> <span class="nx">Example</span><span class="o">&lt;</span><span class="sr">/title</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="dl">"</span><span class="s2">http://code.jquery.com/jquery-latest.min.js</span><span class="dl">"</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/head</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;</span>
+<span class="kd">var</span> <span class="nx">user</span> <span class="o">=</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="dl">'</span><span class="s1">test123</span><span class="dl">'</span><span class="p">);</span> <span class="c1">//encode the username</span>
+<span class="kd">var</span> <span class="nx">pass</span> <span class="o">=</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="dl">'</span><span class="s1">pass1234</span><span class="dl">'</span><span class="p">);</span> <span class="c1">//encode the password</span>
+<span class="nx">jQuery</span><span class="p">.</span><span class="nx">support</span><span class="p">.</span><span class="nx">cors</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> <span class="c1">//this will enable cross domain access for all services</span>
+<span class="c1">//call the service using jQuery ajax and passing the parameters</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+<span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">http://insight.bex.co.za/api/service/login?username=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">user</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">&amp;password=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">pass</span><span class="p">,</span>
+<span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+<span class="na">async</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">//dont run asynchronously</span>
+<span class="na">success</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">ex</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//if the network call succeeds, it may still contain an error (ex)</span>
+<span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">The following error occured: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="nx">ex</span><span class="p">);</span> <span class="c1">//display the error</span>
+<span class="k">return</span><span class="p">;</span>
+<span class="p">}</span><span class="nx">a</span>
+<span class="nx">lert</span><span class="p">(</span><span class="dl">'</span><span class="s1">Your token is: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span> <span class="c1">//display the valid token</span>
+<span class="p">},</span>
+<span class="na">error</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ex</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//this will fire for network related issues</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">ex</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="p">});</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/body</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/html</span><span class="err">&gt;
+</span></code></pre></div>
+<p>The service supports GET and POST requests.We recommend POST requests to avoid caching issues.
+The service supports URL parameters or JSON parameters in the message body
+All URL-based field values must be URL encoded if special characters are used</p>
+
+<p>Example Service Call using the URL Parameters
+URL: <code>http://insight.bex.co.za/api/service/login?username=user123&amp;password=pass1234</code></p>
+
+<blockquote>
+<p>Make sure to replace <code>username123</code>and <code>password123</code> with your API key.</p>
+
+<p>Please note that all fields must be URL encoded if special characters are used</p>
+</blockquote>
+<h1 id='waybill-overview-next-section'>Waybill Overview -- Next section</h1>
 <p>This service is used to create a waybill shipping entry into the BEX courier database. This
 allows BEX customers to interface directly their shipping requests and helps to eliminate errors as
 a result of manual data capture or misinterpretation of written content on shipping
 documentation.
-The service allows for the communication of a number of The service allows for the communication of a number of shipping options, such as:</p>
+The service allows for the communication of a number of shipping options, such as:</p>
 
 <ul>
 <li>Full addressing of both the sending and receiving parties</li>
@@ -278,9 +378,9 @@ The service allows for the communication of a number of The service allows for t
 <li>Multiple packages and their associated dimensions and weights</li>
 <li>Special handling requests such as after-hour deliveries, saturday service or public holidays</li>
 </ul>
-<h1 id='url'>URL</h1>
+<h1 id='url-2'>URL</h1>
 <p>Service Relative URL: <code>/api/service/submitwaybillwia</code></p>
-<h1 id='parameters'>Parameters</h1>
+<h1 id='parameters-2'>Parameters</h1>
 <p>The parameter requirements for this api call have been broken down into three sub-sections,
 namely:
 1. Addresses
@@ -307,7 +407,7 @@ namely:
 <td>Bex account number to which shipment costs will be allocated</td>
 </tr>
 <tr>
-<td>Swndersref</td>
+<td>Senders Ref</td>
 <td>String</td>
 <td>No</td>
 <td>No</td>
@@ -321,16 +421,7 @@ namely:
 <blockquote>
 <p>To authorize, use this code:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
 </code></pre></div>
@@ -349,19 +440,13 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </aside>
 <h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+<span class="sb">```javascript
+const kittn = require('kittn');
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">();</span>
-</code></pre></div>
+let api = kittn.authorize('meowmeowmeow');
+let kittens = api.kittens.get();
+</span></code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>

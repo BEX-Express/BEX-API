@@ -45,18 +45,28 @@ cipher will need to be agreed upon and saved against your account for decryption
 able to supply a .NET example for encryption if needed.
 
 AccountNumber
+
 Field Type: 	STRING
+
 Required: 		No (Unless an encrypted password is used)
+
 Case Sensitive: No
+
 Example: 		112233
 
 Any valid account number for the user credentials can be used. This field is only required when a
 password is encrypted.
+
 PartnerID
+
 Field Type: 	INT
+
 Required: 		No (Unless an encrypted password is used)
+
 Case Sensitive: No
+
 Example: 		123
+
 
 The PartnerID is a unique identifier that can be provided by your administrator. This is required due to
 the multi-company support which BEX has per database. This field is only required when a password is

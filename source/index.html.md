@@ -37,10 +37,34 @@ Service Relative URL: `api/service/login`
 
 Parameter | FieldType | Required | Case | Example | Description
 --------- | --------- | -------- | ---- | ------- | -----------
-Username | String | Yes | No | user123 | Requires a valed username obtained from your account administrator
-Password | String |Yes |Yes |pass1234 | Requires a valed username obtained from your account administrator
+Username | String | Yes | No | user123 | Requires a valid username obtained from your account administrator
+Password | String |Yes |Yes |pass1234 | Requires a valid password obtained from your account administrator
+
+Passwords can be sent in plain-text or encrypted using the Rijndael algorithm. For this to be enabled, a
+cipher will need to be agreed upon and saved against your account for decryption purposes.We are also
+able to supply a .NET example for encryption if needed.
+
+AccountNumber
+Field Type: 	STRING
+Required: 		No (Unless an encrypted password is used)
+Case Sensitive: No
+Example: 		112233
+
+Any valid account number for the user credentials can be used. This field is only required when a
+password is encrypted.
+PartnerID
+Field Type: 	INT
+Required: 		No (Unless an encrypted password is used)
+Case Sensitive: No
+Example: 		123
+
+The PartnerID is a unique identifier that can be provided by your administrator. This is required due to
+the multi-company support which BEX has per database. This field is only required when a password is
+encrypted
 
 ## Transportation
+
+> Make sure to replace `user123`and `pass123` with your API key.
 
 ```javascript
 <!DOCTYPE html>
@@ -80,9 +104,6 @@ All URL-based field values must be URL encoded if special characters are used
 
 Example Service Call using the URL Parameters
 URL: `http://insight.bex.co.za/api/service/login?username=user123&password=pass1234`
-
-
-> Make sure to replace `username123`and `password123` with your API key.
 
 >Please note that all fields must be URL encoded if special characters are used
 

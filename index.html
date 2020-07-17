@@ -327,24 +327,48 @@ a header attribute with the same name.</p>
 cipher will need to be agreed upon and saved against your account for decryption purposes.We are also
 able to supply a .NET example for encryption if needed.</p>
 
-<p>AccountNumber</p>
-
-<p>--------------- | -----------------------------------------
-Field Type: | STRING
-Required: | No (Unless an encrypted password is used)
-Case Sensitive: | No
-Example: | 112233</p>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>FieldType</th>
+<th>Required</th>
+<th>Case</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AccountNumber</td>
+<td>String</td>
+<td>No (Unless an encrypted password is used)</td>
+<td>No</td>
+<td>112233</td>
+<td></td>
+</tr>
+</tbody></table>
 
 <p>Any valid account number for the user credentials can be used. This field is only required when a
 password is encrypted.</p>
 
-<p>PartnerID</p>
-
-<p>--------------- | -----------------------------------------
-Field Type: | INT
-Required: | No (Unless an encrypted password is used)
-Case Sensitive: | No
-Example: | 123</p>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>FieldType</th>
+<th>Required</th>
+<th>Case</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PartnerID</td>
+<td>INT</td>
+<td>No (Unless an encrypted password is used)</td>
+<td>No</td>
+<td>123</td>
+<td></td>
+</tr>
+</tbody></table>
 
 <p>The PartnerID is a unique identifier that can be provided by your administrator. This is required due to
 the multi-company support which BEX has per database. This field is only required when a password is
@@ -412,10 +436,10 @@ The service allows for the communication of a number of shipping options, such a
 <h1 id='parameters-2'>Parameters</h1>
 <p>The parameter requirements for this api call have been broken down into three sub-sections,
 namely:
-1. Addresses
+* 1. Addresses
     This sub-section contains parameters related to the construction of the Waybill and it&#39;s routing information
-2. Dimensioning
-3. Service Add-Ons</p>
+* 2. Dimensioning
+* 3. Service Add-Ons</p>
 <h2 id='1-addresses'>1 Addresses</h2>
 <table><thead>
 <tr>

@@ -44,24 +44,16 @@ Passwords can be sent in plain-text or encrypted using the Rijndael algorithm. F
 cipher will need to be agreed upon and saved against your account for decryption purposes.We are also
 able to supply a .NET example for encryption if needed.
 
-AccountNumber
-
---------------- | -----------------------------------------
-Field Type: | STRING
-Required: | No (Unless an encrypted password is used)
-Case Sensitive: | No
-Example: | 112233
+Parameter | FieldType | Required | Case | Example | Description
+--------- | --------- | -------- | ---- | ------- | -----------
+AccountNumber | String | No (Unless an encrypted password is used) | No | 112233
 
 Any valid account number for the user credentials can be used. This field is only required when a
 password is encrypted.
 
-PartnerID
-
---------------- | -----------------------------------------
-Field Type: | INT
-Required: | No (Unless an encrypted password is used)
-Case Sensitive: | No
-Example: | 123
+Parameter | FieldType | Required | Case | Example | Description
+--------- | --------- | -------- | ---- | ------- | -----------
+PartnerID | INT | No (Unless an encrypted password is used) | No | 123
 
 The PartnerID is a unique identifier that can be provided by your administrator. This is required due to
 the multi-company support which BEX has per database. This field is only required when a password is
@@ -136,10 +128,10 @@ Service Relative URL: `/api/service/submitwaybillwia`
 
 The parameter requirements for this api call have been broken down into three sub-sections,
 namely:
-1. Addresses
+* 1. Addresses
     This sub-section contains parameters related to the construction of the Waybill and it's routing information
-2. Dimensioning
-3. Service Add-Ons
+* 2. Dimensioning
+* 3. Service Add-Ons
 
 ## 1 Addresses
 

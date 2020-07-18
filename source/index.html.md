@@ -129,8 +129,8 @@ Service Relative URL: `/api/service/submitwaybillwia`
 
 The parameter requirements for this api call have been broken down into three sub-sections,
 namely:
-* 1. Addresses
-    This sub-section contains parameters related to the construction of the Waybill and it's routing information
+
+* 1. Addresses - This sub-section contains parameters related to the construction of the Waybill and it's routing information
 * 2. Dimensioning
 * 3. Service Add-Ons
 

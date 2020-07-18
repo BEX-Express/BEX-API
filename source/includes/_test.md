@@ -26,11 +26,12 @@ Make sure the lines above and below your paragraph are empty.
 #Code Samples
 
 ```ruby
-	# This is some Ruby code!```
-
+	# This is some Ruby code!
+```
 
 ```python
-	# This is some Python code!```
+	# This is some Python code!
+```
 
 
 Code samples will appear in the dark area to the right of the main text. We recommend positioning code samples right under headers in your markdown file.
@@ -123,4 +124,7 @@ You can add little highlighted warnings and notes with just a little HTML embedd
 </aside>
 
 * AccId    Required    Integer
+
+* Address 	# Required
+
 

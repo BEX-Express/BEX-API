@@ -284,6 +284,9 @@
             <a href="#code-samples" class="toc-h1 toc-link" data-title="Code Samples">Code Samples</a>
           </li>
           <li>
+            <a href="#tables" class="toc-h1 toc-link" data-title="Tables">Tables</a>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
@@ -671,105 +674,124 @@ For normal text, just type your paragraph on a single line.</p>
 
 <p>This is some paragraph text. Exciting, no?
 Make sure the lines above and below your paragraph are empty.</p>
-<h1 id='code-samples'>Code Samples</h1><div class="highlight"><pre class="highlight ruby tab-ruby"><code>    <span class="c1"># This is some Ruby code!```</span>
+<h1 id='code-samples'>Code Samples</h1><div class="highlight"><pre class="highlight ruby tab-ruby"><code>    <span class="c1"># This is some Ruby code!</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code>    <span class="c1"># This is some Python code!
+</span></code></pre></div>
+<p>Code samples will appear in the dark area to the right of the main text. We recommend positioning code samples right under headers in your markdown file.</p>
 
+<p>For the full list of supported languages, see rouge.</p>
 
-<span class="sb">```python
-    # This is some Python code!```</span>
+<p>Code Annotations
+For code annotations:</p>
 
+<blockquote>
+<p>This is a code annotation. It will appear in the area to the right, next to the code samples.</p>
+</blockquote>
 
-<span class="no">Code</span> <span class="n">samples</span> <span class="n">will</span> <span class="n">appear</span> <span class="k">in</span> <span class="n">the</span> <span class="n">dark</span> <span class="n">area</span> <span class="n">to</span> <span class="n">the</span> <span class="n">right</span> <span class="n">of</span> <span class="n">the</span> <span class="n">main</span> <span class="n">text</span><span class="o">.</span> <span class="no">We</span> <span class="n">recommend</span> <span class="n">positioning</span> <span class="n">code</span> <span class="n">samples</span> <span class="n">right</span> <span class="n">under</span> <span class="n">headers</span> <span class="k">in</span> <span class="n">your</span> <span class="n">markdown</span> <span class="n">file</span><span class="o">.</span>
+<p>Code annotations are essentially the same thing as paragraphs, but they&#39;ll appear in the area to the right along with your code samples.</p>
 
-<span class="no">For</span> <span class="n">the</span> <span class="n">full</span> <span class="n">list</span> <span class="n">of</span> <span class="n">supported</span> <span class="n">languages</span><span class="p">,</span> <span class="n">see</span> <span class="n">rouge</span><span class="o">.</span>
+<p>Formatting code annotations (right column) with its explanation (center column)</p>
 
-<span class="no">Code</span> <span class="no">Annotations</span>
-<span class="no">For</span> <span class="n">code</span> <span class="ss">annotations:
+<p>In order to correctly format the code in the right column with the text in the center column the code snippet should go first, e.g.</p>
 
-</span><span class="o">&gt;</span> <span class="no">This</span> <span class="n">is</span> <span class="n">a</span> <span class="n">code</span> <span class="n">annotation</span><span class="o">.</span> <span class="no">It</span> <span class="n">will</span> <span class="n">appear</span> <span class="k">in</span> <span class="n">the</span> <span class="n">area</span> <span class="n">to</span> <span class="n">the</span> <span class="n">right</span><span class="p">,</span> <span class="k">next</span> <span class="n">to</span> <span class="n">the</span> <span class="n">code</span> <span class="n">samples</span><span class="o">.</span>
+<p># My Title</p>
 
-<span class="no">Code</span> <span class="n">annotations</span> <span class="n">are</span> <span class="n">essentially</span> <span class="n">the</span> <span class="n">same</span> <span class="n">thing</span> <span class="n">as</span> <span class="n">paragraphs</span><span class="p">,</span> <span class="n">but</span> <span class="n">they</span><span class="s1">'ll appear in the area to the right along with your code samples.
+<p>## My Subtitle</p>
 
-Formatting code annotations (right column) with its explanation (center column)
-
-In order to correctly format the code in the right column with the text in the center column the code snippet should go first, e.g.
-
-    # My Title
-
-    ## My Subtitle
-
-
-    ```java
+<p><code>java
         Code snippet
-    ```
+</code></p>
 
+<p>Whatever that goes in the center column. Lorem ipsum
+Putting the content for the center column first and the code snippet afterwards will cause the code snippet to be aligned with the last line of the center column, if the code snippet goes first, then the code is aligned with the first line of the center column.</p>
+<h1 id='tables'>Tables</h1>
+<p>Slate uses PHP Markdown Extra style tables:</p>
 
-    Whatever that goes in the center column. Lorem ipsum
-Putting the content for the center column first and the code snippet afterwards will cause the code snippet to be aligned with the last line of the center column, if the code snippet goes first, then the code is aligned with the first line of the center column.
+<table><thead>
+<tr>
+<th>Table Header 1</th>
+<th>Table Header 2</th>
+<th>Table Header 3</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Row 1 col 1</td>
+<td>Row 1 col 2</td>
+<td>Row 1 col 3</td>
+</tr>
+<tr>
+<td>Row 2 col 1</td>
+<td>Row 2 col 2</td>
+<td>Row 2 col 3</td>
+</tr>
+</tbody></table>
 
-#Tables
+<p>Note that the pipes do not need to line up with each other on each line.</p>
 
-Slate uses PHP Markdown Extra style tables:
+<p>If you don&#39;t like that syntax, feel free to use normal html <table>s directly in your markdown.</p>
 
-Table Header 1 | Table Header 2 | Table Header 3
--------------- | -------------- | --------------
-Row 1 col 1 | Row 1 col 2 | Row 1 col 3
-Row 2 col 1 | Row 2 col 2 | Row 2 col 3
-Note that the pipes do not need to line up with each other on each line.
+<p>Formatted Text
+This text is <strong>bold</strong>, this is <em>italic</em>, this is an <code>inline code block</code>.
+You can use those formatting rules in tables, paragraphs, lists, wherever, although they&#39;ll appear verbatim in code blocks.</p>
 
-If you don'</span><span class="n">t</span> <span class="n">like</span> <span class="n">that</span> <span class="n">syntax</span><span class="p">,</span> <span class="n">feel</span> <span class="n">free</span> <span class="n">to</span> <span class="n">use</span> <span class="n">normal</span> <span class="n">html</span> <span class="o">&lt;</span><span class="n">table</span><span class="o">&gt;</span><span class="n">s</span> <span class="n">directly</span> <span class="k">in</span> <span class="n">your</span> <span class="n">markdown</span><span class="o">.</span>
+<p>Lists
+1. This
+2. Is
+3. An
+4. Ordered
+5. List</p>
 
-<span class="no">Formatted</span> <span class="no">Text</span>
-<span class="no">This</span> <span class="n">text</span> <span class="n">is</span> <span class="o">**</span><span class="n">bold</span><span class="o">**</span><span class="p">,</span> <span class="n">this</span> <span class="n">is</span> <span class="o">*</span><span class="n">italic</span><span class="o">*</span><span class="p">,</span> <span class="n">this</span> <span class="n">is</span> <span class="n">an</span> <span class="sb">`inline code block`</span><span class="o">.</span>
-<span class="no">You</span> <span class="n">can</span> <span class="n">use</span> <span class="n">those</span> <span class="n">formatting</span> <span class="n">rules</span> <span class="k">in</span> <span class="n">tables</span><span class="p">,</span> <span class="n">paragraphs</span><span class="p">,</span> <span class="n">lists</span><span class="p">,</span> <span class="n">wherever</span><span class="p">,</span> <span class="n">although</span> <span class="n">they</span><span class="err">'</span><span class="n">ll</span> <span class="n">appear</span> <span class="n">verbatim</span> <span class="k">in</span> <span class="n">code</span> <span class="n">blocks</span><span class="o">.</span>
+<ul>
+<li>This</li>
+<li>Is</li>
+<li>A</li>
+<li>Bullet</li>
+<li>List</li>
+</ul>
 
-<span class="no">Lists</span>
-<span class="mi">1</span><span class="o">.</span> <span class="no">This</span>
-<span class="mi">2</span><span class="o">.</span> <span class="no">Is</span>
-<span class="mi">3</span><span class="o">.</span> <span class="no">An</span>
-<span class="mi">4</span><span class="o">.</span> <span class="no">Ordered</span>
-<span class="mi">5</span><span class="o">.</span> <span class="no">List</span>
+<p>Nested Lists
+You can do sub-lists in Markdown by indenting the bullets (or numbers) by 4 spaces:</p>
 
-<span class="o">*</span> <span class="no">This</span>
-<span class="o">*</span> <span class="no">Is</span>
-<span class="o">*</span> <span class="no">A</span>
-<span class="o">*</span> <span class="no">Bullet</span>
-<span class="o">*</span> <span class="no">List</span>
+<ul>
+<li>First
 
-<span class="no">Nested</span> <span class="no">Lists</span>
-<span class="no">You</span> <span class="n">can</span> <span class="k">do</span> <span class="nb">sub</span><span class="o">-</span><span class="n">lists</span> <span class="k">in</span> <span class="no">Markdown</span> <span class="n">by</span> <span class="n">indenting</span> <span class="n">the</span> <span class="n">bullets</span> <span class="p">(</span><span class="n">or</span> <span class="n">numbers</span><span class="p">)</span> <span class="n">by</span> <span class="mi">4</span> <span class="ss">spaces:
+<ol>
+<li>1</li>
+<li>2</li>
+</ol></li>
+<li>Second
 
-</span><span class="o">*</span> <span class="no">First</span>
-    <span class="mi">1</span><span class="o">.</span> <span class="mi">1</span>
-    <span class="mi">1</span><span class="o">.</span> <span class="mi">2</span>
-<span class="o">*</span> <span class="no">Second</span>
-    <span class="o">*</span> <span class="n">a</span>
-    <span class="o">*</span> <span class="n">b</span>
-    <span class="o">*</span> <span class="n">c</span>
-<span class="no">Will</span> <span class="n">give</span> <span class="ss">you:
+<ul>
+<li>a</li>
+<li>b</li>
+<li>c
+Will give you:</li>
+</ul></li>
+</ul>
 
-</span><span class="no">Screen</span> <span class="no">Shot</span> <span class="mi">2019</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">31</span> <span class="n">at</span> <span class="mi">10</span> <span class="mi">09</span> <span class="mi">11</span>
-<span class="no">Links</span>
-<span class="no">This</span> <span class="n">is</span> <span class="n">an</span> <span class="p">[</span><span class="n">internal</span> <span class="n">link</span><span class="p">](</span><span class="c1">#error-code-definitions), this is an [external link](http://google.com).</span>
-<span class="no">Notes</span> <span class="n">and</span> <span class="no">Warnings</span>
-<span class="no">You</span> <span class="n">can</span> <span class="n">add</span> <span class="n">little</span> <span class="n">highlighted</span> <span class="n">warnings</span> <span class="n">and</span> <span class="n">notes</span> <span class="n">with</span> <span class="n">just</span> <span class="n">a</span> <span class="n">little</span> <span class="no">HTML</span> <span class="n">embedded</span> <span class="k">in</span> <span class="n">your</span> <span class="n">markdown</span> <span class="ss">document:
+<p>Screen Shot 2019-10-31 at 10 09 11
+Links
+This is an <a href="#error-code-definitions">internal link</a>, this is an <a href="http://google.com">external link</a>.
+Notes and Warnings
+You can add little highlighted warnings and notes with just a little HTML embedded in your markdown document:</p>
 
-</span><span class="o">&lt;</span><span class="n">aside</span> <span class="k">class</span><span class="o">=</span><span class="s2">"notice"</span><span class="o">&gt;</span>
-    <span class="no">You</span> <span class="n">must</span> <span class="n">replace</span> <span class="n">meowmeowmeow</span> <span class="n">with</span> <span class="n">your</span> <span class="n">personal</span> <span class="no">API</span> <span class="n">key</span><span class="p">.</span>
-<span class="nf">&lt;</span><span class="o">/</span><span class="n">aside</span><span class="o">&gt;</span>
+<aside class="notice">
+    You must replace meowmeowmeow with your personal API key.
+</aside>
 
+<aside class="warning">
+    You must replace meowmeowmeow with your personal API key.
+</aside>
 
-<span class="o">&lt;</span><span class="n">aside</span> <span class="k">class</span><span class="o">=</span><span class="s2">"warning"</span><span class="o">&gt;</span>
-    <span class="no">You</span> <span class="n">must</span> <span class="n">replace</span> <span class="n">meowmeowmeow</span> <span class="n">with</span> <span class="n">your</span> <span class="n">personal</span> <span class="no">API</span> <span class="n">key</span><span class="p">.</span>
-<span class="nf">&lt;</span><span class="o">/</span><span class="n">aside</span><span class="o">&gt;</span>
+<aside class="success">
+    You must replace meowmeowmeow with your personal API key.
+</aside>
 
-
-<span class="o">&lt;</span><span class="n">aside</span> <span class="k">class</span><span class="o">=</span><span class="s2">"success"</span><span class="o">&gt;</span>
-    <span class="no">You</span> <span class="n">must</span> <span class="n">replace</span> <span class="n">meowmeowmeow</span> <span class="n">with</span> <span class="n">your</span> <span class="n">personal</span> <span class="no">API</span> <span class="n">key</span><span class="p">.</span>
-<span class="nf">&lt;</span><span class="o">/</span><span class="n">aside</span><span class="o">&gt;</span>
-
-<span class="o">*</span> <span class="no">AccId</span>    <span class="no">Required</span>    <span class="no">Integer</span>
-
-</code></pre></div><h1 id='errors'>Errors</h1>
+<ul>
+<li><p>AccId    Required    Integer</p></li>
+<li><p>Address   # Required</p></li>
+</ul>
+<h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
 </aside>

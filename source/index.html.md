@@ -104,10 +104,11 @@ URL: `http://insight.bex.co.za/api/service/login?username=user123&password=pass1
 
 >Please note that all fields must be URL encoded if special characters are used
 
+Example Service Call using JSON message body
+URL: `http://insight.bex.co.za/api/service/login`
+BODY: `{“username”:”user123”,”password”:”pass1234”}`
 
-
-
-# Waybill Overview -- Next section
+# Waybill Overview 
 
 This service is used to create a waybill shipping entry into the BEX courier database. This
 allows BEX customers to interface directly their shipping requests and helps to eliminate errors as
@@ -135,10 +136,15 @@ namely:
 
 ## 1 Addresses
 
-Parameter | FieldType | Required | Case | Example | Description
---------- | --------- | -------- | ---- | ------- | -----------
-Account No | String | Yes | No | 1110123 | Bex account number to which shipment costs will be allocated
-Senders Ref | String | No | No | Order123-456 | Shippers reference linked to the database. This reference can be used for tracking, reporting and invoice requests
+Parameter | FieldType | Required | Case | Example
+--------- | --------- | -------- | ---- | ------- 
+Account No | String | Yes | No | 1110123 |
+Bex account number to which shipment costs will be allocated
+
+Parameter | FieldType | Required | Case | Example
+--------- | --------- | -------- | ---- | ------- 
+SendersRef | String | No | No | Order123-456 |
+Shippers reference linked to the database. This reference can be used for tracking, reporting and invoice requests
 
 
 This example API documentation page was created with [Slate](https://github.com/slatedocs/slate). Feel free to edit it and use it as a base for your own API's documentation.
@@ -171,7 +177,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 
 ```ruby
 require 'kittn'
-
+```
 
 ```javascript
 const kittn = require('kittn');

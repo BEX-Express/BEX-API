@@ -72,7 +72,8 @@ Row 1 col 1 | Row 1 col 2 | Row 1 col 3
 Row 2 col 1 | Row 2 col 2 | Row 2 col 3
 Note that the pipes do not need to line up with each other on each line.
 
-If you don't like that syntax, feel free to use normal html <table>s directly in your markdown.
+If you don't like that syntax, feel free to use normal html directly in your markdown.
+ <table>s
 
 Formatted Text
 This text is **bold**, this is *italic*, this is an `inline code block`.

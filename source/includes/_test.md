@@ -86,6 +86,8 @@ Lists
 * 3. An
 * 4. Ordered
 * 5. List
+* 6. Point 6
+
 
 * This
 * Is
@@ -125,9 +127,12 @@ You can add little highlighted warnings and notes with just a little HTML embedd
     You must replace meowmeowmeow with your personal API key.
 </aside>
 
-* AccId    Required    Integer
+AccId
+    Required
+    Integer
 
-* Address 	# Required
+* Address 
+	# Required
 
 
 > The mobile number of the contact person who is to receive the goods at delivery time. This
@@ -136,13 +141,14 @@ whilst they are being routed through the BEX network.
 
 Parameter | FieldType | Required | Case | Example
 --------- | --------- | -------- | ---- | ------- 
-ReceiverEmail | String | No | No | DEREK@BOEING.COM
+ReceiverEmail      | String | No  | No  | DEREK@BOEING.COM
 
 > A Boolean flag that can be set should the requestor request insurance for the routing of the
 packages once they have been collected by BEX. Should this Boolean field be set then the waybills
 created for the shipping of the goods will carry an insurance surcharge that covers the premium
 payable so as to have insurance cover during the shipping of the goods
 
-
-InsuranceRequired | BOOLEAN | No | No | TRUE
+Parameter | FieldType | Required | Case | Example
+--------- | --------- | -------- | ---- | ------- 
+InsuranceRequired | BOOLEAN | No  | No  | TRUE
 

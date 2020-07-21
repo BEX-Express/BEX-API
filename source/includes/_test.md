@@ -87,6 +87,7 @@ Lists
 * 4. Ordered
 * 5. List
 * 6. Point 6
+* 7. Point 7 
 
 
 * This
@@ -101,10 +102,13 @@ You can do sub-lists in Markdown by indenting the bullets (or numbers) by 4 spac
 * First
     1. 1
     1. 2
+    1. 3
+
 * Second
     * a
     * b
     * c
+
 Will give you:
 
 Screen Shot 2019-10-31 at 10 09 11
@@ -128,11 +132,11 @@ You can add little highlighted warnings and notes with just a little HTML embedd
 </aside>
 
 AccId
-    Required
-    Integer
 
-* Address 
-	# Required
+		Required
+		Integer
+
+* Address *			 Required
 
 
 > The mobile number of the contact person who is to receive the goods at delivery time. This
@@ -152,3 +156,11 @@ Parameter | FieldType | Required | Case | Example
 --------- | --------- | -------- | ---- | ------- 
 InsuranceRequired | BOOLEAN | No  | No  | TRUE
 
+>The mobile number of the contact person who is to receive the goods at delivery time. This
+information is beneficial as the receiver will receive status updates as to the progress of the goods
+whilst they are being routed through the BEX network
+
+Parameter | FieldType | Required | Case | Example
+--------- | --------- | -------- | ---- | ------- 
+ReceiverMobile | String | No | No | 0823241234
+.

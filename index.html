@@ -1055,8 +1055,9 @@ You can use those formatting rules in tables, paragraphs, lists, wherever, altho
 <li>3. An</li>
 <li>4. Ordered</li>
 <li>5. List</li>
+<li>6. Point 6</li>
 <li><ol>
-<li>Point 6</li>
+<li>Point 7 </li>
 </ol></li>
 <li><p>This</p></li>
 <li><p>Is</p></li>
@@ -1069,21 +1070,23 @@ You can use those formatting rules in tables, paragraphs, lists, wherever, altho
 You can do sub-lists in Markdown by indenting the bullets (or numbers) by 4 spaces:</p>
 
 <ul>
-<li>First
+<li><p>First</p>
 
 <ol>
 <li>1</li>
 <li>2</li>
+<li>3</li>
 </ol></li>
-<li>Second
+<li><p>Second</p>
 
 <ul>
 <li>a</li>
 <li>b</li>
-<li>c
-Will give you:</li>
+<li>c</li>
 </ul></li>
 </ul>
+
+<p>Will give you:</p>
 
 <p>Screen Shot 2019-10-31 at 10 09 11
 Links
@@ -1103,13 +1106,13 @@ You can add little highlighted warnings and notes with just a little HTML embedd
     You must replace meowmeowmeow with your personal API key.
 </aside>
 
-<p>AccId
-    Required
-    Integer</p>
+<p>AccId</p>
+
+<p>Required
+        Integer</p>
 
 <ul>
-<li>Address 
-# Required</li>
+<li>Address *          Required</li>
 </ul>
 
 <blockquote>
@@ -1160,6 +1163,32 @@ payable so as to have insurance cover during the shipping of the goods</p>
 <td>TRUE</td>
 </tr>
 </tbody></table>
+
+<blockquote>
+<p>The mobile number of the contact person who is to receive the goods at delivery time. This
+information is beneficial as the receiver will receive status updates as to the progress of the goods
+whilst they are being routed through the BEX network</p>
+</blockquote>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>FieldType</th>
+<th>Required</th>
+<th>Case</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ReceiverMobile</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>0823241234</td>
+</tr>
+</tbody></table>
+
+<p>.</p>
 <h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.

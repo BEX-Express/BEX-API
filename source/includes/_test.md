@@ -80,11 +80,11 @@ This text is **bold**, this is *italic*, this is an `inline code block`.
 You can use those formatting rules in tables, paragraphs, lists, wherever, although they'll appear verbatim in code blocks.
 
 Lists
-1. This
-2. Is
-3. An
-4. Ordered
-5. List
+* 1. This
+* 2. Is
+* 3. An
+* 4. Ordered
+* 5. List
 
 * This
 * Is
@@ -128,4 +128,20 @@ You can add little highlighted warnings and notes with just a little HTML embedd
 
 * Address 	# Required
 
+
+
+Parameter | FieldType | Required | Case | Example
+--------- | --------- | -------- | ---- | ------- 
+ReceiverEmail | String | No | No | DEREK@BOEING.COM
+> The mobile number of the contact person who is to receive the goods at delivery time. This
+information is beneficial as the receiver will receive status updates as to the progress of the goods
+whilst they are being routed through the BEX network.
+
+Parameter | FieldType | Required | Case | Example
+--------- | --------- | -------- | ---- | ------- 
+InsuranceRequired | BOOLEAN | No | No | TRUE
+> A Boolean flag that can be set should the requestor request insurance for the routing of the
+packages once they have been collected by BEX. Should this Boolean field be set then the waybills
+created for the shipping of the goods will carry an insurance surcharge that covers the premium
+payable so as to have insurance cover during the shipping of the goods
 

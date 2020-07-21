@@ -1047,19 +1047,21 @@ Putting the content for the center column first and the code snippet afterwards 
 This text is <strong>bold</strong>, this is <em>italic</em>, this is an <code>inline code block</code>.
 You can use those formatting rules in tables, paragraphs, lists, wherever, although they&#39;ll appear verbatim in code blocks.</p>
 
-<p>Lists
-* 1. This
-* 2. Is
-* 3. An
-* 4. Ordered
-* 5. List</p>
+<p>Lists</p>
 
 <ul>
-<li>This</li>
-<li>Is</li>
-<li>A</li>
-<li>Bullet</li>
+<li>1. This</li>
+<li>2. Is</li>
+<li>3. An</li>
+<li>4. Ordered</li>
+<li><ol>
 <li>List</li>
+</ol></li>
+<li><p>This</p></li>
+<li><p>Is</p></li>
+<li><p>A</p></li>
+<li><p>Bullet</p></li>
+<li><p>List</p></li>
 </ul>
 
 <p>Nested Lists
@@ -1105,6 +1107,12 @@ You can add little highlighted warnings and notes with just a little HTML embedd
 <li><p>Address   # Required</p></li>
 </ul>
 
+<blockquote>
+<p>The mobile number of the contact person who is to receive the goods at delivery time. This
+information is beneficial as the receiver will receive status updates as to the progress of the goods
+whilst they are being routed through the BEX network.</p>
+</blockquote>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1124,35 +1132,13 @@ You can add little highlighted warnings and notes with just a little HTML embedd
 </tbody></table>
 
 <blockquote>
-<p>The mobile number of the contact person who is to receive the goods at delivery time. This
-information is beneficial as the receiver will receive status updates as to the progress of the goods
-whilst they are being routed through the BEX network.</p>
-</blockquote>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>FieldType</th>
-<th>Required</th>
-<th>Case</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>InsuranceRequired</td>
-<td>BOOLEAN</td>
-<td>No</td>
-<td>No</td>
-<td>TRUE</td>
-</tr>
-</tbody></table>
-
-<blockquote>
 <p>A Boolean flag that can be set should the requestor request insurance for the routing of the
 packages once they have been collected by BEX. Should this Boolean field be set then the waybills
 created for the shipping of the goods will carry an insurance surcharge that covers the premium
 payable so as to have insurance cover during the shipping of the goods</p>
 </blockquote>
+
+<p>InsuranceRequired | BOOLEAN | No | No | TRUE</p>
 <h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.

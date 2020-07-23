@@ -183,6 +183,16 @@ whilst they are being routed through the BEX network.
 </aside>
 
 
+</aside class="sucess">
+    The mobile number of the contact person who is to receive the goods at delivery time. This
+information is beneficial as the receiver will receive status updates as to the progress of the goods
+whilst they are being routed through the BEX network.
+</aside>
+
+
+</aside class="sucess">
+    The mobile number of the contact person .
+</aside>
 
 > The mobile number of the contact person who is to receive the goods at delivery time. This
 information is beneficial as the receiver will receive status updates as to the progress of the goods

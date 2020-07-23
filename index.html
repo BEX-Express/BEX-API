@@ -1188,7 +1188,100 @@ whilst they are being routed through the BEX network</p>
 </tr>
 </tbody></table>
 
-<p>.</p>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>FieldType</th>
+<th>Required</th>
+<th>Case</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ReceiverTelephone</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>0114523454</td>
+</tr>
+</tbody></table>
+
+<p><code>The telephone number of the contact person who is to receive the goods at delivery time</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>FieldType</th>
+<th>Required</th>
+<th>Case</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ReceiverMobile</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>0823241234</td>
+</tr>
+</tbody></table>
+
+<p></aside class="notice">
+    The mobile number of the contact person who is to receive the goods at delivery time. This
+information is beneficial as the receiver will receive status updates as to the progress of the goods
+whilst they are being routed through the BEX network.
+</aside></p>
+
+<blockquote>
+<p>The mobile number of the contact person who is to receive the goods at delivery time. This
+information is beneficial as the receiver will receive status updates as to the progress of the goods
+whilst they are being routed through the BEX network.</p>
+
+<p>The mobile number of the contact person who is to receive the goods at delivery time. This
+information is beneficial as the receiver will receive status updates as to the progress of the goods
+whilst they are being routed through the BEX network</p>
+
+<p>A Boolean flag that can be set should the requestor request insurance for the routing of the
+packages once they have been collected by BEX. Should this Boolean field be set then the waybills
+created for the shipping of the goods will carry an insurance surcharge that covers the premium
+payable so as to have insurance cover during the shipping of the goods</p>
+</blockquote>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>FieldType</th>
+<th>Required</th>
+<th>Case</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ReceiverEmail</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>DEREK@BOEING.COM</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>FieldType</th>
+<th>Required</th>
+<th>Case</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>InsuranceRequired</td>
+<td>BOOLEAN</td>
+<td>No</td>
+<td>No</td>
+<td>TRUE</td>
+</tr>
+</tbody></table>
 <h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.

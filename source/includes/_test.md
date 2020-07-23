@@ -176,22 +176,29 @@ Parameter | FieldType | Required | Case | Example
 --------- | --------- | -------- | ---- | ------- 
 ReceiverMobile | String | No | No | 0823241234
 
-</aside class="notice">
+
+<aside class="notice">
+    The mobile number of the contact person who is to receive the goods at delivery time. This
+information is beneficial as the receiver will receive status updates as to the progress of the goods
+whilst they are being routed through the BEX network.
+<aside>
+
+
+<aside class="sucess">
     The mobile number of the contact person who is to receive the goods at delivery time. This
 information is beneficial as the receiver will receive status updates as to the progress of the goods
 whilst they are being routed through the BEX network.
 </aside>
 
 
-</aside class="sucess">
-    The mobile number of the contact person who is to receive the goods at delivery time. This
-information is beneficial as the receiver will receive status updates as to the progress of the goods
-whilst they are being routed through the BEX network.
-</aside>
-
-
-</aside class="sucess">
+<aside class="sucess">
     The mobile number of the contact person .
+</aside>
+
+
+
+<aside class="warning">
+    You must replace meowmeowmeow with your personal API key.
 </aside>
 
 > The mobile number of the contact person who is to receive the goods at delivery time. This

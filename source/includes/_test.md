@@ -181,7 +181,7 @@ ReceiverMobile | String | No | No | 0823241234
     The mobile number of the contact person who is to receive the goods at delivery time. This
 information is beneficial as the receiver will receive status updates as to the progress of the goods
 whilst they are being routed through the BEX network.
-<aside>
+</aside>
 
 
 <aside class="sucess">

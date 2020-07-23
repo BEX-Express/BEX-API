@@ -267,6 +267,17 @@
             <a href="#tables" class="toc-h1 toc-link" data-title="Tables">Tables</a>
           </li>
           <li>
+            <a href="#page-3" class="toc-h1 toc-link" data-title="Page 3">Page 3</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#paragraphs" class="toc-h2 toc-link" data-title="Paragraphs">Paragraphs</a>
+                  </li>
+                  <li>
+                    <a href="#code-annotation" class="toc-h2 toc-link" data-title="Code Annotation">Code Annotation</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
@@ -1314,6 +1325,109 @@ payable so as to have insurance cover during the shipping of the goods</p>
 <td>TRUE</td>
 </tr>
 </tbody></table>
+<h1 id='page-3'>Page 3</h1><h2 id='paragraphs'>Paragraphs</h2>
+<p>Paragraph Text
+For normal text, just type your paragraph on a single line</p>
+
+<p>Here is a code sample: <code>SELECT TOP (1)</code></p>
+<h2 id='code-annotation'>Code Annotation</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code>    <span class="c1"># This is some Ruby code!</span>
+</code></pre></div>
+<blockquote>
+<p>This is a code annotation. It will appear in the area to the right, next to the code samples.</p>
+</blockquote>
+
+<p><code>java
+        Code snippet
+</code></p>
+
+<p>Formatted Text
+This text is <strong>bold</strong>, this is <em>italic</em>, this is an <code>inline code block</code>.</p>
+
+<aside class="notice">
+    Here is my experiment.
+##Parameters
+
+I am going to list all the paraments required
+and a whole lot more of a paragraph
+
+</aside>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>FieldType</th>
+<th>Required</th>
+<th>Case</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ReceiverEmail</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>DEREK@BOEING.COM</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+    The mobile number of the contact person who is to receive the goods at delivery time. This
+information is beneficial as the receiver will receive status updates as to the progress of the goods
+whilst they are being routed through the BEX network.
+</aside>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>FieldType</th>
+<th>Required</th>
+<th>Case</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>InsuranceRequired</td>
+<td>BOOLEAN</td>
+<td>No</td>
+<td>No</td>
+<td>TRUE</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+     A Boolean flag that can be set should the requestor request insurance for the routing of the
+packages once they have been collected by BEX. Should this Boolean field be set then the waybills
+created for the shipping of the goods will carry an insurance surcharge that covers the premium
+payable so as to have insurance cover during the shipping of the goods
+</aside>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>FieldType</th>
+<th>Required</th>
+<th>Case</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ReceiverMobile</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>0823241234</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+    The mobile number of the contact person who is to receive the goods at delivery time. This
+information is beneficial as the receiver will receive status updates as to the progress of the goods
+whilst they are being routed through the BEX network
+</aside>
+
+<aside class="notice">
+    
+</aside>
 <h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.

@@ -11,6 +11,7 @@ toc_footers:
 
 includes:
   - test
+  - test2
   - errors
 
 search: true

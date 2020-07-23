@@ -169,11 +169,13 @@ ReceiverMobile | String | No | No | 0823241234
 Parameter | FieldType | Required | Case | Example
 --------- | --------- | -------- | ---- | ------- 
 ReceiverTelephone | String | No | No | 0114523454
+
 `The telephone number of the contact person who is to receive the goods at delivery time`
 
 Parameter | FieldType | Required | Case | Example
 --------- | --------- | -------- | ---- | ------- 
 ReceiverMobile | String | No | No | 0823241234
+
 </aside class="notice">
     The mobile number of the contact person who is to receive the goods at delivery time. This
 information is beneficial as the receiver will receive status updates as to the progress of the goods
@@ -197,8 +199,12 @@ payable so as to have insurance cover during the shipping of the goods
 
 Parameter | FieldType | Required | Case | Example
 --------- | --------- | -------- | ---- | ------- 
-ReceiverEmail      | String | No  | No  | DEREK@BOEING.COM
+ReceiverTelephone | String | No | No | 0114523454
 
+
+Parameter | FieldType | Required | Case | Example
+--------- | --------- | -------- | ---- | ------- 
+ReceiverMobile | String | No | No | 0823241234
 
 
 Parameter | FieldType | Required | Case | Example

@@ -294,8 +294,8 @@
 <p>BEX Express provides a comprehensive range of Domestic, Cross Border and International
  courier services</p>
 <h1 id='login'>Login</h1><h2 id='overview'>Overview</h2>
-<p>The service accepts user credentials. After validation, it then returns a valid session token which can be
-used to access additional services. This token string will then be submitted via a cookie called “token” or
+<p>The service accepts user credentials. After validation, it returns a valid session token which is
+used to access additional services. This token string will be submitted via a cookie called “token” or
 a header attribute with the same name.</p>
 <h2 id='url'>URL</h2>
 <p>Service Relative URL: <code>api/service/login</code></p>
@@ -304,27 +304,24 @@ a header attribute with the same name.</p>
 <tr>
 <th>Parameter</th>
 <th>FieldType</th>
-<th>Required</th>
 <th>Case</th>
-<th>Example</th>
-<th>Description</th>
+<th>Required</th>
+<th>Note</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>Username</td>
 <td>String</td>
-<td>Yes</td>
 <td>No</td>
-<td>user123</td>
-<td>Requires a valid username obtained from your account administrator</td>
+<td>Yes</td>
+<td>Obtain from your account administrator</td>
 </tr>
 <tr>
 <td>Password</td>
 <td>String</td>
 <td>Yes</td>
 <td>Yes</td>
-<td>pass1234</td>
-<td>Requires a valid password obtained from your account administrator</td>
+<td>Obtain from your account administrator</td>
 </tr>
 </tbody></table>
 
@@ -1376,58 +1373,14 @@ information is beneficial as the receiver will receive status updates as to the 
 whilst they are being routed through the BEX network.
 </aside>
 
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>FieldType</th>
-<th>Required</th>
-<th>Case</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>InsuranceRequired</td>
-<td>BOOLEAN</td>
-<td>No</td>
-<td>No</td>
-<td>TRUE</td>
-</tr>
-</tbody></table>
+<p>InsuranceRequired | BOOLEAN | No  | No  | TRUE
+ReceiverMobile | String | No | No | 0823241234</p>
 
-<aside class="notice">
-     A Boolean flag that can be set should the requestor request insurance for the routing of the
-packages once they have been collected by BEX. Should this Boolean field be set then the waybills
-created for the shipping of the goods will carry an insurance surcharge that covers the premium
-payable so as to have insurance cover during the shipping of the goods
-</aside>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>FieldType</th>
-<th>Required</th>
-<th>Case</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ReceiverMobile</td>
-<td>String</td>
-<td>No</td>
-<td>No</td>
-<td>0823241234</td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-    The mobile number of the contact person who is to receive the goods at delivery time. This
-information is beneficial as the receiver will receive status updates as to the progress of the goods
-whilst they are being routed through the BEX network
-</aside>
-
-<aside class="notice">
-    
-</aside>
+<blockquote>
+<p>Need to display some information
+ReceiverEmail      | String | No  | No  | DEREK@BOEING.COM
+ReceiverMobile | String | No | No | 0823241234</p>
+</blockquote>
 <h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.

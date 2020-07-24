@@ -18,7 +18,7 @@ Here is a code sample: `SELECT TOP (1)`
 
 
     ```java
-        Code snippet
+	# Code snippet
     ```
 
 
@@ -29,22 +29,14 @@ This text is **bold**, this is *italic*, this is an `inline code block`.
 
 <aside class="notice">
     Here is my experiment.
-##Parameters
-
-I am going to list all the paraments required
-and a whole lot more of a paragraph
 
 </aside>
+
+> Need to display some information line1
+> Need to display some information line2
 Parameter | FieldType | Required | Case | Example
 --------- | --------- | -------- | ---- | ------- 
 ReceiverEmail      | String | No  | No  | DEREK@BOEING.COM
-
-<aside class="notice">
-    The mobile number of the contact person who is to receive the goods at delivery time. This
-information is beneficial as the receiver will receive status updates as to the progress of the goods
-whilst they are being routed through the BEX network.
-</aside>
-
 InsuranceRequired | BOOLEAN | No  | No  | TRUE
 ReceiverMobile | String | No | No | 0823241234
 > Need to display some information

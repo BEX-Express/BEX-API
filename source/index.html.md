@@ -10,7 +10,7 @@ toc_footers:
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
-  - test
+  - waybill
   - test2
   - errors
 
@@ -26,8 +26,8 @@ BEX Express provides a comprehensive range of Domestic, Cross Border and Interna
 
 ## Overview
 
-The service accepts user credentials. After validation, it then returns a valid session token which can be
-used to access additional services. This token string will then be submitted via a cookie called “token” or
+The service accepts user credentials. After validation, it returns a valid session token which is
+used to access additional services. This token string will be submitted via a cookie called “token” or
 a header attribute with the same name.
 
 ## URL
@@ -36,10 +36,11 @@ Service Relative URL: `api/service/login`
 
 ## Parameters
 
-Parameter | FieldType | Required | Case | Example | Description
---------- | --------- | -------- | ---- | ------- | -----------
-Username | String | Yes | No | user123 | Requires a valid username obtained from your account administrator
-Password | String |Yes |Yes |pass1234 | Requires a valid password obtained from your account administrator
+Parameter | FieldType | Case| Required | Note
+--------- | --------- | ---- | -------- |----
+Username | String | No | Yes | Obtain from your account administrator
+Password | String | Yes | Yes |Obtain from your account administrator
+
 
 Passwords can be sent in plain-text or encrypted using the Rijndael algorithm. For this to be enabled, a
 cipher will need to be agreed upon and saved against your account for decryption purposes.We are also

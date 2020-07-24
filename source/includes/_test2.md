@@ -45,31 +45,10 @@ information is beneficial as the receiver will receive status updates as to the 
 whilst they are being routed through the BEX network.
 </aside>
 
-
-Parameter | FieldType | Required | Case | Example
---------- | --------- | -------- | ---- | ------- 
 InsuranceRequired | BOOLEAN | No  | No  | TRUE
-
-<aside class="notice">
-     A Boolean flag that can be set should the requestor request insurance for the routing of the
-packages once they have been collected by BEX. Should this Boolean field be set then the waybills
-created for the shipping of the goods will carry an insurance surcharge that covers the premium
-payable so as to have insurance cover during the shipping of the goods
-</aside>
-
-Parameter | FieldType | Required | Case | Example
---------- | --------- | -------- | ---- | ------- 
 ReceiverMobile | String | No | No | 0823241234
-
-<aside class="notice">
-    The mobile number of the contact person who is to receive the goods at delivery time. This
-information is beneficial as the receiver will receive status updates as to the progress of the goods
-whilst they are being routed through the BEX network
-</aside>
-
-
-<aside class="notice">
-    
-</aside>
+> Need to display some information
+ReceiverEmail      | String | No  | No  | DEREK@BOEING.COM
+ReceiverMobile | String | No | No | 0823241234
 
 

@@ -1,6 +1,6 @@
 # Waybill 
 
-##Overview
+##Waybill Overview
 This service is used to create a waybill shipping entry into the BEX courier database. 
 This allows BEX customers to directly interface their shipping requests and helps to 
 eliminate errors as a result of manual data capture or misinterpretation of written content 
@@ -12,11 +12,11 @@ The service allows for the communication of a number of shipping options, such a
 * Multiple packages and their associated dimensions and weights
 * Special handling requests such as after-hour deliveries, Saturday or public holiday services
 
-## URL
+## Waybill URL
 
 Service Relative URL: `/api/service/submitwaybillwia`
 
-### Parameters
+### Waybill Parameters
 
 The parameter requirements for this api call have been broken down into three sub-sections,
 namely:
@@ -182,7 +182,9 @@ The insured value, in ZAR, of the goods at which the insurance cover will cater 
 
 
 
-## Transportation
+## Waybill Transportation
+
+>Javascript / jQuery Example.
 
 ```javascript/jQuery Example
 <!DOCTYPE html>

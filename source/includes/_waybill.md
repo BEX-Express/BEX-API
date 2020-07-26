@@ -184,8 +184,7 @@ The insured value, in ZAR, of the goods at which the insurance cover will cater 
 
 ## Transportation
 
-
-```JavaScript / jQuery Example
+```javascript/jQuery Example
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -318,18 +317,15 @@ The service supports URL parameters or JSON parameters in the message body
 
 Example Service Call using JSON message body
 
-URL: `http://insight.bex.co.za/api/service/submitbexcollection`
-BODY: `{“accountNumber”:”112311”,”waybillNumber”:”ABC123456”, “waybillDate”:”2014-12-16”
-….. etc….. }`
+* URL: `http://insight.bex.co.za/api/service/submitbexcollection`
+* BODY: `{“accountNumber”:”112311”,”waybillNumber”:”ABC123456”, “waybillDate”:”2014-12-16”….. etc….. }`
 
 
+<aside class="notice">
+    Please note that all fields must be URL encoded if special characters are used.
 
+</aside>
 
-Please note, all URL-based field values must be URL encoded if special characters are used
-Example Service Call using JSON message body
-
-Troubleshooting
-Please note that all fields must be URL encoded if special characters are used.
 Should you experience any difficulties in the implementation of this service please contact BEX
 Head Office in Johannesburg on +2711 929 9700 and ask for a member of I.T who will gladly assist
 you.

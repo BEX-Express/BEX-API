@@ -51,7 +51,7 @@ be supplied for encryption if required.
 </aside>
 
 <aside class="notice">
-    For the multi-company support which BEX has per database, PartnerId is required
+    PartnerId is required for the multi-company support which BEX has per database
 
 </aside>
 

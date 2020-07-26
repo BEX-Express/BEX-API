@@ -377,20 +377,23 @@ be supplied for encryption if required.
 <p>The service supports GET and POST requests.We recommend POST requests to avoid caching issues.
 The service supports URL parameters or JSON parameters in the message body</p>
 
-<p>Example Service Call using the URL Parameters
-URL: <code>http://insight.bex.co.za/api/service/login?username=user123&amp;password=pass1234</code></p>
+<p>Example Service Call using the URL Parameters</p>
 
-<blockquote>
-<p>Please note that all fields must be URL encoded if special characters are used</p>
-</blockquote>
+<ul>
+<li>URL: <code>http://insight.bex.co.za/api/service/login?username=user123&amp;password=pass1234</code></li>
+</ul>
 
 <p><aside class="notice">
-    All URL-based field values must be URL encoded if special characters are used
-&lt;/aside</p>
+    All URL-based field values must be URL encoded if special characters are used</p>
 
-<p>Example Service Call using JSON message body
-URL: <code>http://insight.bex.co.za/api/service/login</code>
-BODY: <code>{“username”:”user123”,”password”:”pass1234”}</code></p>
+<p>&lt;/aside</p>
+
+<p>Example Service Call using JSON message body</p>
+
+<ul>
+<li>URL: <code>http://insight.bex.co.za/api/service/login</code></li>
+<li>BODY: <code>{“username”:”user123”,”password”:”pass1234”}</code></li>
+</ul>
 <h1 id='waybill'>Waybill</h1><h2 id='overview'>Overview</h2>
 <p>This service is used to create a waybill shipping entry into the BEX courier database. 
 This allows BEX customers to directly interface their shipping requests and helps to 

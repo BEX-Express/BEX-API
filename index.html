@@ -242,16 +242,16 @@
             <a href="#waybill" class="toc-h1 toc-link" data-title="Waybill">Waybill</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#overview" class="toc-h2 toc-link" data-title="Overview">Overview</a>
+                    <a href="#waybill-overview" class="toc-h2 toc-link" data-title="Waybill Overview">Waybill Overview</a>
                   </li>
                   <li>
-                    <a href="#url" class="toc-h2 toc-link" data-title="URL">URL</a>
+                    <a href="#waybill-url" class="toc-h2 toc-link" data-title="Waybill URL">Waybill URL</a>
                   </li>
                   <li>
                     <a href="#addresses" class="toc-h2 toc-link" data-title="Addresses">Addresses</a>
                   </li>
                   <li>
-                    <a href="#transportation" class="toc-h2 toc-link" data-title="Transportation">Transportation</a>
+                    <a href="#waybill-transportation" class="toc-h2 toc-link" data-title="Waybill Transportation">Waybill Transportation</a>
                   </li>
               </ul>
           </li>
@@ -394,7 +394,7 @@ The service supports URL parameters or JSON parameters in the message body</p>
 <li>URL: <code>http://insight.bex.co.za/api/service/login</code></li>
 <li>BODY: <code>{“username”:”user123”,”password”:”pass1234”}</code></li>
 </ul>
-<h1 id='waybill'>Waybill</h1><h2 id='overview'>Overview</h2>
+<h1 id='waybill'>Waybill</h1><h2 id='waybill-overview'>Waybill Overview</h2>
 <p>This service is used to create a waybill shipping entry into the BEX courier database. 
 This allows BEX customers to directly interface their shipping requests and helps to 
 eliminate errors as a result of manual data capture or misinterpretation of written content 
@@ -407,9 +407,9 @@ The service allows for the communication of a number of shipping options, such a
 <li>Multiple packages and their associated dimensions and weights</li>
 <li>Special handling requests such as after-hour deliveries, Saturday or public holiday services</li>
 </ul>
-<h2 id='url'>URL</h2>
+<h2 id='waybill-url'>Waybill URL</h2>
 <p>Service Relative URL: <code>/api/service/submitwaybillwia</code></p>
-<h3 id='parameters'>Parameters</h3>
+<h3 id='waybill-parameters'>Waybill Parameters</h3>
 <p>The parameter requirements for this api call have been broken down into three sub-sections,
 namely:</p>
 
@@ -947,7 +947,11 @@ payable so as to have insurance cover during the shipping of the goods</p>
 </tbody></table>
 
 <p>The insured value, in ZAR, of the goods at which the insurance cover will cater for.</p>
-<h2 id='transportation'>Transportation</h2>
+<h2 id='waybill-transportation'>Waybill Transportation</h2>
+<blockquote>
+<p>Javascript / jQuery Example.</p>
+</blockquote>
+
 <p>```javascript/jQuery Example
 &lt;!DOCTYPE html&gt;
 <html xmlns="http://www.w3.org/1999/xhtml"></p>

@@ -101,10 +101,9 @@ URL: `http://insight.bex.co.za/api/service/login?username=user123&password=pass1
 
 >Please note that all fields must be URL encoded if special characters are used
 
->* All URL-based field values must be URL encoded if special characters are used*
 
 <aside class="notice">
->* All URL-based field values must be URL encoded if special characters are used*
+> All URL-based field values must be URL encoded if special characters are used
 </aside
 
 

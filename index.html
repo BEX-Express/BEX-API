@@ -329,15 +329,14 @@ a header attribute with the same name.</p>
 </tbody></table>
 
 <aside class="notice">
-....Encrypted passwords use the Rijndael algorithm. To enable this, a
+    Encrypted passwords use the Rijndael algorithm. To enable this, a
 cipher must be agreed upon and saved against your account. A .NET example can 
 be supplied for encryption if required.
 
 </aside>
 
 <aside class="notice">
-....
-For the multi-company support which BEX has per database, **PartnerId** is required
+    For the multi-company support which BEX has per database, PartnerId is required
 
 </aside>
 <h2 id='transportation'>Transportation</h2>
@@ -378,19 +377,19 @@ For the multi-company support which BEX has per database, **PartnerId** is requi
 <p>The service supports GET and POST requests.We recommend POST requests to avoid caching issues.
 The service supports URL parameters or JSON parameters in the message body</p>
 
-<p>Example Service Call using the URL Parameters
-URL: <code>http://insight.bex.co.za/api/service/login?username=user123&amp;password=pass1234</code></p>
+<p>Example Service Call using the URL Parameters</p>
+
+<ul>
+<li>URL: <code>http://insight.bex.co.za/api/service/login?username=user123&amp;password=pass1234</code></li>
+</ul>
 
 <blockquote>
 <p>Please note that all fields must be URL encoded if special characters are used</p>
 </blockquote>
 
-<p><aside class="notice"></p>
-
-<blockquote>
-<p>All URL-based field values must be URL encoded if special characters are used
+<p><aside class="notice">
+    All URL-based field values must be URL encoded if special characters are used
 &lt;/aside</p>
-</blockquote>
 
 <p>Example Service Call using JSON message body
 URL: <code>http://insight.bex.co.za/api/service/login</code>

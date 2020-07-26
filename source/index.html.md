@@ -81,8 +81,7 @@ success: function (data) {
 if (data.ex) { //if the network call succeeds, it may still contain an error (ex)
 alert('The following error occured: ' + data.ex); //display the error
 return;
-}a
-lert('Your token is: ' + data.value); //display the valid token
+}alert('Your token is: ' + data.value); //display the valid token
 },
 error: function (ex) { //this will fire for network related issues
 alert(ex.responseText);

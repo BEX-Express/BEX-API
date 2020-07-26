@@ -336,7 +336,7 @@ be supplied for encryption if required.
 </aside>
 
 <aside class="notice">
-    For the multi-company support which BEX has per database, PartnerId is required
+    PartnerId is required for the multi-company support which BEX has per database
 
 </aside>
 <h2 id='transportation'>Transportation</h2>
@@ -948,7 +948,7 @@ payable so as to have insurance cover during the shipping of the goods</p>
 
 <p>The insured value, in ZAR, of the goods at which the insurance cover will cater for.</p>
 <h2 id='transportation'>Transportation</h2>
-<p>```JavaScript / jQuery Example
+<p>```javascript/jQuery Example
 &lt;!DOCTYPE html&gt;
 <html xmlns="http://www.w3.org/1999/xhtml"></p>
 
@@ -1081,16 +1081,17 @@ The service supports URL parameters or JSON parameters in the message body</p>
 
 <p>Example Service Call using JSON message body</p>
 
-<p>URL: <code>http://insight.bex.co.za/api/service/submitbexcollection</code>
-BODY: <code>{“accountNumber”:”112311”,”waybillNumber”:”ABC123456”, “waybillDate”:”2014-12-16”
-….. etc….. }</code></p>
+<ul>
+<li>URL: <code>http://insight.bex.co.za/api/service/submitbexcollection</code></li>
+<li>BODY: <code>{“accountNumber”:”112311”,”waybillNumber”:”ABC123456”, “waybillDate”:”2014-12-16”….. etc….. }</code></li>
+</ul>
 
-<p>Please note, all URL-based field values must be URL encoded if special characters are used
-Example Service Call using JSON message body</p>
+<aside class="notice">
+    Please note that all fields must be URL encoded if special characters are used.
 
-<p>Troubleshooting
-Please note that all fields must be URL encoded if special characters are used.
-Should you experience any difficulties in the implementation of this service please contact BEX
+</aside>
+
+<p>Should you experience any difficulties in the implementation of this service please contact BEX
 Head Office in Johannesburg on +2711 929 9700 and ask for a member of I.T who will gladly assist
 you.</p>
 <h1 id='page-3'>Page 3</h1><h2 id='paragraphs'>Paragraphs</h2>
@@ -1104,10 +1105,6 @@ For normal text, just type your paragraph on a single line</p>
 <p>This is a code annotation. It will appear in the area to the right, next to the code samples.</p>
 </blockquote>
 
-<p><code>java
-    # Code snippet
-</code></p>
-
 <p>Formatted Text
 This text is <strong>bold</strong>, this is <em>italic</em>, this is an <code>inline code block</code>.</p>
 
@@ -1118,10 +1115,6 @@ This text is <strong>bold</strong>, this is <em>italic</em>, this is an <code>in
 
 <blockquote>
 <p>Need to display some information line1</p>
-
-<p>Need to display some information line2</p>
-
-<p>Need to display some information line3</p>
 </blockquote>
 
 <table><thead>
@@ -1162,10 +1155,6 @@ This text is <strong>bold</strong>, this is <em>italic</em>, this is an <code>in
 
 <p>ReceiverEmail      | String | No  | No  | DEREK@BOEING.COM
 ReceiverMobile | String | No | No | 0823241234</p>
-
-<p>Formatted Text
-This text is <strong>bold</strong>, this is <em>italic</em>, this is an <code>inline code block</code>.
-You can use those formatting rules in tables, paragraphs, lists, wherever, although they&#39;ll appear verbatim in code blocks.</p>
 
 <p>Lists</p>
 
@@ -1225,215 +1214,6 @@ You can add little highlighted warnings and notes with just a little HTML embedd
 <aside class="success">
     You must replace meowmeowmeow with your personal API key.
 </aside>
-
-<p>AccId</p>
-
-<p>Required
-        Integer</p>
-
-<ul>
-<li>Address *          Required</li>
-</ul>
-
-<blockquote>
-<p>The mobile number of the contact person who is to receive the goods at delivery time. This
-information is beneficial as the receiver will receive status updates as to the progress of the goods
-whilst they are being routed through the BEX network.</p>
-</blockquote>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>FieldType</th>
-<th>Required</th>
-<th>Case</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ReceiverEmail</td>
-<td>String</td>
-<td>No</td>
-<td>No</td>
-<td>DEREK@BOEING.COM</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>A Boolean flag that can be set should the requestor request insurance for the routing of the
-packages once they have been collected by BEX. Should this Boolean field be set then the waybills
-created for the shipping of the goods will carry an insurance surcharge that covers the premium
-payable so as to have insurance cover during the shipping of the goods</p>
-</blockquote>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>FieldType</th>
-<th>Required</th>
-<th>Case</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>InsuranceRequired</td>
-<td>BOOLEAN</td>
-<td>No</td>
-<td>No</td>
-<td>TRUE</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>The mobile number of the contact person who is to receive the goods at delivery time. This
-information is beneficial as the receiver will receive status updates as to the progress of the goods
-whilst they are being routed through the BEX network</p>
-</blockquote>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>FieldType</th>
-<th>Required</th>
-<th>Case</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ReceiverMobile</td>
-<td>String</td>
-<td>No</td>
-<td>No</td>
-<td>0823241234</td>
-</tr>
-</tbody></table>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>FieldType</th>
-<th>Required</th>
-<th>Case</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ReceiverTelephone</td>
-<td>String</td>
-<td>No</td>
-<td>No</td>
-<td>0114523454</td>
-</tr>
-</tbody></table>
-
-<p><code>The telephone number of the contact person who is to receive the goods at delivery time</code></p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>FieldType</th>
-<th>Required</th>
-<th>Case</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ReceiverMobile</td>
-<td>String</td>
-<td>No</td>
-<td>No</td>
-<td>0823241234</td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-    The mobile number of the contact person who is to receive the goods at delivery time. This
-information is beneficial as the receiver will receive status updates as to the progress of the goods
-whilst they are being routed through the BEX network.
-</aside>
-
-<aside class="sucess">
-    The mobile number of the contact person who is to receive the goods at delivery time. This
-information is beneficial as the receiver will receive status updates as to the progress of the goods
-whilst they are being routed through the BEX network.
-</aside>
-
-<aside class="sucess">
-    The mobile number of the contact person .
-</aside>
-
-<aside class="warning">
-    You must replace meowmeowmeow with your personal API key.
-</aside>
-
-<blockquote>
-<p>The mobile number of the contact person who is to receive the goods at delivery time. This
-information is beneficial as the receiver will receive status updates as to the progress of the goods
-whilst they are being routed through the BEX network.</p>
-
-<p>The mobile number of the contact person who is to receive the goods at delivery time. This
-information is beneficial as the receiver will receive status updates as to the progress of the goods
-whilst they are being routed through the BEX network</p>
-
-<p>A Boolean flag that can be set should the requestor request insurance for the routing of the
-packages once they have been collected by BEX. Should this Boolean field be set then the waybills
-created for the shipping of the goods will carry an insurance surcharge that covers the premium
-payable so as to have insurance cover during the shipping of the goods</p>
-</blockquote>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>FieldType</th>
-<th>Required</th>
-<th>Case</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ReceiverTelephone</td>
-<td>String</td>
-<td>No</td>
-<td>No</td>
-<td>0114523454</td>
-</tr>
-</tbody></table>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>FieldType</th>
-<th>Required</th>
-<th>Case</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ReceiverMobile</td>
-<td>String</td>
-<td>No</td>
-<td>No</td>
-<td>0823241234</td>
-</tr>
-</tbody></table>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>FieldType</th>
-<th>Required</th>
-<th>Case</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>InsuranceRequired</td>
-<td>BOOLEAN</td>
-<td>No</td>
-<td>No</td>
-<td>TRUE</td>
-</tr>
-</tbody></table>
 <h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.

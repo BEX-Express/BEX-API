@@ -96,8 +96,7 @@ The service supports GET and POST requests.We recommend POST requests to avoid c
 The service supports URL parameters or JSON parameters in the message body
 
 Example Service Call using the URL Parameters
-
-* URL: `http://insight.bex.co.za/api/service/login?username=user123&password=pass1234`
+URL: `http://insight.bex.co.za/api/service/login?username=user123&password=pass1234`
 
 >Please note that all fields must be URL encoded if special characters are used
 

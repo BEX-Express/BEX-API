@@ -186,33 +186,26 @@ The insured value, in ZAR, of the goods at which the insurance cover will cater 
 
 >Javascript / jQuery Example.
 
-```javascript/jQuery Example
+```javascript
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
 <title>BEX waybill API example</title>
 <script src="http://code.jquery.com/jquerylatest.min.js" type="text/javascript"></script>
 </head>
 <body>
-
 <script type="text/javascript">
-//***************************** Login Service Call
-***********************************
+//********** Login Service Call ********************
 var tokenStr = '';
-var user = encodeURIComponent('someusername')
-; //encode the username
-var pass = encodeURIComponent('somepassword')
-; //encode the password
+var user = encodeURIComponent('someusername'); //encode the username
+var pass = encodeURIComponent('somepassword'); //encode the password
 var host = 'http://dev.bex.co.za';
-//***************************** Submit Waybill Service Call
-***********************************
+//********** Submit Waybill Service Call ***********
 // ADDRESSING
 var postData = {}
 postData.accountNumber = '111983';
 postData.waybillNumber = 'IT2701152404';
-postData.waybillDate = '20150127'
-;
+postData.waybillDate = '20150127';
 postData.sendersRef = 'WE HAVE A REFERENCE';
 postData.serviceCode = 'NCA';
 // SENDER ADDRESS
@@ -254,8 +247,7 @@ postData.AdditionalReferneces = additionalReferences;
 // DIMENSIONING
 var dims = [];
 var firstDim = {};
-firstDim.barcodeNumber = postData.waybillNumber + 'P1'
-;
+firstDim.barcodeNumber = postData.waybillNumber + 'P1';
 firstDim.Dimension1 = 10;
 firstDim.Dimension2 = 20;
 firstDim.Dimension3 = 30;
@@ -268,12 +260,10 @@ jQuery.support.cors = true; //this will enable cross domain access for
 all services
 //call the service using jQuery ajax and passing the parameters
 $.ajax({
-url: host + '/api/service/login?username=' + user + '&password=' + pass,
-type: 'POST',
+url: host + '/api/service/login?username=' + user + '&password=' + pass, type: 'POST',
 async: false, //dont run asynchronously
 success: function (data) {
-if (data.ex) { //if the network call succeeds, it may still contain an
-error (ex)
+if (data.ex) { //if the network call succeeds, it may still contain an error (ex)
 alert('The following error occured: ' + data.ex); //display the error
 return;
 }
@@ -300,8 +290,7 @@ success: function (data) {
 if (data.ex) {
 document.write('An error occured: ' + data.ex);
 } else {
-document.write('A waybill entry was successfully
-created');
+document.write('A waybill entry was successfully created');
 }
 },
 error: function (ex) { //this will fire for network related issues

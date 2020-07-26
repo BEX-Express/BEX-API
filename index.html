@@ -239,32 +239,21 @@
               </ul>
           </li>
           <li>
-            <a href="#waybill-overview" class="toc-h1 toc-link" data-title="Waybill Overview">Waybill Overview</a>
+            <a href="#waybill" class="toc-h1 toc-link" data-title="Waybill">Waybill</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#url-2" class="toc-h2 toc-link" data-title="URL">URL</a>
+                    <a href="#overview" class="toc-h2 toc-link" data-title="Overview">Overview</a>
                   </li>
                   <li>
-                    <a href="#1-addresses" class="toc-h2 toc-link" data-title="1 Addresses">1 Addresses</a>
+                    <a href="#url" class="toc-h2 toc-link" data-title="URL">URL</a>
                   </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#page-2" class="toc-h1 toc-link" data-title="Page 2">Page 2</a>
-          </li>
-          <li>
-            <a href="#level-1-header" class="toc-h1 toc-link" data-title="Level 1 Header">Level 1 Header</a>
-              <ul class="toc-list-h2">
                   <li>
-                    <a href="#level-2-header" class="toc-h2 toc-link" data-title="Level 2 Header">Level 2 Header</a>
+                    <a href="#addresses" class="toc-h2 toc-link" data-title="Addresses">Addresses</a>
+                  </li>
+                  <li>
+                    <a href="#transportation" class="toc-h2 toc-link" data-title="Transportation">Transportation</a>
                   </li>
               </ul>
-          </li>
-          <li>
-            <a href="#code-samples" class="toc-h1 toc-link" data-title="Code Samples">Code Samples</a>
-          </li>
-          <li>
-            <a href="#tables" class="toc-h1 toc-link" data-title="Tables">Tables</a>
           </li>
           <li>
             <a href="#page-3" class="toc-h1 toc-link" data-title="Page 3">Page 3</a>
@@ -323,58 +312,34 @@ a header attribute with the same name.</p>
 <td>Yes</td>
 <td>Obtain from your account administrator</td>
 </tr>
-</tbody></table>
-
-<p>Passwords can be sent in plain-text or encrypted using the Rijndael algorithm. For this to be enabled, a
-cipher will need to be agreed upon and saved against your account for decryption purposes.We are also
-able to supply a .NET example for encryption if needed.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>FieldType</th>
-<th>Required</th>
-<th>Case</th>
-<th>Example</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
 <tr>
 <td>AccountNumber</td>
 <td>String</td>
-<td>No (Unless an encrypted password is used)</td>
 <td>No</td>
-<td>112233</td>
-<td></td>
+<td>No</td>
+<td>Required unless encrypted password used</td>
 </tr>
-</tbody></table>
-
-<p>Any valid account number for the user credentials can be used. This field is only required when a
-password is encrypted.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>FieldType</th>
-<th>Required</th>
-<th>Case</th>
-<th>Example</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
 <tr>
 <td>PartnerID</td>
 <td>INT</td>
-<td>No (Unless an encrypted password is used)</td>
 <td>No</td>
-<td>123</td>
-<td></td>
+<td>No</td>
+<td>Required unless encrypted password used</td>
 </tr>
 </tbody></table>
 
-<p>The PartnerID is a unique identifier that can be provided by your administrator. This is required due to
-the multi-company support which BEX has per database. This field is only required when a password is
-encrypted</p>
+<aside class="notice">
+....Encrypted passwords use the Rijndael algorithm. To enable this, a
+cipher must be agreed upon and saved against your account. A .NET example can 
+be supplied for encryption if required.
+
+</aside>
+
+<aside class="notice">
+....
+For the multi-company support which BEX has per database, **PartnerId** is required
+
+</aside>
 <h2 id='transportation'>Transportation</h2>
 <blockquote>
 <p>Make sure to replace <code>user123</code>and <code>pass123</code> with your API key.</p>
@@ -411,44 +376,56 @@ encrypted</p>
 </span><span class="o">&lt;</span><span class="sr">/html</span><span class="err">&gt;
 </span></code></pre></div>
 <p>The service supports GET and POST requests.We recommend POST requests to avoid caching issues.
-The service supports URL parameters or JSON parameters in the message body
-All URL-based field values must be URL encoded if special characters are used</p>
+The service supports URL parameters or JSON parameters in the message body</p>
 
 <p>Example Service Call using the URL Parameters
 URL: <code>http://insight.bex.co.za/api/service/login?username=user123&amp;password=pass1234</code></p>
 
 <blockquote>
 <p>Please note that all fields must be URL encoded if special characters are used</p>
+
+<ul>
+<li>All URL-based field values must be URL encoded if special characters are used*</li>
+</ul>
+</blockquote>
+
+<p><aside class="notice"></p>
+
+<blockquote>
+<ul>
+<li>All URL-based field values must be URL encoded if special characters are used*
+&lt;/aside</li>
+</ul>
 </blockquote>
 
 <p>Example Service Call using JSON message body
 URL: <code>http://insight.bex.co.za/api/service/login</code>
 BODY: <code>{“username”:”user123”,”password”:”pass1234”}</code></p>
-<h1 id='waybill-overview'>Waybill Overview</h1>
-<p>This service is used to create a waybill shipping entry into the BEX courier database. This
-allows BEX customers to interface directly their shipping requests and helps to eliminate errors as
-a result of manual data capture or misinterpretation of written content on shipping
-documentation.
+<h1 id='waybill'>Waybill</h1><h2 id='overview'>Overview</h2>
+<p>This service is used to create a waybill shipping entry into the BEX courier database. 
+This allows BEX customers to directly interface their shipping requests and helps to 
+eliminate errors as a result of manual data capture or misinterpretation of written content 
+on shipping documentation.
 The service allows for the communication of a number of shipping options, such as:</p>
 
 <ul>
 <li>Full addressing of both the sending and receiving parties</li>
-<li>Additional shipping references against which the shipping entry is to be tagged against</li>
+<li>Additional shipping references against which the shipping entry is to be tagged</li>
 <li>Multiple packages and their associated dimensions and weights</li>
-<li>Special handling requests such as after-hour deliveries, saturday service or public holidays</li>
+<li>Special handling requests such as after-hour deliveries, Saturday or public holiday services</li>
 </ul>
-<h2 id='url-2'>URL</h2>
+<h2 id='url'>URL</h2>
 <p>Service Relative URL: <code>/api/service/submitwaybillwia</code></p>
-<h3 id='parameters-2'>Parameters</h3>
+<h3 id='parameters'>Parameters</h3>
 <p>The parameter requirements for this api call have been broken down into three sub-sections,
 namely:</p>
 
 <ul>
-<li>1. Addresses - This sub-section contains parameters related to the construction of the Waybill and it&#39;s routing information</li>
-<li>2. Dimensioning</li>
-<li>3. Service Add-Ons</li>
+<li>Addresses - Contains parameters for the construction and routing information of the Waybill </li>
+<li>Dimensioning</li>
+<li>Service Add-Ons</li>
 </ul>
-<h2 id='1-addresses'>1 Addresses</h2>
+<h2 id='addresses'>Addresses</h2>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -977,79 +954,6 @@ payable so as to have insurance cover during the shipping of the goods</p>
 </tbody></table>
 
 <p>The insured value, in ZAR, of the goods at which the insurance cover will cater for.</p>
-<h1 id='page-2'>Page 2</h1>
-<p>This is some paragraph text.</p>
-
-<p>Here is a code sample: <code>SELECT TOP (1)</code></p>
-
-<p>This is a reference for the Markdown syntax used in Slate.</p>
-
-<p>Headers
-For headers:</p>
-<h1 id='level-1-header'>Level 1 Header</h1><h2 id='level-2-header'>Level 2 Header</h2><h3 id='level-3-header'>Level 3 Header</h3>
-<p>Note that only level 1 and 2 headers will appear in the table of contents.</p>
-
-<p>Paragraph Text
-For normal text, just type your paragraph on a single line.</p>
-
-<p>This is some paragraph text. Exciting, no?
-Make sure the lines above and below your paragraph are empty.</p>
-<h1 id='code-samples'>Code Samples</h1><div class="highlight"><pre class="highlight ruby tab-ruby"><code>    <span class="c1"># This is some Ruby code!</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code>    <span class="c1"># This is some Python code!
-</span></code></pre></div>
-<p>Code samples will appear in the dark area to the right of the main text. We recommend positioning code samples right under headers in your markdown file.</p>
-
-<p>For the full list of supported languages, see rouge.</p>
-
-<p>Code Annotations
-For code annotations:</p>
-
-<blockquote>
-<p>This is a code annotation. It will appear in the area to the right, next to the code samples.</p>
-</blockquote>
-
-<p>Code annotations are essentially the same thing as paragraphs, but they&#39;ll appear in the area to the right along with your code samples.</p>
-
-<p>Formatting code annotations (right column) with its explanation (center column)</p>
-
-<p>In order to correctly format the code in the right column with the text in the center column the code snippet should go first, e.g.</p>
-
-<p># My Title</p>
-
-<p>## My Subtitle</p>
-
-<p><code>java
-        Code snippet
-</code></p>
-
-<p>Whatever that goes in the center column. Lorem ipsum
-Putting the content for the center column first and the code snippet afterwards will cause the code snippet to be aligned with the last line of the center column, if the code snippet goes first, then the code is aligned with the first line of the center column.</p>
-<h1 id='tables'>Tables</h1>
-<p>Slate uses PHP Markdown Extra style tables:</p>
-
-<table><thead>
-<tr>
-<th>Table Header 1</th>
-<th>Table Header 2</th>
-<th>Table Header 3</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Row 1 col 1</td>
-<td>Row 1 col 2</td>
-<td>Row 1 col 3</td>
-</tr>
-<tr>
-<td>Row 2 col 1</td>
-<td>Row 2 col 2</td>
-<td>Row 2 col 3</td>
-</tr>
-</tbody></table>
-
-<p>Note that the pipes do not need to line up with each other on each line.</p>
-
-<p>If you don&#39;t like that syntax, feel free to use normal html directly in your markdown.
- <table>s</p>
 
 <p>Formatted Text
 This text is <strong>bold</strong>, this is <em>italic</em>, this is an <code>inline code block</code>.
@@ -1322,6 +1226,152 @@ payable so as to have insurance cover during the shipping of the goods</p>
 <td>TRUE</td>
 </tr>
 </tbody></table>
+<h2 id='transportation'>Transportation</h2>
+<p>```JavaScript / jQuery Example
+&lt;!DOCTYPE html&gt;
+<html xmlns="http://www.w3.org/1999/xhtml"></p>
+
+<p><head>
+<title>BEX waybill API example</title>
+<script src="http://code.jquery.com/jquerylatest.min.js" type="text/javascript"></script>
+</head>
+<body></p>
+
+<script type="text/javascript">
+//***************************** Login Service Call
+***********************************
+var tokenStr = '';
+var user = encodeURIComponent('someusername')
+; //encode the username
+var pass = encodeURIComponent('somepassword')
+; //encode the password
+var host = 'http://dev.bex.co.za';
+//***************************** Submit Waybill Service Call
+***********************************
+// ADDRESSING
+var postData = {}
+postData.accountNumber = '111983';
+postData.waybillNumber = 'IT2701152404';
+postData.waybillDate = '20150127'
+;
+postData.sendersRef = 'WE HAVE A REFERENCE';
+postData.serviceCode = 'NCA';
+// SENDER ADDRESS
+postData.originCompany = 'THE BOEING COMPANY';
+postData.originFloorBuilding = 'UNIT 6 ASSEMBLY BUILDING';
+postData.originStreet = '21 AIRCRAFT LANE';
+postData.originLocationName = 'MARLBORO';
+postData.originPostCode = '2050';
+postData.senderContactName = 'JONATHAN';
+postData.senderTelephone = '0119299700';
+postData.senderMobile = '0821234321';
+postData.senderEmail = 'JONATHAN@BOEING.COM';
+// DESTINATION ADDRESS
+postData.destinationCompany = 'THE AIRLINER CO';
+postData.destinationFloorBuilding = '1ST FLOOR HEAD OFFICE';
+postData.destinationStreet = '21 TULP STREET';
+postData.destinationLocationName = 'MILNERTON';
+postData.destinationPostCode = '7401';
+postData.receiverContactName = 'DEREK';
+postData.receiverTelephone = '0218641202';
+postData.receiverMobile = '0833211234';
+postData.receiverEmail = 'DEREK@THEAIRLINER.COM';
+// GENERAL
+postData.insuranceRequired = true;
+postData.insuranceValue = 1000;
+postData.instructions = 'DO NOT INVERT COMPONENT';
+// PIECE INFORMATION
+var totalPieces = 2;
+var actualWeight = 12.3;
+BEX Express (Pty) Ltd
+Webservice Integrations Private & Confidential Page 13 of 15
+Revised: 27 January 2015
+// ADDITIONAL REFERENCES
+var additionalReferences = [];
+var reference1 = {};
+reference1.value = 'REFERENCE ONE';
+additionalReferences.push(reference1);
+postData.AdditionalReferneces = additionalReferences;
+// DIMENSIONING
+var dims = [];
+var firstDim = {};
+firstDim.barcodeNumber = postData.waybillNumber + 'P1'
+;
+firstDim.Dimension1 = 10;
+firstDim.Dimension2 = 20;
+firstDim.Dimension3 = 30;
+firstDim.Weight = 12.3;
+firstDim.Reference = 'AIRFRAME COMPONENT';
+dims.push(firstDim);
+postData.Dimensions = dims;
+var jsonData = JSON.stringify(postData);
+jQuery.support.cors = true; //this will enable cross domain access for
+all services
+//call the service using jQuery ajax and passing the parameters
+$.ajax({
+url: host + '/api/service/login?username=' + user + '&password=' + pass,
+type: 'POST',
+async: false, //dont run asynchronously
+success: function (data) {
+if (data.ex) { //if the network call succeeds, it may still contain an
+error (ex)
+alert('The following error occured: ' + data.ex); //display the error
+return;
+}
+tokenStr = data.value;
+},
+error: function (ex) { //this will fire for network related issues
+alert(ex.responseText);
+}
+});
+//call the service using jQuery ajax and passing the parameters
+$.ajax({
+type: 'POST',
+BEX Express (Pty) Ltd
+Webservice Integrations Private & Confidential Page 14 of 15
+Revised: 27 January 2015
+url: host + '/api/service/submitwaybillwia',
+data: jsonData,
+dataType: 'json',
+contentType: 'application/json; charset=UTF8',
+beforeSend: function (xhr) {
+xhr.setRequestHeader('token', tokenStr);
+},
+success: function (data) {
+if (data.ex) {
+document.write('An error occured: ' + data.ex);
+} else {
+document.write('A waybill entry was successfully
+created');
+}
+},
+error: function (ex) { //this will fire for network related issues
+alert(ex.responseText);
+}
+});
+</script>
+
+<p></body>
+</html>
+```</p>
+
+<p>The service supports GET and POST requests.We recommend POST requests to avoid caching issues.
+The service supports URL parameters or JSON parameters in the message body</p>
+
+<p>Example Service Call using JSON message body</p>
+
+<p>URL: <code>http://insight.bex.co.za/api/service/submitbexcollection</code>
+BODY: <code>{“accountNumber”:”112311”,”waybillNumber”:”ABC123456”, “waybillDate”:”2014-12-16”
+….. etc….. }</code></p>
+
+<p>Please note, all URL-based field values must be URL encoded if special characters are used
+Example Service Call using JSON message body</p>
+
+<p>Troubleshooting
+Please note that all fields must be URL encoded if special characters are used.
+Should you experience any difficulties in the implementation of this service please contact BEX
+Head Office in Johannesburg on +2711 929 9700 and ask for a member of I.T who will gladly assist
+you.</p>
 <h1 id='page-3'>Page 3</h1><h2 id='paragraphs'>Paragraphs</h2>
 <p>Paragraph Text
 For normal text, just type your paragraph on a single line</p>

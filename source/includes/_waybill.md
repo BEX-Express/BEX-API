@@ -69,7 +69,6 @@ SenderEmail | String | No | No | Useful for updates of shipment progress
 DestinationCompany | String | No | No | Private Individual or company name of recipiant
 DestinationFloorBuilding | String | No | No | Receiver's floor and building address. Optional if single receiver.
 DestinationStreet | String | No | No | Receiver's street number and name
-The street number and name of the receiver. It follows the same logic as the OriginStreet field.
 DestinationLocationName | String | No | Yes | Receiver's suburb .
 DestinationPostCode | String | Yes | No | Receiver's postcode
 ReceiverContactName | String | No | No | Receiver's name.
@@ -81,7 +80,16 @@ InsuranceValue | Float/Double | No | No | Insured value, in ZAR
 
 ## Dimensioning
 
+The dimensioning sub-section contains information pertinent to the parcels that make up this
+waybill shipping request.
+
+
 ## Service Add-Ons
+
+The service add-ons sub-section contains information specific to additional options that can be
+requested over and above the respective delivery service product offerings. Currently this pertains to 
+after-hour delivery requests but will be extended to features such as live delivery e-mail
+and sms alerts.
 
 ## Waybill Transportation
 

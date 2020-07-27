@@ -60,7 +60,11 @@ OriginPostCode | String | No | Yes | Postcode of the senders address
 SenderContactName | String | No | No | Contact person for collection/dispatch of the goods
 SenderTelephone | String | No | No | Telephone number of contact person for collection/dispatch
 SenderMobile | String | No | No | Mobile number of the contact person for collection/dispatch.
- Useful for shipment progress updates
+
+> Useful for shipment progress updates
+
+Parameter | FieldType | Case | Required | Note
+--------- | --------- | ---- | -------- | ------- 
 SenderEmail | String | No | No | Useful for updates of shipment progress
 DestinationCompany | String | No | No | Private Individual or company name of recipiant
 DestinationFloorBuilding | String | No | No | Receiver's floor and building address. Optional if single receiver.
@@ -72,9 +76,8 @@ ReceiverContactName | String | No | No | Receiver's name.
 ReceiverTelephone | String | No | No | Receiver's telephone number
 ReceiverMobile | String | No | No | Receiver's mobile number. Useful for status updates
 ReceiverEmail | String | No | No | Receiver's email address. Useful for status updates
-InsuranceRequired | Boolean | No | No | If TRUE the insurance surcharge is added to the 
-waybill and the goods are covered during shipping
-InsuranceValue | Float/Double | No | No | Insured value, in ZAR, of the goods at which the insurance cover will cater for.
+InsuranceRequired | Boolean | No | No | If TRUE the insurance surcharge is added to the waybill and the goods are covered during shipping
+InsuranceValue | Float/Double | No | No | Insured value, in ZAR
 
 ## Dimensioning
 

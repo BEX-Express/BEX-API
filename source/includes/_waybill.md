@@ -41,7 +41,7 @@ Parameter | FieldType | Case | Required | Note
 WaybillDate | Date | No | No | Date of collection by BEX. Format yyyy-mm-dd
 ServiceCode | String | No | Yes | The service delivery priority code
 
-Service delivery codes values are:
+Service delivery code values are:
 
 * SDX - Sameday Express
 * DBD - Daybreak Delivery
@@ -54,21 +54,21 @@ Parameter | FieldType | Case | Required | Note
 OriginCompany | String | No | No | Company from which to collect
 OriginFloorBuilding | String | No | Yes | Floor, building, office park
 OriginStreet | String | No | Yes | Street for shipment collection
-OriginLocationName | String | No | Yes | Senders suburb
-OriginPostCode | String | No | Yes | Sender's postcode
+OriginLocationName | String | No | Yes | Sender suburb
+OriginPostCode | String | No | Yes | Sender postcode
 SenderContactName | String | No | No | Contact person for collection/dispatch
-SenderTelephone | String | No | No | Contact person's telephone number
-SenderMobile | String | No | No | ontact person's  mobile number
+SenderTelephone | String | No | No | Contact person telephone number
+SenderMobile | String | No | No | Contact person mobile number
 
 SenderMobile is useful for shipment progress updates
 
 Parameter | FieldType | Case | Required | Note
 --------- | --------- | ---- | -------- | ------- 
 SenderEmail | String | No | No | For progress updates 
-DestinationCompany | String | No | No | Receiver - individual/company name
+DestinationCompany | String | No | No | Receiver individual/company name
 DestinationFloorBuilding | String | No | No | Floor and building address.
 
-Can only be optionally supplied if there is a single receiver for shipment
+Used for single receiver shipment only (optional)
 
 Parameter | FieldType | Case | Required | Note
 --------- | --------- | ---- | -------- | ------- 
@@ -108,8 +108,8 @@ followed by zeroes for the remaining weights in the dimensions array.
 The dimensioning sub-section contains information pertinent to the parcels that make up this
 waybill shipping request.
 
-Parameter | FieldType | Case | Required | Note
---------- | --------- | ---- | -------- | ------- 
+Parameter | FieldType | Case | Required
+--------- | --------- | ---- | -------- 
 Dimensions| Array | No | Yes |
 
 ### Dimensions Array
@@ -120,9 +120,9 @@ Dimensions| Array | No | Yes |
 FieldName | FieldType | Req | Description
 --------- | --------- | --- | -----------
 BarcodeNumber | String | No | The barcode number of the parcel label used for this package
-Dimension1 | Int | Yes | Length of the package, rounded up to the nearest whole cm
-Dimension2 | Int | Yes | Width of the package, rounded up to the nearest whole cm
-Dimension3 | Int | Yes | Height of the package, rounded up to the nearest whole cm
+Dimension1 | Int | Yes | Length of the package, rounded up to the nearest whole centimeter
+Dimension2 | Int | Yes | Width of the package, rounded up to the nearest whole centimeter
+Dimension3 | Int | Yes | Height of the package, rounded up to the nearest whole centimeter
 Weight | Float | Yes | Actual weight of package in kilograms
 Reference | String | No | Tag this package with parcel specific information.
 
@@ -132,6 +132,21 @@ The service add-ons sub-section contains information specific to additional opti
 requested over and above the respective delivery service product offerings. Currently this pertains to 
 after-hour delivery requests but will be extended to features such as live delivery e-mail
 and sms alerts.
+
+Parameter | FieldType | Case | Required 
+--------- | --------- | ---- | -------- 
+AdditionalSurcharges| Array | No | No 
+
+### AdditionalSurcharges| Array
+
+FieldName | FieldType | Req 
+--------- | --------- | ---
+SurchargeCode | String | No 
+
+The codes for the service add-ons that are requested:
+* SURSAT - Saturday Delivery
+* SURPUB - Public Holiday Delivery
+* SURAHS - After Hours Delivery Handling
 
 ## Waybill Transportation
 
@@ -263,6 +278,34 @@ Example Service Call using JSON message body
 
 </aside>
 
-Should you experience any difficulties in the implementation of this service please contact BEX
+
+##Response
+The requesting party will receive a server response on the sucessful submission of a waybill request.
+The base object which will contain a property called “items”. which consists of an array
+ holding a single object with the following properties:
+ 
+Property | Description
+-------- | -----------
+waybillNumber | String value reflecting the unique BEX waybill number for this successful shipping request.
+baseRateTotal | Price of the rate card billing component for shipment. 
+surchargesTotal | Price of the surcharges for additional service add-ons
+subTotal | The subtotal, excluding VAT, for the shipment routing requested.
+vat | The VAT portion of the pricing for the delivery.
+totalCharges | The grand total price for the waybill.
+volRatio | The volumetric ratio used during the volumetric weight calculation in the billing engine. This ratio
+is directly dependant on the service delivery priority requested.
+
+##Submission Failures
+Should the collection request fail, the JSON response will contain a property field titled “ex”. This
+exception field will communicate the error encountered whilst processing the collection request
+and will suggest remedial action so as to ensure the successful saving and processing of the
+request on subsequent attempts.
+
+
+<aside class="notice">
+    Should you experience any difficulties in the implementation of this service please contact BEX
 Head Office in Johannesburg on +2711 929 9700 and ask for a member of I.T who will gladly assist
 you.
+
+</aside>
+

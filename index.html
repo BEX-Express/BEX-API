@@ -682,10 +682,116 @@ when making use of alternative shipping stationary options such as thermal label
 <td>No</td>
 <td>Insured value, in ZAR</td>
 </tr>
+<tr>
+<td>Instructions</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>Communicate additional info</td>
+</tr>
 </tbody></table>
+
+<p>The following parameters MUST correspond to the Dimensions Array</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>FieldType</th>
+<th>Required</th>
+<th>Note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TotalPieces</td>
+<td>Int</td>
+<td>Yes</td>
+<td>Total number of packages on this waybill number. Must match COUNT of individual parcel objects in the dimensions array.</td>
+</tr>
+<tr>
+<td>ActualWeight</td>
+<td>Float</td>
+<td>Yes</td>
+<td>The total weight in kilograms, of all of the packages on this waybill number. Must match SUM of individual parcel objects in the dimensions array.</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+    Should you not have the individual weights of each package to be shipped on the waybill
+you can state the total weight of all of the parcels in one of the dimension array’s weight field,
+followed by zeroes for the remaining weights in the dimensions array.
+</aside>
 <h2 id='dimensioning'>Dimensioning</h2>
 <p>The dimensioning sub-section contains information pertinent to the parcels that make up this
 waybill shipping request.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>FieldType</th>
+<th>Case</th>
+<th>Required</th>
+<th>Note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Dimensions</td>
+<td>Array</td>
+<td>No</td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='dimensions-array'>Dimensions Array</h3>
+<ul>
+<li>For communication of parcel specific information for each package that comprises this waybill shipping request</li>
+<li>The array contains parcel dimension objects with the following properties</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>FieldName</th>
+<th>FieldType</th>
+<th>Req</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>BarcodeNumber</td>
+<td>String</td>
+<td>No</td>
+<td>The barcode number of the parcel label used for this package</td>
+</tr>
+<tr>
+<td>Dimension1</td>
+<td>Int</td>
+<td>Yes</td>
+<td>Length of the package, rounded up to the nearest whole cm</td>
+</tr>
+<tr>
+<td>Dimension2</td>
+<td>Int</td>
+<td>Yes</td>
+<td>Width of the package, rounded up to the nearest whole cm</td>
+</tr>
+<tr>
+<td>Dimension3</td>
+<td>Int</td>
+<td>Yes</td>
+<td>Height of the package, rounded up to the nearest whole cm</td>
+</tr>
+<tr>
+<td>Weight</td>
+<td>Float</td>
+<td>Yes</td>
+<td>Actual weight of package in kilograms</td>
+</tr>
+<tr>
+<td>Reference</td>
+<td>String</td>
+<td>No</td>
+<td>Tag this package with parcel specific information.</td>
+</tr>
+</tbody></table>
 <h2 id='service-add-ons'>Service Add-Ons</h2>
 <p>The service add-ons sub-section contains information specific to additional options that can be
 requested over and above the respective delivery service product offerings. Currently this pertains to 
@@ -743,9 +849,6 @@ and sms alerts.</p>
 <span class="c1">// PIECE INFORMATION</span>
 <span class="kd">var</span> <span class="nx">totalPieces</span> <span class="o">=</span> <span class="mi">2</span><span class="err">;</span>
 <span class="kd">var</span> <span class="nx">actualWeight</span> <span class="o">=</span> <span class="mf">12.3</span><span class="err">;</span>
-<span class="nx">BEX</span> <span class="nx">Express</span> <span class="p">(</span><span class="nx">Pty</span><span class="p">)</span> <span class="nx">Ltd</span>
-<span class="nx">Webservice</span> <span class="nx">Integrations</span> <span class="nx">Private</span> <span class="o">&amp;</span> <span class="nx">Confidential</span> <span class="nx">Page</span> <span class="mi">13</span> <span class="k">of</span> <span class="mi">15</span>
-<span class="nx">Revised</span><span class="p">:</span> <span class="mi">27</span> <span class="nx">January</span> <span class="mi">2015</span>
 <span class="c1">// ADDITIONAL REFERENCES</span>
 <span class="kd">var</span> <span class="nx">additionalReferences</span> <span class="o">=</span> <span class="p">[]</span><span class="err">;</span>
 <span class="kd">var</span> <span class="nx">reference1</span> <span class="o">=</span> <span class="p">{}</span><span class="err">;</span>
@@ -784,9 +887,6 @@ and sms alerts.</p>
 <span class="c1">//call the service using jQuery ajax and passing the parameters</span>
 <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
 <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
-<span class="nx">BEX</span> <span class="nx">Express</span> <span class="p">(</span><span class="nx">Pty</span><span class="p">)</span> <span class="nx">Ltd</span>
-<span class="nx">Webservice</span> <span class="nx">Integrations</span> <span class="nx">Private</span> <span class="o">&amp;</span> <span class="nx">Confidential</span> <span class="nx">Page</span> <span class="mi">14</span> <span class="k">of</span> <span class="mi">15</span>
-<span class="na">Revised</span><span class="p">:</span> <span class="mi">27</span> <span class="nx">January</span> <span class="mi">2015</span>
 <span class="na">url</span><span class="p">:</span> <span class="nx">host</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">/api/service/submitwaybillwia</span><span class="dl">'</span><span class="p">,</span>
 <span class="na">data</span><span class="p">:</span> <span class="nx">jsonData</span><span class="p">,</span>
 <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">json</span><span class="dl">'</span><span class="p">,</span>

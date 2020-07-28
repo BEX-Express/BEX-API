@@ -86,12 +86,45 @@ If TRUE the insurance surcharge is added to the waybill and the goods are covere
 Parameter | FieldType | Case | Required | Note
 --------- | --------- | ---- | -------- | ------- 
 InsuranceValue | Float/Double | No | No | Insured value, in ZAR
+Instructions | String | No | No | Communicate additional info
+
+
+The following parameters MUST correspond to the Dimensions Array
+
+Parameter | FieldType | Required | Note
+--------- | --------- | ---- | -------- | ------- 
+TotalPieces | Int | Yes | Total number of packages on this waybill number. Must match COUNT of individual parcel objects in the dimensions array.
+ActualWeight | Float | Yes | The total weight in kilograms, of all of the packages on this waybill number. Must match SUM of individual parcel objects in the dimensions array.
+
+<aside class="notice">
+    Should you not have the individual weights of each package to be shipped on the waybill
+you can state the total weight of all of the parcels in one of the dimension array’s weight field,
+followed by zeroes for the remaining weights in the dimensions array.
+</aside>
+
 
 ## Dimensioning
 
 The dimensioning sub-section contains information pertinent to the parcels that make up this
 waybill shipping request.
 
+Parameter | FieldType | Case | Required | Note
+--------- | --------- | ---- | -------- | ------- 
+Dimensions| Array | No | Yes |
+
+### Dimensions Array
+
+* For communication of parcel specific information for each package that comprises this waybill shipping request
+* The array contains parcel dimension objects with the following properties
+
+FieldName | FieldType | Req | Description
+--------- | --------- | --- | -----------
+BarcodeNumber | String | No | The barcode number of the parcel label used for this package
+Dimension1 | Int | Yes | Length of the package, rounded up to the nearest whole cm
+Dimension2 | Int | Yes | Width of the package, rounded up to the nearest whole cm
+Dimension3 | Int | Yes | Height of the package, rounded up to the nearest whole cm
+Weight | Float | Yes | Actual weight of package in kilograms
+Reference | String | No | Tag this package with parcel specific information.
 
 ## Service Add-Ons
 
@@ -101,6 +134,7 @@ after-hour delivery requests but will be extended to features such as live deliv
 and sms alerts.
 
 ## Waybill Transportation
+
 
 > Javascript / jQuery Example.
 
@@ -153,9 +187,6 @@ postData.instructions = 'DO NOT INVERT COMPONENT';
 // PIECE INFORMATION
 var totalPieces = 2;
 var actualWeight = 12.3;
-BEX Express (Pty) Ltd
-Webservice Integrations Private & Confidential Page 13 of 15
-Revised: 27 January 2015
 // ADDITIONAL REFERENCES
 var additionalReferences = [];
 var reference1 = {};
@@ -194,9 +225,6 @@ alert(ex.responseText);
 //call the service using jQuery ajax and passing the parameters
 $.ajax({
 type: 'POST',
-BEX Express (Pty) Ltd
-Webservice Integrations Private & Confidential Page 14 of 15
-Revised: 27 January 2015
 url: host + '/api/service/submitwaybillwia',
 data: jsonData,
 dataType: 'json',

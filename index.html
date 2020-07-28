@@ -259,6 +259,12 @@
                   <li>
                     <a href="#waybill-transportation" class="toc-h2 toc-link" data-title="Waybill Transportation">Waybill Transportation</a>
                   </li>
+                  <li>
+                    <a href="#response" class="toc-h2 toc-link" data-title="Response">Response</a>
+                  </li>
+                  <li>
+                    <a href="#submission-failures" class="toc-h2 toc-link" data-title="Submission Failures">Submission Failures</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -379,7 +385,7 @@ be supplied for encryption if required.
 </span><span class="o">&lt;</span><span class="sr">/body</span><span class="err">&gt;
 </span><span class="o">&lt;</span><span class="sr">/html</span><span class="err">&gt;
 </span></code></pre></div>
-<p>The service supports GET and POST requests.We recommend POST requests to avoid caching issues.
+<p>The service supports GET and POST requests. We recommend POST requests to avoid caching issues.
 The service supports URL parameters or JSON parameters in the message body</p>
 
 <p>Example Service Call using the URL Parameters</p>
@@ -484,7 +490,7 @@ when making use of alternative shipping stationary options such as thermal label
 </tr>
 </tbody></table>
 
-<p>Service delivery codes values are:</p>
+<p>Service delivery code values are:</p>
 
 <ul>
 <li>SDX - Sameday Express</li>
@@ -529,14 +535,14 @@ when making use of alternative shipping stationary options such as thermal label
 <td>String</td>
 <td>No</td>
 <td>Yes</td>
-<td>Senders suburb</td>
+<td>Sender suburb</td>
 </tr>
 <tr>
 <td>OriginPostCode</td>
 <td>String</td>
 <td>No</td>
 <td>Yes</td>
-<td>Sender&#39;s postcode</td>
+<td>Sender postcode</td>
 </tr>
 <tr>
 <td>SenderContactName</td>
@@ -550,14 +556,14 @@ when making use of alternative shipping stationary options such as thermal label
 <td>String</td>
 <td>No</td>
 <td>No</td>
-<td>Contact person&#39;s telephone number</td>
+<td>Contact person telephone number</td>
 </tr>
 <tr>
 <td>SenderMobile</td>
 <td>String</td>
 <td>No</td>
 <td>No</td>
-<td>ontact person&#39;s  mobile number</td>
+<td>Contact person mobile number</td>
 </tr>
 </tbody></table>
 
@@ -584,7 +590,7 @@ when making use of alternative shipping stationary options such as thermal label
 <td>String</td>
 <td>No</td>
 <td>No</td>
-<td>Receiver - individual/company name</td>
+<td>Receiver individual/company name</td>
 </tr>
 <tr>
 <td>DestinationFloorBuilding</td>
@@ -595,7 +601,7 @@ when making use of alternative shipping stationary options such as thermal label
 </tr>
 </tbody></table>
 
-<p>Can only be optionally supplied if there is a single receiver for shipment</p>
+<p>Used for single receiver shipment only (optional)</p>
 
 <table><thead>
 <tr>
@@ -730,7 +736,6 @@ waybill shipping request.</p>
 <th>FieldType</th>
 <th>Case</th>
 <th>Required</th>
-<th>Note</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -738,7 +743,6 @@ waybill shipping request.</p>
 <td>Array</td>
 <td>No</td>
 <td>Yes</td>
-<td></td>
 </tr>
 </tbody></table>
 <h3 id='dimensions-array'>Dimensions Array</h3>
@@ -765,19 +769,19 @@ waybill shipping request.</p>
 <td>Dimension1</td>
 <td>Int</td>
 <td>Yes</td>
-<td>Length of the package, rounded up to the nearest whole cm</td>
+<td>Length of the package, rounded up to the nearest whole centimeter</td>
 </tr>
 <tr>
 <td>Dimension2</td>
 <td>Int</td>
 <td>Yes</td>
-<td>Width of the package, rounded up to the nearest whole cm</td>
+<td>Width of the package, rounded up to the nearest whole centimeter</td>
 </tr>
 <tr>
 <td>Dimension3</td>
 <td>Int</td>
 <td>Yes</td>
-<td>Height of the package, rounded up to the nearest whole cm</td>
+<td>Height of the package, rounded up to the nearest whole centimeter</td>
 </tr>
 <tr>
 <td>Weight</td>
@@ -797,6 +801,41 @@ waybill shipping request.</p>
 requested over and above the respective delivery service product offerings. Currently this pertains to 
 after-hour delivery requests but will be extended to features such as live delivery e-mail
 and sms alerts.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>FieldType</th>
+<th>Case</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AdditionalSurcharges</td>
+<td>Array</td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='additionalsurcharges-array'>AdditionalSurcharges| Array</h3>
+<table><thead>
+<tr>
+<th>FieldName</th>
+<th>FieldType</th>
+<th>Req</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>SurchargeCode</td>
+<td>String</td>
+<td>No</td>
+</tr>
+</tbody></table>
+
+<p>The codes for the service add-ons that are requested:
+* SURSAT - Saturday Delivery
+* SURPUB - Public Holiday Delivery
+* SURAHS - After Hours Delivery Handling</p>
 <h2 id='waybill-transportation'>Waybill Transportation</h2>
 <blockquote>
 <p>Javascript / jQuery Example.</p>
@@ -923,10 +962,60 @@ The service supports URL parameters or JSON parameters in the message body</p>
     Please note that all fields must be URL encoded if special characters are used.
 
 </aside>
+<h2 id='response'>Response</h2>
+<p>The requesting party will receive a server response on the sucessful submission of a waybill request.
+The base object which will contain a property called “items”. which consists of an array
+ holding a single object with the following properties:</p>
 
-<p>Should you experience any difficulties in the implementation of this service please contact BEX
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>waybillNumber</td>
+<td>String value reflecting the unique BEX waybill number for this successful shipping request.</td>
+</tr>
+<tr>
+<td>baseRateTotal</td>
+<td>Price of the rate card billing component for shipment.</td>
+</tr>
+<tr>
+<td>surchargesTotal</td>
+<td>Price of the surcharges for additional service add-ons</td>
+</tr>
+<tr>
+<td>subTotal</td>
+<td>The subtotal, excluding VAT, for the shipment routing requested.</td>
+</tr>
+<tr>
+<td>vat</td>
+<td>The VAT portion of the pricing for the delivery.</td>
+</tr>
+<tr>
+<td>totalCharges</td>
+<td>The grand total price for the waybill.</td>
+</tr>
+<tr>
+<td>volRatio</td>
+<td>The volumetric ratio used during the volumetric weight calculation in the billing engine. This ratio</td>
+</tr>
+</tbody></table>
+
+<p>is directly dependant on the service delivery priority requested.</p>
+<h2 id='submission-failures'>Submission Failures</h2>
+<p>Should the collection request fail, the JSON response will contain a property field titled “ex”. This
+exception field will communicate the error encountered whilst processing the collection request
+and will suggest remedial action so as to ensure the successful saving and processing of the
+request on subsequent attempts.</p>
+
+<aside class="notice">
+    Should you experience any difficulties in the implementation of this service please contact BEX
 Head Office in Johannesburg on +2711 929 9700 and ask for a member of I.T who will gladly assist
-you.</p>
+you.
+
+</aside>
 <h1 id='page-3'>Page 3</h1><h2 id='paragraphs'>Paragraphs</h2>
 <p>Paragraph Text
 For normal text, just type your paragraph on a single line</p>

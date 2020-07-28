@@ -281,7 +281,7 @@ Example Service Call using JSON message body
 
 ##Response
 The requesting party will receive a server response on the sucessful submission of a waybill request.
-The base object which will contain a property called “items”. which consists of an array
+The base object which will contain a property called “items” which consists of an array
  holding a single object with the following properties:
  
 Property | Description
@@ -292,8 +292,7 @@ surchargesTotal | Price of the surcharges for additional service add-ons
 subTotal | The subtotal, excluding VAT, for the shipment routing requested.
 vat | The VAT portion of the pricing for the delivery.
 totalCharges | The grand total price for the waybill.
-volRatio | The volumetric ratio used during the volumetric weight calculation in the billing engine. This ratio
-is directly dependant on the service delivery priority requested.
+volRatio | The volumetric ratio used during the volumetric weight calculation in the billing engine. This ratio is directly dependant on the service delivery priority requested.
 
 ##Submission Failures
 Should the collection request fail, the JSON response will contain a property field titled “ex”. This

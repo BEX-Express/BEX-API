@@ -281,7 +281,7 @@ Example Service Call using JSON message body
 
 ##Response
 The requesting party will receive a server response on the sucessful submission of a waybill request.
-The base object which will contain a property called “items” which consists of an array
+The base object will contain a property called “items” which consists of an array
  holding a single object with the following properties:
  
 Property | Description

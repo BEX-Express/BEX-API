@@ -964,7 +964,7 @@ The service supports URL parameters or JSON parameters in the message body</p>
 </aside>
 <h2 id='response'>Response</h2>
 <p>The requesting party will receive a server response on the sucessful submission of a waybill request.
-The base object which will contain a property called “items”. which consists of an array
+The base object which will contain a property called “items” which consists of an array
  holding a single object with the following properties:</p>
 
 <table><thead>
@@ -999,11 +999,9 @@ The base object which will contain a property called “items”. which consists
 </tr>
 <tr>
 <td>volRatio</td>
-<td>The volumetric ratio used during the volumetric weight calculation in the billing engine. This ratio</td>
+<td>The volumetric ratio used during the volumetric weight calculation in the billing engine. This ratio is directly dependant on the service delivery priority requested.</td>
 </tr>
 </tbody></table>
-
-<p>is directly dependant on the service delivery priority requested.</p>
 <h2 id='submission-failures'>Submission Failures</h2>
 <p>Should the collection request fail, the JSON response will contain a property field titled “ex”. This
 exception field will communicate the error encountered whilst processing the collection request

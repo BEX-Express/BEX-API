@@ -91,7 +91,7 @@ alert(ex.responseText);
 </body>
 </html>
 ```
-The service supports GET and POST requests.We recommend POST requests to avoid caching issues.
+The service supports GET and POST requests. We recommend POST requests to avoid caching issues.
 The service supports URL parameters or JSON parameters in the message body
 
 Example Service Call using the URL Parameters

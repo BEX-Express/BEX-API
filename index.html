@@ -303,10 +303,13 @@ Couple this with our token based Authentication methods and standard HTTP verbs 
 
 <p>We hope that you will build something great and benefit from integrating with our courier API’s.</p>
 <h1 id='requirements'>Requirements</h1>
-<p>To make use of our API integration we require the following:
-1. A valid shipping account with BEX.
-1. The creation of an integration user identity under which you will transact over the API’s
-1. For security sensitive data requests, a valid token.</p>
+<p>To make use of our API integration we require the following:</p>
+
+<ol>
+<li><p>A valid shipping account with BEX.</p></li>
+<li><p>The creation of an integration user identity under which you will transact over the API’s</p></li>
+<li><p>For security sensitive data requests, a valid token.</p></li>
+</ol>
 
 <aside class="notice">
 Note: If you have multiple shipping accounts you are not required to transact under multiple integration identities (“tokens”). Our platform supports the assignment of multiple shipping accounts to a single token, making integration across multiple business units easier.
@@ -325,8 +328,9 @@ API response body: ex: Account number is not registered for transactions with th
 In instances where there is a technical breakdown in the processing of the API request, such as querying the wrong API name, you will receive the appropriate http status code such as a 503.x error.
 </aside>
 <h1 id='errors'>Errors</h1>
-<p>You can find the errors specific to each API endpoint under its dedicated API topic.
-Errors return both an appropriate HTTP status code and response object which contains an ex attribute.</p>
+<p>You can find the errors specific to each API endpoint under its dedicated API topic.</p>
+
+<p>Errors return both an appropriate HTTP status code and response object which contains an ex attribute.</p>
 <h1 id='parameters'>Parameters</h1>
 <p>Almost all endpoints accept optional parameters which can be passed as a HTTP query string parameter, e.g. GET /getcustomquicktracking_V3?ref=invoices
 Parameters containing special characters that are passed in a URL request must have their data url encoded.</p>

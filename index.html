@@ -201,7 +201,7 @@
       <script src="javascripts/all-c5541673.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;javascript&quot;,&quot;json&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -212,6 +212,7 @@
       <img src="images/logo-24a0e341.png" class="logo" alt="" />
         <div class="lang-selector">
               <a href="#" data-language-name="javascript">javascript</a>
+              <a href="#" data-language-name="json">json</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -287,7 +288,7 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
+            <li><a href='https://bex.co.za/signup'>Open a BEX account</a></li>
             <li><a href='https://github.com/acme'>Client libraries</a></li>
             <li><a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a></li>
         </ul>
@@ -306,9 +307,9 @@ Couple this with our token based Authentication methods and standard HTTP verbs 
 <p>To make use of our API integration we require the following:</p>
 
 <ol>
-<li><p>A valid shipping account with BEX.</p></li>
-<li><p>The creation of an integration user identity under which you will transact over the API’s</p></li>
-<li><p>For security sensitive data requests, a valid token.</p></li>
+<li>A valid shipping account with BEX.</li>
+<li>The creation of an integration user identity under which you will transact over the API’s</li>
+<li>For security sensitive data requests, a valid token.</li>
 </ol>
 
 <aside class="notice">
@@ -318,7 +319,7 @@ You may access the API over HTTP or HTTPS, but HTTPS us recommended where possib
 <h1 id='request-response-format'>Request/Response Format</h1>
 <p>The default response format is JSON. Requests with a message-body use plain JSON to set resource attributes.</p>
 
-<p>Successful requests will return a 200 OK HTTP status.</p>
+<p>Successful requests will return a <code>200 OK</code> HTTP status.</p>
 
 <aside class="notice">
 A word on success flags:
@@ -1070,6 +1071,7 @@ you.
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="javascript">javascript</a>
+                <a href="#" data-language-name="json">json</a>
           </div>
       </div>
     </div>

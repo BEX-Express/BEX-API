@@ -18,7 +18,12 @@ search: true
 
 # Introduction
 
-Here at BEX we frequently develop and publish new API’s to assist our customers who wish to gain deeper control and visibility into their courier processes. These API’s allow for direct integration into our courier platform, allowing data to be read and created using requests in JSON format. Couple this with our token based Authentication methods and standard HTTP verbs (which are understood by most HTTP clients) you have the capability to orchestrate and manage a number of processes within the courier environment. We hope that you will build something great and benefit from integrating to our courier API’s.
+Here at BEX we frequently develop and publish new API’s to assist our customers who wish to gain deeper control and visibility into their courier processes.
+
+These API’s allow for direct integration into our courier platform, allowing data to be read and created using requests in JSON format.
+Couple this with our token based Authentication methods and standard HTTP verbs (which are understood by most HTTP clients) you have the capability to orchestrate and manage a number of processes within the courier environment.
+
+We hope that you will build something great and benefit from integrating with our courier API’s.
 
 # Requirements
 

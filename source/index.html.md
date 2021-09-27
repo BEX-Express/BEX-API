@@ -1,5 +1,5 @@
 ---
-title: BEX Webservice Integrations
+title: BEX REST API Documentation
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - javascript
@@ -18,8 +18,56 @@ search: true
 
 # Introduction
 
-BEX Express provides a comprehensive range of Domestic, Cross Border and International
- courier services
+Here at BEX we frequently develop and publish new API’s to assist our customers who wish to gain deeper control and visibility into their courier processes. These API’s allow for direct integration into our courier platform, allowing data to be read and created using requests in JSON format. Couple this with our token based Authentication methods and standard HTTP verbs (which are understood by most HTTP clients) you have the capability to orchestrate and manage a number of processes within the courier environment. We hope that you will build something great and benefit from integrating to our courier API’s.
+
+# Requirements
+
+To make use of our API integration we require the following:
+1.	A valid shipping account with BEX.
+2.	The creation of an integration user identity under which you will transact over the API’s
+3.	For security sensitive data requests, a valid token.
+
+<aside class="notice">
+Note: If you have multiple shipping accounts you are not required to transact under multiple integration identities (“tokens”). Our platform supports the assignment of multiple shipping accounts to a single token, making integration across multiple business units easier.
+You may access the API over HTTP or HTTPS, but HTTPS us recommended where possible.
+</aside>
+
+# Request/Response Format
+The default response format is JSON. Requests with a message-body use plain JSON to set resource attributes.
+
+Successful requests will return a 200 OK HTTP status.
+
+<aside class="notice">
+A word on success flags:
+We return 200 OK status responses for ALL requests that make it to our server, even if we run into an error when processing your request. For API submissions that result in a processing error (read validation and business logic/”elegant” type errors) we include an attribute in the API response titled ex: where we communicate the reason for the processing failure. An example could be:
+HTTP status code: 200 OK
+API response body: ex: Account number is not registered for transactions with this token.
+In instances where there is a technical breakdown in the processing of the API request, such as querying the wrong API name, you will receive the appropriate http status code such as a 503.x error.
+</aside>
+
+# Errors
+
+You can find the errors specific to each API endpoint under its dedicated API topic.
+Errors return both an appropriate HTTP status code and response object which contains an ex attribute.
+
+# Parameters
+
+Almost all endpoints accept optional parameters which can be passed as a HTTP query string parameter, e.g. GET /getcustomquicktracking_V3?ref=invoices
+Parameters containing special characters that are passed in a URL request must have their data url encoded.
+
+All parameters are documented along each endpoint.
+
+# Libraries
+We do not currently offer any libraries for our API implementation. We are in the process of creating .NET wrappers that you can use in the future. We will publish more information on this topic once it is ready for use.
+
+# Tools
+Some useful tools you can use to access the API include:
+Some useful tools you can use to access the API include:
+* Insomnia - Cross-platform GraphQL and REST client, available for Mac, Windows, and Linux.
+* Postman - Cross-platform REST client, available for Mac, Windows, and Linux.
+* RequestBin - Allows you test webhooks.
+* Hookbin - Another tool to test webhooks.
+
 
 # Login
 

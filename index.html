@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>BEX Webservice Integrations</title>
+    <title>BEX REST API Documentation</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -222,6 +222,24 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
+            <a href="#requirements" class="toc-h1 toc-link" data-title="Requirements">Requirements</a>
+          </li>
+          <li>
+            <a href="#request-response-format" class="toc-h1 toc-link" data-title="Request/Response Format">Request/Response Format</a>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+          <li>
+            <a href="#parameters" class="toc-h1 toc-link" data-title="Parameters">Parameters</a>
+          </li>
+          <li>
+            <a href="#libraries" class="toc-h1 toc-link" data-title="Libraries">Libraries</a>
+          </li>
+          <li>
+            <a href="#tools" class="toc-h1 toc-link" data-title="Tools">Tools</a>
+          </li>
+          <li>
             <a href="#login" class="toc-h1 toc-link" data-title="Login">Login</a>
               <ul class="toc-list-h2">
                   <li>
@@ -231,7 +249,7 @@
                     <a href="#url" class="toc-h2 toc-link" data-title="URL">URL</a>
                   </li>
                   <li>
-                    <a href="#parameters" class="toc-h2 toc-link" data-title="Parameters">Parameters</a>
+                    <a href="#parameters-2" class="toc-h2 toc-link" data-title="Parameters">Parameters</a>
                   </li>
                   <li>
                     <a href="#transportation" class="toc-h2 toc-link" data-title="Transportation">Transportation</a>
@@ -278,15 +296,53 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>BEX Express provides a comprehensive range of Domestic, Cross Border and International
- courier services</p>
+<p>Here at BEX we frequently develop and publish new API’s to assist our customers who wish to gain deeper control and visibility into their courier processes. These API’s allow for direct integration into our courier platform, allowing data to be read and created using requests in JSON format. Couple this with our token based Authentication methods and standard HTTP verbs (which are understood by most HTTP clients) you have the capability to orchestrate and manage a number of processes within the courier environment. We hope that you will build something great and benefit from integrating to our courier API’s.</p>
+<h1 id='requirements'>Requirements</h1>
+<p>To make use of our API integration we require the following:
+1.  A valid shipping account with BEX.
+2.  The creation of an integration user identity under which you will transact over the API’s
+3.  For security sensitive data requests, a valid token.</p>
+
+<aside class="notice">
+Note: If you have multiple shipping accounts you are not required to transact under multiple integration identities (“tokens”). Our platform supports the assignment of multiple shipping accounts to a single token, making integration across multiple business units easier.
+You may access the API over HTTP or HTTPS, but HTTPS us recommended where possible.
+</aside>
+<h1 id='request-response-format'>Request/Response Format</h1>
+<p>The default response format is JSON. Requests with a message-body use plain JSON to set resource attributes.</p>
+
+<p>Successful requests will return a 200 OK HTTP status.</p>
+
+<aside class="notice">
+A word on success flags:
+We return 200 OK status responses for ALL requests that make it to our server, even if we run into an error when processing your request. For API submissions that result in a processing error (read validation and business logic/”elegant” type errors) we include an attribute in the API response titled ex: where we communicate the reason for the processing failure. An example could be:
+HTTP status code: 200 OK
+API response body: ex: Account number is not registered for transactions with this token.
+In instances where there is a technical breakdown in the processing of the API request, such as querying the wrong API name, you will receive the appropriate http status code such as a 503.x error.
+</aside>
+<h1 id='errors'>Errors</h1>
+<p>You can find the errors specific to each API endpoint under its dedicated API topic.
+Errors return both an appropriate HTTP status code and response object which contains an ex attribute.</p>
+<h1 id='parameters'>Parameters</h1>
+<p>Almost all endpoints accept optional parameters which can be passed as a HTTP query string parameter, e.g. GET /getcustomquicktracking_V3?ref=invoices
+Parameters containing special characters that are passed in a URL request must have their data url encoded.</p>
+
+<p>All parameters are documented along each endpoint.</p>
+<h1 id='libraries'>Libraries</h1>
+<p>We do not currently offer any libraries for our API implementation. We are in the process of creating .NET wrappers that you can use in the future. We will publish more information on this topic once it is ready for use.</p>
+<h1 id='tools'>Tools</h1>
+<p>Some useful tools you can use to access the API include:
+Some useful tools you can use to access the API include:
+* Insomnia - Cross-platform GraphQL and REST client, available for Mac, Windows, and Linux.
+* Postman - Cross-platform REST client, available for Mac, Windows, and Linux.
+* RequestBin - Allows you test webhooks.
+* Hookbin - Another tool to test webhooks.</p>
 <h1 id='login'>Login</h1><h2 id='overview'>Overview</h2>
 <p>The service accepts user credentials. After validation, it returns a valid session token which is
 used to access additional services. This token string will be submitted via a cookie called “token” or
 a header attribute with the same name.</p>
 <h2 id='url'>URL</h2>
 <p>Service Relative URL: <code>api/service/login</code></p>
-<h2 id='parameters'>Parameters</h2>
+<h2 id='parameters-2'>Parameters</h2>
 <table><thead>
 <tr>
 <th>Parameter</th>

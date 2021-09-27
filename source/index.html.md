@@ -3,9 +3,10 @@ title: BEX REST API Documentation
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - javascript
+  - json
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
+  - <a href='https://bex.co.za/signup'>Open a BEX account</a>
   - <a href='https://github.com/acme'>Client libraries</a>
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
@@ -30,9 +31,7 @@ We hope that you will build something great and benefit from integrating with ou
 To make use of our API integration we require the following:
 
 1. A valid shipping account with BEX.
-
 1. The creation of an integration user identity under which you will transact over the API’s
-
 1. For security sensitive data requests, a valid token.
 
 <aside class="notice">
@@ -43,7 +42,7 @@ You may access the API over HTTP or HTTPS, but HTTPS us recommended where possib
 # Request/Response Format
 The default response format is JSON. Requests with a message-body use plain JSON to set resource attributes.
 
-Successful requests will return a 200 OK HTTP status.
+Successful requests will return a `200 OK` HTTP status.
 
 <aside class="notice">
 A word on success flags:

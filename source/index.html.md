@@ -28,9 +28,9 @@ We hope that you will build something great and benefit from integrating with ou
 # Requirements
 
 To make use of our API integration we require the following:
-1.	A valid shipping account with BEX.
-2.	The creation of an integration user identity under which you will transact over the API’s
-3.	For security sensitive data requests, a valid token.
+1. A valid shipping account with BEX.
+1. The creation of an integration user identity under which you will transact over the API’s
+1. For security sensitive data requests, a valid token.
 
 <aside class="notice">
 Note: If you have multiple shipping accounts you are not required to transact under multiple integration identities (“tokens”). Our platform supports the assignment of multiple shipping accounts to a single token, making integration across multiple business units easier.
@@ -68,10 +68,10 @@ We do not currently offer any libraries for our API implementation. We are in th
 # Tools
 Some useful tools you can use to access the API include:
 Some useful tools you can use to access the API include:
-* Insomnia - Cross-platform GraphQL and REST client, available for Mac, Windows, and Linux.
-* Postman - Cross-platform REST client, available for Mac, Windows, and Linux.
-* RequestBin - Allows you test webhooks.
-* Hookbin - Another tool to test webhooks.
++ Insomnia - Cross-platform GraphQL and REST client, available for Mac, Windows, and Linux.
++ Postman - Cross-platform REST client, available for Mac, Windows, and Linux.
++ RequestBin - Allows you test webhooks.
++ Hookbin - Another tool to test webhooks.
 
 
 # Login

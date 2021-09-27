@@ -28,8 +28,11 @@ We hope that you will build something great and benefit from integrating with ou
 # Requirements
 
 To make use of our API integration we require the following:
+
 1. A valid shipping account with BEX.
+
 1. The creation of an integration user identity under which you will transact over the API’s
+
 1. For security sensitive data requests, a valid token.
 
 <aside class="notice">
@@ -53,6 +56,7 @@ In instances where there is a technical breakdown in the processing of the API r
 # Errors
 
 You can find the errors specific to each API endpoint under its dedicated API topic.
+
 Errors return both an appropriate HTTP status code and response object which contains an ex attribute.
 
 # Parameters

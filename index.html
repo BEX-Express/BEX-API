@@ -256,10 +256,10 @@
                     <a href="#parameters-2" class="toc-h2 toc-link" data-title="Parameters">Parameters</a>
                   </li>
                   <li>
-                    <a href="#response" class="toc-h2 toc-link" data-title="Response">Response</a>
+                    <a href="#transportation" class="toc-h2 toc-link" data-title="Transportation">Transportation</a>
                   </li>
                   <li>
-                    <a href="#transportation" class="toc-h2 toc-link" data-title="Transportation">Transportation</a>
+                    <a href="#response" class="toc-h2 toc-link" data-title="Response">Response</a>
                   </li>
               </ul>
           </li>
@@ -424,6 +424,20 @@ The token will not expire so once generated can be persisted securely on your si
 <td>Your integration account <em>password</em> (case sensitive).</td>
 </tr>
 </tbody></table>
+<h2 id='transportation'>Transportation</h2>
+<p>The service supports GET and POST requests. We recommend POST requests to avoid caching issues.
+The service supports URL parameters or JSON parameters in the message body</p>
+
+<p>Example Service Call using the URL Parameters</p>
+
+<ul>
+<li>URL: <code>http://insight.bex.co.za/api/service/login?username=user123&amp;password=pass1234</code></li>
+</ul>
+
+<aside class="notice">
+    All URL-based field values must be URL encoded if special characters are used
+
+</aside>
 <h2 id='response'>Response</h2>
 <p>The response body is structured as follows:</p>
 
@@ -483,27 +497,6 @@ The token will not expire so once generated can be persisted securely on your si
 <p>With your token now generated you can proceed to call our security restricted API’s.</p>
 
 <p>To do so, you <em>include it as a header attribute</em> in the HTTP headers of the call you are making to the respective API endpoints. The attribute is to be titled <strong>token</strong></p>
-<h2 id='transportation'>Transportation</h2>
-<p>The service supports GET and POST requests. We recommend POST requests to avoid caching issues.
-The service supports URL parameters or JSON parameters in the message body</p>
-
-<p>Example Service Call using the URL Parameters</p>
-
-<ul>
-<li>URL: <code>http://insight.bex.co.za/api/service/login?username=user123&amp;password=pass1234</code></li>
-</ul>
-
-<aside class="notice">
-    All URL-based field values must be URL encoded if special characters are used
-
-</aside>
-
-<p>Example Service Call using JSON message body</p>
-
-<ul>
-<li>URL: <code>http://insight.bex.co.za/api/service/login</code></li>
-<li>BODY: <code>{“username”:”user123”,”password”:”pass1234”}</code></li>
-</ul>
 <h1 id='waybill'>Waybill</h1><h2 id='waybill-overview'>Waybill Overview</h2>
 <p>This service is used to create a waybill shipping entry into the BEX courier database. 
 This allows BEX customers to directly interface their shipping requests and helps to 

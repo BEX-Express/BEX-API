@@ -77,75 +77,104 @@ Some useful tools you can use to access the API include:
 + Hookbin - Another tool to test webhooks.
 
 
+# Authentication
+Authentication against the BEX API ecosystem is a two-part process and is required to prevent access to confidential client data. The process involves the generation of your API security token which is described in the next section. This token is then included in the HTTP headers of your API calls and serves to identify and authenticate you on our platform.
+API’s that serve non-sensitive client data such as our quick waybill tracking do not require your token to be present in the API call and can be called anonymously.
+
+
 # Login
 
 ## Overview
 
-The service accepts user credentials. After validation, it returns a valid session token which is
-used to access additional services. This token string will be submitted via a cookie called “token” or
-a header attribute with the same name.
+The /login service serves as the starting point from which a valid session token will be generated. You call this endpoint to authenticate your username and password user credentials. The BEX platform will validate your request and if successful, will generate and return in the response object a token contained in the value attribute.
+
+This token is unique to your integration user identity and is to be kept private as it is the key needed to unlock access to the account security restricted API’s.
+
+<aside class="notice">
+The token will not expire so once generated can be persisted securely on your side.
+</aside>
 
 ## URL
 
 Service Relative URL: `api/service/login`
 
-## Parameters
-
-Parameter | FieldType | Case| Required | Note
---------- | --------- | ---- | -------- |----
-Username | String | No | Yes | Obtain from your account administrator
-Password | String | Yes | Yes |Obtain from your account administrator
-AccountNumber | String | No | No | Required unless encrypted password used
-PartnerID | INT | No | No |Required unless encrypted password used
-
-<aside class="notice">
-    Encrypted passwords use the Rijndael algorithm. To enable this, a
-cipher must be agreed upon and saved against your account. A .NET example can 
-be supplied for encryption if required.
-
-</aside>
-
-<aside class="notice">
-    PartnerId is required for the multi-company support which BEX has per database
-
-</aside>
-
-
-## Transportation
-
 > Make sure to replace `user123`and `pass123` with your API key.
 
-```javascript
+```html
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Login Example</title>
+<title>BEX API Login Example</title>
 <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 </head>
 <body>
 <script type="text/javascript">
-var user = encodeURIComponent('test123'); //encode the username
-var pass = encodeURIComponent('pass1234'); //encode the password
-jQuery.support.cors = true; //this will enable cross domain access for all services
-//call the service using jQuery ajax and passing the parameters
-$.ajax({
-url: 'http://insight.bex.co.za/api/service/login?username=' + user + '&password=' + pass,
-type: 'POST',
-async: false, //dont run asynchronously
-success: function (data) {
-if (data.ex) { //if the network call succeeds, it may still contain an error (ex)
-alert('The following error occured: ' + data.ex); //display the error
-return;
-}alert('Your token is: ' + data.value); //display the valid token
-},
-error: function (ex) { //this will fire for network related issues
-alert(ex.responseText);
-}
-});
+    var user = encodeURIComponent('test123'); //encode the username
+    var pass = encodeURIComponent('pass1234'); //encode the password
+    jQuery.support.cors = true; //this will enable cross domain access for all services
+    //call the service using jQuery ajax and passing the parameters
+    $.ajax({
+    url: 'https://api.bex.co.za/api/service/login?username=' + user + '&password=' + pass,
+    type: 'POST',
+    async: false, //dont run asynchronously
+    success: function (data) {
+    if (data.ex) { //if the network call succeeds, it may still contain an error (ex)
+    alert('The following error occured: ' + data.ex); //display the error
+    return;
+    };
+    alert('Your token is: ' + data.value); //display the valid token
+    },
+    error: function (ex) { //this will fire for network related issues
+        alert(ex.responseText);
+        }
+    });
 </script>
 </body>
 </html>
 ```
+
+## Parameters
+
+Parameter | FieldType | Required | Description
+--------- | --------- | -------- | -----------
+username | String | Yes |Your integration account _username_.
+password | String | Yes |Your integration account _password_.
+
+## Response
+
+The response body is structured as follows:
+
+Attribute | Type | Description
+--------- | ---- | -----------
+
+id | int | An internal BEX ID used to identify your user.
+Value | string | Your unique and private token.
+isStrongPassword | string | Confirms whether your password meets our complexity requirements.
+isEmailVerified	| string | Your email address is used to recover forgotten passwords or lost tokens and needs to be verified before transactions are possible.
+Email | string | The recovery email address against which this token is registered.
+signalRenabled | string | A feature-flag used internally on our platform.
+allowApiLogin | string | A feature-flag used internally to grant additional login rights to your user identity. This is not a requirement to use our API endpoints.
+
+```json
+{
+    "id": 19696,
+    "value": "dOdw98ycsih298749bd6MbZre8o7tt3r3nhfowo8dnBDpEJvkzcQG1vb44sy",
+    "isStrongPassword": "True",
+    "isEmailVerified": "True",
+    "email": "your.email@company.com",
+    "signalREnabled": "False",
+    "allowApiLogin": "False"
+}
+```
+
+With your token now in hand you can proceed to call our security restricted API’s.
+
+To do so, you *include it as a header attribute* in the HTTP headers of the call you are making to the respective API endpoints. The attribute is to be titled *token*
+
+
+## Transportation
+
+
 The service supports GET and POST requests. We recommend POST requests to avoid caching issues.
 The service supports URL parameters or JSON parameters in the message body
 

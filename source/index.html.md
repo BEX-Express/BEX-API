@@ -143,6 +143,20 @@ Parameter | FieldType | Required | Description
 username | String | Yes |Your integration account _username_.
 password | String | Yes |Your integration account _password_ (case sensitive).
 
+## Transportation
+
+The service supports GET and POST requests. We recommend POST requests to avoid caching issues.
+The service supports URL parameters or JSON parameters in the message body
+
+Example Service Call using the URL Parameters
+
+* URL: `http://insight.bex.co.za/api/service/login?username=user123&password=pass1234`
+
+<aside class="notice">
+    All URL-based field values must be URL encoded if special characters are used
+
+</aside>
+
 ## Response
 
 The response body is structured as follows:
@@ -172,28 +186,3 @@ allowApiLogin | string | A feature-flag used internally to grant additional logi
 With your token now generated you can proceed to call our security restricted API’s.
 
 To do so, you *include it as a header attribute* in the HTTP headers of the call you are making to the respective API endpoints. The attribute is to be titled **token**
-
-
-## Transportation
-
-
-The service supports GET and POST requests. We recommend POST requests to avoid caching issues.
-The service supports URL parameters or JSON parameters in the message body
-
-Example Service Call using the URL Parameters
-
-* URL: `http://insight.bex.co.za/api/service/login?username=user123&password=pass1234`
-
-
-<aside class="notice">
-    All URL-based field values must be URL encoded if special characters are used
-
-</aside>
-
-
-Example Service Call using JSON message body
-
-* URL: `http://insight.bex.co.za/api/service/login`
-* BODY: `{“username”:”user123”,”password”:”pass1234”}`
-
-

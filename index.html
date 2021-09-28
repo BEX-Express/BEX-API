@@ -241,6 +241,9 @@
             <a href="#tools" class="toc-h1 toc-link" data-title="Tools">Tools</a>
           </li>
           <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+          </li>
+          <li>
             <a href="#login" class="toc-h1 toc-link" data-title="Login">Login</a>
               <ul class="toc-list-h2">
                   <li>
@@ -251,6 +254,9 @@
                   </li>
                   <li>
                     <a href="#parameters-2" class="toc-h2 toc-link" data-title="Parameters">Parameters</a>
+                  </li>
+                  <li>
+                    <a href="#response" class="toc-h2 toc-link" data-title="Response">Response</a>
                   </li>
                   <li>
                     <a href="#transportation" class="toc-h2 toc-link" data-title="Transportation">Transportation</a>
@@ -346,97 +352,108 @@ Some useful tools you can use to access the API include:
 + Postman - Cross-platform REST client, available for Mac, Windows, and Linux.
 + RequestBin - Allows you test webhooks.
 + Hookbin - Another tool to test webhooks.</p>
+<h1 id='authentication'>Authentication</h1>
+<p>Authentication against the BEX API ecosystem is a two-part process and is required to prevent access to confidential client data. The process involves the generation of your API security token which is described in the next section. This token is then included in the HTTP headers of your API calls and serves to identify and authenticate you on our platform.
+API’s that serve non-sensitive client data such as our quick waybill tracking do not require your token to be present in the API call and can be called anonymously.</p>
 <h1 id='login'>Login</h1><h2 id='overview'>Overview</h2>
-<p>The service accepts user credentials. After validation, it returns a valid session token which is
-used to access additional services. This token string will be submitted via a cookie called “token” or
-a header attribute with the same name.</p>
+<p>The /login service serves as the starting point from which a valid session token will be generated. You call this endpoint to authenticate your username and password user credentials. The BEX platform will validate your request and if successful, will generate and return in the response object a token contained in the value attribute.</p>
+
+<p>This token is unique to your integration user identity and is to be kept private as it is the key needed to unlock access to the account security restricted API’s.</p>
+
+<aside class="notice">
+The token will not expire so once generated can be persisted securely on your side.
+</aside>
 <h2 id='url'>URL</h2>
 <p>Service Relative URL: <code>api/service/login</code></p>
-<h2 id='parameters-2'>Parameters</h2>
+
+<blockquote>
+<p>Make sure to replace <code>user123</code>and <code>pass123</code> with your API key.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">xmlns=</span><span class="s">"http://www.w3.org/1999/xhtml"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;title&gt;</span>BEX API Login Example<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"http://code.jquery.com/jquery-latest.min.js"</span> <span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+    <span class="kd">var</span> <span class="nx">user</span> <span class="o">=</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="dl">'</span><span class="s1">test123</span><span class="dl">'</span><span class="p">);</span> <span class="c1">//encode the username</span>
+    <span class="kd">var</span> <span class="nx">pass</span> <span class="o">=</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="dl">'</span><span class="s1">pass1234</span><span class="dl">'</span><span class="p">);</span> <span class="c1">//encode the password</span>
+    <span class="nx">jQuery</span><span class="p">.</span><span class="nx">support</span><span class="p">.</span><span class="nx">cors</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> <span class="c1">//this will enable cross domain access for all services</span>
+    <span class="c1">//call the service using jQuery ajax and passing the parameters</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://api.bex.co.za/api/service/login?username=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">user</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">&amp;password=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">pass</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">async</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">//dont run asynchronously</span>
+    <span class="na">success</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">ex</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//if the network call succeeds, it may still contain an error (ex)</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">The following error occured: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="nx">ex</span><span class="p">);</span> <span class="c1">//display the error</span>
+    <span class="k">return</span><span class="p">;</span>
+    <span class="p">};</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">Your token is: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span> <span class="c1">//display the valid token</span>
+    <span class="p">},</span>
+    <span class="na">error</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ex</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//this will fire for network related issues</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="nx">ex</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div><h2 id='parameters-2'>Parameters</h2>
 <table><thead>
 <tr>
 <th>Parameter</th>
 <th>FieldType</th>
-<th>Case</th>
 <th>Required</th>
-<th>Note</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>Username</td>
-<td>String</td>
-<td>No</td>
-<td>Yes</td>
-<td>Obtain from your account administrator</td>
-</tr>
-<tr>
-<td>Password</td>
+<td>username</td>
 <td>String</td>
 <td>Yes</td>
-<td>Yes</td>
-<td>Obtain from your account administrator</td>
+<td>Your integration account <em>username</em>.</td>
 </tr>
 <tr>
-<td>AccountNumber</td>
+<td>password</td>
 <td>String</td>
-<td>No</td>
-<td>No</td>
-<td>Required unless encrypted password used</td>
-</tr>
-<tr>
-<td>PartnerID</td>
-<td>INT</td>
-<td>No</td>
-<td>No</td>
-<td>Required unless encrypted password used</td>
+<td>Yes</td>
+<td>Your integration account <em>password</em>.</td>
 </tr>
 </tbody></table>
+<h2 id='response'>Response</h2>
+<p>The response body is structured as follows:</p>
 
-<aside class="notice">
-    Encrypted passwords use the Rijndael algorithm. To enable this, a
-cipher must be agreed upon and saved against your account. A .NET example can 
-be supplied for encryption if required.
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
 
-</aside>
-
-<aside class="notice">
-    PartnerId is required for the multi-company support which BEX has per database
-
-</aside>
-<h2 id='transportation'>Transportation</h2>
-<blockquote>
-<p>Make sure to replace <code>user123</code>and <code>pass123</code> with your API key.</p>
-</blockquote>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="o">&lt;!</span><span class="nx">DOCTYPE</span> <span class="nx">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="nx">html</span> <span class="nx">xmlns</span><span class="o">=</span><span class="dl">"</span><span class="s2">http://www.w3.org/1999/xhtml</span><span class="dl">"</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Login</span> <span class="nx">Example</span><span class="o">&lt;</span><span class="sr">/title</span><span class="err">&gt;
-</span><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="dl">"</span><span class="s2">http://code.jquery.com/jquery-latest.min.js</span><span class="dl">"</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
-</span><span class="o">&lt;</span><span class="sr">/head</span><span class="err">&gt;
-</span><span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;</span>
-<span class="kd">var</span> <span class="nx">user</span> <span class="o">=</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="dl">'</span><span class="s1">test123</span><span class="dl">'</span><span class="p">);</span> <span class="c1">//encode the username</span>
-<span class="kd">var</span> <span class="nx">pass</span> <span class="o">=</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="dl">'</span><span class="s1">pass1234</span><span class="dl">'</span><span class="p">);</span> <span class="c1">//encode the password</span>
-<span class="nx">jQuery</span><span class="p">.</span><span class="nx">support</span><span class="p">.</span><span class="nx">cors</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> <span class="c1">//this will enable cross domain access for all services</span>
-<span class="c1">//call the service using jQuery ajax and passing the parameters</span>
-<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-<span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">http://insight.bex.co.za/api/service/login?username=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">user</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">&amp;password=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">pass</span><span class="p">,</span>
-<span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
-<span class="na">async</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">//dont run asynchronously</span>
-<span class="na">success</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-<span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">ex</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//if the network call succeeds, it may still contain an error (ex)</span>
-<span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">The following error occured: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="nx">ex</span><span class="p">);</span> <span class="c1">//display the error</span>
-<span class="k">return</span><span class="p">;</span>
-<span class="p">}</span><span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">Your token is: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span> <span class="c1">//display the valid token</span>
-<span class="p">},</span>
-<span class="na">error</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ex</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//this will fire for network related issues</span>
-<span class="nx">alert</span><span class="p">(</span><span class="nx">ex</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="p">});</span>
-<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
-</span><span class="o">&lt;</span><span class="sr">/body</span><span class="err">&gt;
-</span><span class="o">&lt;</span><span class="sr">/html</span><span class="err">&gt;
+<p>id | int | An internal BEX ID used to identify your user.
+Value | string | Your unique and private token.
+isStrongPassword | string | Confirms whether your password meets our complexity requirements.
+isEmailVerified | string | Your email address is used to recover forgotten passwords or lost tokens and needs to be verified before transactions are possible.
+Email | string | The recovery email address against which this token is registered.
+signalRenabled | string | A feature-flag used internally on our platform.
+allowApiLogin | string | A feature-flag used internally to grant additional login rights to your user identity. This is not a requirement to use our API endpoints.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19696</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dOdw98ycsih298749bd6MbZre8o7tt3r3nhfowo8dnBDpEJvkzcQG1vb44sy"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isStrongPassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"True"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isEmailVerified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"True"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your.email@company.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"signalREnabled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"allowApiLogin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div>
+<p>With your token now in hand you can proceed to call our security restricted API’s.</p>
+
+<p>To do so, you <em>include it as a header attribute</em> in the HTTP headers of the call you are making to the respective API endpoints. The attribute is to be titled <em>token</em></p>
+<h2 id='transportation'>Transportation</h2>
 <p>The service supports GET and POST requests. We recommend POST requests to avoid caching issues.
 The service supports URL parameters or JSON parameters in the message body</p>
 

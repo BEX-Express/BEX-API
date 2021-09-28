@@ -264,6 +264,26 @@
               </ul>
           </li>
           <li>
+            <a href="#tracking" class="toc-h1 toc-link" data-title="TRACKING">TRACKING</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#overview" class="toc-h2 toc-link" data-title="Overview">Overview</a>
+                  </li>
+                  <li>
+                    <a href="#endpoint" class="toc-h2 toc-link" data-title="Endpoint:">Endpoint:</a>
+                  </li>
+                  <li>
+                    <a href="#transportation" class="toc-h2 toc-link" data-title="Transportation">Transportation</a>
+                  </li>
+                  <li>
+                    <a href="#parameters" class="toc-h2 toc-link" data-title="Parameters">Parameters</a>
+                  </li>
+                  <li>
+                    <a href="#response" class="toc-h2 toc-link" data-title="Response">Response</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#waybill" class="toc-h1 toc-link" data-title="Waybill">Waybill</a>
               <ul class="toc-list-h2">
                   <li>
@@ -497,6 +517,394 @@ The service supports URL parameters or JSON parameters in the message body</p>
 <p>With your token now generated you can proceed to call our security restricted API’s.</p>
 
 <p>To do so, you <em>include it as a header attribute</em> in the HTTP headers of the call you are making to the respective API endpoints. The attribute is to be titled <strong>token</strong></p>
+<h1 id='tracking'>TRACKING</h1><h2 id='overview'>Overview</h2>
+<p>You can query our courier platform for up-to-the-minute tracking information pertaining to your shipments. We have exposed a lightweight tracking service that returns non-sensitive tracking events for the shipments queried.
+To cater for customers wishing to display this tracking information on their own websites we include a schema definition in the tracking response that can be used to bind the fields to a client grid implemented on your website.</p>
+<h2 id='endpoint'>Endpoint:</h2>
+<p><code>/api/waybillquicktrackingv3customtreeview</code></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="err">“searchItems”:</span><span class="w"> </span><span class="err">”ACP</span><span class="mi">1055352</span><span class="p">,</span><span class="err">MDH</span><span class="mi">42240</span><span class="p">,</span><span class="err">MA</span><span class="mi">210214</span><span class="err">”</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='transportation'>Transportation</h2>
+<p>The service allows for the submission of up to ten waybill and/or customer reference numbers per API call. We do not support partial matches nor do we support wildcards.
+You are however able to submit a combination of waybill and reference numbers in a single call and the platform will return results for matches, be it a waybill, a reference, or both.</p>
+<h2 id='parameters'>Parameters</h2>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>searchItems</td>
+<td>string</td>
+<td>Yes</td>
+<td>A comma separated list of items to be searched. Can be either a waybill, reference number, or a combination of both.</td>
+</tr>
+</tbody></table>
+<h2 id='response'>Response</h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dataTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"groupingIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"headerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tracking"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Date"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Waybill"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Senders Ref"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tracking Description"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"internalRef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal Ref"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13751791</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dataTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"headerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tracking"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06-09-2021 08:03"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACP1055352"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"740493"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivered to PRTER ME.A at 08:26 on 03 Sep 2021"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAMMY GROBLER"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"internalRef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13751791"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"groupingIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13751791</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dataTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"headerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tracking"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03-09-2021 08:26"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"740493"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivered to PRTER ME.A at 08:26 on 03 Sep 2021"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JACKIE MATHOLE"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"internalRef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13751791"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"groupingIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13751791</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dataTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"headerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tracking"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03-09-2021 08:26"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"740493"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Driver confirmed successful delivery"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JACKIE MATHOLE"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"internalRef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13751791"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"groupingIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13751791</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dataTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"headerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tracking"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03-09-2021 07:06"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"740493"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Loaded onto vehicle for delivery"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MORAKA RAMOKGOPA"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"internalRef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13751791"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"groupingIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13751791</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dataTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"headerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tracking"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03-09-2021 06:37"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"740493"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Arrived into PRY depot"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MORAKA RAMOKGOPA"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"internalRef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13751791"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"groupingIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13751791</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dataTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"headerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tracking"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02-09-2021 21:35"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"740493"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Departed JNB depot for PRY branch"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GEOFREY SEANEGO"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"internalRef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13751791"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"groupingIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13751791</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dataTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"headerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tracking"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02-09-2021 17:49"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"740493"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shipment integrated to courier system"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JONATHAN DAVIS"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"internalRef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13751791"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"groupingIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13747021</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dataTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"headerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tracking"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06-09-2021 08:02"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MA210214"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CTM,CTM"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivered to RAY RAY at 10:37 on 03 Sep 2021"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAMMY GROBLER"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"internalRef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13747021"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"groupingIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13747021</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dataTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"headerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tracking"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03-09-2021 10:37"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CTM,CTM"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivered to RAY RAY at 10:37 on 03 Sep 2021"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JACKIE MATHOLE"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"internalRef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13747021"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"groupingIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13747021</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dataTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"headerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tracking"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03-09-2021 10:37"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CTM,CTM"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Driver confirmed successful delivery"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JACKIE MATHOLE"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"internalRef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13747021"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"groupingIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13747021</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dataTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"headerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tracking"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03-09-2021 07:06"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CTM,CTM"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivery EMAIL notification sent to customer"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MORAKA RAMOKGOPA"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"internalRef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13747021"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"groupingIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13747021</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dataTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"headerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tracking"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03-09-2021 07:06"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CTM,CTM"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Loaded onto vehicle for delivery"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MORAKA RAMOKGOPA"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"internalRef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13747021"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"groupingIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13747021</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dataTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"headerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tracking"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03-09-2021 06:40"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CTM,CTM"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Arrived into PRY depot"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MORAKA RAMOKGOPA"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"internalRef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13747021"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"groupingIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13747021</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dataTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"headerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tracking"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02-09-2021 21:22"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CTM,CTM"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Departed JNB depot for PRY branch"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GEOFREY SEANEGO"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"internalRef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13747021"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"groupingIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13747021</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dataTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"headerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tracking"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02-09-2021 16:06"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CTM,CTM"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shipment handed to courier"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SABELO MTHETHWA"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"internalRef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13747021"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"groupingIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13750693</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dataTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"headerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tracking"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06-09-2021 08:03"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDH42240"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INV,INV,000640467"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivered to MPHO MUDAU at 09:03 on 03 Sep 2021"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAMMY GROBLER"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"internalRef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13750693"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"groupingIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13750693</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dataTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"headerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tracking"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03-09-2021 09:03"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INV,INV,000640467"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivered to MPHO MUDAU at 09:03 on 03 Sep 2021"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JACKIE MATHOLE"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"internalRef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13750693"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"groupingIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13750693</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dataTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"headerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tracking"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03-09-2021 09:03"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INV,INV,000640467"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Driver confirmed successful delivery"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JACKIE MATHOLE"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"internalRef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13750693"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"groupingIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13750693</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dataTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"headerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tracking"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03-09-2021 07:07"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INV,INV,000640467"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Loaded onto vehicle for delivery"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MORAKA RAMOKGOPA"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"internalRef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13750693"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"groupingIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13750693</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dataTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"headerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tracking"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03-09-2021 06:50"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INV,INV,000640467"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Arrived into PRY depot"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MARTIN MOKOKA"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"internalRef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13750693"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"groupingIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13750693</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dataTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"headerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tracking"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02-09-2021 21:26"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INV,INV,000640467"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Departed JNB depot for PRY branch"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GEOFREY SEANEGO"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"internalRef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13750693"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"groupingIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13750693</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dataTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"headerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tracking"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02-09-2021 17:45"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INV,INV,000640467"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shipment handed to courier"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"col5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SABELO MTHETHWA"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"internalRef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13750693"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"groupingIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>The response object contains an items array. The first object in this array is our data definition object. It’s purpose is to communicate the bindings of the column names to their column numbers in the subsequent objects. The purpose of this first object is to allow you to use this information for the binding up of the information to a client grid on your website if you wish.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>Our internal ID which has no relevance to you.</td>
+</tr>
+<tr>
+<td>items</td>
+<td>array</td>
+<td>An array containing the tracking event objects.</td>
+</tr>
+</tbody></table>
+
+<p>The <em>objects</em> contained in the <em>items</em> array are comprised as follows:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>Our internal ID which has no relevance to you.</td>
+</tr>
+<tr>
+<td>dataTypeId</td>
+<td>int</td>
+<td>Internal to BEX and of no use to you.</td>
+</tr>
+<tr>
+<td>groupingIndex</td>
+<td>int</td>
+<td>A tree hierarchy index used to identify parent objects from children.</td>
+</tr>
+<tr>
+<td>headerName</td>
+<td>string</td>
+<td>The name of the entity being returned, in this case “Tracking”.</td>
+</tr>
+<tr>
+<td>col1</td>
+<td>string</td>
+<td>Column1, typically the DateTime the event occurred.</td>
+</tr>
+<tr>
+<td>col2</td>
+<td>string</td>
+<td>Column2, typically the Waybill Number of the shipment.</td>
+</tr>
+<tr>
+<td>col3</td>
+<td>string</td>
+<td>Column3, typically the Customer reference supplied for the shipment.</td>
+</tr>
+<tr>
+<td>col4</td>
+<td>string</td>
+<td>Column4, typically the description of the Tracking event.</td>
+</tr>
+<tr>
+<td>col5</td>
+<td>string</td>
+<td>Column5, the BEX member of staff who recorded the event.</td>
+</tr>
+</tbody></table>
+
+<p>internalRef string Our internal ID which has no relevance to you.</p>
 <h1 id='waybill'>Waybill</h1><h2 id='waybill-overview'>Waybill Overview</h2>
 <p>This service is used to create a waybill shipping entry into the BEX courier database. 
 This allows BEX customers to directly interface their shipping requests and helps to 

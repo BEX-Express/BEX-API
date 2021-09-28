@@ -79,6 +79,7 @@ Some useful tools you can use to access the API include:
 
 # Authentication
 Authentication against the BEX API ecosystem is a two-part process and is required to prevent access to confidential client data. The process involves the generation of your API security token which is described in the next section. This token is then included in the HTTP headers of your API calls and serves to identify and authenticate you on our platform.
+
 API’s that serve non-sensitive client data such as our quick waybill tracking do not require your token to be present in the API call and can be called anonymously.
 
 
@@ -86,7 +87,9 @@ API’s that serve non-sensitive client data such as our quick waybill tracking 
 
 ## Overview
 
-The /login service serves as the starting point from which a valid session token will be generated. You call this endpoint to authenticate your username and password user credentials. The BEX platform will validate your request and if successful, will generate and return in the response object a token contained in the value attribute.
+The *login* service serves as the starting point from which a valid session token will be generated. You call this endpoint to authenticate your _username_ and _password_ user credentials.
+
+The BEX platform will validate your request and if successful, will generate and return in the response object a token contained in the value attribute.
 
 This token is unique to your integration user identity and is to be kept private as it is the key needed to unlock access to the account security restricted API’s.
 
@@ -138,7 +141,7 @@ Service Relative URL: `api/service/login`
 Parameter | FieldType | Required | Description
 --------- | --------- | -------- | -----------
 username | String | Yes |Your integration account _username_.
-password | String | Yes |Your integration account _password_.
+password | String | Yes |Your integration account _password_ (case sensitive).
 
 ## Response
 
@@ -146,12 +149,11 @@ The response body is structured as follows:
 
 Attribute | Type | Description
 --------- | ---- | -----------
-
 id | int | An internal BEX ID used to identify your user.
-Value | string | Your unique and private token.
+value | string | Your unique and private token.
 isStrongPassword | string | Confirms whether your password meets our complexity requirements.
 isEmailVerified	| string | Your email address is used to recover forgotten passwords or lost tokens and needs to be verified before transactions are possible.
-Email | string | The recovery email address against which this token is registered.
+email | string | The recovery email address against which this token is registered.
 signalRenabled | string | A feature-flag used internally on our platform.
 allowApiLogin | string | A feature-flag used internally to grant additional login rights to your user identity. This is not a requirement to use our API endpoints.
 
@@ -167,9 +169,9 @@ allowApiLogin | string | A feature-flag used internally to grant additional logi
 }
 ```
 
-With your token now in hand you can proceed to call our security restricted API’s.
+With your token now generated you can proceed to call our security restricted API’s.
 
-To do so, you *include it as a header attribute* in the HTTP headers of the call you are making to the respective API endpoints. The attribute is to be titled *token*
+To do so, you *include it as a header attribute* in the HTTP headers of the call you are making to the respective API endpoints. The attribute is to be titled **token**
 
 
 ## Transportation

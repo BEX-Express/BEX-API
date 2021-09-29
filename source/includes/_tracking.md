@@ -133,6 +133,7 @@ Attribute | Type | Description
 id | int | Our internal ID which has no relevance to you.
 items |array | An array containing the tracking event objects.
 
+
 The _objects_ contained in the _items_ array are comprised as follows:
 
 Attribute | Type | Description
@@ -146,4 +147,4 @@ col2 | string | Column2, typically the Waybill Number of the shipment.
 col3 | string | Column3, typically the Customer reference supplied for the shipment.
 col4 | string | Column4, typically the description of the Tracking event.
 col5 | string |Column5, the BEX member of staff who recorded the event.
-internalRef string Our internal ID which has no relevance to you.
+internalRef | string | Our internal ID which has no relevance to you.

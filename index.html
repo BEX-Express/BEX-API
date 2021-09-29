@@ -487,7 +487,18 @@ The service supports URL parameters or JSON parameters in the message body</p>
 <aside class="notice">
     All URL-based field values must be URL encoded if special characters are used
 </aside>
-<h2 id='response'>Response</h2>
+<h2 id='response'>Response</h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19696</span><span class="p">,</span><span class="w">
+ </span><span class="err">//</span><span class="w"> </span><span class="err">Here's</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">token</span><span class="w"> </span><span class="err">-------------------------------------------------------</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dOdw98ycsih298749bd6MbZre8o7tt3r3nhfowo8dnBDpEJvkzcQG1vb44sy"</span><span class="p">,</span><span class="w">
+ </span><span class="err">//</span><span class="w"> </span><span class="err">------------------------------------------------------------------------</span><span class="w">
+    </span><span class="nl">"isStrongPassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"True"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isEmailVerified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"True"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your.email@company.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"signalREnabled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"allowApiLogin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p>The response body is structured as follows:</p>
 
 <table><thead>
@@ -533,18 +544,7 @@ The service supports URL parameters or JSON parameters in the message body</p>
 <td>A feature-flag used internally to grant additional login rights to your user identity. This is not a requirement to use our API endpoints.</td>
 </tr>
 </tbody></table>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19696</span><span class="p">,</span><span class="w">
- </span><span class="err">//</span><span class="w"> </span><span class="err">Here's</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">token</span><span class="w"> </span><span class="err">-------------------------------------------------------</span><span class="w">
-    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dOdw98ycsih298749bd6MbZre8o7tt3r3nhfowo8dnBDpEJvkzcQG1vb44sy"</span><span class="p">,</span><span class="w">
- </span><span class="err">//</span><span class="w"> </span><span class="err">------------------------------------------------------------------------</span><span class="w">
-    </span><span class="nl">"isStrongPassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"True"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"isEmailVerified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"True"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your.email@company.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"signalREnabled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"allowApiLogin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
+
 <p><strong>With your token now generated you can proceed to call our security restricted API’s.</strong></p>
 <div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">"</span><span class="s2">url</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://build.bex.co.za/api/service/submitwaybillwia</span><span class="dl">"</span><span class="p">,</span>

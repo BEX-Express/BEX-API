@@ -35,7 +35,7 @@ searchItems | string | Yes | A comma separated list of items to be searched. Can
 {
     "id": 0,
     "items": [
-    // first object is our data-definition object.
+    // first object is our data-definition object, identified by the groupingIndex == -1.
         {
             "id": 0,
             "dataTypeId": 4,
@@ -48,7 +48,7 @@ searchItems | string | Yes | A comma separated list of items to be searched. Can
             "col5": "User",
             "internalRef": "Internal Ref"
         },
-    // subsequent objects are the tracking events themselves.
+    // subsequent objects are the tracking events themselves, identified by the groupingIndex == 0
         {
             "id": 13751791,
             "dataTypeId": 2,
@@ -58,18 +58,6 @@ searchItems | string | Yes | A comma separated list of items to be searched. Can
             "col3": "740493",
             "col4": "Delivered to PRTER ME.A at 08:26 on 03 Sep 2021",
             "col5": "SAMMY GROBLER",
-            "internalRef": "13751791",
-            "groupingIndex": 0
-        },
-        {
-            "id": 13751791,
-            "dataTypeId": 2,
-            "headerName": "Tracking",
-            "col1": "03-09-2021 08:26",
-            "col2": "",
-            "col3": "740493",
-            "col4": "Delivered to PRTER ME.A at 08:26 on 03 Sep 2021",
-            "col5": "JACKIE MATHOLE",
             "internalRef": "13751791",
             "groupingIndex": 0
         },
@@ -131,186 +119,6 @@ searchItems | string | Yes | A comma separated list of items to be searched. Can
             "col4": "Shipment integrated to courier system",
             "col5": "JONATHAN DAVIS",
             "internalRef": "13751791",
-            "groupingIndex": 0
-        },
-        {
-            "id": 13747021,
-            "dataTypeId": 2,
-            "headerName": "Tracking",
-            "col1": "06-09-2021 08:02",
-            "col2": "MA210214",
-            "col3": "CTM,CTM",
-            "col4": "Delivered to RAY RAY at 10:37 on 03 Sep 2021",
-            "col5": "SAMMY GROBLER",
-            "internalRef": "13747021",
-            "groupingIndex": 1
-        },
-        {
-            "id": 13747021,
-            "dataTypeId": 2,
-            "headerName": "Tracking",
-            "col1": "03-09-2021 10:37",
-            "col2": "",
-            "col3": "CTM,CTM",
-            "col4": "Delivered to RAY RAY at 10:37 on 03 Sep 2021",
-            "col5": "JACKIE MATHOLE",
-            "internalRef": "13747021",
-            "groupingIndex": 1
-        },
-        {
-            "id": 13747021,
-            "dataTypeId": 2,
-            "headerName": "Tracking",
-            "col1": "03-09-2021 10:37",
-            "col2": "",
-            "col3": "CTM,CTM",
-            "col4": "Driver confirmed successful delivery",
-            "col5": "JACKIE MATHOLE",
-            "internalRef": "13747021",
-            "groupingIndex": 1
-        },
-        {
-            "id": 13747021,
-            "dataTypeId": 2,
-            "headerName": "Tracking",
-            "col1": "03-09-2021 07:06",
-            "col2": "",
-            "col3": "CTM,CTM",
-            "col4": "Delivery EMAIL notification sent to customer",
-            "col5": "MORAKA RAMOKGOPA",
-            "internalRef": "13747021",
-            "groupingIndex": 1
-        },
-        {
-            "id": 13747021,
-            "dataTypeId": 2,
-            "headerName": "Tracking",
-            "col1": "03-09-2021 07:06",
-            "col2": "",
-            "col3": "CTM,CTM",
-            "col4": "Loaded onto vehicle for delivery",
-            "col5": "MORAKA RAMOKGOPA",
-            "internalRef": "13747021",
-            "groupingIndex": 1
-        },
-        {
-            "id": 13747021,
-            "dataTypeId": 2,
-            "headerName": "Tracking",
-            "col1": "03-09-2021 06:40",
-            "col2": "",
-            "col3": "CTM,CTM",
-            "col4": "Arrived into PRY depot",
-            "col5": "MORAKA RAMOKGOPA",
-            "internalRef": "13747021",
-            "groupingIndex": 1
-        },
-        {
-            "id": 13747021,
-            "dataTypeId": 2,
-            "headerName": "Tracking",
-            "col1": "02-09-2021 21:22",
-            "col2": "",
-            "col3": "CTM,CTM",
-            "col4": "Departed JNB depot for PRY branch",
-            "col5": "GEOFREY SEANEGO",
-            "internalRef": "13747021",
-            "groupingIndex": 1
-        },
-        {
-            "id": 13747021,
-            "dataTypeId": 2,
-            "headerName": "Tracking",
-            "col1": "02-09-2021 16:06",
-            "col2": "",
-            "col3": "CTM,CTM",
-            "col4": "Shipment handed to courier",
-            "col5": "SABELO MTHETHWA",
-            "internalRef": "13747021",
-            "groupingIndex": 1
-        },
-        {
-            "id": 13750693,
-            "dataTypeId": 2,
-            "headerName": "Tracking",
-            "col1": "06-09-2021 08:03",
-            "col2": "MDH42240",
-            "col3": "INV,INV,000640467",
-            "col4": "Delivered to MPHO MUDAU at 09:03 on 03 Sep 2021",
-            "col5": "SAMMY GROBLER",
-            "internalRef": "13750693",
-            "groupingIndex": 0
-        },
-        {
-            "id": 13750693,
-            "dataTypeId": 2,
-            "headerName": "Tracking",
-            "col1": "03-09-2021 09:03",
-            "col2": "",
-            "col3": "INV,INV,000640467",
-            "col4": "Delivered to MPHO MUDAU at 09:03 on 03 Sep 2021",
-            "col5": "JACKIE MATHOLE",
-            "internalRef": "13750693",
-            "groupingIndex": 0
-        },
-        {
-            "id": 13750693,
-            "dataTypeId": 2,
-            "headerName": "Tracking",
-            "col1": "03-09-2021 09:03",
-            "col2": "",
-            "col3": "INV,INV,000640467",
-            "col4": "Driver confirmed successful delivery",
-            "col5": "JACKIE MATHOLE",
-            "internalRef": "13750693",
-            "groupingIndex": 0
-        },
-        {
-            "id": 13750693,
-            "dataTypeId": 2,
-            "headerName": "Tracking",
-            "col1": "03-09-2021 07:07",
-            "col2": "",
-            "col3": "INV,INV,000640467",
-            "col4": "Loaded onto vehicle for delivery",
-            "col5": "MORAKA RAMOKGOPA",
-            "internalRef": "13750693",
-            "groupingIndex": 0
-        },
-        {
-            "id": 13750693,
-            "dataTypeId": 2,
-            "headerName": "Tracking",
-            "col1": "03-09-2021 06:50",
-            "col2": "",
-            "col3": "INV,INV,000640467",
-            "col4": "Arrived into PRY depot",
-            "col5": "MARTIN MOKOKA",
-            "internalRef": "13750693",
-            "groupingIndex": 0
-        },
-        {
-            "id": 13750693,
-            "dataTypeId": 2,
-            "headerName": "Tracking",
-            "col1": "02-09-2021 21:26",
-            "col2": "",
-            "col3": "INV,INV,000640467",
-            "col4": "Departed JNB depot for PRY branch",
-            "col5": "GEOFREY SEANEGO",
-            "internalRef": "13750693",
-            "groupingIndex": 0
-        },
-        {
-            "id": 13750693,
-            "dataTypeId": 2,
-            "headerName": "Tracking",
-            "col1": "02-09-2021 17:45",
-            "col2": "",
-            "col3": "INV,INV,000640467",
-            "col4": "Shipment handed to courier",
-            "col5": "SABELO MTHETHWA",
-            "internalRef": "13750693",
             "groupingIndex": 0
         }
     ]

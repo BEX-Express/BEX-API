@@ -5,7 +5,7 @@
 You can query our courier platform for up-to-the-minute tracking information pertaining to your shipments. We have exposed a lightweight tracking service that returns non-sensitive tracking events for the shipments queried.
 To cater for customers wishing to display this tracking information on their own websites we include a schema definition in the tracking response that can be used to bind the fields to a client grid implemented on your website.
 
-## Endpoint:
+## Endpoint
 `/api/waybillquicktrackingv3customtreeview`
 
 ## Transportation

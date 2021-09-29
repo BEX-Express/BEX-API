@@ -357,9 +357,10 @@ Couple this with our token based Authentication methods and standard HTTP verbs 
 <li>For security sensitive data requests, a valid <a href="#login">token</a>.</li>
 </ol>
 
+<p><strong>Note:</strong> If you have multiple shipping accounts you are not required to transact under multiple integration identities (“tokens”). Our platform supports the assignment of multiple shipping accounts to a <em>single</em> token, making integration across multiple business units easier.</p>
+
 <aside class="notice">
-Note: If you have multiple shipping accounts you are not required to transact under multiple integration identities (“tokens”). Our platform supports the assignment of multiple shipping accounts to a single token, making integration across multiple business units easier.
-You may access the API over HTTP or HTTPS, but HTTPS us recommended where possible.
+You may access the API over HTTP or HTTPS, but HTTPS is recommended if you wish to keep things secure.
 </aside>
 <h1 id='request-response-format'>Request/Response Format</h1>
 <p>The default response format is <strong>JSON</strong>. Requests with a message-body use plain JSON to set resource attributes.</p>

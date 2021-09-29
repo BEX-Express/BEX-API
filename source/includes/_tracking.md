@@ -13,7 +13,7 @@ To cater for customers wishing to display this tracking information on their own
 The service allows for the submission of up to ten waybill and/or customer reference numbers per API call. We do not support partial matches nor do we support wildcards.
 You are however able to submit a combination of waybill and reference numbers in a single call and the platform will return results for matches, be it a waybill, a reference, or both.
 
-You can submit a GET request as follows:
+You can submit a **GET** request as follows:
 
 `https://api.bex.co.za/api/waybillquicktrackingv3customtreeview?searchItems=ACP1055352,MDH42240,MA210214`
 

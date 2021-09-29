@@ -20,7 +20,7 @@ includes:
 search: true
 ---
 
-# Introduction
+# Welcome to our DOCS site.
 
 Here at BEX we frequently develop and publish new API’s to assist our customers who wish to gain deeper control and visibility into their courier processes.
 
@@ -35,7 +35,7 @@ To make use of our API integration we require the following:
 
 1. A valid <a href="https://bex.co.za/signup">shipping account</a> with BEX.
 1. The creation of an integration user identity under which you will transact over the API’s
-1. For security sensitive data requests, a valid token.
+1. For security sensitive data requests, a valid <a href="#login">token</a>.
 
 <aside class="notice">
 Note: If you have multiple shipping accounts you are not required to transact under multiple integration identities (“tokens”). Our platform supports the assignment of multiple shipping accounts to a single token, making integration across multiple business units easier.
@@ -54,16 +54,17 @@ You can find the errors specific to each API endpoint under its dedicated API to
 We communicate API errors in the _ex:_ ( _ex_ ception ) attribute found in the base object of our API responses.
 
 **A word on success flags:**
-We return `200 OK` http status responses for **ALL** requests that make it to our server, **even if we run into an error when processing your request.** For API submissions that result in a processing error (read _validation and business logic/”elegant” type errors_) we include an attribute in the API response titled _ex:_ where we communicate the reason for the processing failure.
+We return `200 OK` http status responses for **ALL** requests that make it to our server, **even if we run into an error when processing your request.**
 
-An example could be:
+For API submissions that result in a processing error (read _validation and business logic/”elegant” type errors_) we include an attribute in the API response titled _ex:_ where we communicate the reason for the processing failure.
+
+A response could look as follows:
 
 * HTTP status code: `200 OK`
 * API response: `"ex": "Account number is not registered for transactions with this token."`
 
 ![200 OK with error ex:](200OK-response-with-ex-error.jpg)
-
-_Above, note the 200 OK status whilst receiving an error ex: response_
+_Above: Note the 200 OK status whilst receiving an error ex: response_
 
 In instances where there is a technical breakdown in the processing of the API request, such as querying the wrong endpoint address, you will receive the appropriate http status code such as a `404 error`.
 

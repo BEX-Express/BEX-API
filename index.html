@@ -550,6 +550,10 @@ The service supports URL parameters or JSON parameters in the message body</p>
 </tbody></table>
 
 <p><strong>With your token now generated you can proceed to call our security restricted API’s.</strong></p>
+
+<blockquote>
+<p>Javascript showing the token defined in the headers.</p>
+</blockquote>
 <div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">"</span><span class="s2">url</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://build.bex.co.za/api/service/submitwaybillwia</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">method</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
@@ -574,6 +578,10 @@ You are however able to submit a combination of waybill and reference numbers in
 <p>You can submit a <strong>GET</strong> request as follows:</p>
 
 <p><code>https://api.bex.co.za/api/waybillquicktrackingv3customtreeview?searchItems=ACP1055352,MDH42240,MA210214</code></p>
+
+<blockquote>
+<p>Sample json message body</p>
+</blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="err">“searchItems”:</span><span class="w"> </span><span class="err">”ACP</span><span class="mi">1055352</span><span class="p">,</span><span class="err">MDH</span><span class="mi">42240</span><span class="p">,</span><span class="err">MA</span><span class="mi">210214</span><span class="err">”</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -593,7 +601,11 @@ You are however able to submit a combination of waybill and reference numbers in
 <td>A comma separated list of items to be searched. Can be either a waybill, reference number, or a combination of both.</td>
 </tr>
 </tbody></table>
-<h2 id='response'>Response</h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h2 id='response'>Response</h2>
+<blockquote>
+<p>Sample json tracking response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="err">//</span><span class="w"> </span><span class="err">first</span><span class="w"> </span><span class="err">object</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">our</span><span class="w"> </span><span class="err">data-definition</span><span class="w"> </span><span class="err">object</span><span class="p">,</span><span class="w"> </span><span class="err">identified</span><span class="w"> </span><span class="err">by</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">groupingIndex</span><span class="w"> </span><span class="err">==</span><span class="w"> </span><span class="mi">-1</span><span class="err">.</span><span class="w">
@@ -773,7 +785,11 @@ You are however able to submit a combination of waybill and reference numbers in
 <p>It is important to note that quoting on our platform is a “just-in-time” process and we do not store your quotes (nor return a quote number) for later acceptance by yourself. Instead, our implementation is like that of airline bookings where prices quoted are as at “now”. If you choose not to make a booking the prices may change when next you log onto the platform.</p>
 <h2 id='endpoint'>Endpoint</h2>
 <p>Service Relative URL: <code>/api/getquoteservicedeliverypricingV2</code></p>
-<h2 id='parameters'>Parameters</h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h2 id='parameters'>Parameters</h2>
+<blockquote>
+<p>Sample json quoting message body</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"dispatchDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-09-03"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"totalWeight"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"dimMass"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25000"</span><span class="p">,</span><span class="w">
@@ -918,7 +934,11 @@ A customer order is going from Steeledale to Secunda. The order is made up of <s
 </ul>
 
 <p>For the addressing, first prize we would like the co-ordinates of the collection and delivery locations (json snippet 1), otherwise you can pass us the suburb and postcode of the collection and delivery locations (snippet 2 or 3). </p>
-<h2 id='response'>Response</h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h2 id='response'>Response</h2>
+<blockquote>
+<p>json quoting response.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
@@ -1179,7 +1199,11 @@ namely:</p>
 <li>Dimensioning</li>
 <li>Service Add-Ons</li>
 </ul>
-<h2 id='addresses'>Addresses</h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h2 id='addresses'>Addresses</h2>
+<blockquote>
+<p>Sample json message body.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"waybillNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ST116664"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"waybillDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-09-23"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"serviceCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NCA"</span><span class="p">,</span><span class="w">
@@ -1626,7 +1650,7 @@ and sms alerts.</p>
 * SURAHS - After Hours Delivery Handling</p>
 <h2 id='waybill-transportation'>Waybill Transportation</h2>
 <blockquote>
-<p>Javascript / jQuery Example.</p>
+<p>jQuery Waybill Submission Example.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="o">&lt;!</span><span class="nx">DOCTYPE</span> <span class="nx">html</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="nx">html</span> <span class="nx">xmlns</span><span class="o">=</span><span class="dl">"</span><span class="s2">http://www.w3.org/1999/xhtml</span><span class="dl">"</span><span class="o">&gt;</span>

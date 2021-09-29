@@ -73,18 +73,6 @@ URL: `http://insight.bex.co.za/api/service/login?username=user123&password=pass1
 
 ## Response
 
-The response body is structured as follows:
-
-Attribute | Type | Description
---------- | ---- | -----------
-id | int | An internal BEX ID used to identify your user.
-value | string | Your unique and private token.
-isStrongPassword | string | Confirms whether your password meets our complexity requirements.
-isEmailVerified	| string | Your email address is used to recover forgotten passwords or lost tokens and needs to be verified before transactions are possible.
-email | string | The recovery email address against which this token is registered.
-signalRenabled | string | A feature-flag used internally on our platform.
-allowApiLogin | string | A feature-flag used internally to grant additional login rights to your user identity. This is not a requirement to use our API endpoints.
-
 ```json
 {
     "id": 19696,
@@ -98,6 +86,19 @@ allowApiLogin | string | A feature-flag used internally to grant additional logi
     "allowApiLogin": "False"
 }
 ```
+
+The response body is structured as follows:
+
+Attribute | Type | Description
+--------- | ---- | -----------
+id | int | An internal BEX ID used to identify your user.
+value | string | Your unique and private token.
+isStrongPassword | string | Confirms whether your password meets our complexity requirements.
+isEmailVerified	| string | Your email address is used to recover forgotten passwords or lost tokens and needs to be verified before transactions are possible.
+email | string | The recovery email address against which this token is registered.
+signalRenabled | string | A feature-flag used internally on our platform.
+allowApiLogin | string | A feature-flag used internally to grant additional login rights to your user identity. This is not a requirement to use our API endpoints.
+
 
 **With your token now generated you can proceed to call our security restricted API’s.**
 

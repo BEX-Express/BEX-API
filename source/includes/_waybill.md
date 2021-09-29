@@ -26,6 +26,8 @@ namely:
 
 ## Addresses
 
+> Sample json message body.
+
 ```json
 {
   "waybillNumber": "ST116664",
@@ -193,7 +195,7 @@ The codes for the service add-ons that are requested:
 ## Waybill Transportation
 
 
-> Javascript / jQuery Example.
+> jQuery Waybill Submission Example.
 
 ```javascript
 <!DOCTYPE html>

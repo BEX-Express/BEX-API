@@ -104,6 +104,8 @@ allowApiLogin | string | A feature-flag used internally to grant additional logi
 
 **With your token now generated you can proceed to call our security restricted API’s.**
 
+> Javascript showing the token defined in the headers.
+
 ```javascript
 var settings = {
   "url": "https://build.bex.co.za/api/service/submitwaybillwia",

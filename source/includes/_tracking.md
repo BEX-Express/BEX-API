@@ -17,6 +17,8 @@ You can submit a **GET** request as follows:
 
 `https://api.bex.co.za/api/waybillquicktrackingv3customtreeview?searchItems=ACP1055352,MDH42240,MA210214`
 
+> Sample json message body
+
 ```json
 {
 	“searchItems”: ”ACP1055352,MDH42240,MA210214”
@@ -30,6 +32,8 @@ Parameter | Type | Required | Description
 searchItems | string | Yes | A comma separated list of items to be searched. Can be either a waybill, reference number, or a combination of both.
 
 ## Response
+
+> Sample json tracking response
 
 ```json
 {

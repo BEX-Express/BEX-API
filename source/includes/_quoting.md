@@ -87,13 +87,20 @@ If you provide us the GPS position of the respective collection and/or delivery 
 In courier we use the greater of the _actual_ weight or the _volume_ of the goods to be shipped. Basically, we charge by weight OR by the physical size of the goods, whichever is greater (aircraft get expensive when flying empty boxes around).
 
 These 2 parameters are:
-1.`totalWeight` (This is the total weight in kilograms of all of the goods on this order)
-1.`dimMass` (This is the sum of the total cubic centimetres of all of the goods on this order)
+
+1.`totalWeight` (The total weight in kilograms of **all** of the goods on this order)
+1.`dimMass` (The sum of the total cubic centimetres of **all** of the goods on this order)
 
 **Example:**
 A customer order is going from Steeledale to Secunda. The order is made up of **2 boxes** as follows:
+
 1.A stock 1 box (40cm x 40cm x 20cm) and weighing 18kgs
 1.A stock 4 box (80cm x 80cm x 30cm) and weighing 25kgs.
+
+Looking at the code snippets on the right, you can see that the quotation request is to be structured as follows:
+
+* `"actualWeight": "43"`
+* `"dimMass": "224000"` (40x40x20) + (80x80x30)
 
 For the addressing, first prize we would like the co-ordinates of the collection and delivery locations (json snippet 1), otherwise you can pass us the suburb and postcode of the collection and delivery locations (snippet 2 or 3). 
 

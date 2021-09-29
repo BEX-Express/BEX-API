@@ -29,6 +29,8 @@ Couple this with our token based Authentication methods and standard HTTP verbs 
 
 We hope that you will build something great and benefit from integrating with our courier API’s.
 
+We want your courier journey to be pain-free - If you run into any difficulties, or perhaps you have some suggestions for us, please do not hesitate to <a href="mailto:it@bex.co.za?subject=Please%20help%20me%20to%20integrate%20with%20you">reach out</a> and we will gladly work with you.
+
 # Requirements
 
 To make use of our API integration we require the following:

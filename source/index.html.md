@@ -47,19 +47,20 @@ The default response format is **JSON**. Requests with a message-body use plain 
 
 Successful requests will return a `200 OK` HTTP status.
 
-<aside class="notice">
-A word on success flags:
-We return 200 OK status responses for ALL requests that make it to our server, even if we run into an error when processing your request. For API submissions that result in a processing error (read validation and business logic/”elegant” type errors) we include an attribute in the API response titled ex: where we communicate the reason for the processing failure. An example could be:
-HTTP status code: 200 OK
-API response body: ex: Account number is not registered for transactions with this token.
-In instances where there is a technical breakdown in the processing of the API request, such as querying the wrong API name, you will receive the appropriate http status code such as a 503.x error.
-</aside>
-
 # Errors
 
 You can find the errors specific to each API endpoint under its dedicated API topic.
 
-Errors return both an appropriate HTTP status code and response object which contains an ex attribute.
+We communicate API errors in the _ex:_ (_ex_ception) attribute found in the base object of our API responses.
+
+**A word on success flags:**
+We return 200 OK status responses for ALL requests that make it to our server, even if we run into an error when processing your request. For API submissions that result in a processing error (read _validation and business logic/”elegant” type errors_) we include an attribute in the API response titled _ex:_ where we communicate the reason for the processing failure.
+
+An example could be:
+- HTTP status code: `200 OK`
+- API response body: `"ex": "Account number is not registered for transactions with this token."`
+
+In instances where there is a technical breakdown in the processing of the API request, such as querying the wrong endpoint address, you will receive the appropriate http status code such as a `404 error`.
 
 # Parameters
 

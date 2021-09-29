@@ -487,18 +487,24 @@ The service supports URL parameters or JSON parameters in the message body</p>
 <aside class="notice">
     All URL-based field values must be URL encoded if special characters are used
 </aside>
-<h2 id='response'>Response</h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19696</span><span class="p">,</span><span class="w">
- </span><span class="err">//</span><span class="w"> </span><span class="err">Here's</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">token</span><span class="w"> </span><span class="err">-------------------------------------------------------</span><span class="w">
-    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dOdw98ycsih298749bd6MbZre8o7tt3r3nhfowo8dnBDpEJvkzcQG1vb44sy"</span><span class="p">,</span><span class="w">
- </span><span class="err">//</span><span class="w"> </span><span class="err">------------------------------------------------------------------------</span><span class="w">
-    </span><span class="nl">"isStrongPassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"True"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"isEmailVerified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"True"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your.email@company.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"signalREnabled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"allowApiLogin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
+<h2 id='response'>Response</h2>
+<blockquote>
+<p>Sample json response.
+<code>json
+{
+    &quot;id&quot;: 19696,
+ // Here&#39;s the token -------------------------------------------------------
+    &quot;value&quot;: &quot;dOdw98ycsih298749bd6MbZre8o7tt3r3nhfowo8dnBDpEJvkzcQG1vb44sy&quot;,
+ // ------------------------------------------------------------------------
+    &quot;isStrongPassword&quot;: &quot;True&quot;,
+    &quot;isEmailVerified&quot;: &quot;True&quot;,
+    &quot;email&quot;: &quot;your.email@company.com&quot;,
+    &quot;signalREnabled&quot;: &quot;False&quot;,
+    &quot;allowApiLogin&quot;: &quot;False&quot;
+}
+</code></p>
+</blockquote>
+
 <p>The response body is structured as follows:</p>
 
 <table><thead>

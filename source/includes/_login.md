@@ -4,7 +4,7 @@
 
 The *login* service serves as the starting point from which a valid session token will be generated. You call this endpoint to authenticate your _username_ and _password_ user credentials.
 
-The BEX platform will validate your request and if successful, will generate and return in the response object a token contained in the value attribute.
+The BEX platform will validate your request and if successful, generate and return in the response object a token contained in the `"value":` attribute.
 
 This token is unique to your integration user identity and is to be kept private as it is the key needed to unlock access to the account security restricted API’s.
 

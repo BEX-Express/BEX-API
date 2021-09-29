@@ -73,7 +73,8 @@ In instances where there is a technical breakdown in the processing of the API r
 
 # Parameters
 
-Almost all endpoints accept optional parameters which can be passed as a HTTP query string parameter, e.g. `GET /getcustomquicktracking_V3?ref=invoices`
+Almost all endpoints accept optional parameters which can be passed as an HTTP query string parameter, e.g. `GET /getcustomquicktracking_V3?ref=invoices`
+
 Parameters containing special characters that are passed in a URL request must have their data url encoded.
 
 All parameters are documented along each endpoint.
@@ -82,7 +83,7 @@ All parameters are documented along each endpoint.
 We do not currently offer any libraries for our API implementation. We are in the process of creating .NET wrappers that you can use in the future. We will publish more information on this topic once it is ready for use.
 
 # Tools
-Some useful tools you can use to access the API include:
+Some useful tools you can use to access the API's include:
 
 * <a href="https://insomnia.rest">Insomnia</a> - Cross-platform GraphQL and REST client, available for Mac, Windows, and Linux.
 * <a href="https://getpostman.com">Postman</a> - Cross-platform REST client, available for Mac, Windows, and Linux.
@@ -93,4 +94,4 @@ Some useful tools you can use to access the API include:
 # Authentication
 Authentication against the BEX API ecosystem is a two-part process and is required to prevent access to confidential client data. The process involves the generation of your API security token which is described in the next section. This token is then included in the HTTP headers of your API calls and serves to identify and authenticate you on our platform.
 
-API’s that serve non-sensitive client data such as our quick waybill tracking do not require your token to be present in the API call and can be called anonymously.
+API’s that serve non-sensitive client data such as our quick waybill <a href="tracking">tracking</a> do not require your token to be present in the API call and can be called anonymously.

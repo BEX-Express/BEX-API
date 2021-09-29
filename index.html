@@ -373,12 +373,14 @@ We return <code>200 OK</code> http status responses for <strong>ALL</strong> req
 
 <p>An example could be:</p>
 
-<p>*HTTP status code: <code>200 OK</code>
-*API response body: <code>&quot;ex&quot;: &quot;Account number is not registered for transactions with this token.&quot;</code></p>
+<ul>
+<li>HTTP status code: <code>200 OK</code></li>
+<li>API response body: <code>&quot;ex&quot;: &quot;Account number is not registered for transactions with this token.&quot;</code></li>
+</ul>
 
 <p>In instances where there is a technical breakdown in the processing of the API request, such as querying the wrong endpoint address, you will receive the appropriate http status code such as a <code>404 error</code>.</p>
 
-<p><img src="images/source/images/200OK-response-with-ex-error.jpg" alt="200 OK with error ex:" /></p>
+<p><img src="images/200OK-response-with-ex-error-96d58e35.jpg" alt="200 OK with error ex:" /></p>
 <h1 id='parameters'>Parameters</h1>
 <p>Almost all endpoints accept optional parameters which can be passed as a HTTP query string parameter, e.g. GET /getcustomquicktracking_V3?ref=invoices
 Parameters containing special characters that are passed in a URL request must have their data url encoded.</p>

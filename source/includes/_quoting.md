@@ -102,8 +102,8 @@ A customer order is going from Sandton to Secunda. The order is made up of **2 b
 
 Looking at the code snippets on the right, you can see that the quotation request is to be structured as follows:
 
-* `"actualWeight": "43"`
-* `"dimMass": "224000"` (40x40x20) + (80x80x30) = 22,400
+* `"totalWeight": "43"`
+* `"dimMass": "224000"` (40x40x20) + (80x80x30) = 224,000
 
 For the addressing, first prize we would like the co-ordinates of the collection and delivery locations (json snippet 1), otherwise you can pass us the suburb and postcode of the collection and delivery locations (snippet 2 or 3). 
 

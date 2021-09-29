@@ -104,7 +104,6 @@ SenderTelephone | String | No | No | Contact person telephone number
 SenderMobile | String | No | No | Contact person mobile number
 
 SenderMobile is useful for shipment progress updates
-----------------------------------------------------
 
 Parameter | FieldType | Case | Required | Note
 --------- | --------- | ---- | -------- | ------- 

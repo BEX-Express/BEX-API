@@ -30,7 +30,7 @@ It is important to note that quoting on our platform is a “just-in-time” pro
 > We are flexible as to how you supply the addressing.
 
 ```json
-// Just coordinates
+// Snippet 1: Just coordinates
 {
     "originLatCoord":"-26.2462726",
     "originLonCoord":"28.0969053",
@@ -40,7 +40,7 @@ It is important to note that quoting on our platform is a “just-in-time” pro
     "dimMass":"224000"
 }
 
-// or, just location names
+// Snippet 2: Just location names
 {
     "originSuburb":"Steeledale",
     "originPostCode":"2197",
@@ -50,7 +50,7 @@ It is important to note that quoting on our platform is a “just-in-time” pro
     "dimMass":"224000"
 }
 
-// or even a combination of both
+// Snippet 3: A combination of both
 {
     "originLatCoord":"-26.2462726",
     "originLonCoord":"28.0969053",
@@ -60,8 +60,6 @@ It is important to note that quoting on our platform is a “just-in-time” pro
     "dimMass":"224000"
 }
 ```
-
-
 
 To offer an accurate price we require the following parameters from you.
 
@@ -83,6 +81,21 @@ destinationLonCoord | Decimal | The GPS longitude (east-west position) of your d
 <aside class="notice">
 If you provide us the GPS position of the respective collection and/or delivery locations you are not required to provide the Suburb, Town or Postcode information for that location. If you provide us with both (the GPS coordinates as well as the Suburb/Postcode pairs) we will favour and use exclusively the GPS position in the building of your quoted pricing.
 </aside>
+
+**Calculation of the delivery charges**
+
+In courier we use the greater of the _actual_ weight or the _volume_ of the goods to be shipped. Basically, we charge by weight OR by the physical size of the goods, whichever is greater (aircraft get expensive when flying empty boxes around).
+
+These 2 parameters are:
+1.`totalWeight` (This is the total weight in kilograms of all of the goods on this order)
+1.`dimMass` (This is the sum of the total cubic centimetres of all of the goods on this order)
+
+**Example:**
+A customer order is going from Steeledale to Secunda. The order is made up of **2 boxes** as follows:
+1.A stock 1 box (40cm x 40cm x 20cm) and weighing 18kgs
+1.A stock 4 box (80cm x 80cm x 30cm) and weighing 25kgs.
+
+For the addressing, first prize we would like the co-ordinates of the collection and delivery locations (json snippet 1), otherwise you can pass us the suburb and postcode of the collection and delivery locations (snippet 2 or 3). 
 
 ## Response
 

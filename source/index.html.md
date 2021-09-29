@@ -7,8 +7,9 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
   - <a href='https://bex.co.za/signup'>Open a BEX account</a>
-  - <a href='https://github.com/acme'>Client libraries</a>
-  - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
+  - <a href='https://bex.co.za/quick-track'>Track a shipment</a>
+  - <a href='https://bex.co.za/about'>About us</a>
+
 
 includes:
   - login
@@ -32,7 +33,7 @@ We hope that you will build something great and benefit from integrating with ou
 
 To make use of our API integration we require the following:
 
-1. A valid shipping account with BEX.
+1. A valid <a href="https://bex.co.za/signup">shipping account</a> with BEX.
 1. The creation of an integration user identity under which you will transact over the API’s
 1. For security sensitive data requests, a valid token.
 
@@ -42,7 +43,7 @@ You may access the API over HTTP or HTTPS, but HTTPS us recommended where possib
 </aside>
 
 # Request/Response Format
-The default response format is JSON. Requests with a message-body use plain JSON to set resource attributes.
+The default response format is **JSON**. Requests with a message-body use plain JSON to set resource attributes.
 
 Successful requests will return a `200 OK` HTTP status.
 

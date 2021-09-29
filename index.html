@@ -545,10 +545,18 @@ The service supports URL parameters or JSON parameters in the message body</p>
     </span><span class="nl">"allowApiLogin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<aside class="success">
-With your token now generated and in hand, you can proceed to call our security restricted API’s.
-</aside>
-
+<p><strong>With your token now generated you can proceed to call our security restricted API’s.</strong></p>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">"</span><span class="s2">url</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://build.bex.co.za/api/service/submitwaybillwia</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">method</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">timeout</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">headers</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+<span class="c1">// -- Example showing the token defined in the http headers</span>
+    <span class="dl">"</span><span class="s2">token</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">6mM7GCuPdaemdvGUATbNmC8GuPuPmdvGgCSg</span><span class="dl">"</span><span class="p">,</span>
+<span class="c1">// --------------------------------------------------------</span>
+    <span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span>
+  <span class="p">}</span>
+</code></pre></div>
 <p>To do so, you <em>include it as a header attribute</em> in the HTTP headers of the call you are making to the respective API endpoints. The attribute is to be titled <strong>token</strong></p>
 <h1 id='tracking'>Tracking</h1><h2 id='overview'>Overview</h2>
 <p>You can query our courier platform for up-to-the-minute tracking information pertaining to your shipments. We have exposed a lightweight tracking service that returns non-sensitive tracking events for the shipments queried.

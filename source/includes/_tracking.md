@@ -6,7 +6,7 @@ You can query our courier platform for up-to-the-minute tracking information per
 To cater for customers wishing to display this tracking information on their own websites we include a schema definition in the tracking response that can be used to bind the fields to a client grid implemented on your website.
 
 ## Endpoint
-`/api/waybillquicktrackingv3customtreeview`
+Service Relative URL: `/api/waybillquicktrackingv3customtreeview`
 
 ## Transportation
 

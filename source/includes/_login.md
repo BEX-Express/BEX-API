@@ -12,7 +12,7 @@ This token is unique to your integration user identity and is to be kept private
 The token will not expire so once generated can be persisted securely on your side.
 </aside>
 
-## URL
+## Endpoint
 
 Service Relative URL: `api/service/login`
 

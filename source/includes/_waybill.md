@@ -12,8 +12,7 @@ The service allows for the communication of a number of shipping options, such a
 * Multiple packages and their associated dimensions and weights
 * Special handling requests such as after-hour, Saturday or public holiday deliveries
 
-## URL
-
+## Endpoint
 Service Relative URL: `/api/service/submitwaybillwia`
 
 ### Waybill Parameters

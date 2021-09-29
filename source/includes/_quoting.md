@@ -6,7 +6,7 @@ The BEX quoting service allows you to view dynamic shipping pricing across our r
 It is important to note that quoting on our platform is a “just-in-time” process and we do not store your quotes (nor return a quote number) for later acceptance by yourself. Instead, our implementation is like that of airline bookings where prices quoted are as at “now”. If you choose not to make a booking the prices may change when next you log onto the platform.
 
 ## Endpoint
-`/api/getquoteservicedeliverypricingV2`
+Service Relative URL: `/api/getquoteservicedeliverypricingV2`
 
 
 

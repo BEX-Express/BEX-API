@@ -250,7 +250,7 @@
                     <a href="#overview" class="toc-h2 toc-link" data-title="Overview">Overview</a>
                   </li>
                   <li>
-                    <a href="#url" class="toc-h2 toc-link" data-title="URL">URL</a>
+                    <a href="#endpoint" class="toc-h2 toc-link" data-title="Endpoint">Endpoint</a>
                   </li>
                   <li>
                     <a href="#parameters" class="toc-h2 toc-link" data-title="Parameters">Parameters</a>
@@ -307,7 +307,7 @@
                     <a href="#overview" class="toc-h2 toc-link" data-title="Overview">Overview</a>
                   </li>
                   <li>
-                    <a href="#url" class="toc-h2 toc-link" data-title="URL">URL</a>
+                    <a href="#endpoint" class="toc-h2 toc-link" data-title="Endpoint">Endpoint</a>
                   </li>
                   <li>
                     <a href="#addresses" class="toc-h2 toc-link" data-title="Addresses">Addresses</a>
@@ -418,7 +418,7 @@ We return <code>200 OK</code> http status responses for <strong>ALL</strong> req
 <aside class="notice">
 The token will not expire so once generated can be persisted securely on your side.
 </aside>
-<h2 id='url'>URL</h2>
+<h2 id='endpoint'>Endpoint</h2>
 <p>Service Relative URL: <code>api/service/login</code></p>
 
 <blockquote>
@@ -554,7 +554,7 @@ With your token now generated and in hand, you can proceed to call our security 
 <p>You can query our courier platform for up-to-the-minute tracking information pertaining to your shipments. We have exposed a lightweight tracking service that returns non-sensitive tracking events for the shipments queried.
 To cater for customers wishing to display this tracking information on their own websites we include a schema definition in the tracking response that can be used to bind the fields to a client grid implemented on your website.</p>
 <h2 id='endpoint'>Endpoint</h2>
-<p><code>/api/waybillquicktrackingv3customtreeview</code></p>
+<p>Service Relative URL: <code>/api/waybillquicktrackingv3customtreeview</code></p>
 <h2 id='transportation'>Transportation</h2>
 <p>The service allows for the submission of up to ten waybill and/or customer reference numbers per API call. We do not support partial matches nor do we support wildcards.
 You are however able to submit a combination of waybill and reference numbers in a single call and the platform will return results for matches, be it a waybill, a reference, or both.</p>
@@ -760,7 +760,7 @@ You are however able to submit a combination of waybill and reference numbers in
 
 <p>It is important to note that quoting on our platform is a “just-in-time” process and we do not store your quotes (nor return a quote number) for later acceptance by yourself. Instead, our implementation is like that of airline bookings where prices quoted are as at “now”. If you choose not to make a booking the prices may change when next you log onto the platform.</p>
 <h2 id='endpoint'>Endpoint</h2>
-<p><code>/api/getquoteservicedeliverypricingV2</code></p>
+<p>Service Relative URL: <code>/api/getquoteservicedeliverypricingV2</code></p>
 <h2 id='parameters'>Parameters</h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"dispatchDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-09-03"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"totalWeight"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
@@ -1156,7 +1156,7 @@ The service allows for the communication of a number of shipping options, such a
 <li>Multiple packages and their associated dimensions and weights</li>
 <li>Special handling requests such as after-hour, Saturday or public holiday deliveries</li>
 </ul>
-<h2 id='url'>URL</h2>
+<h2 id='endpoint'>Endpoint</h2>
 <p>Service Relative URL: <code>/api/service/submitwaybillwia</code></p>
 <h3 id='waybill-parameters'>Waybill Parameters</h3>
 <p>The parameter requirements for this api call have been broken down into three sub-sections,

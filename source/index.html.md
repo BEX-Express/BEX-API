@@ -67,7 +67,7 @@ A response could look as follows:
 * API response: `"ex": "Account number is not registered for transactions with this token."`
 
 ![200 OK with error ex:](200OK-response-with-ex-error.jpg)
-_Above: Note the 200 OK status whilst receiving an error ex: response_
+_Above: Note the **200 OK** status whilst receiving an error **"ex":** response_
 
 In instances where there is a technical breakdown in the processing of the API request, such as querying the wrong endpoint address, you will receive the appropriate http status code such as a `404 error`.
 

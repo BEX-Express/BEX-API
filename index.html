@@ -535,7 +535,9 @@ The service supports URL parameters or JSON parameters in the message body</p>
 </tbody></table>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19696</span><span class="p">,</span><span class="w">
+ </span><span class="err">//</span><span class="w"> </span><span class="err">Here's</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">token</span><span class="w"> </span><span class="err">-------------------------------------------------------</span><span class="w">
     </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dOdw98ycsih298749bd6MbZre8o7tt3r3nhfowo8dnBDpEJvkzcQG1vb44sy"</span><span class="p">,</span><span class="w">
+ </span><span class="err">//</span><span class="w"> </span><span class="err">------------------------------------------------------------------------</span><span class="w">
     </span><span class="nl">"isStrongPassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"True"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"isEmailVerified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"True"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your.email@company.com"</span><span class="p">,</span><span class="w">
@@ -543,7 +545,9 @@ The service supports URL parameters or JSON parameters in the message body</p>
     </span><span class="nl">"allowApiLogin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>With your token now generated you can proceed to call our security restricted API’s.</p>
+<aside class="success">
+With your token now generated and in hand, you can proceed to call our security restricted API’s.
+</aside>
 
 <p>To do so, you <em>include it as a header attribute</em> in the HTTP headers of the call you are making to the respective API endpoints. The attribute is to be titled <strong>token</strong></p>
 <h1 id='tracking'>Tracking</h1><h2 id='overview'>Overview</h2>

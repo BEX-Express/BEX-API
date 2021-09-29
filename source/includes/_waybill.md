@@ -13,7 +13,7 @@ The service allows for the communication of a number of shipping options, such a
 * Special handling requests such as after-hour, Saturday or public holiday deliveries
 
 ## Endpoint
-Service Relative URL: `/api/service/submitwaybillwia`
+    Service Relative URL: `/api/service/submitwaybillwia`
 
 ### Waybill Parameters
 

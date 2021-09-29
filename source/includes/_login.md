@@ -99,8 +99,19 @@ allowApiLogin | string | A feature-flag used internally to grant additional logi
 }
 ```
 
-<aside class="success">
-With your token now generated and in hand, you can proceed to call our security restricted API’s.
-</aside>
+**With your token now generated you can proceed to call our security restricted API’s.**
+
+```javascript
+var settings = {
+  "url": "https://build.bex.co.za/api/service/submitwaybillwia",
+  "method": "POST",
+  "timeout": 0,
+  "headers": {
+// -- Example showing the token defined in the http headers
+    "token": "6mM7GCuPdaemdvGUATbNmC8GuPuPmdvGgCSg",
+// --------------------------------------------------------
+    "Content-Type": "application/json"
+  }
+```
 
 To do so, you *include it as a header attribute* in the HTTP headers of the call you are making to the respective API endpoints. The attribute is to be titled **token**

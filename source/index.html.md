@@ -59,15 +59,17 @@ We return `200 OK` http status responses for **ALL** requests that make it to ou
 An example could be:
 
 * HTTP status code: `200 OK`
-* API response body: `"ex": "Account number is not registered for transactions with this token."`
-
-In instances where there is a technical breakdown in the processing of the API request, such as querying the wrong endpoint address, you will receive the appropriate http status code such as a `404 error`.
+* API response: `"ex": "Account number is not registered for transactions with this token."`
 
 ![200 OK with error ex:](200OK-response-with-ex-error.jpg)
 
+_Above, note the 200 OK status whilst receiving an error ex: response_
+
+In instances where there is a technical breakdown in the processing of the API request, such as querying the wrong endpoint address, you will receive the appropriate http status code such as a `404 error`.
+
 # Parameters
 
-Almost all endpoints accept optional parameters which can be passed as a HTTP query string parameter, e.g. GET /getcustomquicktracking_V3?ref=invoices
+Almost all endpoints accept optional parameters which can be passed as a HTTP query string parameter, e.g. `GET /getcustomquicktracking_V3?ref=invoices`
 Parameters containing special characters that are passed in a URL request must have their data url encoded.
 
 All parameters are documented along each endpoint.
@@ -77,16 +79,14 @@ We do not currently offer any libraries for our API implementation. We are in th
 
 # Tools
 Some useful tools you can use to access the API include:
-Some useful tools you can use to access the API include:
-+ Insomnia - Cross-platform GraphQL and REST client, available for Mac, Windows, and Linux.
-+ Postman - Cross-platform REST client, available for Mac, Windows, and Linux.
-+ RequestBin - Allows you test webhooks.
-+ Hookbin - Another tool to test webhooks.
+
+* <a href="https://insomnia.rest">Insomnia</a> - Cross-platform GraphQL and REST client, available for Mac, Windows, and Linux.
+* <a href="https://getpostman.com">Postman</a> - Cross-platform REST client, available for Mac, Windows, and Linux.
+* <a href="https://requestbin.com">RequestBin</a> - Allows you test webhooks.
+* <a href="https://hookbin.com">Hookbin</a> - Another tool to test webhooks.
 
 
 # Authentication
 Authentication against the BEX API ecosystem is a two-part process and is required to prevent access to confidential client data. The process involves the generation of your API security token which is described in the next section. This token is then included in the HTTP headers of your API calls and serves to identify and authenticate you on our platform.
 
 API’s that serve non-sensitive client data such as our quick waybill tracking do not require your token to be present in the API call and can be called anonymously.
-
-

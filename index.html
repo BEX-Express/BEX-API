@@ -264,7 +264,7 @@
               </ul>
           </li>
           <li>
-            <a href="#tracking" class="toc-h1 toc-link" data-title="TRACKING">TRACKING</a>
+            <a href="#tracking" class="toc-h1 toc-link" data-title="Tracking">Tracking</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#overview" class="toc-h2 toc-link" data-title="Overview">Overview</a>
@@ -284,7 +284,7 @@
               </ul>
           </li>
           <li>
-            <a href="#quoting" class="toc-h1 toc-link" data-title="QUOTING">QUOTING</a>
+            <a href="#quoting" class="toc-h1 toc-link" data-title="Quoting">Quoting</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#overview" class="toc-h2 toc-link" data-title="Overview">Overview</a>
@@ -534,7 +534,7 @@ The service supports URL parameters or JSON parameters in the message body</p>
 <p>With your token now generated you can proceed to call our security restricted API’s.</p>
 
 <p>To do so, you <em>include it as a header attribute</em> in the HTTP headers of the call you are making to the respective API endpoints. The attribute is to be titled <strong>token</strong></p>
-<h1 id='tracking'>TRACKING</h1><h2 id='overview'>Overview</h2>
+<h1 id='tracking'>Tracking</h1><h2 id='overview'>Overview</h2>
 <p>You can query our courier platform for up-to-the-minute tracking information pertaining to your shipments. We have exposed a lightweight tracking service that returns non-sensitive tracking events for the shipments queried.
 To cater for customers wishing to display this tracking information on their own websites we include a schema definition in the tracking response that can be used to bind the fields to a client grid implemented on your website.</p>
 <h2 id='endpoint'>Endpoint:</h2>
@@ -543,8 +543,9 @@ To cater for customers wishing to display this tracking information on their own
 <p>The service allows for the submission of up to ten waybill and/or customer reference numbers per API call. We do not support partial matches nor do we support wildcards.
 You are however able to submit a combination of waybill and reference numbers in a single call and the platform will return results for matches, be it a waybill, a reference, or both.</p>
 
-<p>You can submit a GET request as follows:
-<code>https://api.bex.co.za/api/waybillquicktrackingv3customtreeview?searchItems=ACP1055352,MDH42240,MA210214</code></p>
+<p>You can submit a GET request as follows:</p>
+
+<p><code>https://api.bex.co.za/api/waybillquicktrackingv3customtreeview?searchItems=ACP1055352,MDH42240,MA210214</code></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="err">“searchItems”:</span><span class="w"> </span><span class="err">”ACP</span><span class="mi">1055352</span><span class="p">,</span><span class="err">MDH</span><span class="mi">42240</span><span class="p">,</span><span class="err">MA</span><span class="mi">210214</span><span class="err">”</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -927,7 +928,7 @@ You are however able to submit a combination of waybill and reference numbers in
 </tbody></table>
 
 <p>internalRef string Our internal ID which has no relevance to you.</p>
-<h1 id='quoting'>QUOTING</h1><h2 id='overview'>Overview</h2>
+<h1 id='quoting'>Quoting</h1><h2 id='overview'>Overview</h2>
 <p>The BEX quoting service allows you to view dynamic shipping pricing across our range of delivery services. By providing us with your shipment addressing information we can return a pricing spread as well as delivery estimations which you can use to make a more informed shipping choice.</p>
 
 <p>It is important to note that quoting on our platform is a “just-in-time” process and we do not store your quotes (nor return a quote number) for later acceptance by yourself. Instead, our implementation is like that of airline bookings where prices quoted are as at “now”. If you choose not to make a booking the prices may change when next you log onto the platform.</p>
@@ -940,10 +941,44 @@ You are however able to submit a combination of waybill and reference numbers in
     </span><span class="nl">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"316085"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"originSuburb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ballito"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"originPostCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4319"</span><span class="p">,</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="err">If</span><span class="w"> </span><span class="err">you</span><span class="w"> </span><span class="err">provide</span><span class="w"> </span><span class="err">coordinates</span><span class="w"> </span><span class="err">as</span><span class="w"> </span><span class="err">well</span><span class="w"> </span><span class="err">as</span><span class="w"> </span><span class="err">location</span><span class="w"> </span><span class="err">names</span><span class="w"> </span><span class="err">we</span><span class="w"> </span><span class="err">will</span><span class="w"> </span><span class="err">favour</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">coordinates</span><span class="w">
     </span><span class="nl">"originLatCoord"</span><span class="p">:</span><span class="w"> </span><span class="mf">-29.1234</span><span class="p">,</span><span class="w">
     </span><span class="nl">"originLongCoord"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18.5099"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"destinationLatCoord"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-26.1327"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"destinationLongCoord"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28.1957"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>We are flexible as to how you supply the addressing.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="err">//</span><span class="w"> </span><span class="err">Just</span><span class="w"> </span><span class="err">coordinates</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"originLatCoord"</span><span class="p">:</span><span class="s2">"-26.2462726"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"originLonCoord"</span><span class="p">:</span><span class="s2">"28.0969053"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"destinationLatCoord"</span><span class="p">:</span><span class="s2">"-26.5372133"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"destinationLonCoord"</span><span class="p">:</span><span class="s2">"29.1284535"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalWeight"</span><span class="p">:</span><span class="s2">"43"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dimMass"</span><span class="p">:</span><span class="s2">"224000"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">//</span><span class="w"> </span><span class="err">or,</span><span class="w"> </span><span class="err">just</span><span class="w"> </span><span class="err">location</span><span class="w"> </span><span class="err">names</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"originSuburb"</span><span class="p">:</span><span class="s2">"Steeledale"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"originPostCode"</span><span class="p">:</span><span class="s2">"2197"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"destinationSuburb"</span><span class="p">:</span><span class="s2">"Secunda"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"destinationPostCode"</span><span class="p">:</span><span class="s2">"2302"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalWeight"</span><span class="p">:</span><span class="s2">"43"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dimMass"</span><span class="p">:</span><span class="s2">"224000"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">//</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">even</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">combination</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">both</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"originLatCoord"</span><span class="p">:</span><span class="s2">"-26.2462726"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"originLonCoord"</span><span class="p">:</span><span class="s2">"28.0969053"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"destinationSuburb"</span><span class="p">:</span><span class="s2">"Secunda"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"destinationPostCode"</span><span class="p">:</span><span class="s2">"2302"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalWeight"</span><span class="p">:</span><span class="s2">"43"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dimMass"</span><span class="p">:</span><span class="s2">"224000"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>To offer an accurate price we require the following parameters from you.</p>
@@ -962,12 +997,12 @@ You are however able to submit a combination of waybill and reference numbers in
 </tr>
 <tr>
 <td>totalWeight</td>
-<td>DECIMAL</td>
+<td>Decimal</td>
 <td>The total actual weight in kilograms (as placed on a scale) of all of the goods to be shipped</td>
 </tr>
 <tr>
 <td>dimMass</td>
-<td>DECIMAL</td>
+<td>Decimal</td>
 <td>The sum of the total cubic centimetres of all of the goods to be shipped. (length x breadth x height) + (length x breadth x height)</td>
 </tr>
 <tr>
@@ -1018,7 +1053,7 @@ You are however able to submit a combination of waybill and reference numbers in
 </tbody></table>
 
 <aside class="notice">
-If you provide us the GPS position of the respective collection and delivery locations you are not required to provide the suburb, town or postcode information. If you provide us both the GPS coordinates as well as the Suburb and Postcode pairs **we will favour and use exclusively the GPS position** in the building of your quoted pricing.
+If you provide us the GPS position of the respective collection and/or delivery locations you are not required to provide the Suburb, Town or Postcode information for that location. If you provide us with both (the GPS coordinates as well as the Suburb/Postcode pairs) we will favour and use exclusively the GPS position in the building of your quoted pricing.
 </aside>
 <h2 id='response'>Response</h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">

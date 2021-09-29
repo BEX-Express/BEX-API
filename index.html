@@ -196,7 +196,7 @@
   color: #f92672;
 }
     </style>
-    <link href="stylesheets/screen-9d5cc61e.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-48b271e9.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-c427a123.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-c5541673.js"></script>
   </head>
@@ -220,7 +220,7 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+            <a href="#welcome-to-our-docs-site" class="toc-h1 toc-link" data-title="Welcome to our DOCS site.">Welcome to our DOCS site.</a>
           </li>
           <li>
             <a href="#requirements" class="toc-h1 toc-link" data-title="Requirements">Requirements</a>
@@ -339,7 +339,7 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
+        <h1 id='welcome-to-our-docs-site'>Welcome to our DOCS site.</h1>
 <p>Here at BEX we frequently develop and publish new API’s to assist our customers who wish to gain deeper control and visibility into their courier processes.</p>
 
 <p>These API’s allow for direct integration into our courier platform, allowing data to be read and created using requests in JSON format.
@@ -352,7 +352,7 @@ Couple this with our token based Authentication methods and standard HTTP verbs 
 <ol>
 <li>A valid <a href="https://bex.co.za/signup">shipping account</a> with BEX.</li>
 <li>The creation of an integration user identity under which you will transact over the API’s</li>
-<li>For security sensitive data requests, a valid token.</li>
+<li>For security sensitive data requests, a valid <a href="#login">token</a>.</li>
 </ol>
 
 <aside class="notice">
@@ -369,18 +369,19 @@ You may access the API over HTTP or HTTPS, but HTTPS us recommended where possib
 <p>We communicate API errors in the <em>ex:</em> ( <em>ex</em> ception ) attribute found in the base object of our API responses.</p>
 
 <p><strong>A word on success flags:</strong>
-We return <code>200 OK</code> http status responses for <strong>ALL</strong> requests that make it to our server, <strong>even if we run into an error when processing your request.</strong> For API submissions that result in a processing error (read <em>validation and business logic/”elegant” type errors</em>) we include an attribute in the API response titled <em>ex:</em> where we communicate the reason for the processing failure.</p>
+We return <code>200 OK</code> http status responses for <strong>ALL</strong> requests that make it to our server, <strong>even if we run into an error when processing your request.</strong></p>
 
-<p>An example could be:</p>
+<p>For API submissions that result in a processing error (read <em>validation and business logic/”elegant” type errors</em>) we include an attribute in the API response titled <em>ex:</em> where we communicate the reason for the processing failure.</p>
+
+<p>A response could look as follows:</p>
 
 <ul>
 <li>HTTP status code: <code>200 OK</code></li>
 <li>API response: <code>&quot;ex&quot;: &quot;Account number is not registered for transactions with this token.&quot;</code></li>
 </ul>
 
-<p><img src="images/200OK-response-with-ex-error-96d58e35.jpg" alt="200 OK with error ex:" /></p>
-
-<p><em>Above, note the 200 OK status whilst receiving an error ex: response</em></p>
+<p><img src="images/200OK-response-with-ex-error-96d58e35.jpg" alt="200 OK with error ex:" />
+<em>Above: Note the 200 OK status whilst receiving an error ex: response</em></p>
 
 <p>In instances where there is a technical breakdown in the processing of the API request, such as querying the wrong endpoint address, you will receive the appropriate http status code such as a <code>404 error</code>.</p>
 <h1 id='parameters'>Parameters</h1>
@@ -550,7 +551,7 @@ To cater for customers wishing to display this tracking information on their own
 <p>The service allows for the submission of up to ten waybill and/or customer reference numbers per API call. We do not support partial matches nor do we support wildcards.
 You are however able to submit a combination of waybill and reference numbers in a single call and the platform will return results for matches, be it a waybill, a reference, or both.</p>
 
-<p>You can submit a GET request as follows:</p>
+<p>You can submit a <strong>GET</strong> request as follows:</p>
 
 <p><code>https://api.bex.co.za/api/waybillquicktrackingv3customtreeview?searchItems=ACP1055352,MDH42240,MA210214</code></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">

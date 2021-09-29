@@ -887,14 +887,23 @@ If you provide us the GPS position of the respective collection and/or delivery 
 
 <p>In courier we use the greater of the <em>actual</em> weight or the <em>volume</em> of the goods to be shipped. Basically, we charge by weight OR by the physical size of the goods, whichever is greater (aircraft get expensive when flying empty boxes around).</p>
 
-<p>These 2 parameters are:
-1.<code>totalWeight</code> (This is the total weight in kilograms of all of the goods on this order)
-1.<code>dimMass</code> (This is the sum of the total cubic centimetres of all of the goods on this order)</p>
+<p>These 2 parameters are:</p>
+
+<p>1.<code>totalWeight</code> (The total weight in kilograms of <strong>all</strong> of the goods on this order)
+1.<code>dimMass</code> (The sum of the total cubic centimetres of <strong>all</strong> of the goods on this order)</p>
 
 <p><strong>Example:</strong>
-A customer order is going from Steeledale to Secunda. The order is made up of <strong>2 boxes</strong> as follows:
-1.A stock 1 box (40cm x 40cm x 20cm) and weighing 18kgs
+A customer order is going from Steeledale to Secunda. The order is made up of <strong>2 boxes</strong> as follows:</p>
+
+<p>1.A stock 1 box (40cm x 40cm x 20cm) and weighing 18kgs
 1.A stock 4 box (80cm x 80cm x 30cm) and weighing 25kgs.</p>
+
+<p>Looking at the code snippets on the right, you can see that the quotation request is to be structured as follows:</p>
+
+<ul>
+<li><code>&quot;actualWeight&quot;: &quot;43&quot;</code></li>
+<li><code>&quot;dimMass&quot;: &quot;224000&quot;</code> (40x40x20) + (80x80x30)</li>
+</ul>
 
 <p>For the addressing, first prize we would like the co-ordinates of the collection and delivery locations (json snippet 1), otherwise you can pass us the suburb and postcode of the collection and delivery locations (snippet 2 or 3). </p>
 <h2 id='response'>Response</h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">

@@ -1,4 +1,4 @@
-# TRACKING
+# Tracking
 
 ## Overview
 
@@ -6,7 +6,7 @@ You can query our courier platform for up-to-the-minute tracking information per
 To cater for customers wishing to display this tracking information on their own websites we include a schema definition in the tracking response that can be used to bind the fields to a client grid implemented on your website.
 
 ## Endpoint:
-	`/api/waybillquicktrackingv3customtreeview`
+`/api/waybillquicktrackingv3customtreeview`
 
 ## Transportation
 
@@ -14,6 +14,7 @@ The service allows for the submission of up to ten waybill and/or customer refer
 You are however able to submit a combination of waybill and reference numbers in a single call and the platform will return results for matches, be it a waybill, a reference, or both.
 
 You can submit a GET request as follows:
+
 `https://api.bex.co.za/api/waybillquicktrackingv3customtreeview?searchItems=ACP1055352,MDH42240,MA210214`
 
 ```json

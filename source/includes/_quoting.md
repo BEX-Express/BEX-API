@@ -1,4 +1,4 @@
-# QUOTING
+# Quoting
 
 ## Overview
 The BEX quoting service allows you to view dynamic shipping pricing across our range of delivery services. By providing us with your shipment addressing information we can return a pricing spread as well as delivery estimations which you can use to make a more informed shipping choice.
@@ -19,6 +19,7 @@ It is important to note that quoting on our platform is a “just-in-time” pro
     "accountNumber": "316085",
     "originSuburb": "Ballito",
     "originPostCode": "4319",
+    // If you provide coordinates as well as location names we will favour the coordinates
     "originLatCoord": -29.1234,
     "originLongCoord": "18.5099",
     "destinationLatCoord": "-26.1327",
@@ -26,13 +27,49 @@ It is important to note that quoting on our platform is a “just-in-time” pro
 }
 ```
 
+> We are flexible as to how you supply the addressing.
+
+```json
+// Just coordinates
+{
+    "originLatCoord":"-26.2462726",
+    "originLonCoord":"28.0969053",
+    "destinationLatCoord":"-26.5372133",
+    "destinationLonCoord":"29.1284535",
+    "totalWeight":"43",
+    "dimMass":"224000"
+}
+
+// or, just location names
+{
+    "originSuburb":"Steeledale",
+    "originPostCode":"2197",
+    "destinationSuburb":"Secunda",
+    "destinationPostCode":"2302",
+    "totalWeight":"43",
+    "dimMass":"224000"
+}
+
+// or even a combination of both
+{
+    "originLatCoord":"-26.2462726",
+    "originLonCoord":"28.0969053",
+    "destinationSuburb":"Secunda",
+    "destinationPostCode":"2302",
+    "totalWeight":"43",
+    "dimMass":"224000"
+}
+```
+
+
+
 To offer an accurate price we require the following parameters from you.
 
 Parameter | Type | Description
 --------- | ---- | -----------
 dispatchDate | Date | The intended date of shipping.
-totalWeight | DECIMAL | The total actual weight in kilograms (as placed on a scale) of all of the goods to be shipped
-dimMass | DECIMAL | The sum of the total cubic centimetres of all of the goods to be shipped. (length x breadth x height) + (length x breadth x height)
+totalWeight | Decimal | The total actual weight in kilograms (as placed on a scale) of all of the goods to be shipped
+dimMass | Decimal | The sum of the total cubic centimetres of all of the goods to be shipped. (length x breadth x height) + (length x breadth x height)
 accountNumber | String |Your shipping account number with BEX.
 originSuburb | String | The suburb from where we will collect your shipment
 originPostCode | String | The postcode of the suburb from where we will collect your shipment.
@@ -44,7 +81,7 @@ destinationLatCoord | Decimal | The GPS latitude (north-south position) of your 
 destinationLonCoord | Decimal | The GPS longitude (east-west position) of your delivery location, expressed in decimal notation.
 
 <aside class="notice">
-If you provide us the GPS position of the respective collection and delivery locations you are not required to provide the suburb, town or postcode information. If you provide us both the GPS coordinates as well as the Suburb and Postcode pairs **we will favour and use exclusively the GPS position** in the building of your quoted pricing.
+If you provide us the GPS position of the respective collection and/or delivery locations you are not required to provide the Suburb, Town or Postcode information for that location. If you provide us with both (the GPS coordinates as well as the Suburb/Postcode pairs) we will favour and use exclusively the GPS position in the building of your quoted pricing.
 </aside>
 
 ## Response

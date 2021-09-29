@@ -72,7 +72,7 @@ URL: `http://insight.bex.co.za/api/service/login?username=user123&password=pass1
 </aside>
 
 ## Response
-
+> Sample json response.
 ```json
 {
     "id": 19696,

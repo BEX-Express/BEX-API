@@ -39,9 +39,10 @@ To make use of our API integration we require the following:
 1. The creation of an integration user identity under which you will transact over the API’s
 1. For security sensitive data requests, a valid <a href="#login">token</a>.
 
+**Note:** If you have multiple shipping accounts you are not required to transact under multiple integration identities (“tokens”). Our platform supports the assignment of multiple shipping accounts to a _single_ token, making integration across multiple business units easier.
+
 <aside class="notice">
-Note: If you have multiple shipping accounts you are not required to transact under multiple integration identities (“tokens”). Our platform supports the assignment of multiple shipping accounts to a single token, making integration across multiple business units easier.
-You may access the API over HTTP or HTTPS, but HTTPS us recommended where possible.
+You may access the API over HTTP or HTTPS, but HTTPS is recommended if you wish to keep things secure.
 </aside>
 
 # Request/Response Format

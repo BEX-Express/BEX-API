@@ -51,16 +51,19 @@ Successful requests will return a `200 OK` HTTP status.
 
 You can find the errors specific to each API endpoint under its dedicated API topic.
 
-We communicate API errors in the _ex:_ (_ex_ception) attribute found in the base object of our API responses.
+We communicate API errors in the _ex:_ ( _ex_ ception ) attribute found in the base object of our API responses.
 
 **A word on success flags:**
-We return 200 OK status responses for ALL requests that make it to our server, even if we run into an error when processing your request. For API submissions that result in a processing error (read _validation and business logic/”elegant” type errors_) we include an attribute in the API response titled _ex:_ where we communicate the reason for the processing failure.
+We return `200 OK` http status responses for **ALL** requests that make it to our server, **even if we run into an error when processing your request.** For API submissions that result in a processing error (read _validation and business logic/”elegant” type errors_) we include an attribute in the API response titled _ex:_ where we communicate the reason for the processing failure.
 
 An example could be:
-- HTTP status code: `200 OK`
-- API response body: `"ex": "Account number is not registered for transactions with this token."`
+
+*HTTP status code: `200 OK`
+*API response body: `"ex": "Account number is not registered for transactions with this token."`
 
 In instances where there is a technical breakdown in the processing of the API request, such as querying the wrong endpoint address, you will receive the appropriate http status code such as a `404 error`.
+
+![200 OK with error ex:](source/images/200OK-response-with-ex-error.jpg)
 
 # Parameters
 

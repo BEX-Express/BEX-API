@@ -803,39 +803,6 @@ You are however able to submit a combination of waybill and reference numbers in
     </span><span class="nl">"destinationLongCoord"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28.1957"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<blockquote>
-<p>We are flexible as to how you supply the addressing.</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="err">//</span><span class="w"> </span><span class="err">Snippet</span><span class="w"> </span><span class="mi">1</span><span class="err">:</span><span class="w"> </span><span class="err">Just</span><span class="w"> </span><span class="err">coordinates</span><span class="w">
-</span><span class="p">{</span><span class="w">
-    </span><span class="nl">"originLatCoord"</span><span class="p">:</span><span class="s2">"-26.2462726"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"originLonCoord"</span><span class="p">:</span><span class="s2">"28.0969053"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"destinationLatCoord"</span><span class="p">:</span><span class="s2">"-26.5372133"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"destinationLonCoord"</span><span class="p">:</span><span class="s2">"29.1284535"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"totalWeight"</span><span class="p">:</span><span class="s2">"43"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"dimMass"</span><span class="p">:</span><span class="s2">"224000"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span><span class="err">//</span><span class="w"> </span><span class="err">Snippet</span><span class="w"> </span><span class="mi">2</span><span class="err">:</span><span class="w"> </span><span class="err">Just</span><span class="w"> </span><span class="err">location</span><span class="w"> </span><span class="err">names</span><span class="w">
-</span><span class="p">{</span><span class="w">
-    </span><span class="nl">"originSuburb"</span><span class="p">:</span><span class="s2">"Steeledale"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"originPostCode"</span><span class="p">:</span><span class="s2">"2197"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"destinationSuburb"</span><span class="p">:</span><span class="s2">"Secunda"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"destinationPostCode"</span><span class="p">:</span><span class="s2">"2302"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"totalWeight"</span><span class="p">:</span><span class="s2">"43"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"dimMass"</span><span class="p">:</span><span class="s2">"224000"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span><span class="err">//</span><span class="w"> </span><span class="err">Snippet</span><span class="w"> </span><span class="mi">3</span><span class="err">:</span><span class="w"> </span><span class="err">A</span><span class="w"> </span><span class="err">combination</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">both</span><span class="w">
-</span><span class="p">{</span><span class="w">
-    </span><span class="nl">"originLatCoord"</span><span class="p">:</span><span class="s2">"-26.2462726"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"originLonCoord"</span><span class="p">:</span><span class="s2">"28.0969053"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"destinationSuburb"</span><span class="p">:</span><span class="s2">"Secunda"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"destinationPostCode"</span><span class="p">:</span><span class="s2">"2302"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"totalWeight"</span><span class="p">:</span><span class="s2">"43"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"dimMass"</span><span class="p">:</span><span class="s2">"224000"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
 <p>To offer an accurate price we require the following parameters from you.</p>
 
 <table><thead>
@@ -911,26 +878,63 @@ You are however able to submit a combination of waybill and reference numbers in
 If you provide us the GPS position of the respective collection and/or delivery locations you are not required to provide the Suburb, Town or Postcode information for that location. If you provide us with both (the GPS coordinates as well as the Suburb/Postcode pairs) we will favour and use exclusively the GPS position in the building of your quoted pricing.
 </aside>
 
+<blockquote>
+<p>We are flexible as to how you supply the addressing.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="err">//</span><span class="w"> </span><span class="err">Snippet</span><span class="w"> </span><span class="mi">1</span><span class="err">:</span><span class="w"> </span><span class="err">Just</span><span class="w"> </span><span class="err">coordinates</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"originLatCoord"</span><span class="p">:</span><span class="s2">"-26.2462726"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"originLonCoord"</span><span class="p">:</span><span class="s2">"28.0969053"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"destinationLatCoord"</span><span class="p">:</span><span class="s2">"-26.5372133"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"destinationLonCoord"</span><span class="p">:</span><span class="s2">"29.1284535"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalWeight"</span><span class="p">:</span><span class="s2">"43"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dimMass"</span><span class="p">:</span><span class="s2">"224000"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">//</span><span class="w"> </span><span class="err">Snippet</span><span class="w"> </span><span class="mi">2</span><span class="err">:</span><span class="w"> </span><span class="err">Just</span><span class="w"> </span><span class="err">location</span><span class="w"> </span><span class="err">names</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"originSuburb"</span><span class="p">:</span><span class="s2">"Steeledale"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"originPostCode"</span><span class="p">:</span><span class="s2">"2197"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"destinationSuburb"</span><span class="p">:</span><span class="s2">"Secunda"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"destinationPostCode"</span><span class="p">:</span><span class="s2">"2302"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalWeight"</span><span class="p">:</span><span class="s2">"43"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dimMass"</span><span class="p">:</span><span class="s2">"224000"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">//</span><span class="w"> </span><span class="err">Snippet</span><span class="w"> </span><span class="mi">3</span><span class="err">:</span><span class="w"> </span><span class="err">A</span><span class="w"> </span><span class="err">combination</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">both</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"originLatCoord"</span><span class="p">:</span><span class="s2">"-26.2462726"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"originLonCoord"</span><span class="p">:</span><span class="s2">"28.0969053"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"destinationSuburb"</span><span class="p">:</span><span class="s2">"Secunda"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"destinationPostCode"</span><span class="p">:</span><span class="s2">"2302"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalWeight"</span><span class="p">:</span><span class="s2">"43"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dimMass"</span><span class="p">:</span><span class="s2">"224000"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p><strong>Calculation of the delivery charges</strong></p>
 
 <p>In courier we use the greater of the <em>actual</em> weight or the <em>volume</em> of the goods to be shipped. Basically, we charge by weight OR by the physical size of the goods, whichever is greater (aircraft get expensive when flying empty boxes around).</p>
 
 <p>These 2 parameters are:</p>
 
-<p>1.<code>totalWeight</code> (The total weight in kilograms of <strong>all</strong> of the goods on this order)
-1.<code>dimMass</code> (The sum of the total cubic centimetres of <strong>all</strong> of the goods on this order)</p>
+<ol>
+<li><code>totalWeight</code> The total weight in kilograms of <strong>all</strong> the goods on this order</li>
+<li><code>dimMass</code> The sum of the total cubic centimetres of <strong>all</strong> the goods on this order</li>
+</ol>
 
 <p><strong>Example:</strong>
-A customer order is going from Steeledale to Secunda. The order is made up of <strong>2 boxes</strong> as follows:</p>
+A customer order is going from Sandton to Secunda. The order is made up of <strong>2 boxes</strong> as follows:</p>
 
-<p>1.A stock 1 box (40cm x 40cm x 20cm) and weighing 18kgs
-1.A stock 4 box (80cm x 80cm x 30cm) and weighing 25kgs.</p>
+<ol>
+<li>A stock 1 box (40cm x 40cm x 20cm) and weighing 18kgs</li>
+<li>A stock 4 box (80cm x 80cm x 30cm) and weighing 25kgs.</li>
+</ol>
 
 <p>Looking at the code snippets on the right, you can see that the quotation request is to be structured as follows:</p>
 
 <ul>
 <li><code>&quot;actualWeight&quot;: &quot;43&quot;</code></li>
-<li><code>&quot;dimMass&quot;: &quot;224000&quot;</code> (40x40x20) + (80x80x30)</li>
+<li><code>&quot;dimMass&quot;: &quot;224000&quot;</code> (40x40x20) + (80x80x30) = 22,400</li>
 </ul>
 
 <p>For the addressing, first prize we would like the co-ordinates of the collection and delivery locations (json snippet 1), otherwise you can pass us the suburb and postcode of the collection and delivery locations (snippet 2 or 3). </p>

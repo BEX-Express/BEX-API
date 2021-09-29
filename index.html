@@ -270,7 +270,7 @@
                     <a href="#overview" class="toc-h2 toc-link" data-title="Overview">Overview</a>
                   </li>
                   <li>
-                    <a href="#endpoint" class="toc-h2 toc-link" data-title="Endpoint:">Endpoint:</a>
+                    <a href="#endpoint" class="toc-h2 toc-link" data-title="Endpoint">Endpoint</a>
                   </li>
                   <li>
                     <a href="#transportation" class="toc-h2 toc-link" data-title="Transportation">Transportation</a>
@@ -311,6 +311,9 @@
                   </li>
                   <li>
                     <a href="#addresses" class="toc-h2 toc-link" data-title="Addresses">Addresses</a>
+                  </li>
+                  <li>
+                    <a href="#sendermobile-is-useful-for-shipment-progress-updates" class="toc-h2 toc-link" data-title="SenderMobile is useful for shipment progress updates">SenderMobile is useful for shipment progress updates</a>
                   </li>
                   <li>
                     <a href="#dimensioning" class="toc-h2 toc-link" data-title="Dimensioning">Dimensioning</a>
@@ -534,7 +537,7 @@ The service supports URL parameters or JSON parameters in the message body</p>
 <h1 id='tracking'>Tracking</h1><h2 id='overview'>Overview</h2>
 <p>You can query our courier platform for up-to-the-minute tracking information pertaining to your shipments. We have exposed a lightweight tracking service that returns non-sensitive tracking events for the shipments queried.
 To cater for customers wishing to display this tracking information on their own websites we include a schema definition in the tracking response that can be used to bind the fields to a client grid implemented on your website.</p>
-<h2 id='endpoint'>Endpoint:</h2>
+<h2 id='endpoint'>Endpoint</h2>
 <p><code>/api/waybillquicktrackingv3customtreeview</code></p>
 <h2 id='transportation'>Transportation</h2>
 <p>The service allows for the submission of up to ten waybill and/or customer reference numbers per API call. We do not support partial matches nor do we support wildcards.
@@ -1124,7 +1127,48 @@ namely:</p>
 <li>Dimensioning</li>
 <li>Service Add-Ons</li>
 </ul>
-<h2 id='addresses'>Addresses</h2>
+<h2 id='addresses'>Addresses</h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"waybillNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ST116664"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"waybillDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-09-23"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"serviceCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NCA"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"316085"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sendersRef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"you-can-put-your-own-references-here"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"originCompany"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MARTINNAISE (PTY) LTD"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"originFloorBuilding"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1ST FLOOR"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"originStreet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12 MODDERFONTEIN STREET"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"originLocationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MODDERFONTEIN"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"originCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"originPostCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1645"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"destinationCompany"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPUR STEAK RANCHES"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"destinationFloorBuilding"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNIT 1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"destinationStreet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"165 MAIN RD"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"destinationLocationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MUIZENBERG"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"destinationCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"destinationPostCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7950"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"receiverContactName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SHARON SNYMAN"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"receiverMobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"receiverEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"receiverTelephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+27811234512"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"senderContactName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"senderMobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"senderEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"senderTelephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"specialInstructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PLEASE SIGN HANDOVER SHEET"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sursat"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"surpub"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"surahs"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"insuranceRequired"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FALSE"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"insuranceValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"returnParcelPrintingText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FALSE"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"printParcels"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FALSE"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"printUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"originLat"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"originLon"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"destinationLat"</span><span class="p">:</span><span class="w"> </span><span class="mf">-26.11682</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"destinationLon"</span><span class="p">:</span><span class="w"> </span><span class="mf">28.17926</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nl">"dimension1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45"</span><span class="p">,</span><span class="nl">"dimension2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45"</span><span class="p">,</span><span class="nl">"dimension3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50"</span><span class="p">,</span><span class="nl">"weight"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18"</span><span class="p">,</span><span class="nl">"barcodeNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ST116664_P1"</span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1157,8 +1201,7 @@ namely:</p>
 </tr>
 </tbody></table>
 
-<p>WaybillNumber is auto-generated by BEX and communicated in the service response 
-when making use of alternative shipping stationary options such as thermal labels or A4 waybills</p>
+<p>WaybillNumber is auto-generated by BEX and communicated in the service response when making use of alternative shipping stationary options such as thermal labels or A4 waybills</p>
 
 <table><thead>
 <tr>
@@ -1187,13 +1230,11 @@ when making use of alternative shipping stationary options such as thermal label
 
 <p>Service delivery code values are:</p>
 
-<ul>
-<li>SDX - Sameday Express</li>
-<li>DBD - Daybreak Delivery</li>
-<li>ONC - Overnight Courier</li>
-<li>NCA - Normal Cargo</li>
-<li>BUD - Budget Cargo</li>
-</ul>
+<p>*SDX - Sameday Express
+*DBD - Daybreak Delivery
+*ONC - Overnight Courier
+*NCA - Normal Cargo
+*BUD - Budget Cargo</p>
 
 <table><thead>
 <tr>
@@ -1261,9 +1302,7 @@ when making use of alternative shipping stationary options such as thermal label
 <td>Contact person mobile number</td>
 </tr>
 </tbody></table>
-
-<p>SenderMobile is useful for shipment progress updates</p>
-
+<h2 id='sendermobile-is-useful-for-shipment-progress-updates'>SenderMobile is useful for shipment progress updates</h2>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1365,7 +1404,7 @@ when making use of alternative shipping stationary options such as thermal label
 </tr>
 </tbody></table>
 
-<p>If TRUE the insurance surcharge is added to the waybill and the goods are covered during shipping</p>
+<p>If TRUE the insurance surcharge is added to the waybill and insurance cover is placed for the goods during shipping</p>
 
 <table><thead>
 <tr>

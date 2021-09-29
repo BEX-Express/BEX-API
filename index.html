@@ -201,7 +201,7 @@
       <script src="javascripts/all-c5541673.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;javascript&quot;,&quot;json&quot;,&quot;html&quot;]">
+  <body class="index" data-languages="[&quot;json&quot;,&quot;javascript&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -211,9 +211,8 @@
     <div class="toc-wrapper">
       <img src="images/logo-c240e9e6.png" class="logo" alt="" />
         <div class="lang-selector">
-              <a href="#" data-language-name="javascript">javascript</a>
               <a href="#" data-language-name="json">json</a>
-              <a href="#" data-language-name="html">html</a>
+              <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -254,7 +253,7 @@
                     <a href="#url" class="toc-h2 toc-link" data-title="URL">URL</a>
                   </li>
                   <li>
-                    <a href="#parameters-2" class="toc-h2 toc-link" data-title="Parameters">Parameters</a>
+                    <a href="#parameters" class="toc-h2 toc-link" data-title="Parameters">Parameters</a>
                   </li>
                   <li>
                     <a href="#transportation" class="toc-h2 toc-link" data-title="Transportation">Transportation</a>
@@ -408,17 +407,17 @@ The token will not expire so once generated can be persisted securely on your si
 <p>Service Relative URL: <code>api/service/login</code></p>
 
 <blockquote>
-<p>Make sure to replace <code>user123</code>and <code>pass123</code> with your API key.</p>
+<p>Make sure to replace <code>user123</code>and <code>pass123</code> with your integration account details.</p>
 </blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html</span> <span class="na">xmlns=</span><span class="s">"http://www.w3.org/1999/xhtml"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-<span class="nt">&lt;title&gt;</span>BEX API Login Example<span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"http://code.jquery.com/jquery-latest.min.js"</span> <span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
-    <span class="kd">var</span> <span class="nx">user</span> <span class="o">=</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="dl">'</span><span class="s1">test123</span><span class="dl">'</span><span class="p">);</span> <span class="c1">//encode the username</span>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="o">&lt;!</span><span class="nx">DOCTYPE</span> <span class="nx">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">html</span> <span class="nx">xmlns</span><span class="o">=</span><span class="dl">"</span><span class="s2">http://www.w3.org/1999/xhtml</span><span class="dl">"</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">BEX</span> <span class="nx">API</span> <span class="nx">Login</span> <span class="nx">Example</span><span class="o">&lt;</span><span class="sr">/title</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="dl">"</span><span class="s2">http://code.jquery.com/jquery-latest.min.js</span><span class="dl">"</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/head</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;</span>
+    <span class="kd">var</span> <span class="nx">user</span> <span class="o">=</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="dl">'</span><span class="s1">user123</span><span class="dl">'</span><span class="p">);</span> <span class="c1">//encode the username</span>
     <span class="kd">var</span> <span class="nx">pass</span> <span class="o">=</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="dl">'</span><span class="s1">pass1234</span><span class="dl">'</span><span class="p">);</span> <span class="c1">//encode the password</span>
     <span class="nx">jQuery</span><span class="p">.</span><span class="nx">support</span><span class="p">.</span><span class="nx">cors</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> <span class="c1">//this will enable cross domain access for all services</span>
     <span class="c1">//call the service using jQuery ajax and passing the parameters</span>
@@ -437,10 +436,10 @@ The token will not expire so once generated can be persisted securely on your si
         <span class="nx">alert</span><span class="p">(</span><span class="nx">ex</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">});</span>
-<span class="nt">&lt;/script&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre></div><h2 id='parameters-2'>Parameters</h2>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/body</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/html</span><span class="err">&gt;
+</span></code></pre></div><h2 id='parameters'>Parameters</h2>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -468,13 +467,10 @@ The service supports URL parameters or JSON parameters in the message body</p>
 
 <p>Example Service Call using the URL Parameters</p>
 
-<ul>
-<li>URL: <code>http://insight.bex.co.za/api/service/login?username=user123&amp;password=pass1234</code></li>
-</ul>
+<p>URL: <code>http://insight.bex.co.za/api/service/login?username=user123&amp;password=pass1234</code></p>
 
 <aside class="notice">
     All URL-based field values must be URL encoded if special characters are used
-
 </aside>
 <h2 id='response'>Response</h2>
 <p>The response body is structured as follows:</p>
@@ -734,9 +730,12 @@ You are however able to submit a combination of waybill and reference numbers in
 <td>string</td>
 <td>Column5, the BEX member of staff who recorded the event.</td>
 </tr>
+<tr>
+<td>internalRef</td>
+<td>string</td>
+<td>Our internal ID which has no relevance to you.</td>
+</tr>
 </tbody></table>
-
-<p>internalRef string Our internal ID which has no relevance to you.</p>
 <h1 id='quoting'>Quoting</h1><h2 id='overview'>Overview</h2>
 <p>The BEX quoting service allows you to view dynamic shipping pricing across our range of delivery services. By providing us with your shipment addressing information we can return a pricing spread as well as delivery estimations which you can use to make a more informed shipping choice.</p>
 
@@ -1714,9 +1713,8 @@ you.
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="javascript">javascript</a>
                 <a href="#" data-language-name="json">json</a>
-                <a href="#" data-language-name="html">html</a>
+                <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 # Waybill 
 
-##Waybill Overview
+## Overview
 This service is used to create a waybill shipping entry into the BEX courier database. 
 This allows BEX customers to directly interface their shipping requests and helps to 
 eliminate errors as a result of manual data capture or misinterpretation of written content 
@@ -12,7 +12,7 @@ The service allows for the communication of a number of shipping options, such a
 * Multiple packages and their associated dimensions and weights
 * Special handling requests such as after-hour, Saturday or public holiday deliveries
 
-## Waybill URL
+## URL
 
 Service Relative URL: `/api/service/submitwaybillwia`
 

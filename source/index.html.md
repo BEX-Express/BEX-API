@@ -12,8 +12,8 @@ toc_footers:
 
 includes:
   - tracking
+  - quoting
   - waybill
-
 
 search: true
 ---

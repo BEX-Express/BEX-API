@@ -8,18 +8,19 @@ To cater for customers wishing to display this tracking information on their own
 ## Endpoint:
 	`/api/waybillquicktrackingv3customtreeview`
 
+## Transportation
 
+The service allows for the submission of up to ten waybill and/or customer reference numbers per API call. We do not support partial matches nor do we support wildcards.
+You are however able to submit a combination of waybill and reference numbers in a single call and the platform will return results for matches, be it a waybill, a reference, or both.
+
+You can submit a GET request as follows:
+`https://api.bex.co.za/api/waybillquicktrackingv3customtreeview?searchItems=ACP1055352,MDH42240,MA210214`
 
 ```json
 {
 	“searchItems”: ”ACP1055352,MDH42240,MA210214”
 }
 ```
-
-## Transportation
-
-The service allows for the submission of up to ten waybill and/or customer reference numbers per API call. We do not support partial matches nor do we support wildcards.
-You are however able to submit a combination of waybill and reference numbers in a single call and the platform will return results for matches, be it a waybill, a reference, or both.
 
 ## Parameters
 
@@ -33,6 +34,7 @@ searchItems | string | Yes | A comma separated list of items to be searched. Can
 {
     "id": 0,
     "items": [
+    // first object is our data-definition object.
         {
             "id": 0,
             "dataTypeId": 4,
@@ -45,6 +47,7 @@ searchItems | string | Yes | A comma separated list of items to be searched. Can
             "col5": "User",
             "internalRef": "Internal Ref"
         },
+    // subsequent objects are the tracking events themselves.
         {
             "id": 13751791,
             "dataTypeId": 2,

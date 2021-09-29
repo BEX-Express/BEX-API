@@ -366,16 +366,19 @@ You may access the API over HTTP or HTTPS, but HTTPS us recommended where possib
 <h1 id='errors'>Errors</h1>
 <p>You can find the errors specific to each API endpoint under its dedicated API topic.</p>
 
-<p>We communicate API errors in the <em>ex:</em> (_ex_ception) attribute found in the base object of our API responses.</p>
+<p>We communicate API errors in the <em>ex:</em> ( <em>ex</em> ception ) attribute found in the base object of our API responses.</p>
 
 <p><strong>A word on success flags:</strong>
-We return 200 OK status responses for ALL requests that make it to our server, even if we run into an error when processing your request. For API submissions that result in a processing error (read <em>validation and business logic/”elegant” type errors</em>) we include an attribute in the API response titled <em>ex:</em> where we communicate the reason for the processing failure.</p>
+We return <code>200 OK</code> http status responses for <strong>ALL</strong> requests that make it to our server, <strong>even if we run into an error when processing your request.</strong> For API submissions that result in a processing error (read <em>validation and business logic/”elegant” type errors</em>) we include an attribute in the API response titled <em>ex:</em> where we communicate the reason for the processing failure.</p>
 
-<p>An example could be:
-- HTTP status code: <code>200 OK</code>
-- API response body: <code>&quot;ex&quot;: &quot;Account number is not registered for transactions with this token.&quot;</code></p>
+<p>An example could be:</p>
+
+<p>*HTTP status code: <code>200 OK</code>
+*API response body: <code>&quot;ex&quot;: &quot;Account number is not registered for transactions with this token.&quot;</code></p>
 
 <p>In instances where there is a technical breakdown in the processing of the API request, such as querying the wrong endpoint address, you will receive the appropriate http status code such as a <code>404 error</code>.</p>
+
+<p><img src="images/source/images/200OK-response-with-ex-error.jpg" alt="200 OK with error ex:" /></p>
 <h1 id='parameters'>Parameters</h1>
 <p>Almost all endpoints accept optional parameters which can be passed as a HTTP query string parameter, e.g. GET /getcustomquicktracking_V3?ref=invoices
 Parameters containing special characters that are passed in a URL request must have their data url encoded.</p>

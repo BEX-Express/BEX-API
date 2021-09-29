@@ -384,18 +384,19 @@ We return <code>200 OK</code> http status responses for <strong>ALL</strong> req
 </ul>
 
 <p><img src="images/200OK-response-with-ex-error-96d58e35.jpg" alt="200 OK with error ex:" />
-<em>Above: Note the 200 OK status whilst receiving an error ex: response</em></p>
+<em>Above: Note the <strong>200 OK</strong> status whilst receiving an error <strong>&quot;ex&quot;:</strong> response</em></p>
 
 <p>In instances where there is a technical breakdown in the processing of the API request, such as querying the wrong endpoint address, you will receive the appropriate http status code such as a <code>404 error</code>.</p>
 <h1 id='parameters'>Parameters</h1>
-<p>Almost all endpoints accept optional parameters which can be passed as a HTTP query string parameter, e.g. <code>GET /getcustomquicktracking_V3?ref=invoices</code>
-Parameters containing special characters that are passed in a URL request must have their data url encoded.</p>
+<p>Almost all endpoints accept optional parameters which can be passed as an HTTP query string parameter, e.g. <code>GET /getcustomquicktracking_V3?ref=invoices</code></p>
+
+<p>Parameters containing special characters that are passed in a URL request must have their data url encoded.</p>
 
 <p>All parameters are documented along each endpoint.</p>
 <h1 id='libraries'>Libraries</h1>
 <p>We do not currently offer any libraries for our API implementation. We are in the process of creating .NET wrappers that you can use in the future. We will publish more information on this topic once it is ready for use.</p>
 <h1 id='tools'>Tools</h1>
-<p>Some useful tools you can use to access the API include:</p>
+<p>Some useful tools you can use to access the API&#39;s include:</p>
 
 <ul>
 <li><a href="https://insomnia.rest">Insomnia</a> - Cross-platform GraphQL and REST client, available for Mac, Windows, and Linux.</li>
@@ -406,11 +407,11 @@ Parameters containing special characters that are passed in a URL request must h
 <h1 id='authentication'>Authentication</h1>
 <p>Authentication against the BEX API ecosystem is a two-part process and is required to prevent access to confidential client data. The process involves the generation of your API security token which is described in the next section. This token is then included in the HTTP headers of your API calls and serves to identify and authenticate you on our platform.</p>
 
-<p>API’s that serve non-sensitive client data such as our quick waybill tracking do not require your token to be present in the API call and can be called anonymously.</p>
+<p>API’s that serve non-sensitive client data such as our quick waybill <a href="tracking">tracking</a> do not require your token to be present in the API call and can be called anonymously.</p>
 <h1 id='login'>Login</h1><h2 id='overview'>Overview</h2>
 <p>The <em>login</em> service serves as the starting point from which a valid session token will be generated. You call this endpoint to authenticate your <em>username</em> and <em>password</em> user credentials.</p>
 
-<p>The BEX platform will validate your request and if successful, will generate and return in the response object a token contained in the value attribute.</p>
+<p>The BEX platform will validate your request and if successful, generate and return in the response object a token contained in the <code>&quot;value&quot;:</code> attribute.</p>
 
 <p>This token is unique to your integration user identity and is to be kept private as it is the key needed to unlock access to the account security restricted API’s.</p>
 

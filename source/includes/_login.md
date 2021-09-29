@@ -88,7 +88,9 @@ allowApiLogin | string | A feature-flag used internally to grant additional logi
 ```json
 {
     "id": 19696,
+ // Here's the token -------------------------------------------------------
     "value": "dOdw98ycsih298749bd6MbZre8o7tt3r3nhfowo8dnBDpEJvkzcQG1vb44sy",
+ // ------------------------------------------------------------------------
     "isStrongPassword": "True",
     "isEmailVerified": "True",
     "email": "your.email@company.com",
@@ -97,6 +99,8 @@ allowApiLogin | string | A feature-flag used internally to grant additional logi
 }
 ```
 
-With your token now generated you can proceed to call our security restricted API’s.
+<aside class="success">
+With your token now generated and in hand, you can proceed to call our security restricted API’s.
+</aside>
 
 To do so, you *include it as a header attribute* in the HTTP headers of the call you are making to the respective API endpoints. The attribute is to be titled **token**

@@ -58,12 +58,12 @@ We return `200 OK` http status responses for **ALL** requests that make it to ou
 
 An example could be:
 
-*HTTP status code: `200 OK`
-*API response body: `"ex": "Account number is not registered for transactions with this token."`
+* HTTP status code: `200 OK`
+* API response body: `"ex": "Account number is not registered for transactions with this token."`
 
 In instances where there is a technical breakdown in the processing of the API request, such as querying the wrong endpoint address, you will receive the appropriate http status code such as a `404 error`.
 
-![200 OK with error ex:](source/images/200OK-response-with-ex-error.jpg)
+![200 OK with error ex:](200OK-response-with-ex-error.jpg)
 
 # Parameters
 

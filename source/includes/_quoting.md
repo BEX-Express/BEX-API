@@ -30,6 +30,27 @@ Service Relative URL: `/api/getquoteservicedeliverypricingV2`
 }
 ```
 
+To offer an accurate price we require the following parameters from you.
+
+Parameter | Type | Description
+--------- | ---- | -----------
+dispatchDate | Date | The intended date of shipping.
+totalWeight | Decimal | The total actual weight in kilograms (as placed on a scale) of all of the goods to be shipped
+dimMass | Decimal | The sum of the total cubic centimetres of all of the goods to be shipped. (length x breadth x height) + (length x breadth x height)
+accountNumber | String |Your shipping account number with BEX.
+originSuburb | String | The suburb from where we will collect your shipment
+originPostCode | String | The postcode of the suburb from where we will collect your shipment.
+destinationSuburb | String | The suburb where we will deliver your shipment
+destinationPostCode | String | The postcode of the suburb where we will deliver your shipment.
+originLatCoord | Decimal | The GPS latitude (north-south position) of your collection location, expressed in decimal notation.
+originLonCoord | Decimal | The GPS longitude (east-west position) of your collection location, expressed in decimal notation.
+destinationLatCoord | Decimal | The GPS latitude (north-south position) of your delivery location, expressed in decimal notation.
+destinationLonCoord | Decimal | The GPS longitude (east-west position) of your delivery location, expressed in decimal notation.
+
+<aside class="notice">
+If you provide us the GPS position of the respective collection and/or delivery locations you are not required to provide the Suburb, Town or Postcode information for that location. If you provide us with both (the GPS coordinates as well as the Suburb/Postcode pairs) we will favour and use exclusively the GPS position in the building of your quoted pricing.
+</aside>
+
 > We are flexible as to how you supply the addressing.
 
 ```json
@@ -64,46 +85,25 @@ Service Relative URL: `/api/getquoteservicedeliverypricingV2`
 }
 ```
 
-To offer an accurate price we require the following parameters from you.
-
-Parameter | Type | Description
---------- | ---- | -----------
-dispatchDate | Date | The intended date of shipping.
-totalWeight | Decimal | The total actual weight in kilograms (as placed on a scale) of all of the goods to be shipped
-dimMass | Decimal | The sum of the total cubic centimetres of all of the goods to be shipped. (length x breadth x height) + (length x breadth x height)
-accountNumber | String |Your shipping account number with BEX.
-originSuburb | String | The suburb from where we will collect your shipment
-originPostCode | String | The postcode of the suburb from where we will collect your shipment.
-destinationSuburb | String | The suburb where we will deliver your shipment
-destinationPostCode | String | The postcode of the suburb where we will deliver your shipment.
-originLatCoord | Decimal | The GPS latitude (north-south position) of your collection location, expressed in decimal notation.
-originLonCoord | Decimal | The GPS longitude (east-west position) of your collection location, expressed in decimal notation.
-destinationLatCoord | Decimal | The GPS latitude (north-south position) of your delivery location, expressed in decimal notation.
-destinationLonCoord | Decimal | The GPS longitude (east-west position) of your delivery location, expressed in decimal notation.
-
-<aside class="notice">
-If you provide us the GPS position of the respective collection and/or delivery locations you are not required to provide the Suburb, Town or Postcode information for that location. If you provide us with both (the GPS coordinates as well as the Suburb/Postcode pairs) we will favour and use exclusively the GPS position in the building of your quoted pricing.
-</aside>
-
 **Calculation of the delivery charges**
 
 In courier we use the greater of the _actual_ weight or the _volume_ of the goods to be shipped. Basically, we charge by weight OR by the physical size of the goods, whichever is greater (aircraft get expensive when flying empty boxes around).
 
 These 2 parameters are:
 
-1.`totalWeight` (The total weight in kilograms of **all** of the goods on this order)
-1.`dimMass` (The sum of the total cubic centimetres of **all** of the goods on this order)
+1. `totalWeight` The total weight in kilograms of **all** the goods on this order
+1. `dimMass` The sum of the total cubic centimetres of **all** the goods on this order
 
 **Example:**
-A customer order is going from Steeledale to Secunda. The order is made up of **2 boxes** as follows:
+A customer order is going from Sandton to Secunda. The order is made up of **2 boxes** as follows:
 
-1.A stock 1 box (40cm x 40cm x 20cm) and weighing 18kgs
-1.A stock 4 box (80cm x 80cm x 30cm) and weighing 25kgs.
+1. A stock 1 box (40cm x 40cm x 20cm) and weighing 18kgs
+1. A stock 4 box (80cm x 80cm x 30cm) and weighing 25kgs.
 
 Looking at the code snippets on the right, you can see that the quotation request is to be structured as follows:
 
 * `"actualWeight": "43"`
-* `"dimMass": "224000"` (40x40x20) + (80x80x30)
+* `"dimMass": "224000"` (40x40x20) + (80x80x30) = 22,400
 
 For the addressing, first prize we would like the co-ordinates of the collection and delivery locations (json snippet 1), otherwise you can pass us the suburb and postcode of the collection and delivery locations (snippet 2 or 3). 
 

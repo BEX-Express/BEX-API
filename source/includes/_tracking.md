@@ -130,7 +130,7 @@ searchItems | string | Yes | A comma separated list of items to be searched. Can
 
 ```
 
-The response object contains an items array. The first object in this array is our data definition object. It’s purpose is to communicate the bindings of the column names to their column numbers in the subsequent objects. The purpose of this first object is to allow you to use this information for the binding up of the information to a client grid on your website if you wish.
+The response object contains an items array. The first object in this array is our data definition object. It’s purpose is to communicate the bindings of the column names to their column numbers in the subsequent objects. The purpose of this first object is to allow you to use this information for the binding up of the data to a client grid on your website if you wish.
 
 Attribute | Type | Description
 --------- | ---- | -----------

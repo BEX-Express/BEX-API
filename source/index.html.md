@@ -16,7 +16,6 @@ includes:
   - tracking
   - quoting
   - waybill
-  - webhooks
 
 search: true
 ---

@@ -20,7 +20,7 @@ includes:
 search: true
 ---
 
-# Welcome to our DOCS site.
+# Welcome to our DOCS site
 
 Here at BEX we frequently develop and publish new API’s to assist our customers who wish to gain deeper control and visibility into their courier processes.
 

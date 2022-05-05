@@ -120,9 +120,10 @@ using (var hasher = new HMACSHA256(secret))
 ```
 
 ## Event Types/Payloads
-Each event will be sent using the basic payload structure and contain different properties for each type of event, they are:
+Each event will be sent using the basic payload structure and contain different properties for each type of event.
 
 >**Tracking Events**
+
 ```json
 {
     “Action”: “tracking_event”, 

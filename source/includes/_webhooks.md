@@ -145,6 +145,7 @@ Tracking Type ID | Description
 13 | Shipment integrated into our system.
 
 >**Tracking Event	POD**
+
 ```json
 {
     “Action”: “tracking_event”, 
@@ -165,6 +166,7 @@ Tracking Type ID | Description
 ```
 
 >**Attempted Delivery**
+
 ```json
 {
     “Action”: “attempted_delivery”, 
@@ -177,6 +179,7 @@ Tracking Type ID | Description
 ```
 
 >**Waybill Note**
+
 ```json
 {
     “Action”: “waybill_note”, 
@@ -186,6 +189,7 @@ Tracking Type ID | Description
 }
 ```
 >**Waybill Update**
+
 ```json
 {
     “Action”: “waybill_update”, 
@@ -213,6 +217,7 @@ Tracking Type ID | Description
     ]
 }	
 ```
+
 <aside class="notice">
 To subscribe to any of these events, you can either leave the Filters parameter empty during initial WebHook registration to receive all events, or you can specify the events you want by using the values as shown in the Action parameter of the relevant event type i.e., tracking_event, pod, attempted_delivery, waybill_note, waybill_update.
 </aside>

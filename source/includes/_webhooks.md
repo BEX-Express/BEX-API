@@ -6,15 +6,14 @@ In order to use our WebHooks, you need to ensure that you have a valid and activ
 
 Before we get started, please ensure that you understand and have implemented the necessary methods required to work with WebHooks. 
 
-
 ## WebHook Registration
 The registration is a two-part process that requires two individual requests. 
 
-* First, you need to register your WebHook with us by sending a post request to our <a href="https://webhook.bex.co.za/api/webhooks/registrationsWebHook">endpoint.</a>
+* First, you need to register your WebHook with us by sending a POST request to our WebHook endpoint located at:
+https://webhook.bex.co.za/api/webhooks/registrations
 
-* In the header of your request, you should add a new key pair that represents your WebHook API key.
 
-> Headers: 
+> In the header of your request, you should add a new key pair that represents your WebHook API key: 
 
 ```json
 { “X-InsightWebHooks-Auth”: “Your API Key” }
@@ -33,7 +32,7 @@ Filters: [ “filterA”, “filterB” ]
 
 * After you have made this request and you receive a 200 OK response, you need to <a href="https://webhook.bex.co.za/api/ActivateWebHook">send another request</a>, providing the request body with the following values:
 
-> Example of next step
+> Second request body:
 
 ```json
 {
@@ -41,9 +40,9 @@ Filters: [ “filterA”, “filterB” ]
 }
 ```
 
-* Once you have made this request and you receive a 200 OK response, your WebHook is activated and should start receiving information momentarily.
-
-
+<aside class="notice">
+Once you have made this request and you receive a 200 OK response, your WebHook is activated and should start receiving information momentarily.
+</aside>
 
 ## A Word on Filters
 We provide several different types of WebHook events and you can subscribe to one or all of them. If you want to subscribe to ALL events, then you should ensure that your code can differentiate between these types of events. In this case, you should provide an empty value for the Filters parameter i.e., Filters: []

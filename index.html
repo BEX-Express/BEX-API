@@ -1912,7 +1912,7 @@ you.
 More detail on each event type and what payload they contain can be found later in this document.
 </aside>
 <h2 id='unsubscribing'>Unsubscribing</h2>
-<p>To unsubscribe from our WebHook, send a <a href="https://webhook.bex.co.za/api/UnsubscribeWebHook" >POST request</a> providing a request body made up of:</p>
+<p>To unsubscribe from our WebHook, send a <a href="https://webhook.bex.co.za/api/UnsubscribeWebHook">post request</a> providing a request body made up of:</p>
 
 <blockquote>
 <p>Sample Request</p>
@@ -1962,23 +1962,21 @@ using (var hasher = new HMACSHA256(secret))
     var headerValue = EncodingUtilities.ToHex(sha256);
 }
 </code></pre></div><h2 id='event-types-payloads'>Event Types/Payloads</h2>
-<p>Each event will be sent using the basic payload structure and contain different properties for each type of event, they are:</p>
+<p>Each event will be sent using the basic payload structure and contain different properties for each type of event.</p>
 
 <blockquote>
-<p><strong>Tracking Events</strong>
-<code>json
-{
-    “Action”: “tracking_event”, 
-    “WaybillNumber”: “12345”, 
-    “TrackingDate”: “2021-07-12 11:59:25”, 
-    “TrackingUser”: “John Doe”, 
-    “TrackingDescription”: “tracking description”, 
-    “TrackingReference”: “some reference”, 
-    “TrackingTypeId”: -1
-}
-</code></p>
+<p><strong>Tracking Events</strong></p>
 </blockquote>
-
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="err">“Action”:</span><span class="w"> </span><span class="err">“tracking_event”</span><span class="p">,</span><span class="w"> 
+    </span><span class="err">“WaybillNumber”:</span><span class="w"> </span><span class="err">“</span><span class="mi">12345</span><span class="err">”</span><span class="p">,</span><span class="w"> 
+    </span><span class="err">“TrackingDate”:</span><span class="w"> </span><span class="err">“</span><span class="mi">2021-07-12</span><span class="w"> </span><span class="mi">11</span><span class="err">:</span><span class="mi">59</span><span class="err">:</span><span class="mi">25</span><span class="err">”</span><span class="p">,</span><span class="w"> 
+    </span><span class="err">“TrackingUser”:</span><span class="w"> </span><span class="err">“John</span><span class="w"> </span><span class="err">Doe”</span><span class="p">,</span><span class="w"> 
+    </span><span class="err">“TrackingDescription”:</span><span class="w"> </span><span class="err">“tracking</span><span class="w"> </span><span class="err">description”</span><span class="p">,</span><span class="w"> 
+    </span><span class="err">“TrackingReference”:</span><span class="w"> </span><span class="err">“some</span><span class="w"> </span><span class="err">reference”</span><span class="p">,</span><span class="w"> 
+    </span><span class="err">“TrackingTypeId”:</span><span class="w"> </span><span class="mi">-1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <table><thead>
 <tr>
 <th>Tracking Type ID</th>

@@ -78,7 +78,9 @@ To unsubscribe from our WebHook, send a POST request to https://webhook.bex.co.z
 
 ## Filters/Event Types
 
-When parsing the payload that our WebHook sends you, we will provide you with the requested event types or you can elect to receive all of them. 
+<aside class="notice">
+When parsing the payload that our WebHook sends you, we will provide you with the requested event types or you can elect to receive all of them.
+</aside> 
 
 ## Basic Payload Structure
 

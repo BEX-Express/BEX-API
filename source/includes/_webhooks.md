@@ -7,7 +7,7 @@ Before we get started, please ensure that you understand and have implemented th
 
 
 ## WebHook Registration
-The registration is a two-part process that requires two individual requests. First, you need to register your WebHook with us by sending a POST request to our <a href="https://webhook.bex.co.za/api/webhooks/registrationsWebHook"> endpoint.<a/>
+The registration is a two-part process that requires two individual requests. First, you need to register your WebHook with us by sending a POST request to our <a href="https://webhook.bex.co.za/api/webhooks/registrationsWebHook">endpoint.<a/>
 
 In the header of your request, you should add a new key pair that represents your WebHook API key, i.e.
 
@@ -28,9 +28,9 @@ Filters: [ “filterA”, “filterB” ]
 }
 ```
 
-After you have made this request and you receive a 200 OK response, you need to <a href="https://webhook.bex.co.za/api/ActivateWebHook" >send another request</a>, providing the request body with the following values:
+After you have made this request and you receive a 200 OK response, you need to <a href="https://webhook.bex.co.za/api/ActivateWebHook">send another request</a>, providing the request body with the following values:
 
-> Example of next request
+> Example of next step
 
 ```json
 {

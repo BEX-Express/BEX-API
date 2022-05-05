@@ -11,13 +11,15 @@ The registration is a two-part process that requires two individual requests.
 
 * First, you need to register your WebHook with us by sending a POST request to our WebHook endpoint located at:
 
-https://webhook.bex.co.za/api/webhooks/registrations
+           https://webhook.bex.co.za/api/webhooks/registrations 
 
 
 > In the header of your request, you should add a new key pair that represents your WebHook API key: 
 
 ```json
-{ “X-InsightWebHooks-Auth”: “Your API Key” }
+{ 
+“X-InsightWebHooks-Auth”: “Your API Key” 
+}
 ```
 
 > The request body is made up of:
@@ -33,7 +35,7 @@ Filters: [ “filterA”, “filterB” ]
 
 * After you have made this request and you receive a 200 OK response, you need to send another request to:
 
- https://webhook.bex.co.za/api/ActivateWebHook 
+          https://webhook.bex.co.za/api/ActivateWebHook 
 
 > Providing the request body with the following values:
 
@@ -114,7 +116,7 @@ Every WebHook request that we send will have the special ms-signature header key
 
 > A C# example of calculating the signature would be:
 
-```C#
+```csharp
 var secret = Encoding.UTF8.GetBytes(secretYouProvidedDuringRegistration);
 using (var hasher = new HMACSHA256(secret)) 
 {
@@ -220,6 +222,7 @@ Each event will be sent using the basic payload structure and contain different 
     ]
 }	
 ```
+
 
 **Tracking ID Descriptions:**
 

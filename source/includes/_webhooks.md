@@ -9,16 +9,16 @@ Before we get started, please ensure that you understand and have implemented th
 ## WebHook Registration
 The registration is a two-part process that requires two individual requests. First, you need to register your WebHook with us by sending a POST request to our <a href="https://webhook.bex.co.za/api/webhooks/registrationsWebHook"> endpoint.<a/>
 
-<aside class="notice">
 In the header of your request, you should add a new key pair that represents your WebHook API key, i.e.
-</aside>
 
->Headers: 
+> Headers: 
+
 ```json
 { “X-InsightWebHooks-Auth”: “Your API Key” }
 ```
 
->The request body is made up of:
+> The request body is made up of:
+
 ```json
 {
 WebHookUri: “your endpoint where the webhook will post”, 
@@ -27,14 +27,17 @@ Description: “A description for your webhook”,
 Filters: [ “filterA”, “filterB” ]
 }
 ```
+
 After you have made this request and you receive a 200 OK response, you need to <a href="https://webhook.bex.co.za/api/ActivateWebHook" >send another request</a>, providing the request body with the following values:
 
->Example of next request
+> Example of next request
+
 ```json
 {
     webHookKey: “your API key”
 }
 ```
+
 Once you have made this request and you receive a 200 OK response, your WebHook is activated and should start receiving information momentarily.
 
 
@@ -59,7 +62,8 @@ More detail on each event type and what payload they contain can be found later 
 
 To unsubscribe from our WebHook, send a  <a href="https://webhook.bex.co.za/api/UnsubscribeWebHook">POST request</a> providing a request body made up of:
 
->Sample Request
+> Sample Request
+
 ```json
 { 
     webHookKey: “your API key”
@@ -71,7 +75,9 @@ To unsubscribe from our WebHook, send a  <a href="https://webhook.bex.co.za/api/
 When parsing the payload that our WebHook sends you, we will provide you with the requested event types or you can elect to receive all of them. 
 
 ## Basic Payload Structure
+
 > The basic payload structure for our WebHook would look like this:
+
 ```json
 { 
     “Id”: “a unique id for this message”, 
@@ -98,6 +104,7 @@ Since we are only sending you a request with a payload and that we have no knowl
 Every WebHook request that we send will have the special ms-signature header key containing the hash of the body we’ve sent. You should calculate the signature using the supplied secret (during registration) based on the body of the message you’ve received from us.
 
 > A C# example of calculating the signature would be:
+
 ```C#
 var secret = Encoding.UTF8.GetBytes(secretYouProvidedDuringRegistration);
 using (var hasher = new HMACSHA256(secret)) 

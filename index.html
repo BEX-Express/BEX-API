@@ -1889,9 +1889,7 @@ https://webhook.bex.co.za/api/webhooks/registrations</li>
 </span><span class="err">Filters:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">“filterA”</span><span class="p">,</span><span class="w"> </span><span class="err">“filterB”</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<ul>
-<li>After you have made this request and you receive a 200 OK response, you need to <a href="https://webhook.bex.co.za/api/ActivateWebHook">send another request</a>, providing the request body with the following values:</li>
-</ul>
+<p>*After you have made this request and you receive a 200 OK response, you need to send another request to https://webhook.bex.co.za/api/ActivateWebHook providing the request body with the following values:</p>
 
 <blockquote>
 <p>Second request body:</p>
@@ -1919,7 +1917,7 @@ Once you have made this request and you receive a 200 OK response, your WebHook 
 More detail on each event type and what payload they contain can be found later in this document.
 </aside>
 <h2 id='unsubscribing'>Unsubscribing</h2>
-<p>To unsubscribe from our WebHook, send a <a href="https://webhook.bex.co.za/api/UnsubscribeWebHook">post request</a> providing a request body made up of:</p>
+<p>To unsubscribe from our WebHook, send a POST request to https://webhook.bex.co.za/api/UnsubscribeWebHook providing a request body made up of:</p>
 
 <blockquote>
 <p>Sample Request</p>

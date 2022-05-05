@@ -210,7 +210,7 @@ The codes for the service add-ons that are requested:
 var tokenStr = '';
 var user = encodeURIComponent('someusername'); //encode the username
 var pass = encodeURIComponent('somepassword'); //encode the password
-var host = 'http://dev.bex.co.za';
+var host = 'https://beta.bex.co.za';
 //********** Submit Waybill Service Call ***********
 // ADDRESSING
 var postData = {}
@@ -313,7 +313,7 @@ The service supports URL parameters or JSON parameters in the message body
 
 Example Service Call using JSON message body
 
-* URL: `http://insight.bex.co.za/api/service/submitbexcollection`
+* URL: `https://api.bex.co.za/api/service/submitbexcollection`
 * BODY: `{“accountNumber”:”112311”,”waybillNumber”:”ABC123456”, “waybillDate”:”2014-12-16”….. etc….. }`
 
 

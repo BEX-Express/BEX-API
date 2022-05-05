@@ -7,7 +7,7 @@ Before we get started, please ensure that you understand and have implemented th
 
 
 ## WebHook Registration
-The registration is a two-part process that requires two individual requests. First, you need to register your WebHook with us by sending a POST request to our <a href="https://webhook.bex.co.za/api/webhooks/registrationsWebHook">endpoint.<a/>
+The registration is a two-part process that requires two individual requests. First, you need to register your WebHook with us by sending a POST request to our <a href="https://webhook.bex.co.za/api/webhooks/registrationsWebHook">endpoint<a/>
 
 In the header of your request, you should add a new key pair that represents your WebHook API key, i.e.
 
@@ -122,6 +122,16 @@ using (var hasher = new HMACSHA256(secret))
 ## Event Types/Payloads
 Each event will be sent using the basic payload structure and contain different properties for each type of event.
 
+**Tracking ID's**
+Tracking Type ID | Description
+-------- | -----------
+1 |	Shipment handed to courier.
+4 |	Shipment departed XYZ branch/depot.
+5 |	Shipment arrived at XYZ branch/depot.
+7 |	Shipment loaded onto vehicle for delivery.
+9 |	Delivery attempt failed because …
+13 | Shipment integrated into our system.
+
 >**Tracking Events**
 
 ```json
@@ -136,16 +146,9 @@ Each event will be sent using the basic payload structure and contain different 
 }
 ```
 
-Tracking Type ID | Description
--------- | -----------
-1 |	Shipment handed to courier.
-4 |	Shipment departed XYZ branch/depot.
-5 |	Shipment arrived at XYZ branch/depot.
-7 |	Shipment loaded onto vehicle for delivery.
-9 |	Delivery attempt failed because …
-13 | Shipment integrated into our system.
 
->**Tracking Event	POD**
+
+>**POD**
 
 ```json
 {

@@ -1928,10 +1928,11 @@ Once you have made this request and you receive a 200 OK response, your WebHook 
 More detail on each event type and what payload they contain can be found later in this document.
 </aside>
 <h2 id='unsubscribing'>Unsubscribing</h2>
-<p>To unsubscribe from our WebHook, send a POST request to https://webhook.bex.co.za/api/UnsubscribeWebHook providing a request body made up of:</p>
+<p>To unsubscribe from our WebHook, send a POST request to:
+          https://webhook.bex.co.za/api/UnsubscribeWebHook</p>
 
 <blockquote>
-<p>Sample Request</p>
+<p>The request body should consist of:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> 
     </span><span class="err">webHookKey:</span><span class="w"> </span><span class="err">“your</span><span class="w"> </span><span class="err">API</span><span class="w"> </span><span class="err">key”</span><span class="w">

@@ -1870,12 +1870,12 @@ you.
 <p>The registration is a two-part process that requires two individual requests. </p>
 
 <ul>
-<li><p>First, you need to register your WebHook with us by sending a post request to our <a href="https://webhook.bex.co.za/api/webhooks/registrationsWebHook">endpoint.</a></p></li>
-<li><p>In the header of your request, you should add a new key pair that represents your WebHook API key.</p></li>
+<li>First, you need to register your WebHook with us by sending a POST request to our WebHook endpoint located at:
+https://webhook.bex.co.za/api/webhooks/registrations</li>
 </ul>
 
 <blockquote>
-<p>Headers: </p>
+<p>In the header of your request, you should add a new key pair that represents your WebHook API key: </p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> </span><span class="err">“X-InsightWebHooks-Auth”:</span><span class="w"> </span><span class="err">“Your</span><span class="w"> </span><span class="err">API</span><span class="w"> </span><span class="err">Key”</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -1894,15 +1894,15 @@ you.
 </ul>
 
 <blockquote>
-<p>Example of next step</p>
+<p>Second request body:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="err">webHookKey:</span><span class="w"> </span><span class="err">“your</span><span class="w"> </span><span class="err">API</span><span class="w"> </span><span class="err">key”</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<ul>
-<li>Once you have made this request and you receive a 200 OK response, your WebHook is activated and should start receiving information momentarily.</li>
-</ul>
+<aside class="notice">
+Once you have made this request and you receive a 200 OK response, your WebHook is activated and should start receiving information momentarily.
+</aside>
 <h2 id='a-word-on-filters'>A Word on Filters</h2>
 <p>We provide several different types of WebHook events and you can subscribe to one or all of them. If you want to subscribe to ALL events, then you should ensure that your code can differentiate between these types of events. In this case, you should provide an empty value for the Filters parameter i.e., Filters: []</p>
 

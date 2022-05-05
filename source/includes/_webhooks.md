@@ -10,6 +10,7 @@ Before we get started, please ensure that you understand and have implemented th
 The registration is a two-part process that requires two individual requests. 
 
 * First, you need to register your WebHook with us by sending a POST request to our WebHook endpoint located at:
+
 https://webhook.bex.co.za/api/webhooks/registrations
 
 
@@ -30,9 +31,11 @@ Filters: [ “filterA”, “filterB” ]
 }
 ```
 
-*After you have made this request and you receive a 200 OK response, you need to send another request to https://webhook.bex.co.za/api/ActivateWebHook providing the request body with the following values:
+* After you have made this request and you receive a 200 OK response, you need to send another request to:
 
-> Second request body:
+ https://webhook.bex.co.za/api/ActivateWebHook 
+
+> Providing the request body with the following values:
 
 ```json
 {
@@ -50,6 +53,7 @@ We provide several different types of WebHook events and you can subscribe to on
 If you would like to subscribe to certain events only, then you need to provide each event type you want to subscribe to, e.g. Filters: [ “event 1”, “event 2”, … ]
 
 We provide the following filters/event types:
+
 * pod
 * attempted_delivery
 * waybill_update

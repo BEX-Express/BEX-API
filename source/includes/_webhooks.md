@@ -221,7 +221,7 @@ Each event will be sent using the basic payload structure and contain different 
 }	
 ```
 
-**Tracking ID's**
+**Tracking ID Descriptions:**
 
 Tracking Type ID | Description
 -------- | -----------

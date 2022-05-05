@@ -68,9 +68,11 @@ More detail on each event type and what payload they contain can be found later 
 
 ## Unsubscribing
 
-To unsubscribe from our WebHook, send a POST request to https://webhook.bex.co.za/api/UnsubscribeWebHook providing a request body made up of:
+To unsubscribe from our WebHook, send a POST request to:
+          https://webhook.bex.co.za/api/UnsubscribeWebHook
 
-> Sample Request
+
+> The request body should consist of:
 
 ```json
 { 

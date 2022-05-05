@@ -1,13 +1,13 @@
 # Webhooks Guide
 
 ## Getting Started
-In order to use our WebHooks, you need to ensure that you have a valid and actively trading customer account registered with BEX. Once you have your account number, you will need to request a WebHook API key from our IT department. We will communicate this to you but it is your responsibility to ensure the secrecy of it.
+In order to use our WebHooks, you need to ensure that you have a valid and actively trading customer account registered with BEX. Once you have your account number, you will need to request a WebHook API key from our <a href="mailto:it@bex.co.za?subject=Please%20help%20me%20to%20integrate%20with%20you">IT department</a>. We will communicate this to you but it is your responsibility to ensure the secrecy of it.
 
 Before we get started, please ensure that you understand and have implemented the necessary methods required to work with WebHooks. 
 
 
 ## WebHook Registration
-The registration is a two-part process that requires two individual requests. First, you need to register your WebHook with us by sending a post request to our <a href="https://webhook.bex.co.za/api/webhooks/registrationsWebHook">endpoint</a>
+The registration is a two-part process that requires two individual requests. First, you need to register your WebHook with us by sending a post request to our <a href="https://webhook.bex.co.za/api/webhooks/registrationsWebHook">endpoint.</a>
 
 In the header of your request, you should add a new key pair that represents your WebHook API key.
 

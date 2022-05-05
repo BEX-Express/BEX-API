@@ -4,7 +4,7 @@ title: BEX REST API Documentation
 language_tabs: # must be one of https://git.io/vQNgJ
   - json
   - javascript
-  - c#
+  - csharp
 
 toc_footers:
   - <a href='https://bex.co.za/signup'>Open a BEX account</a>

@@ -7,9 +7,9 @@ Before we get started, please ensure that you understand and have implemented th
 
 
 ## WebHook Registration
-The registration is a two-part process that requires two individual requests. First, you need to register your WebHook with us by sending a POST request to our <a href="https://webhook.bex.co.za/api/webhooks/registrationsWebHook">endpoint<a/>
+The registration is a two-part process that requires two individual requests. First, you need to register your WebHook with us by sending a post request to our <a href="https://webhook.bex.co.za/api/webhooks/registrationsWebHook">endpoint<a/>
 
-In the header of your request, you should add a new key pair that represents your WebHook API key, i.e.
+In the header of your request, you should add a new key pair that represents your WebHook API key.
 
 > Headers: 
 

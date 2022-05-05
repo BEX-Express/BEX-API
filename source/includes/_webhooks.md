@@ -16,11 +16,11 @@ The registration is a two-part process that requires two individual requests.
 
 > In the header of your request, you should add a new key pair that represents your WebHook API key: 
 
-```json
+
 { 
 “X-InsightWebHooks-Auth”: “Your API Key” 
 }
-```
+
 
 > The request body is made up of:
 

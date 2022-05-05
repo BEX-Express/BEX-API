@@ -229,7 +229,7 @@ Tracking Type ID | Description
 4 |	Shipment departed XYZ branch/depot.
 5 |	Shipment arrived at XYZ branch/depot.
 7 |	Shipment loaded onto vehicle for delivery.
-9 |	Delivery attempt failed because …
+9 |	Delivery attempt failed because (reason variable)
 13 | Shipment integrated into our system.
 
 <aside class="notice">

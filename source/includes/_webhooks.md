@@ -1,7 +1,7 @@
 # Webhooks Guide
 
 ## Getting Started
-[comment]: <> (Confirm this is the email address used for webhook api requests)
+[//]: # "Confirm this is the email address used for webhook api requests"
 In order to use our WebHooks, you need to ensure that you have a valid and actively trading customer account registered with BEX. Once you have your account number, you will need to request a WebHook API key from our <a href="mailto:it@bex.co.za?subject=WebHook%20API%20key%20Request">IT department</a>. We will communicate this to you but it is your responsibility to ensure the secrecy of it.
 
 Before we get started, please ensure that you understand and have implemented the necessary methods required to work with WebHooks. 

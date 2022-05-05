@@ -1,23 +1,27 @@
 # Webhooks Guide
 
 ## Getting Started
-In order to use our WebHooks, you need to ensure that you have a valid and actively trading customer account registered with BEX. Once you have your account number, you will need to request a WebHook API key from our IT department. We will communicate this to you but it is your responsibility to ensure the secrecy of it.
+[//]: # "Confirm this is the email address used for webhook api requests"
+In order to use our WebHooks, you need to ensure that you have a valid and actively trading customer account registered with BEX. Once you have your account number, you will need to request a WebHook API key from our <a href="mailto:it@bex.co.za?subject=WebHook%20API%20key%20Request">IT department</a>. We will communicate this to you but it is your responsibility to ensure the secrecy of it.
 
 Before we get started, please ensure that you understand and have implemented the necessary methods required to work with WebHooks. 
 
-
 ## WebHook Registration
-The registration is a two-part process that requires two individual requests. First, you need to register your WebHook with us by sending a POST request to our <a href="https://webhook.bex.co.za/api/webhooks/registrationsWebHook"> endpoint.<a/>
+The registration is a two-part process that requires two individual requests. 
 
-<aside class="notice">
-In the header of your request, you should add a new key pair that represents your WebHook API key, i.e. 
+* First, you need to register your WebHook with us by sending a POST request to our WebHook endpoint located at:
 
->Headers: 
+https://webhook.bex.co.za/api/webhooks/registrations
+
+
+> In the header of your request, you should add a new key pair that represents your WebHook API key: 
+
 ```json
 { “X-InsightWebHooks-Auth”: “Your API Key” }
 ```
 
->The request body is made up of:
+> The request body is made up of:
+
 ```json
 {
 WebHookUri: “your endpoint where the webhook will post”, 
@@ -26,17 +30,22 @@ Description: “A description for your webhook”,
 Filters: [ “filterA”, “filterB” ]
 }
 ```
-After you have made this request and you receive a 200 OK response, you need to <a href="https://webhook.bex.co.za/api/ActivateWebHook" >send another request</a>, providing the request body with the following values:
 
->Example of next request
+* After you have made this request and you receive a 200 OK response, you need to send another request to:
+
+ https://webhook.bex.co.za/api/ActivateWebHook 
+
+> Providing the request body with the following values:
+
 ```json
 {
     webHookKey: “your API key”
 }
 ```
+
+<aside class="notice">
 Once you have made this request and you receive a 200 OK response, your WebHook is activated and should start receiving information momentarily.
-
-
+</aside>
 
 ## A Word on Filters
 We provide several different types of WebHook events and you can subscribe to one or all of them. If you want to subscribe to ALL events, then you should ensure that your code can differentiate between these types of events. In this case, you should provide an empty value for the Filters parameter i.e., Filters: []
@@ -44,6 +53,7 @@ We provide several different types of WebHook events and you can subscribe to on
 If you would like to subscribe to certain events only, then you need to provide each event type you want to subscribe to, e.g. Filters: [ “event 1”, “event 2”, … ]
 
 We provide the following filters/event types:
+
 * pod
 * attempted_delivery
 * waybill_update
@@ -56,9 +66,10 @@ More detail on each event type and what payload they contain can be found later 
 
 ## Unsubscribing
 
-To unsubscribe from our WebHook, send a  <a href="https://webhook.bex.co.za/api/UnsubscribeWebHook">POST request</a> providing a request body made up of:
+To unsubscribe from our WebHook, send a POST request to https://webhook.bex.co.za/api/UnsubscribeWebHook providing a request body made up of:
 
->Sample Request
+> Sample Request
+
 ```json
 { 
     webHookKey: “your API key”
@@ -67,10 +78,14 @@ To unsubscribe from our WebHook, send a  <a href="https://webhook.bex.co.za/api/
 
 ## Filters/Event Types
 
-When parsing the payload that our WebHook sends you, we will provide you with the requested event types or you can elect to receive all of them. 
+<aside class="notice">
+When parsing the payload that our WebHook sends you, we will provide you with the requested event types or you can elect to receive all of them.
+</aside> 
 
 ## Basic Payload Structure
+
 > The basic payload structure for our WebHook would look like this:
+
 ```json
 { 
     “Id”: “a unique id for this message”, 
@@ -82,11 +97,12 @@ When parsing the payload that our WebHook sends you, we will provide you with th
     }]
 }
 ```
+
 As part of the request to your WebHook endpoint, we also include a special header:
 
-<aside class="notice">
-Header Key: ms-signature, Header Value: sha256=calculatedHashValueGoesHere
-</aside>
+
+* Header Key: ms-signature, Header Value: sha256=calculatedHashValueGoesHere
+
 
 ## Notifications Property
 The notifications property will contain the type of notification you are receiving (“Action”) followed by the list of properties relating to that specific event type. These properties are listed below for your convenience.
@@ -97,6 +113,7 @@ Since we are only sending you a request with a payload and that we have no knowl
 Every WebHook request that we send will have the special ms-signature header key containing the hash of the body we’ve sent. You should calculate the signature using the supplied secret (during registration) based on the body of the message you’ve received from us.
 
 > A C# example of calculating the signature would be:
+
 ```C#
 var secret = Encoding.UTF8.GetBytes(secretYouProvidedDuringRegistration);
 using (var hasher = new HMACSHA256(secret)) 
@@ -111,9 +128,11 @@ using (var hasher = new HMACSHA256(secret))
 ```
 
 ## Event Types/Payloads
-Each event will be sent using the basic payload structure and contain different properties for each type of event, they are:
+Each event will be sent using the basic payload structure and contain different properties for each type of event.
+
 
 >**Tracking Events**
+
 ```json
 {
     “Action”: “tracking_event”, 
@@ -126,16 +145,10 @@ Each event will be sent using the basic payload structure and contain different 
 }
 ```
 
-Tracking Type ID | Description
--------- | -----------
-1 |	Shipment handed to courier.
-4 |	Shipment departed XYZ branch/depot.
-5 |	Shipment arrived at XYZ branch/depot.
-7 |	Shipment loaded onto vehicle for delivery.
-9 |	Delivery attempt failed because …
-13 | Shipment integrated into our system.
 
->**Tracking Event	POD**
+
+>**POD**
+
 ```json
 {
     “Action”: “tracking_event”, 
@@ -156,6 +169,7 @@ Tracking Type ID | Description
 ```
 
 >**Attempted Delivery**
+
 ```json
 {
     “Action”: “attempted_delivery”, 
@@ -168,6 +182,7 @@ Tracking Type ID | Description
 ```
 
 >**Waybill Note**
+
 ```json
 {
     “Action”: “waybill_note”, 
@@ -177,6 +192,7 @@ Tracking Type ID | Description
 }
 ```
 >**Waybill Update**
+
 ```json
 {
     “Action”: “waybill_update”, 
@@ -204,6 +220,18 @@ Tracking Type ID | Description
     ]
 }	
 ```
+
+**Tracking ID's**
+
+Tracking Type ID | Description
+-------- | -----------
+1 |	Shipment handed to courier.
+4 |	Shipment departed XYZ branch/depot.
+5 |	Shipment arrived at XYZ branch/depot.
+7 |	Shipment loaded onto vehicle for delivery.
+9 |	Delivery attempt failed because (reason variable)
+13 | Shipment integrated into our system.
+
 <aside class="notice">
 To subscribe to any of these events, you can either leave the Filters parameter empty during initial WebHook registration to receive all events, or you can specify the events you want by using the values as shown in the Action parameter of the relevant event type i.e., tracking_event, pod, attempted_delivery, waybill_note, waybill_update.
 </aside>

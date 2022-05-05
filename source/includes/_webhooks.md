@@ -18,7 +18,7 @@ The registration is a two-part process that requires two individual requests.
 
 ```json
 { 
-“X-InsightWebHooks-Auth”: “Your API Key” 
+    “X-InsightWebHooks-Auth”: “Your API Key” 
 }
 ```
 
@@ -26,10 +26,10 @@ The registration is a two-part process that requires two individual requests.
 
 ```json
 {
-WebHookUri: “your endpoint where the webhook will post”, 
-Secret: “A secret key that you generate”, 
-Description: “A description for your webhook”, 
-Filters: [ “filterA”, “filterB” ]
+    WebHookUri: “your endpoint where the webhook will post”, 
+    Secret: “A secret key that you generate”, 
+    Description: “A description for your webhook”, 
+    Filters: [ “filterA”, “filterB” ]
 }
 ```
 

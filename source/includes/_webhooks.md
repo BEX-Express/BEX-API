@@ -114,7 +114,7 @@ Every WebHook request that we send will have the special ms-signature header key
 
 > A C# example of calculating the signature would be:
 
-```C#
+```csharp
 var secret = Encoding.UTF8.GetBytes(secretYouProvidedDuringRegistration);
 using (var hasher = new HMACSHA256(secret)) 
 {

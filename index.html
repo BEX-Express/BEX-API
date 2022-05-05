@@ -1870,9 +1870,10 @@ you.
 <p>The registration is a two-part process that requires two individual requests. </p>
 
 <ul>
-<li>First, you need to register your WebHook with us by sending a POST request to our WebHook endpoint located at:
-https://webhook.bex.co.za/api/webhooks/registrations</li>
+<li>First, you need to register your WebHook with us by sending a POST request to our WebHook endpoint located at:</li>
 </ul>
+
+<p>https://webhook.bex.co.za/api/webhooks/registrations</p>
 
 <blockquote>
 <p>In the header of your request, you should add a new key pair that represents your WebHook API key: </p>
@@ -1889,10 +1890,14 @@ https://webhook.bex.co.za/api/webhooks/registrations</li>
 </span><span class="err">Filters:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">“filterA”</span><span class="p">,</span><span class="w"> </span><span class="err">“filterB”</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>*After you have made this request and you receive a 200 OK response, you need to send another request to https://webhook.bex.co.za/api/ActivateWebHook providing the request body with the following values:</p>
+<ul>
+<li>After you have made this request and you receive a 200 OK response, you need to send another request to:</li>
+</ul>
+
+<p>https://webhook.bex.co.za/api/ActivateWebHook </p>
 
 <blockquote>
-<p>Second request body:</p>
+<p>Providing the request body with the following values:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="err">webHookKey:</span><span class="w"> </span><span class="err">“your</span><span class="w"> </span><span class="err">API</span><span class="w"> </span><span class="err">key”</span><span class="w">
@@ -1906,12 +1911,15 @@ Once you have made this request and you receive a 200 OK response, your WebHook 
 
 <p>If you would like to subscribe to certain events only, then you need to provide each event type you want to subscribe to, e.g. Filters: [ “event 1”, “event 2”, … ]</p>
 
-<p>We provide the following filters/event types:
-* pod
-* attempted_delivery
-* waybill_update
-* waybill_note
-* tracking_event</p>
+<p>We provide the following filters/event types:</p>
+
+<ul>
+<li>pod</li>
+<li>attempted_delivery</li>
+<li>waybill_update</li>
+<li>waybill_note</li>
+<li>tracking_event</li>
+</ul>
 
 <aside class="notice">
 More detail on each event type and what payload they contain can be found later in this document.

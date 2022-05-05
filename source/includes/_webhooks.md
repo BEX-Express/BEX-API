@@ -11,7 +11,7 @@ The registration is a two-part process that requires two individual requests.
 
 * First, you need to register your WebHook with us by sending a POST request to our WebHook endpoint located at:
 
-       https://webhook.bex.co.za/api/webhooks/registrations 
+           https://webhook.bex.co.za/api/webhooks/registrations 
 
 
 > In the header of your request, you should add a new key pair that represents your WebHook API key: 
@@ -33,7 +33,7 @@ Filters: [ “filterA”, “filterB” ]
 
 * After you have made this request and you receive a 200 OK response, you need to send another request to:
 
-      https://webhook.bex.co.za/api/ActivateWebHook 
+          https://webhook.bex.co.za/api/ActivateWebHook 
 
 > Providing the request body with the following values:
 

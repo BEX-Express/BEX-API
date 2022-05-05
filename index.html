@@ -339,6 +339,9 @@
                     <a href="#webhook-registration" class="toc-h2 toc-link" data-title="WebHook Registration">WebHook Registration</a>
                   </li>
                   <li>
+                    <a href="#a-word-on-filters" class="toc-h2 toc-link" data-title="A Word on Filters">A Word on Filters</a>
+                  </li>
+                  <li>
                     <a href="#unsubscribing" class="toc-h2 toc-link" data-title="Unsubscribing">Unsubscribing</a>
                   </li>
                   <li>
@@ -1867,45 +1870,45 @@ you.
 <p>The registration is a two-part process that requires two individual requests. First, you need to register your WebHook with us by sending a POST request to our <a href="https://webhook.bex.co.za/api/webhooks/registrationsWebHook"> endpoint.<a/></p>
 
 <aside class="notice">
-In the header of your request, you should add a new key pair that represents your WebHook API key, i.e. 
+In the header of your request, you should add a new key pair that represents your WebHook API key, i.e.
+</aside>
 
->Headers: 
-```json
+<blockquote>
+<p>Headers: 
+<code>json
 { “X-InsightWebHooks-Auth”: “Your API Key” }
-```
+</code></p>
 
->The request body is made up of:
-```json
+<p>The request body is made up of:
+<code>json
 {
 WebHookUri: “your endpoint where the webhook will post”, 
 Secret: “A secret key that you generate”, 
 Description: “A description for your webhook”, 
 Filters: [ “filterA”, “filterB” ]
 }
-```
-After you have made this request and you receive a 200 OK response, you need to <a href="https://webhook.bex.co.za/api/ActivateWebHook" >send another request</a>, providing the request body with the following values:
+</code>
+After you have made this request and you receive a 200 OK response, you need to <a href="https://webhook.bex.co.za/api/ActivateWebHook" >send another request</a>, providing the request body with the following values:</p>
 
->Example of next request
-```json
+<p>Example of next request
+<code>json
 {
     webHookKey: “your API key”
 }
-```
-Once you have made this request and you receive a 200 OK response, your WebHook is activated and should start receiving information momentarily.
+</code>
+Once you have made this request and you receive a 200 OK response, your WebHook is activated and should start receiving information momentarily.</p>
+</blockquote>
+<h2 id='a-word-on-filters'>A Word on Filters</h2>
+<p>We provide several different types of WebHook events and you can subscribe to one or all of them. If you want to subscribe to ALL events, then you should ensure that your code can differentiate between these types of events. In this case, you should provide an empty value for the Filters parameter i.e., Filters: []</p>
 
+<p>If you would like to subscribe to certain events only, then you need to provide each event type you want to subscribe to, e.g. Filters: [ “event 1”, “event 2”, … ]</p>
 
-
-## A Word on Filters
-We provide several different types of WebHook events and you can subscribe to one or all of them. If you want to subscribe to ALL events, then you should ensure that your code can differentiate between these types of events. In this case, you should provide an empty value for the Filters parameter i.e., Filters: []
-
-If you would like to subscribe to certain events only, then you need to provide each event type you want to subscribe to, e.g. Filters: [ “event 1”, “event 2”, … ]
-
-We provide the following filters/event types:
+<p>We provide the following filters/event types:
 * pod
 * attempted_delivery
 * waybill_update
 * waybill_note
-* tracking_event
+* tracking_event</p>
 
 <aside class="notice">
 More detail on each event type and what payload they contain can be found later in this document.

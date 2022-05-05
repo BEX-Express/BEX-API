@@ -1964,15 +1964,39 @@ using (var hasher = new HMACSHA256(secret))
 </code></pre></div><h2 id='event-types-payloads'>Event Types/Payloads</h2>
 <p>Each event will be sent using the basic payload structure and contain different properties for each type of event.</p>
 
-<p><strong>Tracking ID&#39;s</strong>
-Tracking Type ID | Description
--------- | -----------
-1 | Shipment handed to courier.
-4 | Shipment departed XYZ branch/depot.
-5 | Shipment arrived at XYZ branch/depot.
-7 | Shipment loaded onto vehicle for delivery.
-9 | Delivery attempt failed because …
-13 | Shipment integrated into our system.</p>
+<p><strong>Tracking ID&#39;s</strong></p>
+
+<table><thead>
+<tr>
+<th>Tracking Type ID</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>Shipment handed to courier.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Shipment departed XYZ branch/depot.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Shipment arrived at XYZ branch/depot.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Shipment loaded onto vehicle for delivery.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Delivery attempt failed because …</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Shipment integrated into our system.</td>
+</tr>
+</tbody></table>
 
 <blockquote>
 <p><strong>Tracking Events</strong></p>

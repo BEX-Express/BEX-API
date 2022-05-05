@@ -30,7 +30,7 @@ Filters: [ “filterA”, “filterB” ]
 }
 ```
 
-* After you have made this request and you receive a 200 OK response, you need to <a href="https://webhook.bex.co.za/api/ActivateWebHook">send another request</a>, providing the request body with the following values:
+*After you have made this request and you receive a 200 OK response, you need to send another request to https://webhook.bex.co.za/api/ActivateWebHook providing the request body with the following values:
 
 > Second request body:
 
@@ -62,7 +62,7 @@ More detail on each event type and what payload they contain can be found later 
 
 ## Unsubscribing
 
-To unsubscribe from our WebHook, send a <a href="https://webhook.bex.co.za/api/UnsubscribeWebHook">post request</a> providing a request body made up of:
+To unsubscribe from our WebHook, send a POST request to https://webhook.bex.co.za/api/UnsubscribeWebHook providing a request body made up of:
 
 > Sample Request
 

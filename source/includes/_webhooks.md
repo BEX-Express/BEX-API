@@ -60,7 +60,7 @@ More detail on each event type and what payload they contain can be found later 
 
 ## Unsubscribing
 
-To unsubscribe from our WebHook, send a  <a href="https://webhook.bex.co.za/api/UnsubscribeWebHook">POST request</a> providing a request body made up of:
+To unsubscribe from our WebHook, send a <a href="https://webhook.bex.co.za/api/UnsubscribeWebHook" >POST request</a> providing a request body made up of:
 
 > Sample Request
 

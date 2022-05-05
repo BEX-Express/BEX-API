@@ -1,15 +1,18 @@
 # Webhooks Guide
 
 ## Getting Started
-In order to use our WebHooks, you need to ensure that you have a valid and actively trading customer account registered with BEX. Once you have your account number, you will need to request a WebHook API key from our <a href="mailto:it@bex.co.za?subject=Please%20help%20me%20to%20integrate%20with%20you">IT department</a>. We will communicate this to you but it is your responsibility to ensure the secrecy of it.
+[comment]: <> (Confirm this is the email address used for webhook api requests)
+In order to use our WebHooks, you need to ensure that you have a valid and actively trading customer account registered with BEX. Once you have your account number, you will need to request a WebHook API key from our <a href="mailto:it@bex.co.za?subject=WebHook%20API%20key%20Request">IT department</a>. We will communicate this to you but it is your responsibility to ensure the secrecy of it.
 
 Before we get started, please ensure that you understand and have implemented the necessary methods required to work with WebHooks. 
 
 
 ## WebHook Registration
-The registration is a two-part process that requires two individual requests. First, you need to register your WebHook with us by sending a post request to our <a href="https://webhook.bex.co.za/api/webhooks/registrationsWebHook">endpoint.</a>
+The registration is a two-part process that requires two individual requests. 
 
-In the header of your request, you should add a new key pair that represents your WebHook API key.
+* First, you need to register your WebHook with us by sending a post request to our <a href="https://webhook.bex.co.za/api/webhooks/registrationsWebHook">endpoint.</a>
+
+* In the header of your request, you should add a new key pair that represents your WebHook API key.
 
 > Headers: 
 
@@ -28,7 +31,7 @@ Filters: [ “filterA”, “filterB” ]
 }
 ```
 
-After you have made this request and you receive a 200 OK response, you need to <a href="https://webhook.bex.co.za/api/ActivateWebHook">send another request</a>, providing the request body with the following values:
+* After you have made this request and you receive a 200 OK response, you need to <a href="https://webhook.bex.co.za/api/ActivateWebHook">send another request</a>, providing the request body with the following values:
 
 > Example of next step
 
@@ -38,7 +41,7 @@ After you have made this request and you receive a 200 OK response, you need to 
 }
 ```
 
-Once you have made this request and you receive a 200 OK response, your WebHook is activated and should start receiving information momentarily.
+* Once you have made this request and you receive a 200 OK response, your WebHook is activated and should start receiving information momentarily.
 
 
 
@@ -92,9 +95,9 @@ When parsing the payload that our WebHook sends you, we will provide you with th
 
 As part of the request to your WebHook endpoint, we also include a special header:
 
-<aside class="notice">
-Header Key: ms-signature, Header Value: sha256=calculatedHashValueGoesHere
-</aside>
+
+* Header Key: ms-signature, Header Value: sha256=calculatedHashValueGoesHere
+
 
 ## Notifications Property
 The notifications property will contain the type of notification you are receiving (“Action”) followed by the list of properties relating to that specific event type. These properties are listed below for your convenience.
@@ -122,16 +125,6 @@ using (var hasher = new HMACSHA256(secret))
 ## Event Types/Payloads
 Each event will be sent using the basic payload structure and contain different properties for each type of event.
 
-**Tracking ID's**
-
-Tracking Type ID | Description
--------- | -----------
-1 |	Shipment handed to courier.
-4 |	Shipment departed XYZ branch/depot.
-5 |	Shipment arrived at XYZ branch/depot.
-7 |	Shipment loaded onto vehicle for delivery.
-9 |	Delivery attempt failed because …
-13 | Shipment integrated into our system.
 
 >**Tracking Events**
 
@@ -222,6 +215,17 @@ Tracking Type ID | Description
     ]
 }	
 ```
+
+**Tracking ID's**
+
+Tracking Type ID | Description
+-------- | -----------
+1 |	Shipment handed to courier.
+4 |	Shipment departed XYZ branch/depot.
+5 |	Shipment arrived at XYZ branch/depot.
+7 |	Shipment loaded onto vehicle for delivery.
+9 |	Delivery attempt failed because …
+13 | Shipment integrated into our system.
 
 <aside class="notice">
 To subscribe to any of these events, you can either leave the Filters parameter empty during initial WebHook registration to receive all events, or you can specify the events you want by using the values as shown in the Action parameter of the relevant event type i.e., tracking_event, pod, attempted_delivery, waybill_note, waybill_update.

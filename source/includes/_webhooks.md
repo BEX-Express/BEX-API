@@ -123,6 +123,7 @@ using (var hasher = new HMACSHA256(secret))
 Each event will be sent using the basic payload structure and contain different properties for each type of event.
 
 **Tracking ID's**
+
 Tracking Type ID | Description
 -------- | -----------
 1 |	Shipment handed to courier.

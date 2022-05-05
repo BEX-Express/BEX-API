@@ -1967,16 +1967,16 @@ When parsing the payload that our WebHook sends you, we will provide you with th
 <blockquote>
 <p>A C# example of calculating the signature would be:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext"><code>var secret = Encoding.UTF8.GetBytes(secretYouProvidedDuringRegistration);
-using (var hasher = new HMACSHA256(secret)) 
-{
-    var serializedBody = body.ToString();
-    request.Content = new StringContent(serializedBody, Encoding.UTF8, “application/json”);
+<div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">secret</span> <span class="p">=</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="nf">GetBytes</span><span class="p">(</span><span class="n">secretYouProvidedDuringRegistration</span><span class="p">);</span>
+<span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">hasher</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">HMACSHA256</span><span class="p">(</span><span class="n">secret</span><span class="p">))</span> 
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">serializedBody</span> <span class="p">=</span> <span class="n">body</span><span class="p">.</span><span class="nf">ToString</span><span class="p">();</span>
+    <span class="n">request</span><span class="p">.</span><span class="n">Content</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StringContent</span><span class="p">(</span><span class="n">serializedBody</span><span class="p">,</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">,</span> <span class="err">“</span><span class="n">application</span><span class="p">/</span><span class="n">json</span><span class="err">”</span><span class="p">);</span>
 
-    var data = Encoding.UTF8.GetBytes(serializedBody);
-    var sha256 = hasher.ComputeHash(data);
-    var headerValue = EncodingUtilities.ToHex(sha256);
-}
+    <span class="kt">var</span> <span class="n">data</span> <span class="p">=</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="nf">GetBytes</span><span class="p">(</span><span class="n">serializedBody</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">sha256</span> <span class="p">=</span> <span class="n">hasher</span><span class="p">.</span><span class="nf">ComputeHash</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">headerValue</span> <span class="p">=</span> <span class="n">EncodingUtilities</span><span class="p">.</span><span class="nf">ToHex</span><span class="p">(</span><span class="n">sha256</span><span class="p">);</span>
+<span class="p">}</span>
 </code></pre></div><h2 id='event-types-payloads'>Event Types/Payloads</h2>
 <p>Each event will be sent using the basic payload structure and contain different properties for each type of event.</p>
 

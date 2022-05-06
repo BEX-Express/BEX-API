@@ -105,7 +105,8 @@ When parsing the payload that our WebHook sends you, we will provide you with th
 As part of the request to your WebHook endpoint, we also include a special header:
 
 
-* Header Key: ms-signature, Header Value: sha256=calculatedHashValueGoesHere
+* Header Key: ms-signature 
+* Header Value: sha256=calculatedHashValueGoesHere
 
 
 ## Notifications Property

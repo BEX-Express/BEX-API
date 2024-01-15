@@ -235,9 +235,6 @@
             <a href="#parameters" class="toc-h1 toc-link" data-title="Parameters">Parameters</a>
           </li>
           <li>
-            <a href="#libraries" class="toc-h1 toc-link" data-title="Libraries">Libraries</a>
-          </li>
-          <li>
             <a href="#tools" class="toc-h1 toc-link" data-title="Tools">Tools</a>
           </li>
           <li>
@@ -256,9 +253,6 @@
                     <a href="#parameters" class="toc-h2 toc-link" data-title="Parameters">Parameters</a>
                   </li>
                   <li>
-                    <a href="#transportation" class="toc-h2 toc-link" data-title="Transportation">Transportation</a>
-                  </li>
-                  <li>
                     <a href="#response" class="toc-h2 toc-link" data-title="Response">Response</a>
                   </li>
               </ul>
@@ -271,9 +265,6 @@
                   </li>
                   <li>
                     <a href="#endpoint" class="toc-h2 toc-link" data-title="Endpoint">Endpoint</a>
-                  </li>
-                  <li>
-                    <a href="#transportation" class="toc-h2 toc-link" data-title="Transportation">Transportation</a>
                   </li>
                   <li>
                     <a href="#parameters" class="toc-h2 toc-link" data-title="Parameters">Parameters</a>
@@ -310,31 +301,27 @@
                     <a href="#endpoint" class="toc-h2 toc-link" data-title="Endpoint">Endpoint</a>
                   </li>
                   <li>
-                    <a href="#addresses" class="toc-h2 toc-link" data-title="Addresses">Addresses</a>
-                  </li>
-                  <li>
-                    <a href="#dimensioning" class="toc-h2 toc-link" data-title="Dimensioning">Dimensioning</a>
-                  </li>
-                  <li>
-                    <a href="#additional-references-array" class="toc-h2 toc-link" data-title="Additional References Array">Additional References Array</a>
-                  </li>
-                  <li>
-                    <a href="#parcel-label-printing" class="toc-h2 toc-link" data-title="Parcel Label Printing">Parcel Label Printing</a>
-                  </li>
-                  <li>
-                    <a href="#waybill-transportation" class="toc-h2 toc-link" data-title="Waybill Transportation">Waybill Transportation</a>
-                  </li>
-                  <li>
                     <a href="#response" class="toc-h2 toc-link" data-title="Response">Response</a>
                   </li>
                   <li>
                     <a href="#submission-failures" class="toc-h2 toc-link" data-title="Submission Failures">Submission Failures</a>
                   </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#waybill-downloads" class="toc-h1 toc-link" data-title="Waybill Downloads">Waybill Downloads</a>
+              <ul class="toc-list-h2">
                   <li>
-                    <a href="#downloading-waybills" class="toc-h2 toc-link" data-title="Downloading Waybills">Downloading Waybills</a>
+                    <a href="#overview" class="toc-h2 toc-link" data-title="Overview">Overview</a>
                   </li>
                   <li>
-                    <a href="#downloading-parcel-labels" class="toc-h2 toc-link" data-title="Downloading Parcel Labels">Downloading Parcel Labels</a>
+                    <a href="#authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
+                  </li>
+                  <li>
+                    <a href="#ewaybill-download" class="toc-h2 toc-link" data-title="eWaybill Download">eWaybill Download</a>
+                  </li>
+                  <li>
+                    <a href="#labels-downloads" class="toc-h2 toc-link" data-title="Labels Downloads">Labels Downloads</a>
                   </li>
               </ul>
           </li>
@@ -401,23 +388,16 @@ Couple this with our token based Authentication methods and standard HTTP verbs 
 <p><strong>Note:</strong> If you have multiple shipping accounts you are not required to transact under multiple integration identities (“tokens”). Our platform supports the assignment of multiple shipping accounts to a <em>single</em> token, making integration across multiple business units easier.</p>
 
 <aside class="notice">
-You may access the API over HTTP or HTTPS, but HTTPS is recommended if you wish to keep things secure.
+Our API endpoints should be accessed through HTTPS.
 </aside>
 <h1 id='request-response-format'>Request/Response Format</h1>
-<p>The default response format is <strong>JSON</strong>. Requests with a message-body use plain JSON to set resource attributes.</p>
-
-<p>Successful requests will return a <code>200 OK</code> HTTP status.</p>
+<p>Our API endpoints will respond with <strong>JSON</strong> content accompanied by a <code>200 OK</code> HTTP status. THis includes any possible processing errors. Please see the Errors section.</p>
 <h1 id='errors'>Errors</h1>
 <p>You can find the errors specific to each API endpoint under its dedicated API topic.</p>
 
-<p>We communicate API errors in the <em>ex:</em> ( <em>ex</em> ception ) attribute found in the base object of our API responses.</p>
+<p>API errors are communicated through the <code>ex</code> (short for <em>exception</em>) property inside the response body. Please inspect this property for any possible errors that may have occurred.</p>
 
-<p><strong>A word on success flags:</strong>
-We return <code>200 OK</code> http status responses for <strong>ALL</strong> requests that make it to our server, <strong>even if we run into an error when processing your request.</strong></p>
-
-<p>For API submissions that result in a processing error (read <em>validation and business logic/”elegant” type errors</em>) we include an attribute in the API response titled <em>ex:</em> where we communicate the reason for the processing failure.</p>
-
-<p>A response could look as follows:</p>
+<p>A possible problematic response could look as follows:</p>
 
 <ul>
 <li>HTTP status code: <code>200 OK</code></li>
@@ -427,51 +407,55 @@ We return <code>200 OK</code> http status responses for <strong>ALL</strong> req
 <p><img src="images/200OK-response-with-ex-error-96d58e35.jpg" alt="200 OK with error ex:" />
 <em>Above: Note the <strong>200 OK</strong> status whilst receiving an error <strong>&quot;ex&quot;:</strong> response</em></p>
 
-<p>In instances where there is a technical breakdown in the processing of the API request, such as querying the wrong endpoint address, you will receive the appropriate http status code such as a <code>404 error</code>.</p>
+<p>In instances where there is a technical breakdown in the processing of the API request, such as querying the wrong endpoint address, you will receive the appropriate http status code such as a <code>404</code>.</p>
 <h1 id='parameters'>Parameters</h1>
-<p>Almost all endpoints accept optional parameters which can be passed as an HTTP query string parameter, e.g. <code>GET /getcustomquicktracking_V3?ref=invoices</code></p>
+<p>All parameters as required by the relevant API endpoint may be provided in either query string format (e.g. <code>POST /getcustomquicktracking_v3?ref=test123</code>) OR as part of the body in <code>JSON</code> format.</p>
 
-<p>Parameters containing special characters that are passed in a URL request must have their data url encoded.</p>
+<aside class="notice">
+  Parameter values containing special characters should be URL encoded as needed.
+</aside>
 
-<p>All parameters are documented along each endpoint.</p>
-<h1 id='libraries'>Libraries</h1>
-<p>We do not currently offer any libraries for our API implementation. We are in the process of creating .NET wrappers that you can use in the future. We will publish more information on this topic once it is ready for use.</p>
+<p>The parameters the relevant API endpoint requires is discussed in its relevant section.</p>
 <h1 id='tools'>Tools</h1>
-<p>Some useful tools you can use to access the API&#39;s include:</p>
-
-<ul>
-<li><a href="https://insomnia.rest">Insomnia</a> - Cross-platform GraphQL and REST client, available for Mac, Windows, and Linux.</li>
-<li><a href="https://getpostman.com">Postman</a> - Cross-platform REST client, available for Mac, Windows, and Linux.</li>
-<li><a href="https://requestbin.com">RequestBin</a> - Allows you test webhooks.</li>
-<li><a href="https://hookbin.com">Hookbin</a> - Another tool to test webhooks.</li>
-</ul>
+<p>You are free to use any IDE or tool that satisfies your needs. We do recommend the use of <a href="https://www.postman.com" target="_blank"><strong>POSTMAN</strong></a> to test your requests to our server.</p>
 
 <p><a href="https://app.getpostman.com/run-collection/18080551-d254d459-0578-41a2-a226-c9106577fc8b?action=collection%2Ffork&amp;source=rip_markdown&amp;collection-url=entityId%3D18080551-d254d459-0578-41a2-a226-c9106577fc8b%26entityType%3Dcollection%26workspaceId%3Df4e6d6c2-24bc-49cd-8a3e-5dbc327bc6a9"><img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;"></a></p>
+
+<p>Other tools you could also look at are:</p>
+
+<ul>
+<li><a href="https://insomnia.rest" target="_blank">Insomnia</a> - Cross-platform GraphQL and REST client, available for Mac, Windows, and Linux.</li>
+<li><a href="https://getpostman.com" target="_blank">Postman</a> - Cross-platform REST client, available for Mac, Windows, and Linux.</li>
+<li><a href="https://requestbin.com" target="_blank">RequestBin</a> - Allows you test webhooks.</li>
+<li><a href="https://hookbin.com" target="_blank">Hookbin</a> - Another tool to test webhooks.</li>
+</ul>
 <h1 id='authentication'>Authentication</h1>
 <p>Authentication against the BEX API ecosystem is a two-part process and is required to prevent access to confidential client data. The process involves the generation of your API security token which is described in the next section. This token is then included in the HTTP headers of your API calls and serves to identify and authenticate you on our platform.</p>
 
-<p>API’s that serve non-sensitive client data such as our quick waybill <a href="tracking">tracking</a> do not require your token to be present in the API call and can be called anonymously.</p>
+<p>API&#39;s that serve non-sensitive client data such as our quick waybill <a href="tracking">tracking</a> do not require your token to be present in the API call and can be called anonymously.</p>
 <h1 id='login'>Login</h1><h2 id='overview'>Overview</h2>
-<p>The <em>login</em> service serves as the starting point from which a valid session token will be generated. You call this endpoint to authenticate your <em>username</em> and <em>password</em> user credentials.</p>
+<p>The <em>login</em> service serves as the starting point from which a valid session token will be generated. You call this endpoint to authenticate yourself using your BEX credentials.</p>
 
-<p>The BEX platform will validate your request and if successful, generate and return in the response object a token contained in the <code>&quot;value&quot;:</code> attribute.</p>
-
-<p>This token is unique to your integration user identity and is to be kept private as it is the key needed to unlock access to the account security restricted API’s.</p>
+<p>The BEX platform will validate your request and if successful, generate and return in the response object a token contained in the <code>value</code> attribute.</p>
 
 <aside class="notice">
-The token will not expire so once generated can be persisted securely on your side.
+  This token is unique to your integration user identity and is to be **kept safe and secure** at all times.
+
+  Should your token become compromised, please reach out to us as soon as possible.
 </aside>
 <h2 id='endpoint'>Endpoint</h2>
-<p>Service Relative URL: <code>api/service/login</code></p>
+<p>The authentication endpoint is located at <code>https://api.bex.co.za/api/service/login</code>.</p>
 
 <blockquote>
-<p>Make sure to replace <code>user123</code>and <code>pass123</code> with your integration account details.</p>
+<p>Ensure special characters are URL encoded.
+<code>json
+{
+  &quot;username&quot;: &quot;your_bex_username&quot;, 
+  &quot;password&quot;: &quot;your_bex_password&quot;
+}
+</code></p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user123"</span><span class="p">,</span><span class="w"> 
-  </span><span class="nl">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pass123"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="o">&lt;!</span><span class="nx">DOCTYPE</span> <span class="nx">html</span><span class="o">&gt;</span>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="o">&lt;!</span><span class="nx">DOCTYPE</span> <span class="nx">html</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="nx">html</span> <span class="nx">xmlns</span><span class="o">=</span><span class="dl">"</span><span class="s2">http://www.w3.org/1999/xhtml</span><span class="dl">"</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">BEX</span> <span class="nx">API</span> <span class="nx">Login</span> <span class="nx">Example</span><span class="o">&lt;</span><span class="sr">/title</span><span class="err">&gt;
@@ -479,24 +463,23 @@ The token will not expire so once generated can be persisted securely on your si
 </span><span class="o">&lt;</span><span class="sr">/head</span><span class="err">&gt;
 </span><span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;</span>
-    <span class="kd">var</span> <span class="nx">user</span> <span class="o">=</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="dl">'</span><span class="s1">user123</span><span class="dl">'</span><span class="p">);</span> <span class="c1">//encode the username</span>
-    <span class="kd">var</span> <span class="nx">pass</span> <span class="o">=</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="dl">'</span><span class="s1">pass1234</span><span class="dl">'</span><span class="p">);</span> <span class="c1">//encode the password</span>
+    <span class="kd">var</span> <span class="nx">user</span> <span class="o">=</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="dl">'</span><span class="s1">username</span><span class="dl">'</span><span class="p">);</span> <span class="c1">//encode the username</span>
+    <span class="kd">var</span> <span class="nx">pass</span> <span class="o">=</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="dl">'</span><span class="s1">password</span><span class="dl">'</span><span class="p">);</span> <span class="c1">//encode the password</span>
     <span class="nx">jQuery</span><span class="p">.</span><span class="nx">support</span><span class="p">.</span><span class="nx">cors</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> <span class="c1">//this will enable cross domain access for all services</span>
+
     <span class="c1">//call the service using jQuery ajax and passing the parameters</span>
     <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-    <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://api.bex.co.za/api/service/login?username=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">user</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">&amp;password=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">pass</span><span class="p">,</span>
-    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">async</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">//dont run asynchronously</span>
-    <span class="na">success</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">ex</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//if the network call succeeds, it may still contain an error (ex)</span>
-    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">The following error occured: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="nx">ex</span><span class="p">);</span> <span class="c1">//display the error</span>
-    <span class="k">return</span><span class="p">;</span>
-    <span class="p">};</span>
-    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">Your token is: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span> <span class="c1">//display the valid token</span>
-    <span class="p">},</span>
-    <span class="na">error</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ex</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//this will fire for network related issues</span>
-        <span class="nx">alert</span><span class="p">(</span><span class="nx">ex</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+      <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://api.bex.co.za/api/service/login?userName=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">user</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">&amp;password=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">pass</span><span class="p">,</span> 
+      <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span> 
+      <span class="na">async</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">//No need fora sync</span>
+      <span class="na">success</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">ex</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">An error has occurred. </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">d</span><span class="p">.</span><span class="nx">ex</span><span class="p">);</span>
+          <span class="k">return</span><span class="p">;</span>
         <span class="p">}</span>
+
+        <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">Your token is </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">d</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+      <span class="p">}</span>
     <span class="p">});</span>
 <span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
 </span><span class="o">&lt;</span><span class="sr">/body</span><span class="err">&gt;
@@ -529,17 +512,6 @@ The token will not expire so once generated can be persisted securely on your si
 <td>Set to <em>true</em> if so required by the documentation.</td>
 </tr>
 </tbody></table>
-<h2 id='transportation'>Transportation</h2>
-<p>The service supports GET and POST requests. We recommend POST requests to avoid caching issues.
-The service supports URL parameters or JSON parameters in the message body</p>
-
-<p>Example Service Call using the URL Parameters</p>
-
-<p>URL: <code>http://insight.bex.co.za/api/service/login?username=user123&amp;password=pass1234</code></p>
-
-<aside class="notice">
-    All URL-based field values must be URL encoded if special characters are used
-</aside>
 <h2 id='response'>Response</h2>
 <blockquote>
 <p>Sample json response.</p>
@@ -567,76 +539,67 @@ The service supports URL parameters or JSON parameters in the message body</p>
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>int</td>
+<td>Int</td>
 <td>An internal BEX ID used to identify your user.</td>
 </tr>
 <tr>
 <td>value</td>
-<td>string</td>
+<td>String</td>
 <td>Your unique and private token.</td>
 </tr>
 <tr>
 <td>isStrongPassword</td>
-<td>string</td>
+<td>String</td>
 <td>Confirms whether your password meets our complexity requirements.</td>
 </tr>
 <tr>
 <td>isEmailVerified</td>
-<td>string</td>
+<td>String</td>
 <td>Your email address is used to recover forgotten passwords or lost tokens and needs to be verified before transactions are possible.</td>
 </tr>
 <tr>
 <td>email</td>
-<td>string</td>
+<td>String</td>
 <td>The recovery email address against which this token is registered.</td>
 </tr>
 <tr>
 <td>signalRenabled</td>
-<td>string</td>
+<td>Boolean</td>
 <td>For internal use only.</td>
 </tr>
 <tr>
 <td>allowApiLogin</td>
-<td>string</td>
+<td>Boolean</td>
 <td>For internal use only.</td>
 </tr>
 </tbody></table>
 
-<p><strong>With your token now generated you can proceed to call our security restricted API’s.</strong></p>
+<p>With your token now generated you can proceed to call our security restricted API&#39;s.</p>
 
-<blockquote>
-<p>Javascript showing the token defined in the headers.</p>
-</blockquote>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="dl">"</span><span class="s2">url</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://build.bex.co.za/api/service/submitwaybillv4</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">method</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">timeout</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">headers</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
-<span class="c1">// -- Example showing the token defined in the http headers</span>
-    <span class="dl">"</span><span class="s2">token</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">6mM7GCuPdaemdvGUATbNmC8GuPuPmdvGgCSg</span><span class="dl">"</span><span class="p">,</span>
-<span class="c1">// --------------------------------------------------------</span>
-    <span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span>
-  <span class="p">}</span>
-</code></pre></div>
-<p>To do so, you <em>include it into the request header</em> when making a call to one of our endpoints. The header key is <strong>token</strong>.</p>
+<aside class="notice">
+  Include your token in your request header. `token={your_token}`
+</aside>
 <h1 id='tracking'>Tracking</h1><h2 id='overview'>Overview</h2>
 <p>You can query our courier platform for up-to-the-minute tracking information pertaining to your shipments. We have exposed a lightweight tracking service that returns non-sensitive tracking events for the shipments queried.
 To cater for customers wishing to display this tracking information on their own websites we include a schema definition in the tracking response that can be used to bind the fields to a client grid implemented on your website.</p>
+
+<p>The service allows for the submission of <strong>up to ten (10) waybills and/or customer reference numbers</strong> per API call.</p>
+
+<aside class="notice">
+  We do not support partial matches nor do we support wildcards.
+</aside>
+
+<p>You may submit a combination of waybill and/or reference numbers in a single call.</p>
 <h2 id='endpoint'>Endpoint</h2>
-<p>Service Relative URL: <code>/api/waybillquicktrackingv3customtreeview</code></p>
-<h2 id='transportation'>Transportation</h2>
-<p>The service allows for the submission of up to ten waybill and/or customer reference numbers per API call. We do not support partial matches nor do we support wildcards.
-You are however able to submit a combination of waybill and reference numbers in a single call and the platform will return results for matches, be it a waybill, a reference, or both.</p>
+<p>The tracking API is located at <code>https://api.bex.co.za/api/service/waybillquicktrackingv3customtreeview</code>.</p>
 
-<p>You can submit a <strong>GET</strong> request as follows:</p>
-
-<p><code>https://api.bex.co.za/api/waybillquicktrackingv3customtreeview?searchItems=ACP1055352,MDH42240,MA210214</code></p>
+<p>You can complete the request by using query parameters, for example <code>/api/service/waybillquicktrackingv3customtreeview?searchItems=Item_1,Item_2,Item_3</code> or by submitting a JSON request.</p>
 
 <blockquote>
-<p>Sample json message body</p>
+<p>Sample json request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="err">“searchItems”:</span><span class="w"> </span><span class="err">”ACP</span><span class="mi">1055352</span><span class="p">,</span><span class="err">MDH</span><span class="mi">42240</span><span class="p">,</span><span class="err">MA</span><span class="mi">210214</span><span class="err">”</span><span class="w">
+  </span><span class="nl">"searchItems"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACP1055352,MDH42240,MA210214"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='parameters'>Parameters</h2>
 <table><thead>
@@ -649,7 +612,7 @@ You are however able to submit a combination of waybill and reference numbers in
 </thead><tbody>
 <tr>
 <td>searchItems</td>
-<td>string</td>
+<td>String</td>
 <td>Yes</td>
 <td>A comma separated list of items to be searched. Can be either a waybill, reference number, or a combination of both.</td>
 </tr>
@@ -835,10 +798,12 @@ You are however able to submit a combination of waybill and reference numbers in
 <h1 id='quoting'>Quoting</h1><h2 id='overview'>Overview</h2>
 <p>The BEX quoting service allows you to view dynamic shipping pricing across our range of delivery services. By providing us with your shipment addressing information we can return a pricing spread as well as delivery estimations which you can use to make a more informed shipping choice.</p>
 
-<p>It is important to note that quoting on our platform is a “just-in-time” process and we do not store your quotes (nor return a quote number) for later acceptance by yourself. Instead, our implementation is like that of airline bookings where prices quoted are as at “now”. If you choose not to make a booking the prices may change when next you log onto the platform.</p>
+<aside class="notice">
+  It is important to note that quoting on our platform is a "just-in-time" process and we do not store your quotes (nor return a quote number) for later acceptance by yourself. Instead, our implementation is like that of airline bookings where prices quoted are as at "now". If you choose not to make a booking the prices may change when next you log onto the platform.  
+</aside>
 <h2 id='endpoint'>Endpoint</h2>
-<p>Service Relative URL: <code>/api/getquoteservicedeliverypricingV2</code></p>
-<h2 id='parameters'>Parameters</h2>
+<p>The quoting API endpoint is located at <code>https://api.bex.co.za/api/service/getquoteservicedeliverypricingv2</code>.</p>
+
 <blockquote>
 <p>Sample json quoting message body</p>
 </blockquote>
@@ -855,7 +820,7 @@ You are however able to submit a combination of waybill and reference numbers in
     </span><span class="nl">"destinationLatCoord"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-26.1327"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"destinationLongCoord"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28.1957"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
+</span></code></pre></div><h2 id='parameters'>Parameters</h2>
 <p>To offer an accurate price we require the following parameters from you.</p>
 
 <table><thead>
@@ -928,7 +893,7 @@ You are however able to submit a combination of waybill and reference numbers in
 </tbody></table>
 
 <aside class="notice">
-If you provide us the GPS position of the respective collection and/or delivery locations you are not required to provide the Suburb, Town or Postcode information for that location. If you provide us with both (the GPS coordinates as well as the Suburb/Postcode pairs) we will favour and use exclusively the GPS position in the building of your quoted pricing.
+  If you provide us the GPS position of the respective collection and/or delivery locations you are not required to provide the Suburb, Town or Postcode information for that location. If you provide us with both (the GPS coordinates as well as the Suburb/Postcode pairs) we will favour and use exclusively the GPS position in the building of your quoted pricing.
 </aside>
 
 <blockquote>
@@ -1246,17 +1211,19 @@ The service allows for the communication of a number of shipping options, such a
 <li>Special handling requests such as after-hour, Saturday or public holiday deliveries</li>
 </ul>
 <h2 id='endpoint'>Endpoint</h2>
-<p>Service Relative URL: <code>/api/service/submitwaybillv4</code></p>
-<h3 id='waybill-parameters'>Waybill Parameters</h3>
-<p>The parameter requirements for this api call have been broken down into three sub-sections,
+<p>The waybill API endpoint is located at <code>https://api.bex.co.za/api/service/submitwaybillv4</code>.</p>
+
+<p>The parameter requirements for this API call have been broken down into three sub-sections,
 namely:</p>
 
 <ul>
+<li>Basic Details</li>
 <li>Addresses - Contains parameters for the construction and routing information of the Waybill </li>
 <li>Dimensioning</li>
-<li>Service Add-Ons</li>
+<li>Additional References</li>
+<li>Printing Options</li>
 </ul>
-<h2 id='addresses'>Addresses</h2>
+
 <blockquote>
 <p>Sample json message body.</p>
 </blockquote>
@@ -1317,502 +1284,6 @@ namely:</p>
     </span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>FieldType</th>
-<th>Case</th>
-<th>Required</th>
-<th>Note</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>accountNumber</td>
-<td>String</td>
-<td>No</td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td>sendersRef</td>
-<td>String</td>
-<td>No</td>
-<td>No</td>
-<td>For tracking, reporting and invoice requests</td>
-</tr>
-<tr>
-<td>autoGenerateWaybillNumber</td>
-<td>Boolean</td>
-<td>N/A</td>
-<td>No*</td>
-<td>If set to <em>true</em>, the BEX system will automatically generate a waybill number on your behalf.</td>
-</tr>
-<tr>
-<td>waybillNumber</td>
-<td>String</td>
-<td>No*</td>
-<td>No</td>
-<td>A unique waybill number. This field will be <em>required</em> if <em>AutoGenerateWaybillNumber</em> is set to <em>false</em>.</td>
-</tr>
-<tr>
-<td>instructions</td>
-<td>String</td>
-<td>No</td>
-<td>No</td>
-<td>Communicate additional info</td>
-</tr>
-</tbody></table>
-
-<p>*waybillNumber is auto-generated by BEX and communicated in the service response when making use of alternative shipping stationary options such as thermal labels or A4 waybills</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>FieldType</th>
-<th>Case</th>
-<th>Required</th>
-<th>Note</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>waybillDate</td>
-<td>Date</td>
-<td>No</td>
-<td>No</td>
-<td>Date of collection by BEX. Format yyyy-mm-dd</td>
-</tr>
-<tr>
-<td>serviceCode</td>
-<td>String</td>
-<td>No</td>
-<td>Yes</td>
-<td>The service delivery priority code</td>
-</tr>
-</tbody></table>
-
-<p>Service delivery code values are:</p>
-
-<ul>
-<li>SDX - Sameday Express</li>
-<li>DBD - Daybreak Delivery</li>
-<li>ONC - Overnight Courier</li>
-<li>NCA - Normal Cargo</li>
-<li>BUD - Budget Cargo</li>
-</ul>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>FieldType</th>
-<th>Case</th>
-<th>Required</th>
-<th>Note</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>senderCompany</td>
-<td>String</td>
-<td>No</td>
-<td>No</td>
-<td>Company from which to collect</td>
-</tr>
-<tr>
-<td>senderFloorBuilding</td>
-<td>String</td>
-<td>No</td>
-<td>Yes</td>
-<td>Floor, building, office park</td>
-</tr>
-<tr>
-<td>senderStreet</td>
-<td>String</td>
-<td>No</td>
-<td>Yes</td>
-<td>Street for shipment collection</td>
-</tr>
-<tr>
-<td>senderSuburb</td>
-<td>String</td>
-<td>No</td>
-<td>Yes</td>
-<td>Sender suburb</td>
-</tr>
-<tr>
-<td>senderCity</td>
-<td>String</td>
-<td>No</td>
-<td>Yes</td>
-<td>Sender town or city</td>
-</tr>
-<tr>
-<td>senderPostCode</td>
-<td>String</td>
-<td>No</td>
-<td>Yes</td>
-<td>Sender postcode</td>
-</tr>
-<tr>
-<td>senderProvince</td>
-<td>String</td>
-<td>No</td>
-<td>No</td>
-<td>Sender province.</td>
-</tr>
-<tr>
-<td>senderContactName</td>
-<td>String</td>
-<td>No</td>
-<td>No</td>
-<td>Contact person for collection/dispatch</td>
-</tr>
-<tr>
-<td>senderMobile</td>
-<td>String</td>
-<td>No</td>
-<td>No</td>
-<td>Contact person mobile number</td>
-</tr>
-<tr>
-<td>senderTel</td>
-<td>String</td>
-<td>No</td>
-<td>No</td>
-<td>Contact person telephone number</td>
-</tr>
-<tr>
-<td>senderTelHome</td>
-<td>String</td>
-<td>No</td>
-<td>No</td>
-<td>Contact person telephone number (home or alternate)</td>
-</tr>
-<tr>
-<td>senderLat</td>
-<td>Double</td>
-<td>N/A</td>
-<td>No</td>
-<td>Sender coordinate latitude value (we encourage the use of these)</td>
-</tr>
-<tr>
-<td>senderLon</td>
-<td>Double</td>
-<td>N/A</td>
-<td>No</td>
-<td>Sender coordintae longitude value (we encourage the use of these)</td>
-</tr>
-</tbody></table>
-
-<ul>
-<li>senderMobile is useful for shipment progress updates</li>
-</ul>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>FieldType</th>
-<th>Case</th>
-<th>Required</th>
-<th>Note</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>senderEmail</td>
-<td>String</td>
-<td>No</td>
-<td>No</td>
-<td>Contact person email address</td>
-</tr>
-<tr>
-<td>receiverCompany</td>
-<td>String</td>
-<td>No</td>
-<td>No</td>
-<td>Receiver individual/company name</td>
-</tr>
-<tr>
-<td>receiverFloorBuilding</td>
-<td>String</td>
-<td>No</td>
-<td>No</td>
-<td>Floor and building address.</td>
-</tr>
-</tbody></table>
-
-<p>Used for single receiver shipment only (optional)</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>FieldType</th>
-<th>Case</th>
-<th>Required</th>
-<th>Note</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>receiverStreet</td>
-<td>String</td>
-<td>No</td>
-<td>Yes</td>
-<td>Receiver street number and name</td>
-</tr>
-<tr>
-<td>receiverSuburb</td>
-<td>String</td>
-<td>No</td>
-<td>Yes</td>
-<td>Receiver suburb.</td>
-</tr>
-<tr>
-<td>receiverCity</td>
-<td>String</td>
-<td>No</td>
-<td>Yes</td>
-<td>Receiver city or town.</td>
-</tr>
-<tr>
-<td>receiverPostCode</td>
-<td>String</td>
-<td>Yes</td>
-<td>No</td>
-<td>Receiver postcode</td>
-</tr>
-<tr>
-<td>receiverProvince</td>
-<td>String</td>
-<td>No</td>
-<td>No</td>
-<td>Receiver province.</td>
-</tr>
-<tr>
-<td>receiverContactName</td>
-<td>String</td>
-<td>No</td>
-<td>No</td>
-<td>Receiver name.</td>
-</tr>
-<tr>
-<td>receiverMobile</td>
-<td>String</td>
-<td>No</td>
-<td>No</td>
-<td>Useful for status updates</td>
-</tr>
-<tr>
-<td>receiverEmail</td>
-<td>String</td>
-<td>No</td>
-<td>No</td>
-<td>Useful for status updates</td>
-</tr>
-<tr>
-<td>receiverTel</td>
-<td>String</td>
-<td>No</td>
-<td>No</td>
-<td>Receiver telephone number</td>
-</tr>
-<tr>
-<td>receiverTelHome</td>
-<td>String</td>
-<td>No</td>
-<td>No</td>
-<td>Receiver telephone number (home or alternate).</td>
-</tr>
-<tr>
-<td>receiverLat</td>
-<td>Double</td>
-<td>N/A</td>
-<td>No</td>
-<td>Receiver coordinate latitude value (we encourage the use of these)</td>
-</tr>
-<tr>
-<td>receiverLon</td>
-<td>Double</td>
-<td>N/A</td>
-<td>No</td>
-<td>Receiver coordinate longitude value (we encourage the use of these)</td>
-</tr>
-<tr>
-<td>insuranceRequired</td>
-<td>Boolean</td>
-<td>No</td>
-<td>No</td>
-<td><em>true</em> if insurance is required for this shipment.</td>
-</tr>
-</tbody></table>
-
-<p>If you specify <em>true</em> for <em>insuranceRequired</em>, the insurance surcharge is added to the waybill and insurance cover is placed for the goods during shipping. The following fields 
-automatically become required:</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>FieldType</th>
-<th>Case</th>
-<th>Required</th>
-<th>Note</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>insuranceValue</td>
-<td>Float/Double</td>
-<td>No</td>
-<td>Yes*</td>
-<td>Insured value, in ZAR. Omit this field if you <em>do not</em> require insurance.</td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-  Should you not have the individual weights of each package to be shipped on the waybill
-  you can state the total weight of all of the parcels in one of the dimension array’s weight field,
-  followed by zeroes for the remaining weights in the dimensions array.
-</aside>
-<h2 id='dimensioning'>Dimensioning</h2>
-<p>The dimensioning sub-section contains information pertinent to the parcels that make up this
-waybill shipping request.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>FieldType</th>
-<th>Case</th>
-<th>Required</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>dims</td>
-<td>Array</td>
-<td>No</td>
-<td>Yes</td>
-</tr>
-</tbody></table>
-<h3 id='dimensions-array'>Dimensions Array</h3>
-<ul>
-<li>For communication of parcel specific information for each package that comprises this waybill shipping request</li>
-<li>The array contains parcel dimension objects with the following properties</li>
-</ul>
-
-<table><thead>
-<tr>
-<th>FieldName</th>
-<th>FieldType</th>
-<th>Req</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>barcode</td>
-<td>String</td>
-<td>Yes*</td>
-<td>The barcode number of the parcel label used for this package.</td>
-</tr>
-<tr>
-<td>dimension1</td>
-<td>Int</td>
-<td>Yes</td>
-<td>Length of the package, rounded up to the nearest whole centimeter</td>
-</tr>
-<tr>
-<td>dimension2</td>
-<td>Int</td>
-<td>Yes</td>
-<td>Width of the package, rounded up to the nearest whole centimeter</td>
-</tr>
-<tr>
-<td>dimension3</td>
-<td>Int</td>
-<td>Yes</td>
-<td>Height of the package, rounded up to the nearest whole centimeter</td>
-</tr>
-<tr>
-<td>weight</td>
-<td>Float</td>
-<td>Yes</td>
-<td>Actual weight of package in kilograms</td>
-</tr>
-<tr>
-<td>reference</td>
-<td>String</td>
-<td>No</td>
-<td>Tag this package with parcel specific information.</td>
-</tr>
-</tbody></table>
-
-<ul>
-<li>If you have specified <em>autoGenerateWaybillNumber</em> as <em>true</em>, then the <em>barcode</em> field may be left empty.</li>
-</ul>
-<h2 id='additional-references-array'>Additional References Array</h2>
-<p>You can include additional references to the waybill for ease of reference and search.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>FieldType</th>
-<th>Case</th>
-<th>Required</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>additionalReferences</td>
-<td>Array</td>
-<td>No</td>
-<td>No</td>
-</tr>
-</tbody></table>
-<h3 id='additional-references-array-2'>Additional References Array</h3>
-<p>Each additional reference has the following properties:</p>
-
-<table><thead>
-<tr>
-<th>FieldName</th>
-<th>FieldType</th>
-<th>Req</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>value</td>
-<td>String</td>
-<td>Yes</td>
-<td>The reference number you want to add.</td>
-</tr>
-</tbody></table>
-<h2 id='parcel-label-printing'>Parcel Label Printing</h2>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>FieldType</th>
-<th>Req</th>
-<th>Required</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>returnParcelPrintingText</td>
-<td>Boolean</td>
-<td>No</td>
-<td>Optional. If <em>true</em>, returns EPL thermal label data as part of the response for you to send to the thermal printer.</td>
-</tr>
-<tr>
-<td>printParcels</td>
-<td>Boolean</td>
-<td>No</td>
-<td>Optional. If <em>true</em>, parcels are printed to the thermal label printer after submission using the <em>printUrl</em> specified.</td>
-</tr>
-<tr>
-<td>printUrl</td>
-<td>String</td>
-<td>No</td>
-<td>Optional. Specify the thermal printer URL to print to IF <em>printParcels=true</em>.</td>
-</tr>
-<tr>
-<td>printParcelsPrintNode</td>
-<td>Boolean</td>
-<td>No</td>
-<td>Optional. Specify <em>true</em> to use PrintNode to print the labels.</td>
-</tr>
-</tbody></table>
-<h2 id='waybill-transportation'>Waybill Transportation</h2>
 <blockquote>
 <p>jQuery Waybill Submission Example.</p>
 </blockquote>
@@ -1956,24 +1427,490 @@ waybill shipping request.</p>
 <span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
 </span><span class="o">&lt;</span><span class="sr">/body</span><span class="err">&gt;
 </span><span class="o">&lt;</span><span class="sr">/html</span><span class="err">&gt;
-</span></code></pre></div>
-<p>Our API uses POST requests and you should always ensure that you select POST when communicating with our servers. Our API endpoints supports 
-parameters being passed in the query string or via a JSON body.</p>
+</span></code></pre></div><h3 id='basic-details'>Basic Details</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>FieldType</th>
+<th>Case</th>
+<th>Required</th>
+<th>Note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>waybillNumber</td>
+<td>String</td>
+<td>No*</td>
+<td>No</td>
+<td>A unique waybill number. This field will be <em>required</em> if <em>AutoGenerateWaybillNumber</em> is set to <em>false</em>.</td>
+</tr>
+<tr>
+<td>autoGenerateWaybillNumber</td>
+<td>Boolean</td>
+<td>N/A</td>
+<td>No*</td>
+<td>If set to <em>true</em>, the BEX system will automatically generate a waybill number on your behalf.</td>
+</tr>
+<tr>
+<td>waybillDate</td>
+<td>Date</td>
+<td>No</td>
+<td>No</td>
+<td>Date of collection by BEX. Format yyyy-mm-dd</td>
+</tr>
+<tr>
+<td>accountNumber</td>
+<td>String</td>
+<td>No</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>sendersRef</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>For tracking, reporting and invoice requests</td>
+</tr>
+<tr>
+<td>instructions</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>Communicate additional info</td>
+</tr>
+</tbody></table>
 
-<p>Example Service Call using JSON message body</p>
+<p>*<code>waybillNumber</code> is auto-generated by BEX and communicated in the service response when making use of alternative shipping stationary options such as thermal labels or A4 waybills</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>FieldType</th>
+<th>Case</th>
+<th>Required</th>
+<th>Note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>serviceCode</td>
+<td>String</td>
+<td>No</td>
+<td>Yes</td>
+<td>The service delivery priority code</td>
+</tr>
+</tbody></table>
+
+<p>Service delivery code values are:</p>
 
 <ul>
-<li>URL: <code>https://api.bex.co.za/api/service/submitwaybillv4</code></li>
-<li>BODY: <code>{“accountNumber”:”112311”,”waybillNumber”:”ABC123456”, “waybillDate”:”2014-12-16”….. etc….. }</code></li>
+<li>SDX - Sameday Express</li>
+<li>DBD - Daybreak Delivery</li>
+<li>ONC - Overnight Courier</li>
+<li>NCA - Normal Cargo</li>
+<li>BUD - Budget Cargo</li>
 </ul>
+<h3 id='sender-address'>Sender Address</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>FieldType</th>
+<th>Case</th>
+<th>Required</th>
+<th>Note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>senderCompany</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>Company from which to collect</td>
+</tr>
+<tr>
+<td>senderFloorBuilding</td>
+<td>String</td>
+<td>No</td>
+<td>Yes</td>
+<td>Floor, building, office park</td>
+</tr>
+<tr>
+<td>senderStreet</td>
+<td>String</td>
+<td>No</td>
+<td>Yes</td>
+<td>Street for shipment collection</td>
+</tr>
+<tr>
+<td>senderSuburb</td>
+<td>String</td>
+<td>No</td>
+<td>Yes</td>
+<td>Sender suburb</td>
+</tr>
+<tr>
+<td>senderCity</td>
+<td>String</td>
+<td>No</td>
+<td>Yes</td>
+<td>Sender town or city</td>
+</tr>
+<tr>
+<td>senderPostCode</td>
+<td>String</td>
+<td>No</td>
+<td>Yes</td>
+<td>Sender postcode</td>
+</tr>
+<tr>
+<td>senderProvince</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>Sender province.</td>
+</tr>
+<tr>
+<td>senderLat</td>
+<td>Double</td>
+<td>N/A</td>
+<td>No</td>
+<td>Sender coordinate latitude value (we encourage the use of these)</td>
+</tr>
+<tr>
+<td>senderLon</td>
+<td>Double</td>
+<td>N/A</td>
+<td>No</td>
+<td>Sender coordintae longitude value (we encourage the use of these)</td>
+</tr>
+<tr>
+<td>senderContactName</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>Contact person for collection/dispatch</td>
+</tr>
+<tr>
+<td>senderMobile</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>Contact person mobile number</td>
+</tr>
+<tr>
+<td>senderTel</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>Contact person telephone number</td>
+</tr>
+<tr>
+<td>senderTelHome</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>Contact person telephone number (home or alternate)</td>
+</tr>
+<tr>
+<td>senderEmail</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>Contact person email address</td>
+</tr>
+</tbody></table>
 
 <aside class="notice">
-    Please note that all fields must be URL encoded if special characters are used.
+  `senderMobile` and `senderEmail` are useful for shipment progress updates.
 </aside>
+<h3 id='receiver-address'>Receiver Address</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>FieldType</th>
+<th>Case</th>
+<th>Required</th>
+<th>Note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>receiverCompany</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>Receiver individual/company name</td>
+</tr>
+<tr>
+<td>receiverFloorBuilding</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>Floor and building address.</td>
+</tr>
+<tr>
+<td>receiverStreet</td>
+<td>String</td>
+<td>No</td>
+<td>Yes</td>
+<td>Receiver street number and name</td>
+</tr>
+<tr>
+<td>receiverSuburb</td>
+<td>String</td>
+<td>No</td>
+<td>Yes</td>
+<td>Receiver suburb.</td>
+</tr>
+<tr>
+<td>receiverCity</td>
+<td>String</td>
+<td>No</td>
+<td>Yes</td>
+<td>Receiver city or town.</td>
+</tr>
+<tr>
+<td>receiverPostCode</td>
+<td>String</td>
+<td>Yes</td>
+<td>No</td>
+<td>Receiver postcode</td>
+</tr>
+<tr>
+<td>receiverProvince</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>Receiver province.</td>
+</tr>
+<tr>
+<td>receiverLat</td>
+<td>Double</td>
+<td>N/A</td>
+<td>No</td>
+<td>Receiver coordinate latitude value (we encourage the use of these)</td>
+</tr>
+<tr>
+<td>receiverLon</td>
+<td>Double</td>
+<td>N/A</td>
+<td>No</td>
+<td>Receiver coordinate longitude value (we encourage the use of these)</td>
+</tr>
+<tr>
+<td>receiverContactName</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>Receiver name.</td>
+</tr>
+<tr>
+<td>receiverMobile</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>Useful for status updates</td>
+</tr>
+<tr>
+<td>receiverEmail</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>Useful for status updates</td>
+</tr>
+<tr>
+<td>receiverTel</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>Receiver telephone number</td>
+</tr>
+<tr>
+<td>receiverTelHome</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>Receiver telephone number (home or alternate).</td>
+</tr>
+</tbody></table>
+
+<p>If you would like to add insurance cover on your waybill, complete these two fields:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>FieldType</th>
+<th>Case</th>
+<th>Required</th>
+<th>Note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>insuranceRequired</td>
+<td>Boolean</td>
+<td>No</td>
+<td>No</td>
+<td><em>true</em> if insurance is required for this shipment.</td>
+</tr>
+<tr>
+<td>insuranceValue</td>
+<td>Float/Double</td>
+<td>No</td>
+<td>Yes</td>
+<td>Insured value, in ZAR. Omit this field if you <em>do not</em> require insurance.</td>
+</tr>
+</tbody></table>
+<h3 id='dimensioning'>Dimensioning</h3>
+<p>For communication of parcel specific information for each package that comprises this waybill shipping request.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>FieldType</th>
+<th>Case</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dims</td>
+<td>Array</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  Should you not have the individual weights of each package to be shipped on the waybill
+  you can state the total weight of all of the parcels in one of the dimension array’s weight field,
+  followed by zeroes for the remaining weights in the dimensions array.
+</aside>
+
+<p><strong>The <code>dims</code> array comprises:</strong></p>
+
+<table><thead>
+<tr>
+<th>FieldName</th>
+<th>FieldType</th>
+<th>Req</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>barcode</td>
+<td>String</td>
+<td>Yes*</td>
+<td>The barcode number of the parcel label used for this package.</td>
+</tr>
+<tr>
+<td>dimension1</td>
+<td>Int</td>
+<td>Yes</td>
+<td>Length of the package, rounded up to the nearest whole centimeter</td>
+</tr>
+<tr>
+<td>dimension2</td>
+<td>Int</td>
+<td>Yes</td>
+<td>Width of the package, rounded up to the nearest whole centimeter</td>
+</tr>
+<tr>
+<td>dimension3</td>
+<td>Int</td>
+<td>Yes</td>
+<td>Height of the package, rounded up to the nearest whole centimeter</td>
+</tr>
+<tr>
+<td>weight</td>
+<td>Float</td>
+<td>Yes</td>
+<td>Actual weight of package in kilograms</td>
+</tr>
+<tr>
+<td>reference</td>
+<td>String</td>
+<td>No</td>
+<td>Tag this package with parcel specific information.</td>
+</tr>
+</tbody></table>
+
+<p>*If you have specified <code>autoGenerateWaybillNumber</code> as <code>true</code>, then the <code>barcode</code> field may be left empty.</p>
+<h3 id='additional-references'>Additional References</h3>
+<p>You can include additional references to the waybill for ease of reference and search.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>FieldType</th>
+<th>Case</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>additionalReferences</td>
+<td>Array</td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody></table>
+
+<p><strong>The <code>additionalReferences</code> array comprises:</strong></p>
+
+<table><thead>
+<tr>
+<th>FieldName</th>
+<th>FieldType</th>
+<th>Req</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>value</td>
+<td>String</td>
+<td>Yes</td>
+<td>The reference number you want to add.</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  Ensure that special characters are URL encoded.
+</aside>
+<h3 id='printing-options'>Printing Options</h3>
+<p>These options should only be used if so advised by your sales representative or a BEX staff member. You may need additional information and/or setup before you may use these features.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>FieldType</th>
+<th>Req</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>returnParcelPrintingText</td>
+<td>Boolean</td>
+<td>No</td>
+<td>Optional. If <code>true</code>, returns EPL thermal label data as part of the response for you to send to the thermal printer.</td>
+</tr>
+<tr>
+<td>printParcels</td>
+<td>Boolean</td>
+<td>No</td>
+<td>Optional. If <code>true</code>, parcels are printed to the thermal label printer after submission using the <code>printUrl</code> specified.</td>
+</tr>
+<tr>
+<td>printUrl</td>
+<td>String</td>
+<td>No</td>
+<td>Optional. Specify the thermal printer URL to print to IF <code>printParcels=true</code>.</td>
+</tr>
+<tr>
+<td>printParcelsPrintNode</td>
+<td>Boolean</td>
+<td>No</td>
+<td>Optional. Specify <code>true</code> to use PrintNode to print the labels.</td>
+</tr>
+</tbody></table>
 <h2 id='response'>Response</h2>
-<p>The requesting party will receive a server response on the sucessful submission of a waybill request.
-The base object will contain a property called “items” which consists of an array
- holding a single object with the following properties:</p>
+<p>The base object will contain a property called <code>items</code> which consists of an array holding a single object with the following properties:</p>
 
 <table><thead>
 <tr>
@@ -2011,19 +1948,113 @@ The base object will contain a property called “items” which consists of an 
 </tr>
 </tbody></table>
 <h2 id='submission-failures'>Submission Failures</h2>
-<p>Should the collection request fail, the JSON response will contain a property field titled “ex”. This
-exception field will communicate the error encountered whilst processing the collection request
-and will suggest remedial action so as to ensure the successful saving and processing of the
-request on subsequent attempts.</p>
-<h2 id='downloading-waybills'>Downloading Waybills</h2>
-<p>As part of our offering, you can also download your waybill in A4 format.</p>
-<h2 id='downloading-parcel-labels'>Downloading Parcel Labels</h2>
-<aside class="notice">
-    Should you experience any difficulties in the implementation of this service please contact BEX
-Head Office in Johannesburg on +2711 929 9700 and ask for a member of I.T who will gladly assist
-you.
+<p>Should your request fail, please inspect the <code>ex</code> property as mentioned earlier in this document. </p>
 
+<aside class="notice">
+  These errors often will need to be addressed before you can re-submit them to ensure successful submission.
 </aside>
+<h1 id='waybill-downloads'>Waybill Downloads</h1><h2 id='overview'>Overview</h2>
+<p>As part of our service offering we allow you to download an <em>e-waybill</em> and any parcel labels associated with the waybill. The <em>e-waybill</em> is in A4 format and can be printed using any printer at your disposal.</p>
+
+<aside class="notice">
+  The parcel labels are sized at 10.08cm x 14.98cm. You can print these using any printer at your disposal too.
+</aside>
+<h2 id='authentication'>Authentication</h2>
+<p>The stationery downloads service requires a different token than the one you have been using to access the other endpoints. </p>
+
+<aside class="notice">
+  To access the stationery download service, please re-authenticate by adding/setting the `preferAlternateToken` to `true`, for example `https://api.bex.co.za/api/service/login?userName=your_username&password=your_password&preferAlternateToken=true`, and then use the new token in the response to download your stationery.
+</aside>
+<h2 id='ewaybill-download'>eWaybill Download</h2>
+<p>You can download the e-waybill from <code>https://api.bex.co.za/api/service/downloadewaybill</code>.</p>
+
+<aside class="notice">
+  Only one e-waybill can be requested in a single call.
+</aside>
+
+<blockquote>
+<p>Supply only 1 waybill number per call.
+<code>json
+{
+  &quot;token&quot;: &quot;`alternate_token`&quot;, 
+  &quot;waybillNumber&quot;: &quot;waybill_number&quot;
+}
+</code></p>
+</blockquote>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>FieldType</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>String</td>
+<td>Yes</td>
+<td>The <code>alternate_token</code> received through the <code>login</code> service.</td>
+</tr>
+<tr>
+<td>waybillNumber</td>
+<td>String</td>
+<td>Yes</td>
+<td>A single waybill number to lookup and produce a PDF for.</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<p>An error response will still contain the relevant error message in the <code>ex</code> parameter of the response. </p>
+
+<p><strong>However</strong>, a successful response will be the resulting PDF document. If you are accessing the service endpoint using query parameters inside a browser, the document will automatically download to your computer. </p>
+
+<aside class="notice">
+  If you are accessing this service through code, you will need to process the result and save it to disk so that you can access the file.
+</aside>
+<h2 id='labels-downloads'>Labels Downloads</h2>
+<p>You can download &quot;thermal&quot; labels from <code>https://api.bex.co.za/api/service/downloadparcellabels</code>. </p>
+
+<blockquote>
+<p>Example JSON body.
+<code>json
+{
+  &quot;token&quot;: &quot;`alternate_token`&quot;, 
+  &quot;waybillNumbers&quot;: &quot;waybill_number_1,waybill_number_2,waybill_number_3,...&quot;
+}
+</code></p>
+</blockquote>
+<h3 id='parameters-2'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>FieldType</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>String</td>
+<td>Yes</td>
+<td>The <code>alternate_token</code> received through the <code>login</code> service.</td>
+</tr>
+<tr>
+<td>waybillNumbers</td>
+<td>String</td>
+<td>Yes</td>
+<td>A comma-seperated list of waybill numbers or parcel numbers to generate PDF labels for.</td>
+</tr>
+</tbody></table>
+<h3 id='response-2'>Response</h3>
+<p>An error response will still contain the relevant error message in the <code>ex</code> parameter of the response. </p>
+
+<p><strong>However</strong>, a successful response will be the resulting PDF document. If you are accessing the service endpoint using query parameters inside a browser, the document will automatically download to your computer. </p>
+
+<aside class="notice">
+  If you are accessing this service through code, you will need to process the result and save it to disk so that you can access the file.
+</aside>
+
+<p>If you have requested multiple parcels and/or waybills in this request, the document will be multi-paged.</p>
 <h1 id='webhooks-guide'>Webhooks Guide</h1><h2 id='getting-started'>Getting Started</h2>
 <p>In order to use our WebHooks, you need to ensure that you have a valid and actively trading customer account registered with BEX. Once you have your account number, you will need to request a WebHook API key from our <a href="mailto:it@bex.co.za?subject=WebHook%20API%20key%20Request">IT department</a>. We will communicate this to you but it is your responsibility to ensure the secrecy of it.</p>
 

@@ -201,7 +201,7 @@
       <script src="javascripts/all-c5541673.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;json&quot;,&quot;javascript&quot;,&quot;csharp&quot;]">
+  <body class="index" data-languages="[&quot;json&quot;,&quot;javascript&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -213,7 +213,6 @@
         <div class="lang-selector">
               <a href="#" data-language-name="json">json</a>
               <a href="#" data-language-name="javascript">javascript</a>
-              <a href="#" data-language-name="csharp">csharp</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -317,7 +316,10 @@
                     <a href="#dimensioning" class="toc-h2 toc-link" data-title="Dimensioning">Dimensioning</a>
                   </li>
                   <li>
-                    <a href="#service-add-ons" class="toc-h2 toc-link" data-title="Service Add-Ons">Service Add-Ons</a>
+                    <a href="#additional-references-array" class="toc-h2 toc-link" data-title="Additional References Array">Additional References Array</a>
+                  </li>
+                  <li>
+                    <a href="#parcel-label-printing" class="toc-h2 toc-link" data-title="Parcel Label Printing">Parcel Label Printing</a>
                   </li>
                   <li>
                     <a href="#waybill-transportation" class="toc-h2 toc-link" data-title="Waybill Transportation">Waybill Transportation</a>
@@ -327,6 +329,12 @@
                   </li>
                   <li>
                     <a href="#submission-failures" class="toc-h2 toc-link" data-title="Submission Failures">Submission Failures</a>
+                  </li>
+                  <li>
+                    <a href="#downloading-waybills" class="toc-h2 toc-link" data-title="Downloading Waybills">Downloading Waybills</a>
+                  </li>
+                  <li>
+                    <a href="#downloading-parcel-labels" class="toc-h2 toc-link" data-title="Downloading Parcel Labels">Downloading Parcel Labels</a>
                   </li>
               </ul>
           </li>
@@ -437,6 +445,8 @@ We return <code>200 OK</code> http status responses for <strong>ALL</strong> req
 <li><a href="https://requestbin.com">RequestBin</a> - Allows you test webhooks.</li>
 <li><a href="https://hookbin.com">Hookbin</a> - Another tool to test webhooks.</li>
 </ul>
+
+<p><a href="https://app.getpostman.com/run-collection/18080551-d254d459-0578-41a2-a226-c9106577fc8b?action=collection%2Ffork&amp;source=rip_markdown&amp;collection-url=entityId%3D18080551-d254d459-0578-41a2-a226-c9106577fc8b%26entityType%3Dcollection%26workspaceId%3Df4e6d6c2-24bc-49cd-8a3e-5dbc327bc6a9"><img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;"></a></p>
 <h1 id='authentication'>Authentication</h1>
 <p>Authentication against the BEX API ecosystem is a two-part process and is required to prevent access to confidential client data. The process involves the generation of your API security token which is described in the next section. This token is then included in the HTTP headers of your API calls and serves to identify and authenticate you on our platform.</p>
 
@@ -457,7 +467,11 @@ The token will not expire so once generated can be persisted securely on your si
 <blockquote>
 <p>Make sure to replace <code>user123</code>and <code>pass123</code> with your integration account details.</p>
 </blockquote>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="o">&lt;!</span><span class="nx">DOCTYPE</span> <span class="nx">html</span><span class="o">&gt;</span>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user123"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pass123"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="o">&lt;!</span><span class="nx">DOCTYPE</span> <span class="nx">html</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="nx">html</span> <span class="nx">xmlns</span><span class="o">=</span><span class="dl">"</span><span class="s2">http://www.w3.org/1999/xhtml</span><span class="dl">"</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">BEX</span> <span class="nx">API</span> <span class="nx">Login</span> <span class="nx">Example</span><span class="o">&lt;</span><span class="sr">/title</span><span class="err">&gt;
@@ -507,6 +521,12 @@ The token will not expire so once generated can be persisted securely on your si
 <td>String</td>
 <td>Yes</td>
 <td>Your integration account <em>password</em> (case sensitive).</td>
+</tr>
+<tr>
+<td>preferAlternateToken</td>
+<td>Boolean</td>
+<td>No</td>
+<td>Set to <em>true</em> if so required by the documentation.</td>
 </tr>
 </tbody></table>
 <h2 id='transportation'>Transportation</h2>
@@ -573,12 +593,12 @@ The service supports URL parameters or JSON parameters in the message body</p>
 <tr>
 <td>signalRenabled</td>
 <td>string</td>
-<td>A feature-flag used internally on our platform.</td>
+<td>For internal use only.</td>
 </tr>
 <tr>
 <td>allowApiLogin</td>
 <td>string</td>
-<td>A feature-flag used internally to grant additional login rights to your user identity. This is not a requirement to use our API endpoints.</td>
+<td>For internal use only.</td>
 </tr>
 </tbody></table>
 
@@ -588,7 +608,7 @@ The service supports URL parameters or JSON parameters in the message body</p>
 <p>Javascript showing the token defined in the headers.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="dl">"</span><span class="s2">url</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://build.bex.co.za/api/service/submitwaybillwia</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">url</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://build.bex.co.za/api/service/submitwaybillv4</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">method</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">timeout</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">headers</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
@@ -598,7 +618,7 @@ The service supports URL parameters or JSON parameters in the message body</p>
     <span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span>
   <span class="p">}</span>
 </code></pre></div>
-<p>To do so, you <em>include it as a header attribute</em> in the HTTP headers of the call you are making to the respective API endpoints. The attribute is to be titled <strong>token</strong></p>
+<p>To do so, you <em>include it into the request header</em> when making a call to one of our endpoints. The header key is <strong>token</strong>.</p>
 <h1 id='tracking'>Tracking</h1><h2 id='overview'>Overview</h2>
 <p>You can query our courier platform for up-to-the-minute tracking information pertaining to your shipments. We have exposed a lightweight tracking service that returns non-sensitive tracking events for the shipments queried.
 To cater for customers wishing to display this tracking information on their own websites we include a schema definition in the tracking response that can be used to bind the fields to a client grid implemented on your website.</p>
@@ -1226,7 +1246,7 @@ The service allows for the communication of a number of shipping options, such a
 <li>Special handling requests such as after-hour, Saturday or public holiday deliveries</li>
 </ul>
 <h2 id='endpoint'>Endpoint</h2>
-<p>Service Relative URL: <code>/api/service/submitwaybillwia</code></p>
+<p>Service Relative URL: <code>/api/service/submitwaybillv4</code></p>
 <h3 id='waybill-parameters'>Waybill Parameters</h3>
 <p>The parameter requirements for this api call have been broken down into three sub-sections,
 namely:</p>
@@ -1241,45 +1261,60 @@ namely:</p>
 <p>Sample json message body.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"waybillNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ST116664"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"waybillDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-09-23"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"serviceCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NCA"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"316085"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"sendersRef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"you-can-put-your-own-references-here"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"originCompany"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MARTINNAISE (PTY) LTD"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"originFloorBuilding"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1ST FLOOR"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"originStreet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12 MODDERFONTEIN STREET"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"originLocationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MODDERFONTEIN"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"originCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"originPostCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1645"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"destinationCompany"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPUR STEAK RANCHES"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"destinationFloorBuilding"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNIT 1"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"destinationStreet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"165 MAIN RD"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"destinationLocationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MUIZENBERG"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"destinationCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"destinationPostCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7950"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"receiverContactName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SHARON SNYMAN"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"receiverMobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"receiverEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"receiverTelephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+27811234512"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"senderContactName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"senderMobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"senderEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"senderTelephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"specialInstructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PLEASE SIGN HANDOVER SHEET"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"sursat"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"surpub"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"surahs"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"insuranceRequired"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FALSE"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"insuranceValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"returnParcelPrintingText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FALSE"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"printParcels"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FALSE"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"printUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"originLat"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"originLon"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"destinationLat"</span><span class="p">:</span><span class="w"> </span><span class="mf">-26.11682</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"destinationLon"</span><span class="p">:</span><span class="w"> </span><span class="mf">28.17926</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nl">"dimension1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45"</span><span class="p">,</span><span class="nl">"dimension2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45"</span><span class="p">,</span><span class="nl">"dimension3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50"</span><span class="p">,</span><span class="nl">"weight"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18"</span><span class="p">,</span><span class="nl">"barcodeNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ST116664_P1"</span><span class="p">}]</span><span class="w">
+    </span><span class="nl">"waybillNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="err">//Leave</span><span class="w"> </span><span class="err">empty</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">auto</span><span class="w"> </span><span class="err">generate</span><span class="w"> </span><span class="err">OR</span><span class="w"> </span><span class="err">enter</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">custom</span><span class="w"> </span><span class="err">waybill</span><span class="w"> </span><span class="err">number.</span><span class="w">
+    </span><span class="nl">"autoGenerateWaybillNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="err">//Set</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">_</span><span class="kc">false</span><span class="err">_</span><span class="w"> </span><span class="err">if</span><span class="w"> </span><span class="err">you</span><span class="w"> </span><span class="err">are</span><span class="w"> </span><span class="err">providing</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">custom</span><span class="w"> </span><span class="err">waybill</span><span class="w"> </span><span class="err">number.</span><span class="w">
+    </span><span class="nl">"waybillDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YYYY-MM-DD"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your_bex_account_number"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"serviceCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ONX"</span><span class="p">,</span><span class="w"> </span><span class="err">//or</span><span class="w"> </span><span class="err">whichever</span><span class="w"> </span><span class="err">service</span><span class="w"> </span><span class="err">you</span><span class="w"> </span><span class="err">may</span><span class="w"> </span><span class="err">require</span><span class="w">
+    </span><span class="nl">"sendersRef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a reference for the sender"</span><span class="p">,</span><span class="w"> </span><span class="err">//(optional)</span><span class="w">
+    </span><span class="nl">"instructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"special instructions for the courier"</span><span class="p">,</span><span class="w"> </span><span class="err">//(optional)</span><span class="w">
+    </span><span class="nl">"insuranceRequired"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="err">//Set</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">_</span><span class="kc">true</span><span class="err">_</span><span class="w"> </span><span class="err">if</span><span class="w"> </span><span class="err">you</span><span class="w"> </span><span class="err">require</span><span class="w"> </span><span class="err">insurance</span><span class="w">
+    </span><span class="nl">"insuranceValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="err">//(optional)</span><span class="w"> </span><span class="err">Specify</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">value</span><span class="w"> </span><span class="err">only</span><span class="w"> </span><span class="err">if</span><span class="w"> </span><span class="err">_insuranceRequired_</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">set</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">_</span><span class="kc">true</span><span class="err">_.</span><span class="w">
+    </span><span class="nl">"senderCompany"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe Digital Works"</span><span class="p">,</span><span class="w"> </span><span class="err">//(optional)</span><span class="w">
+    </span><span class="nl">"senderFloorBuilding"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17 Cheltham House, Floor 3"</span><span class="p">,</span><span class="w"> </span><span class="err">//(optional)</span><span class="w">
+    </span><span class="nl">"senderStreet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 John Doe Avenue"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"senderSuburb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ross Kent South"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"senderCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Odendaalsrus"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"senderPostCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9800"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"senderProvince"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Free State"</span><span class="p">,</span><span class="w"> </span><span class="err">//(optional)</span><span class="w">
+    </span><span class="nl">"senderContactName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w"> </span><span class="err">//(optional)</span><span class="w">
+    </span><span class="nl">"senderMobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w"> </span><span class="err">//(optional)</span><span class="w">
+    </span><span class="nl">"senderEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@domain.com"</span><span class="p">,</span><span class="w"> </span><span class="err">//(optional)</span><span class="w"> 
+    </span><span class="nl">"senderTel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w"> </span><span class="err">//(optional)</span><span class="w">
+    </span><span class="nl">"senderTelHome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w"> </span><span class="err">//(optional)</span><span class="w"> 
+    </span><span class="nl">"senderLat"</span><span class="p">:</span><span class="w"> </span><span class="err">sender_latitude</span><span class="p">,</span><span class="w"> </span><span class="err">//(optional)</span><span class="w"> </span><span class="err">Although</span><span class="p">,</span><span class="w"> </span><span class="err">we</span><span class="w"> </span><span class="err">encourage</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">use</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">coordinates!</span><span class="w">
+    </span><span class="nl">"senderLon"</span><span class="p">:</span><span class="w"> </span><span class="err">sender_longitude</span><span class="p">,</span><span class="w"> </span><span class="err">//(optional)</span><span class="w"> </span><span class="err">Although</span><span class="p">,</span><span class="w"> </span><span class="err">we</span><span class="w"> </span><span class="err">encourage</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">use</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">coordinates!</span><span class="w">
+    </span><span class="nl">"receiverCompany"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane Flower Works"</span><span class="p">,</span><span class="w"> </span><span class="err">//(optional)</span><span class="w"> 
+    </span><span class="nl">"receiverFloorBuilding"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Floor B-4"</span><span class="p">,</span><span class="w"> </span><span class="err">//(optional)</span><span class="w"> 
+    </span><span class="nl">"receiverStreet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"166 Wringham Drive"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"receiverSuburb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Table View"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"receiverCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cape Town"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"receiverPostCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7441"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"receiverProvince"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Western Cape"</span><span class="p">,</span><span class="w"> </span><span class="err">//(optional)</span><span class="w"> 
+    </span><span class="nl">"receiverContactName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane Doe"</span><span class="p">,</span><span class="w"> </span><span class="err">//(optional)</span><span class="w"> 
+    </span><span class="nl">"receiverMobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w"> </span><span class="err">//(optional)</span><span class="w"> </span><span class="err">If</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">number</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">provided</span><span class="p">,</span><span class="w"> </span><span class="err">delivery</span><span class="w"> </span><span class="err">notifications</span><span class="w"> </span><span class="err">will</span><span class="w"> </span><span class="err">be</span><span class="w"> </span><span class="err">sent</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">number.</span><span class="w">
+    </span><span class="nl">"receiverEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jane@domain.com"</span><span class="p">,</span><span class="w"> </span><span class="err">//(optional)</span><span class="w"> </span><span class="err">If</span><span class="w"> </span><span class="err">an</span><span class="w"> </span><span class="err">email</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">provided</span><span class="p">,</span><span class="w"> </span><span class="err">delivery</span><span class="w"> </span><span class="err">notifications</span><span class="w"> </span><span class="err">will</span><span class="w"> </span><span class="err">be</span><span class="w"> </span><span class="err">sent</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">address.</span><span class="w"> 
+    </span><span class="nl">"receiverTel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w"> </span><span class="err">//(optional)</span><span class="w"> 
+    </span><span class="nl">"receiverTelHome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w"> </span><span class="err">//(optional)</span><span class="w"> 
+    </span><span class="nl">"receiverLat"</span><span class="p">:</span><span class="w"> </span><span class="err">receiver_latitude</span><span class="p">,</span><span class="w"> </span><span class="err">//(optional)</span><span class="w"> </span><span class="err">Although</span><span class="p">,</span><span class="w"> </span><span class="err">we</span><span class="w"> </span><span class="err">encourage</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">use</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">coordinates!</span><span class="w">
+    </span><span class="nl">"receiverLon"</span><span class="p">:</span><span class="w"> </span><span class="err">receiver_longitude</span><span class="p">,</span><span class="w"> </span><span class="err">//(optional)</span><span class="w"> </span><span class="err">Although</span><span class="p">,</span><span class="w"> </span><span class="err">we</span><span class="w"> </span><span class="err">encourage</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">use</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">coordinates!</span><span class="w">
+    </span><span class="nl">"returnParcelPrintingText"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="err">//(optional)</span><span class="w"> </span><span class="err">Returns</span><span class="w"> </span><span class="err">EPL</span><span class="w"> </span><span class="err">thermal</span><span class="w"> </span><span class="err">label</span><span class="w"> </span><span class="err">data</span><span class="w"> </span><span class="err">as</span><span class="w"> </span><span class="err">part</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">response</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">you</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">send</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">thermal</span><span class="w"> </span><span class="err">printer.</span><span class="w">
+    </span><span class="nl">"printParcels"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="err">//(optional)</span><span class="w"> </span><span class="err">If</span><span class="w"> </span><span class="err">_</span><span class="kc">true</span><span class="err">_</span><span class="p">,</span><span class="w"> </span><span class="err">parcels</span><span class="w"> </span><span class="err">are</span><span class="w"> </span><span class="err">printed</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">thermal</span><span class="w"> </span><span class="err">label</span><span class="w"> </span><span class="err">printer</span><span class="w"> </span><span class="err">after</span><span class="w"> </span><span class="err">submission</span><span class="w"> </span><span class="err">using</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">URL</span><span class="w"> </span><span class="err">specified.</span><span class="w">
+    </span><span class="nl">"printUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="err">//(optional)</span><span class="w"> </span><span class="err">Specify</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">thermal</span><span class="w"> </span><span class="err">label</span><span class="w"> </span><span class="err">printer</span><span class="w"> </span><span class="err">URL</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">print</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">IF</span><span class="w"> </span><span class="err">_printParcels=</span><span class="kc">true</span><span class="err">_.</span><span class="w">
+    </span><span class="nl">"printParcelsPrintNode"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="err">//(optional)</span><span class="w"> </span><span class="err">Specify</span><span class="w"> </span><span class="err">_</span><span class="kc">true</span><span class="err">_</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">use</span><span class="w"> </span><span class="err">PrintNode</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">print</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">labels</span><span class="w"> </span><span class="err">if</span><span class="w"> </span><span class="err">_printParcels=</span><span class="kc">true</span><span class="err">_.</span><span class="w">
+    </span><span class="nl">"dims"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="nl">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="err">//Leave</span><span class="w"> </span><span class="err">empty</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">auto</span><span class="w"> </span><span class="err">generate</span><span class="w"> </span><span class="err">OR</span><span class="w"> </span><span class="err">supply</span><span class="w"> </span><span class="err">your</span><span class="w"> </span><span class="err">own</span><span class="w"> </span><span class="err">barcode</span><span class="w"> </span><span class="err">number</span><span class="w"> </span><span class="err">IF</span><span class="w"> </span><span class="err">_autoGenerateWaybillNumber=</span><span class="kc">false</span><span class="err">_.</span><span class="w">
+        </span><span class="nl">"dimension1"</span><span class="p">:</span><span class="w"> </span><span class="err">length_cm</span><span class="p">,</span><span class="w"> 
+        </span><span class="nl">"dimension2"</span><span class="p">:</span><span class="w"> </span><span class="err">breadth_cm</span><span class="p">,</span><span class="w"> 
+        </span><span class="nl">"dimension3"</span><span class="p">:</span><span class="w"> </span><span class="err">height_cm</span><span class="p">,</span><span class="w"> 
+        </span><span class="nl">"weight"</span><span class="p">:</span><span class="w"> </span><span class="err">parcel_weight_kg</span><span class="p">,</span><span class="w"> 
+        </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="err">//(optional)</span><span class="w"> </span><span class="err">A</span><span class="w"> </span><span class="err">parcel</span><span class="w"> </span><span class="err">description</span><span class="w">
+    </span><span class="p">}],</span><span class="w">
+    </span><span class="nl">"additionalReferences"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"reference_1"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"reference_2"</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -1292,29 +1327,43 @@ namely:</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>AccountNumber</td>
+<td>accountNumber</td>
 <td>String</td>
 <td>No</td>
 <td>Yes</td>
 <td></td>
 </tr>
 <tr>
-<td>SendersRef</td>
+<td>sendersRef</td>
 <td>String</td>
 <td>No</td>
 <td>No</td>
 <td>For tracking, reporting and invoice requests</td>
 </tr>
 <tr>
-<td>WaybillNumber</td>
+<td>autoGenerateWaybillNumber</td>
+<td>Boolean</td>
+<td>N/A</td>
+<td>No*</td>
+<td>If set to <em>true</em>, the BEX system will automatically generate a waybill number on your behalf.</td>
+</tr>
+<tr>
+<td>waybillNumber</td>
 <td>String</td>
-<td>No(See below)</td>
+<td>No*</td>
 <td>No</td>
-<td>BEX issued number</td>
+<td>A unique waybill number. This field will be <em>required</em> if <em>AutoGenerateWaybillNumber</em> is set to <em>false</em>.</td>
+</tr>
+<tr>
+<td>instructions</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>Communicate additional info</td>
 </tr>
 </tbody></table>
 
-<p>WaybillNumber is auto-generated by BEX and communicated in the service response when making use of alternative shipping stationary options such as thermal labels or A4 waybills</p>
+<p>*waybillNumber is auto-generated by BEX and communicated in the service response when making use of alternative shipping stationary options such as thermal labels or A4 waybills</p>
 
 <table><thead>
 <tr>
@@ -1326,14 +1375,14 @@ namely:</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>WaybillDate</td>
+<td>waybillDate</td>
 <td>Date</td>
 <td>No</td>
 <td>No</td>
 <td>Date of collection by BEX. Format yyyy-mm-dd</td>
 </tr>
 <tr>
-<td>ServiceCode</td>
+<td>serviceCode</td>
 <td>String</td>
 <td>No</td>
 <td>Yes</td>
@@ -1343,11 +1392,13 @@ namely:</p>
 
 <p>Service delivery code values are:</p>
 
-<p>*SDX - Sameday Express
-*DBD - Daybreak Delivery
-*ONC - Overnight Courier
-*NCA - Normal Cargo
-*BUD - Budget Cargo</p>
+<ul>
+<li>SDX - Sameday Express</li>
+<li>DBD - Daybreak Delivery</li>
+<li>ONC - Overnight Courier</li>
+<li>NCA - Normal Cargo</li>
+<li>BUD - Budget Cargo</li>
+</ul>
 
 <table><thead>
 <tr>
@@ -1359,64 +1410,101 @@ namely:</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>OriginCompany</td>
+<td>senderCompany</td>
 <td>String</td>
 <td>No</td>
 <td>No</td>
 <td>Company from which to collect</td>
 </tr>
 <tr>
-<td>OriginFloorBuilding</td>
+<td>senderFloorBuilding</td>
 <td>String</td>
 <td>No</td>
 <td>Yes</td>
 <td>Floor, building, office park</td>
 </tr>
 <tr>
-<td>OriginStreet</td>
+<td>senderStreet</td>
 <td>String</td>
 <td>No</td>
 <td>Yes</td>
 <td>Street for shipment collection</td>
 </tr>
 <tr>
-<td>OriginLocationName</td>
+<td>senderSuburb</td>
 <td>String</td>
 <td>No</td>
 <td>Yes</td>
 <td>Sender suburb</td>
 </tr>
 <tr>
-<td>OriginPostCode</td>
+<td>senderCity</td>
+<td>String</td>
+<td>No</td>
+<td>Yes</td>
+<td>Sender town or city</td>
+</tr>
+<tr>
+<td>senderPostCode</td>
 <td>String</td>
 <td>No</td>
 <td>Yes</td>
 <td>Sender postcode</td>
 </tr>
 <tr>
-<td>SenderContactName</td>
+<td>senderProvince</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>Sender province.</td>
+</tr>
+<tr>
+<td>senderContactName</td>
 <td>String</td>
 <td>No</td>
 <td>No</td>
 <td>Contact person for collection/dispatch</td>
 </tr>
 <tr>
-<td>SenderTelephone</td>
+<td>senderMobile</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>Contact person mobile number</td>
+</tr>
+<tr>
+<td>senderTel</td>
 <td>String</td>
 <td>No</td>
 <td>No</td>
 <td>Contact person telephone number</td>
 </tr>
 <tr>
-<td>SenderMobile</td>
+<td>senderTelHome</td>
 <td>String</td>
 <td>No</td>
 <td>No</td>
-<td>Contact person mobile number</td>
+<td>Contact person telephone number (home or alternate)</td>
+</tr>
+<tr>
+<td>senderLat</td>
+<td>Double</td>
+<td>N/A</td>
+<td>No</td>
+<td>Sender coordinate latitude value (we encourage the use of these)</td>
+</tr>
+<tr>
+<td>senderLon</td>
+<td>Double</td>
+<td>N/A</td>
+<td>No</td>
+<td>Sender coordintae longitude value (we encourage the use of these)</td>
 </tr>
 </tbody></table>
 
-<p>SenderMobile is useful for shipment progress updates</p>
+<ul>
+<li>senderMobile is useful for shipment progress updates</li>
+</ul>
 
 <table><thead>
 <tr>
@@ -1428,21 +1516,21 @@ namely:</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>SenderEmail</td>
+<td>senderEmail</td>
 <td>String</td>
 <td>No</td>
 <td>No</td>
-<td>For progress updates</td>
+<td>Contact person email address</td>
 </tr>
 <tr>
-<td>DestinationCompany</td>
+<td>receiverCompany</td>
 <td>String</td>
 <td>No</td>
 <td>No</td>
 <td>Receiver individual/company name</td>
 </tr>
 <tr>
-<td>DestinationFloorBuilding</td>
+<td>receiverFloorBuilding</td>
 <td>String</td>
 <td>No</td>
 <td>No</td>
@@ -1462,64 +1550,100 @@ namely:</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>DestinationStreet</td>
-<td>String</td>
-<td>No</td>
-<td>No</td>
-<td>Receiver street number and name</td>
-</tr>
-<tr>
-<td>DestinationLocationName</td>
+<td>receiverStreet</td>
 <td>String</td>
 <td>No</td>
 <td>Yes</td>
-<td>Receiver suburb .</td>
+<td>Receiver street number and name</td>
 </tr>
 <tr>
-<td>DestinationPostCode</td>
+<td>receiverSuburb</td>
+<td>String</td>
+<td>No</td>
+<td>Yes</td>
+<td>Receiver suburb.</td>
+</tr>
+<tr>
+<td>receiverCity</td>
+<td>String</td>
+<td>No</td>
+<td>Yes</td>
+<td>Receiver city or town.</td>
+</tr>
+<tr>
+<td>receiverPostCode</td>
 <td>String</td>
 <td>Yes</td>
 <td>No</td>
 <td>Receiver postcode</td>
 </tr>
 <tr>
-<td>ReceiverContactName</td>
+<td>receiverProvince</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>Receiver province.</td>
+</tr>
+<tr>
+<td>receiverContactName</td>
 <td>String</td>
 <td>No</td>
 <td>No</td>
 <td>Receiver name.</td>
 </tr>
 <tr>
-<td>ReceiverTelephone</td>
+<td>receiverMobile</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>Useful for status updates</td>
+</tr>
+<tr>
+<td>receiverEmail</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>Useful for status updates</td>
+</tr>
+<tr>
+<td>receiverTel</td>
 <td>String</td>
 <td>No</td>
 <td>No</td>
 <td>Receiver telephone number</td>
 </tr>
 <tr>
-<td>ReceiverMobile</td>
+<td>receiverTelHome</td>
 <td>String</td>
 <td>No</td>
 <td>No</td>
-<td>Useful for status updates</td>
+<td>Receiver telephone number (home or alternate).</td>
 </tr>
 <tr>
-<td>ReceiverEmail</td>
-<td>String</td>
+<td>receiverLat</td>
+<td>Double</td>
+<td>N/A</td>
 <td>No</td>
-<td>No</td>
-<td>Useful for status updates</td>
+<td>Receiver coordinate latitude value (we encourage the use of these)</td>
 </tr>
 <tr>
-<td>InsuranceRequired</td>
+<td>receiverLon</td>
+<td>Double</td>
+<td>N/A</td>
+<td>No</td>
+<td>Receiver coordinate longitude value (we encourage the use of these)</td>
+</tr>
+<tr>
+<td>insuranceRequired</td>
 <td>Boolean</td>
 <td>No</td>
 <td>No</td>
-<td></td>
+<td><em>true</em> if insurance is required for this shipment.</td>
 </tr>
 </tbody></table>
 
-<p>If TRUE the insurance surcharge is added to the waybill and insurance cover is placed for the goods during shipping</p>
+<p>If you specify <em>true</em> for <em>insuranceRequired</em>, the insurance surcharge is added to the waybill and insurance cover is placed for the goods during shipping. The following fields 
+automatically become required:</p>
 
 <table><thead>
 <tr>
@@ -1531,49 +1655,18 @@ namely:</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>InsuranceValue</td>
+<td>insuranceValue</td>
 <td>Float/Double</td>
 <td>No</td>
-<td>No</td>
-<td>Insured value, in ZAR</td>
-</tr>
-<tr>
-<td>Instructions</td>
-<td>String</td>
-<td>No</td>
-<td>No</td>
-<td>Communicate additional info</td>
-</tr>
-</tbody></table>
-
-<p>The following parameters MUST correspond to the Dimensions Array</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>FieldType</th>
-<th>Required</th>
-<th>Note</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>TotalPieces</td>
-<td>Int</td>
-<td>Yes</td>
-<td>Total number of packages on this waybill number. Must match COUNT of individual parcel objects in the dimensions array.</td>
-</tr>
-<tr>
-<td>ActualWeight</td>
-<td>Float</td>
-<td>Yes</td>
-<td>The total weight in kilograms, of all of the packages on this waybill number. Must match SUM of individual parcel objects in the dimensions array.</td>
+<td>Yes*</td>
+<td>Insured value, in ZAR. Omit this field if you <em>do not</em> require insurance.</td>
 </tr>
 </tbody></table>
 
 <aside class="notice">
-    Should you not have the individual weights of each package to be shipped on the waybill
-you can state the total weight of all of the parcels in one of the dimension array’s weight field,
-followed by zeroes for the remaining weights in the dimensions array.
+  Should you not have the individual weights of each package to be shipped on the waybill
+  you can state the total weight of all of the parcels in one of the dimension array’s weight field,
+  followed by zeroes for the remaining weights in the dimensions array.
 </aside>
 <h2 id='dimensioning'>Dimensioning</h2>
 <p>The dimensioning sub-section contains information pertinent to the parcels that make up this
@@ -1588,7 +1681,7 @@ waybill shipping request.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>Dimensions</td>
+<td>dims</td>
 <td>Array</td>
 <td>No</td>
 <td>Yes</td>
@@ -1609,47 +1702,48 @@ waybill shipping request.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>BarcodeNumber</td>
+<td>barcode</td>
 <td>String</td>
-<td>No</td>
-<td>The barcode number of the parcel label used for this package</td>
+<td>Yes*</td>
+<td>The barcode number of the parcel label used for this package.</td>
 </tr>
 <tr>
-<td>Dimension1</td>
+<td>dimension1</td>
 <td>Int</td>
 <td>Yes</td>
 <td>Length of the package, rounded up to the nearest whole centimeter</td>
 </tr>
 <tr>
-<td>Dimension2</td>
+<td>dimension2</td>
 <td>Int</td>
 <td>Yes</td>
 <td>Width of the package, rounded up to the nearest whole centimeter</td>
 </tr>
 <tr>
-<td>Dimension3</td>
+<td>dimension3</td>
 <td>Int</td>
 <td>Yes</td>
 <td>Height of the package, rounded up to the nearest whole centimeter</td>
 </tr>
 <tr>
-<td>Weight</td>
+<td>weight</td>
 <td>Float</td>
 <td>Yes</td>
 <td>Actual weight of package in kilograms</td>
 </tr>
 <tr>
-<td>Reference</td>
+<td>reference</td>
 <td>String</td>
 <td>No</td>
 <td>Tag this package with parcel specific information.</td>
 </tr>
 </tbody></table>
-<h2 id='service-add-ons'>Service Add-Ons</h2>
-<p>The service add-ons sub-section contains information specific to additional options that can be
-requested over and above the respective delivery service product offerings. Currently this pertains to 
-after-hour delivery requests but will be extended to features such as live delivery e-mail
-and sms alerts.</p>
+
+<ul>
+<li>If you have specified <em>autoGenerateWaybillNumber</em> as <em>true</em>, then the <em>barcode</em> field may be left empty.</li>
+</ul>
+<h2 id='additional-references-array'>Additional References Array</h2>
+<p>You can include additional references to the waybill for ease of reference and search.</p>
 
 <table><thead>
 <tr>
@@ -1660,31 +1754,64 @@ and sms alerts.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>AdditionalSurcharges</td>
+<td>additionalReferences</td>
 <td>Array</td>
 <td>No</td>
 <td>No</td>
 </tr>
 </tbody></table>
-<h3 id='additionalsurcharges-array'>AdditionalSurcharges| Array</h3>
+<h3 id='additional-references-array-2'>Additional References Array</h3>
+<p>Each additional reference has the following properties:</p>
+
 <table><thead>
 <tr>
 <th>FieldName</th>
 <th>FieldType</th>
 <th>Req</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>SurchargeCode</td>
+<td>value</td>
 <td>String</td>
-<td>No</td>
+<td>Yes</td>
+<td>The reference number you want to add.</td>
 </tr>
 </tbody></table>
-
-<p>The codes for the service add-ons that are requested:
-* SURSAT - Saturday Delivery
-* SURPUB - Public Holiday Delivery
-* SURAHS - After Hours Delivery Handling</p>
+<h2 id='parcel-label-printing'>Parcel Label Printing</h2>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>FieldType</th>
+<th>Req</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>returnParcelPrintingText</td>
+<td>Boolean</td>
+<td>No</td>
+<td>Optional. If <em>true</em>, returns EPL thermal label data as part of the response for you to send to the thermal printer.</td>
+</tr>
+<tr>
+<td>printParcels</td>
+<td>Boolean</td>
+<td>No</td>
+<td>Optional. If <em>true</em>, parcels are printed to the thermal label printer after submission using the <em>printUrl</em> specified.</td>
+</tr>
+<tr>
+<td>printUrl</td>
+<td>String</td>
+<td>No</td>
+<td>Optional. Specify the thermal printer URL to print to IF <em>printParcels=true</em>.</td>
+</tr>
+<tr>
+<td>printParcelsPrintNode</td>
+<td>Boolean</td>
+<td>No</td>
+<td>Optional. Specify <em>true</em> to use PrintNode to print the labels.</td>
+</tr>
+</tbody></table>
 <h2 id='waybill-transportation'>Waybill Transportation</h2>
 <blockquote>
 <p>jQuery Waybill Submission Example.</p>
@@ -1701,115 +1828,147 @@ and sms alerts.</p>
 <span class="kd">var</span> <span class="nx">tokenStr</span> <span class="o">=</span> <span class="dl">''</span><span class="err">;</span>
 <span class="kd">var</span> <span class="nx">user</span> <span class="o">=</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="dl">'</span><span class="s1">someusername</span><span class="dl">'</span><span class="p">)</span><span class="err">;</span> <span class="c1">//encode the username</span>
 <span class="kd">var</span> <span class="nx">pass</span> <span class="o">=</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="dl">'</span><span class="s1">somepassword</span><span class="dl">'</span><span class="p">)</span><span class="err">;</span> <span class="c1">//encode the password</span>
-<span class="kd">var</span> <span class="nx">host</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://beta.bex.co.za</span><span class="dl">'</span><span class="err">;</span>
+<span class="kd">var</span> <span class="nx">host</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://api.bex.co.za</span><span class="dl">'</span><span class="err">;</span>
 <span class="c1">//********** Submit Waybill Service Call ***********</span>
-<span class="c1">// ADDRESSING</span>
-<span class="kd">var</span> <span class="nx">postData</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="kd">var</span> <span class="nx">postData</span> <span class="o">=</span> <span class="p">{};</span>
+
+<span class="c1">//BASIC</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">waybillNumber</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">IT2701152404</span><span class="dl">'</span><span class="p">;</span> <span class="c1">//or leave empty and set [autoGenerateWaybillNumber=true]</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">autoGenerateWaybillNumber</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">//set to [false] if you're supplying a waybill number.</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">waybillDate</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">20150127</span><span class="dl">'</span><span class="p">;</span>
 <span class="nx">postData</span><span class="p">.</span><span class="nx">accountNumber</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">111983</span><span class="dl">'</span><span class="err">;</span>
-<span class="nx">postData</span><span class="p">.</span><span class="nx">waybillNumber</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">IT2701152404</span><span class="dl">'</span><span class="err">;</span>
-<span class="nx">postData</span><span class="p">.</span><span class="nx">waybillDate</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">20150127</span><span class="dl">'</span><span class="err">;</span>
-<span class="nx">postData</span><span class="p">.</span><span class="nx">sendersRef</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">WE HAVE A REFERENCE</span><span class="dl">'</span><span class="err">;</span>
 <span class="nx">postData</span><span class="p">.</span><span class="nx">serviceCode</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">NCA</span><span class="dl">'</span><span class="err">;</span>
-<span class="c1">// SENDER ADDRESS</span>
-<span class="nx">postData</span><span class="p">.</span><span class="nx">originCompany</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">THE BOEING COMPANY</span><span class="dl">'</span><span class="err">;</span>
-<span class="nx">postData</span><span class="p">.</span><span class="nx">originFloorBuilding</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">UNIT 6 ASSEMBLY BUILDING</span><span class="dl">'</span><span class="err">;</span>
-<span class="nx">postData</span><span class="p">.</span><span class="nx">originStreet</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">21 AIRCRAFT LANE</span><span class="dl">'</span><span class="err">;</span>
-<span class="nx">postData</span><span class="p">.</span><span class="nx">originLocationName</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">MARLBORO</span><span class="dl">'</span><span class="err">;</span>
-<span class="nx">postData</span><span class="p">.</span><span class="nx">originPostCode</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">2050</span><span class="dl">'</span><span class="err">;</span>
-<span class="nx">postData</span><span class="p">.</span><span class="nx">senderContactName</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">JONATHAN</span><span class="dl">'</span><span class="err">;</span>
-<span class="nx">postData</span><span class="p">.</span><span class="nx">senderTelephone</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">0119299700</span><span class="dl">'</span><span class="err">;</span>
-<span class="nx">postData</span><span class="p">.</span><span class="nx">senderMobile</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">0821234321</span><span class="dl">'</span><span class="err">;</span>
-<span class="nx">postData</span><span class="p">.</span><span class="nx">senderEmail</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">JONATHAN@BOEING.COM</span><span class="dl">'</span><span class="err">;</span>
-<span class="c1">// DESTINATION ADDRESS</span>
-<span class="nx">postData</span><span class="p">.</span><span class="nx">destinationCompany</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">THE AIRLINER CO</span><span class="dl">'</span><span class="err">;</span>
-<span class="nx">postData</span><span class="p">.</span><span class="nx">destinationFloorBuilding</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">1ST FLOOR HEAD OFFICE</span><span class="dl">'</span><span class="err">;</span>
-<span class="nx">postData</span><span class="p">.</span><span class="nx">destinationStreet</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">21 TULP STREET</span><span class="dl">'</span><span class="err">;</span>
-<span class="nx">postData</span><span class="p">.</span><span class="nx">destinationLocationName</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">MILNERTON</span><span class="dl">'</span><span class="err">;</span>
-<span class="nx">postData</span><span class="p">.</span><span class="nx">destinationPostCode</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">7401</span><span class="dl">'</span><span class="err">;</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">sendersRef</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">WE HAVE A REFERENCE</span><span class="dl">'</span><span class="err">;</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">instructions</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">DO NOT INVERT COMPONENT</span><span class="dl">'</span><span class="err">;</span>
+
+<span class="c1">//INSURANCE OPTIONS</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">insuranceRequired</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">//Set to true if you need insurance.</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">insuranceValue</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//Set the waybill value here if [insuranceRequired=true].</span>
+
+<span class="c1">//SENDER DETAILS</span>
+<span class="c1">//--Address</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">senderCompany</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">THE BOEING COMPANY</span><span class="dl">'</span><span class="err">;</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">senderFloorBuilding</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">UNIT 6 ASSEMBLY BUILDING</span><span class="dl">'</span><span class="err">;</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">senderStreet</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">21 AIRCRAFT LANE</span><span class="dl">'</span><span class="err">;</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">senderSuburb</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">MARLBORO</span><span class="dl">'</span><span class="err">;</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">senderCity</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">SANDTON</span><span class="dl">'</span><span class="p">;</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">senderPostCode</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">2050</span><span class="dl">'</span><span class="err">;</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">senderProvince</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">GAUTENG</span><span class="dl">'</span><span class="p">;</span> <span class="c1">//optional</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">senderLat</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span> <span class="c1">//optional BUT WE ENCOURAGE the use of COORDINATES. Enter the LATITUDE here, e.g. -26.123496410189606</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">senderLon</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span> <span class="c1">//optional BUT WE ENCOURAGE the use of COORDINATES. Enter the LONGITUDE here, e.g. 28.205670867327754</span>
+
+<span class="c1">//--Contact</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">senderContactName</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">JONATHAN</span><span class="dl">'</span><span class="p">;</span> <span class="c1">//optional</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">senderMobile</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">0821234321</span><span class="dl">'</span><span class="p">;</span> <span class="c1">//optional</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">senderEmail</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">JONATHAN@BOEING.COM</span><span class="dl">'</span><span class="p">;</span> <span class="c1">//optional</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">senderTel</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">0119299700</span><span class="dl">'</span><span class="p">;</span> <span class="c1">//optional</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">senderTelHome</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">0119299700</span><span class="dl">'</span><span class="p">;</span> <span class="c1">//optional</span>
+
+<span class="c1">//RECEIVER DETAILS</span>
+<span class="c1">//--Address</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">receiverCompany</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">THE AIRLINER CO</span><span class="dl">'</span><span class="err">;</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">receiverFloorBuilding</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">1ST FLOOR HEAD OFFICE</span><span class="dl">'</span><span class="err">;</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">receiverStreet</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">21 TULP STREET</span><span class="dl">'</span><span class="err">;</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">receiverSuburb</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">MILNERTON</span><span class="dl">'</span><span class="err">;</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">receiverCity</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">CAPE TOWN</span><span class="dl">'</span><span class="p">;</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">receiverPostCode</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">7401</span><span class="dl">'</span><span class="err">;</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">receiverProvince</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">WESTERN CAPE</span><span class="dl">'</span><span class="p">;</span> <span class="c1">//optional</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">receiverLat</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span> <span class="c1">//optional BUT WE ENCOURAGE the use of COORDINATES. Enter the LATITUDE here, e.g. -26.123496410189606</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">receiverLon</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span> <span class="c1">//optional BUT WE ENCOURAGE the use of COORDINATES. Enter the LONGITUDE here, e.g. 28.205670867327754</span>
+
+<span class="c1">//--Contact</span>
 <span class="nx">postData</span><span class="p">.</span><span class="nx">receiverContactName</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">DEREK</span><span class="dl">'</span><span class="err">;</span>
-<span class="nx">postData</span><span class="p">.</span><span class="nx">receiverTelephone</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">0218641202</span><span class="dl">'</span><span class="err">;</span>
 <span class="nx">postData</span><span class="p">.</span><span class="nx">receiverMobile</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">0833211234</span><span class="dl">'</span><span class="err">;</span>
 <span class="nx">postData</span><span class="p">.</span><span class="nx">receiverEmail</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">DEREK@THEAIRLINER.COM</span><span class="dl">'</span><span class="err">;</span>
-<span class="c1">// GENERAL</span>
-<span class="nx">postData</span><span class="p">.</span><span class="nx">insuranceRequired</span> <span class="o">=</span> <span class="kc">true</span><span class="err">;</span>
-<span class="nx">postData</span><span class="p">.</span><span class="nx">insuranceValue</span> <span class="o">=</span> <span class="mi">1000</span><span class="err">;</span>
-<span class="nx">postData</span><span class="p">.</span><span class="nx">instructions</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">DO NOT INVERT COMPONENT</span><span class="dl">'</span><span class="err">;</span>
-<span class="c1">// PIECE INFORMATION</span>
-<span class="kd">var</span> <span class="nx">totalPieces</span> <span class="o">=</span> <span class="mi">2</span><span class="err">;</span>
-<span class="kd">var</span> <span class="nx">actualWeight</span> <span class="o">=</span> <span class="mf">12.3</span><span class="err">;</span>
-<span class="c1">// ADDITIONAL REFERENCES</span>
-<span class="kd">var</span> <span class="nx">additionalReferences</span> <span class="o">=</span> <span class="p">[]</span><span class="err">;</span>
-<span class="kd">var</span> <span class="nx">reference1</span> <span class="o">=</span> <span class="p">{}</span><span class="err">;</span>
-<span class="nx">reference1</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">REFERENCE ONE</span><span class="dl">'</span><span class="err">;</span>
-<span class="nx">additionalReferences</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">reference1</span><span class="p">)</span><span class="err">;</span>
-<span class="nx">postData</span><span class="p">.</span><span class="nx">AdditionalReferneces</span> <span class="o">=</span> <span class="nx">additionalReferences</span><span class="err">;</span>
-<span class="c1">// DIMENSIONING</span>
-<span class="kd">var</span> <span class="nx">dims</span> <span class="o">=</span> <span class="p">[]</span><span class="err">;</span>
-<span class="kd">var</span> <span class="nx">firstDim</span> <span class="o">=</span> <span class="p">{}</span><span class="err">;</span>
-<span class="nx">firstDim</span><span class="p">.</span><span class="nx">barcodeNumber</span> <span class="o">=</span> <span class="nx">postData</span><span class="p">.</span><span class="nx">waybillNumber</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">P1</span><span class="dl">'</span><span class="err">;</span>
-<span class="nx">firstDim</span><span class="p">.</span><span class="nx">Dimension1</span> <span class="o">=</span> <span class="mi">10</span><span class="err">;</span>
-<span class="nx">firstDim</span><span class="p">.</span><span class="nx">Dimension2</span> <span class="o">=</span> <span class="mi">20</span><span class="err">;</span>
-<span class="nx">firstDim</span><span class="p">.</span><span class="nx">Dimension3</span> <span class="o">=</span> <span class="mi">30</span><span class="err">;</span>
-<span class="nx">firstDim</span><span class="p">.</span><span class="nx">Weight</span> <span class="o">=</span> <span class="mf">12.3</span><span class="err">;</span>
-<span class="nx">firstDim</span><span class="p">.</span><span class="nx">Reference</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">AIRFRAME COMPONENT</span><span class="dl">'</span><span class="err">;</span>
-<span class="nx">dims</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">firstDim</span><span class="p">)</span><span class="err">;</span>
-<span class="nx">postData</span><span class="p">.</span><span class="nx">Dimensions</span> <span class="o">=</span> <span class="nx">dims</span><span class="err">;</span>
-<span class="kd">var</span> <span class="nx">jsonData</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">postData</span><span class="p">)</span><span class="err">;</span>
-<span class="nx">jQuery</span><span class="p">.</span><span class="nx">support</span><span class="p">.</span><span class="nx">cors</span> <span class="o">=</span> <span class="kc">true</span><span class="err">;</span> <span class="c1">//this will enable cross domain access for</span>
-<span class="nx">all</span> <span class="nx">services</span>
-<span class="c1">//call the service using jQuery ajax and passing the parameters</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">receiverTel</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">0218641202</span><span class="dl">'</span><span class="err">;</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">receiverTelHome</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">0218641202</span><span class="dl">'</span><span class="err">;</span>
+
+<span class="c1">//PARCELS AND DIMENSIONS</span>
+<span class="kd">var</span> <span class="nx">dims</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="kd">var</span> <span class="nx">parcel1</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nx">parcel1</span><span class="p">.</span><span class="nx">barcode</span> <span class="o">=</span> <span class="nx">postData</span><span class="p">.</span><span class="nx">waybillNumber</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">_P1</span><span class="dl">'</span><span class="p">;</span> <span class="c1">//leave empty if [autoGenerateWaybillNumber=true].</span>
+<span class="nx">parcel1</span><span class="p">.</span><span class="nx">dimension1</span> <span class="o">=</span> <span class="mi">40</span><span class="p">;</span> <span class="c1">//Length (cm)</span>
+<span class="nx">parcel1</span><span class="p">.</span><span class="nx">dimension2</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span> <span class="c1">//Breadth (cm) </span>
+<span class="nx">parcel1</span><span class="p">.</span><span class="nx">dimension3</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//Height (cm)</span>
+<span class="nx">parcel1</span><span class="p">.</span><span class="nx">weight</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//Parcel Weight (nearest whole kg)</span>
+<span class="nx">parcel1</span><span class="p">.</span><span class="nx">reference</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">AIRFRAME COMPONENT</span><span class="dl">'</span><span class="p">;</span> <span class="c1">//(optional)A reference for this parcel.</span>
+<span class="nx">dims</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">parcel1</span><span class="p">);</span>
+
+<span class="c1">//--&gt;...continue adding the rest of the parcels</span>
+
+<span class="nx">postData</span><span class="p">.</span><span class="nx">dims</span> <span class="o">=</span> <span class="nx">dims</span><span class="p">;</span>
+
+<span class="c1">//ADDITIONAL REFERENCES []</span>
+<span class="kd">var</span> <span class="nx">additionalRefs</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="kd">var</span> <span class="nx">ref1</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nx">ref1</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">ORDER 22341</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">additionalRefs</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">ref1</span><span class="p">);</span>
+
+<span class="c1">//--&gt;...continue adding the rest of your references.</span>
+
+<span class="nx">postData</span><span class="p">.</span><span class="nx">additionalReferences</span> <span class="o">=</span> <span class="nx">additionalRefs</span><span class="p">;</span>
+
+<span class="c1">//THERMAL LABEL PRINTING</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">returnParcelPrintingText</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">//(optional) Returns EPL thermal label data as part of the response for you to send to the thermal printer.</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">printParcels</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">//(Optional) When set to [true], parcels are printed to the thermal label printer after submission using the [printUrl] specified.</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">printUrl</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span> <span class="c1">//(optional) Specify the thermal label printer URL to print to IF [printParcels=true]</span>
+<span class="nx">postData</span><span class="p">.</span><span class="nx">printParcelsPrintNode</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">//(optional) Specify [true] to use PrintNode to print the labels if [printParcels=true].</span>
+
+<span class="c1">//----- SUBMIT TO BEX -----//</span>
+<span class="c1">//NOTE: If your call fails, it will still be communicated as 200 OK. Inspect the [ex] property in the response for error information.</span>
+<span class="nx">jQuery</span><span class="p">.</span><span class="nx">support</span><span class="p">.</span><span class="nx">cors</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> <span class="c1">//Enables cross-domain access to our services using jQuery ajax.</span>
+
+<span class="c1">//--Step 1: Get your token.</span>
 <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-<span class="na">url</span><span class="p">:</span> <span class="nx">host</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">/api/service/login?username=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">user</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">&amp;password=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">pass</span><span class="p">,</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
-<span class="na">async</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">//dont run asynchronously</span>
-<span class="na">success</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-<span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">ex</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//if the network call succeeds, it may still contain an error (ex)</span>
-<span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">The following error occured: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="nx">ex</span><span class="p">)</span><span class="err">;</span> <span class="c1">//display the error</span>
-<span class="k">return</span><span class="err">;</span>
-<span class="p">}</span>
-<span class="nx">tokenStr</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">value</span><span class="err">;</span>
-<span class="p">},</span>
-<span class="na">error</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ex</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//this will fire for network related issues</span>
-<span class="nx">alert</span><span class="p">(</span><span class="nx">ex</span><span class="p">.</span><span class="nx">responseText</span><span class="p">)</span><span class="err">;</span>
-<span class="p">}</span>
-<span class="p">})</span><span class="err">;</span>
-<span class="c1">//call the service using jQuery ajax and passing the parameters</span>
+  <span class="na">url</span><span class="p">:</span> <span class="nx">host</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">/api/service/login?userName=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">user</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">&amp;password=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">pass</span><span class="p">,</span> 
+  <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span> 
+  <span class="na">async</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">//No need for async here.</span>
+  <span class="na">success</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">ex</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">We couldnt complete the request. </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">d</span><span class="p">.</span><span class="nx">ex</span><span class="p">);</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nx">tokenStr</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">//--Step 2: Submit your waybill request.</span>
 <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-<span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
-<span class="na">url</span><span class="p">:</span> <span class="nx">host</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">/api/service/submitwaybillwia</span><span class="dl">'</span><span class="p">,</span>
-<span class="na">data</span><span class="p">:</span> <span class="nx">jsonData</span><span class="p">,</span>
-<span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">json</span><span class="dl">'</span><span class="p">,</span>
-<span class="na">contentType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json; charset=UTF8</span><span class="dl">'</span><span class="p">,</span>
-<span class="na">beforeSend</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">xhr</span><span class="p">)</span> <span class="p">{</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">token</span><span class="dl">'</span><span class="p">,</span> <span class="nx">tokenStr</span><span class="p">)</span><span class="err">;</span>
-<span class="p">},</span>
-<span class="na">success</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-<span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">ex</span><span class="p">)</span> <span class="p">{</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">'</span><span class="s1">An error occured: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="nx">ex</span><span class="p">)</span><span class="err">;</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">'</span><span class="s1">A waybill entry was successfully created</span><span class="dl">'</span><span class="p">)</span><span class="err">;</span>
-<span class="p">}</span>
-<span class="p">},</span>
-<span class="na">error</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ex</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//this will fire for network related issues</span>
-<span class="nx">alert</span><span class="p">(</span><span class="nx">ex</span><span class="p">.</span><span class="nx">responseText</span><span class="p">)</span><span class="err">;</span>
-<span class="p">}</span>
-<span class="p">})</span><span class="err">;</span>
+  <span class="na">url</span><span class="p">:</span> <span class="nx">host</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">/api/service/submitwaybillv4</span><span class="dl">'</span><span class="p">,</span> 
+  <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span> 
+  <span class="na">data</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">postData</span><span class="p">),</span> 
+  <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">json</span><span class="dl">'</span><span class="p">,</span> 
+  <span class="na">contentType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json; charset=UTF8</span><span class="dl">'</span><span class="p">,</span> 
+  <span class="na">beforeSend</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">xhr</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//Add your token to the header</span>
+    <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">token</span><span class="dl">'</span><span class="p">,</span> <span class="nx">tokenStr</span><span class="p">);</span>
+  <span class="p">},</span> 
+  <span class="na">success</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">ex</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">'</span><span class="s1">We failed to submit your waybill. </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">d</span><span class="p">.</span><span class="nx">ex</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">'</span><span class="s1">Your waybill was created successfully.</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
 <span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
 </span><span class="o">&lt;</span><span class="sr">/body</span><span class="err">&gt;
 </span><span class="o">&lt;</span><span class="sr">/html</span><span class="err">&gt;
 </span></code></pre></div>
-<p>The service supports GET and POST requests.We recommend POST requests to avoid caching issues.
-The service supports URL parameters or JSON parameters in the message body</p>
+<p>Our API uses POST requests and you should always ensure that you select POST when communicating with our servers. Our API endpoints supports 
+parameters being passed in the query string or via a JSON body.</p>
 
 <p>Example Service Call using JSON message body</p>
 
 <ul>
-<li>URL: <code>https://api.bex.co.za/api/service/submitbexcollection</code></li>
+<li>URL: <code>https://api.bex.co.za/api/service/submitwaybillv4</code></li>
 <li>BODY: <code>{“accountNumber”:”112311”,”waybillNumber”:”ABC123456”, “waybillDate”:”2014-12-16”….. etc….. }</code></li>
 </ul>
 
 <aside class="notice">
     Please note that all fields must be URL encoded if special characters are used.
-
 </aside>
 <h2 id='response'>Response</h2>
 <p>The requesting party will receive a server response on the sucessful submission of a waybill request.
@@ -1856,7 +2015,9 @@ The base object will contain a property called “items” which consists of an 
 exception field will communicate the error encountered whilst processing the collection request
 and will suggest remedial action so as to ensure the successful saving and processing of the
 request on subsequent attempts.</p>
-
+<h2 id='downloading-waybills'>Downloading Waybills</h2>
+<p>As part of our offering, you can also download your waybill in A4 format.</p>
+<h2 id='downloading-parcel-labels'>Downloading Parcel Labels</h2>
 <aside class="notice">
     Should you experience any difficulties in the implementation of this service please contact BEX
 Head Office in Johannesburg on +2711 929 9700 and ask for a member of I.T who will gladly assist
@@ -2114,7 +2275,6 @@ To subscribe to any of these events, you can either leave the Filters parameter 
           <div class="lang-selector">
                 <a href="#" data-language-name="json">json</a>
                 <a href="#" data-language-name="javascript">javascript</a>
-                <a href="#" data-language-name="csharp">csharp</a>
           </div>
       </div>
     </div>

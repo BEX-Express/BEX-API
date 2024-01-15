@@ -2,16 +2,10 @@
 ## Overview
 As part of our service offering we allow you to download an _e-waybill_ and any parcel labels associated with the waybill. The _e-waybill_ is in A4 format and can be printed using any printer at your disposal.
 
-<aside class="notice">
-  The parcel labels are sized at 10.08cm x 14.98cm. You can print these using any printer at your disposal too.
-</aside>
-
 ## Authentication
-The stationery downloads service requires a different token than the one you have been using to access the other endpoints. 
+The stationery download service requires a different token than the one you have been using to access the other endpoints. 
 
-<aside class="notice">
-  To access the stationery download service, please re-authenticate by adding/setting the `preferAlternateToken` to `true`, for example `https://api.bex.co.za/api/service/login?userName=your_username&password=your_password&preferAlternateToken=true`, and then use the new token in the response to download your stationery.
-</aside>
+You will need to re-complete the authentication procedure but you are required to set the `preferAlternateToken` to `true`. This will result in a completely different token being issued for your request. You **must use this new token** for the stationery download service **only**.
 
 ## eWaybill Download
 You can download the e-waybill from `https://api.bex.co.za/api/service/downloadewaybill`.
@@ -21,6 +15,7 @@ You can download the e-waybill from `https://api.bex.co.za/api/service/downloade
 </aside>
 
 > Supply only 1 waybill number per call.
+
 ```json
 {
   "token": "`alternate_token`", 
@@ -35,18 +30,19 @@ token | String | Yes | The `alternate_token` received through the `login` servic
 waybillNumber | String | Yes | A single waybill number to lookup and produce a PDF for.
 
 ### Response
-An error response will still contain the relevant error message in the `ex` parameter of the response. 
+A successful response will be the resulting PDF document. If you are accessing it through a browser, the download will happen automatically. 
 
-**However**, a successful response will be the resulting PDF document. If you are accessing the service endpoint using query parameters inside a browser, the document will automatically download to your computer. 
+If you decide to integrate using your own system or code, you will need to process the response accordingly.
 
 <aside class="notice">
-  If you are accessing this service through code, you will need to process the result and save it to disk so that you can access the file.
+  An error response will still contain the relevant error message in the `ex` parameter of the response. 
 </aside>
 
 ## Labels Downloads
 You can download "thermal" labels from `https://api.bex.co.za/api/service/downloadparcellabels`. 
 
 > Example JSON body.
+
 ```json
 {
   "token": "`alternate_token`", 
@@ -61,12 +57,13 @@ token | String | Yes | The `alternate_token` received through the `login` servic
 waybillNumbers | String | Yes | A comma-seperated list of waybill numbers or parcel numbers to generate PDF labels for.
 
 ### Response
-An error response will still contain the relevant error message in the `ex` parameter of the response. 
+A successful response will be the resulting PDF document. If you are accessing it through a browser, the download will happen automatically. 
 
-**However**, a successful response will be the resulting PDF document. If you are accessing the service endpoint using query parameters inside a browser, the document will automatically download to your computer. 
+If you decide to integrate using your own system or code, you will need to process the response accordingly.
 
 <aside class="notice">
-  If you are accessing this service through code, you will need to process the result and save it to disk so that you can access the file.
+  An error response will still contain the relevant error message in the `ex` parameter of the response. 
 </aside>
 
-If you have requested multiple parcels and/or waybills in this request, the document will be multi-paged.
+### Label Size
+The downloadable label is sized at 10.08cm x 14.98cm and may be printed on any printer you have at your disposal.

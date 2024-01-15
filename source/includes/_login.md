@@ -5,7 +5,7 @@ The *login* service serves as the starting point from which a valid session toke
 The BEX platform will validate your request and if successful, generate and return in the response object a token contained in the `value` attribute.
 
 <aside class="notice">
-  This token is unique to your integration user identity and is to be **kept safe and secure** at all times.
+  This token is unique to your integration user identity and is to be kept safe and secure at all times.
 
   Should your token become compromised, please reach out to us as soon as possible.
 </aside>
@@ -14,6 +14,7 @@ The BEX platform will validate your request and if successful, generate and retu
 The authentication endpoint is located at `https://api.bex.co.za/api/service/login`.
 
 > Ensure special characters are URL encoded.
+
 ```json
 {
   "username": "your_bex_username", 
@@ -38,7 +39,7 @@ The authentication endpoint is located at `https://api.bex.co.za/api/service/log
     $.ajax({
       url: 'https://api.bex.co.za/api/service/login?userName=' + user + '&password=' + pass, 
       type: 'POST', 
-      async: false, //No need fora sync
+      async: false, //No need for async
       success: function (d) {
         if (d.ex) {
           alert('An error has occurred. ' + d.ex);
@@ -94,5 +95,5 @@ allowApiLogin | Boolean | For internal use only.
 With your token now generated you can proceed to call our security restricted API&#39;s.
 
 <aside class="notice">
-  Include your token in your request header. `token={your_token}`
+  Include your token in your request header (token=&lt;your_bex_token&gt;).
 </aside>

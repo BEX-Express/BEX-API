@@ -15,7 +15,7 @@ The service allows for the communication of a number of shipping options, such a
 ## Endpoint
 The waybill API endpoint is located at `https://api.bex.co.za/api/service/submitwaybillv4`.
 
-The parameter requirements for this API call have been broken down into three sub-sections,
+The parameter requirements for this API call have been broken down into five sub-sections,
 namely:
 
 * Basic Details
@@ -274,7 +274,7 @@ senderTelHome | String | No | No | Contact person telephone number (home or alte
 senderEmail | String | No | No | Contact person email address
 
 <aside class="notice">
-  `senderMobile` and `senderEmail` are useful for shipment progress updates.
+  senderMobile and senderEmail are useful for shipment progress updates.
 </aside>
 
 ### Receiver Address
@@ -312,7 +312,7 @@ dims | Array | No | Yes | An array of parcels for this shipment.
 
 <aside class="notice">
   Should you not have the individual weights of each package to be shipped on the waybill
-  you can state the total weight of all of the parcels in one of the dimension array’s weight field,
+  you can state the total weight of all of the parcels in one of the dimension array&#39;s weight field,
   followed by zeroes for the remaining weights in the dimensions array.
 </aside>
 

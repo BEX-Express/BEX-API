@@ -48,7 +48,7 @@ Our API endpoints should be accessed through HTTPS.
 </aside>
 
 # Request/Response Format
-Our API endpoints will respond with **JSON** content accompanied by a `200 OK` HTTP status. THis includes any possible processing errors. Please see the Errors section.
+Our API endpoints will respond with **JSON** content accompanied by a `200 OK` HTTP status. This includes any possible processing errors. Please see the Errors section.
 
 # Errors
 You can find the errors specific to each API endpoint under its dedicated API topic.
@@ -72,7 +72,7 @@ All parameters as required by the relevant API endpoint may be provided in eithe
   Parameter values containing special characters should be URL encoded as needed.
 </aside>
 
-The parameters the relevant API endpoint requires is discussed in its relevant section.
+The parameters the relevant API endpoint requires are discussed in its relevant section.
 
 # Tools
 You are free to use any IDE or tool that satisfies your needs. We do recommend the use of <a href="https://www.postman.com" target="_blank">**POSTMAN**</a> to test your requests to our server.

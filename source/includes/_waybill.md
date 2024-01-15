@@ -13,7 +13,7 @@ The service allows for the communication of a number of shipping options, such a
 * Special handling requests such as after-hour, Saturday or public holiday deliveries
 
 ## Endpoint
-    Service Relative URL: `/api/service/submitwaybillwia`
+    Service Relative URL: `/api/service/submitwaybillv4`
 
 ### Waybill Parameters
 
@@ -30,122 +30,140 @@ namely:
 
 ```json
 {
-  "waybillNumber": "ST116664",
-  "waybillDate": "2021-09-23",
-  "serviceCode": "NCA",
-  "accountNumber": "316085",
-  "sendersRef": "you-can-put-your-own-references-here",
-  "originCompany": "MARTINNAISE (PTY) LTD",
-  "originFloorBuilding": "1ST FLOOR",
-  "originStreet": "12 MODDERFONTEIN STREET",
-  "originLocationName": "MODDERFONTEIN",
-  "originCity": "",
-  "originPostCode": "1645",
-  "destinationCompany": "SPUR STEAK RANCHES",
-  "destinationFloorBuilding": "UNIT 1",
-  "destinationStreet": "165 MAIN RD",
-  "destinationLocationName": "MUIZENBERG",
-  "destinationCity": "",
-  "destinationPostCode": "7950",
-  "receiverContactName": "SHARON SNYMAN",
-  "receiverMobile": "",
-  "receiverEmail": "",
-  "receiverTelephone": "+27811234512",
-  "senderContactName": "",
-  "senderMobile": "",
-  "senderEmail": "",
-  "senderTelephone": "",
-  "specialInstructions": "PLEASE SIGN HANDOVER SHEET",
-  "sursat": "",
-  "surpub": "",
-  "surahs": "",
-  "insuranceRequired": "FALSE",
-  "insuranceValue": 0,
-  "returnParcelPrintingText": "FALSE",
-  "printParcels": "FALSE",
-  "printUrl": "",
-  "originLat": 0,
-  "originLon": null,
-  "destinationLat": -26.11682,
-  "destinationLon": 28.17926,
-  "dimensions": [{"dimension1": "45","dimension2": "45","dimension3": "50","weight": "18","barcodeNumber": "ST116664_P1"}]
+    "waybillNumber": "", //Leave empty to auto generate OR enter a custom waybill number.
+    "autoGenerateWaybillNumber": true, //Set this to _false_ if you are providing a custom waybill number.
+    "waybillDate": "YYYY-MM-DD",
+    "accountNumber": "your_bex_account_number",
+    "serviceCode": "ONX", //or whichever service you may require
+    "sendersRef": "a reference for the sender", //(optional)
+    "instructions": "special instructions for the courier", //(optional)
+    "insuranceRequired": false, //Set to _true_ if you require insurance
+    "insuranceValue": 0, //(optional) Specify a value only if _insuranceRequired_ is set to _true_.
+    "senderCompany": "Doe Digital Works", //(optional)
+    "senderFloorBuilding": "17 Cheltham House, Floor 3", //(optional)
+    "senderStreet": "123 John Doe Avenue",
+    "senderSuburb": "Ross Kent South",
+    "senderCity": "Odendaalsrus", 
+    "senderPostCode": "9800", 
+    "senderProvince": "Free State", //(optional)
+    "senderContactName": "John Doe", //(optional)
+    "senderMobile": "1234567890", //(optional)
+    "senderEmail": "john@domain.com", //(optional) 
+    "senderTel": "1234567890", //(optional)
+    "senderTelHome": "1234567890", //(optional) 
+    "senderLat": sender_latitude, //(optional) Although, we encourage the use of coordinates!
+    "senderLon": sender_longitude, //(optional) Although, we encourage the use of coordinates!
+    "receiverCompany": "Jane Flower Works", //(optional) 
+    "receiverFloorBuilding": "Floor B-4", //(optional) 
+    "receiverStreet": "166 Wringham Drive", 
+    "receiverSuburb": "Table View", 
+    "receiverCity": "Cape Town", 
+    "receiverPostCode": "7441",
+    "receiverProvince": "Western Cape", //(optional) 
+    "receiverContactName": "Jane Doe", //(optional) 
+    "receiverMobile": "1234567890", //(optional) If a number is provided, delivery notifications will be sent to this number.
+    "receiverEmail": "jane@domain.com", //(optional) If an email is provided, delivery notifications will be sent to this address. 
+    "receiverTel": "1234567890", //(optional) 
+    "receiverTelHome": "1234567890", //(optional) 
+    "receiverLat": receiver_latitude, //(optional) Although, we encourage the use of coordinates!
+    "receiverLon": receiver_longitude, //(optional) Although, we encourage the use of coordinates!
+    "returnParcelPrintingText": false, //(optional) Returns EPL thermal label data as part of the response for you to send to the thermal printer.
+    "printParcels": false, //(optional) If _true_, parcels are printed to the thermal label printer after submission using the URL specified.
+    "printUrl": "", //(optional) Specify the thermal label printer URL to print to IF _printParcels=true_.
+    "printParcelsPrintNode": false, //(optional) Specify _true_ to use PrintNode to print the labels if _printParcels=true_.
+    "dims": [{
+        "barcode": "", //Leave empty to auto generate OR supply your own barcode number IF _autoGenerateWaybillNumber=false_.
+        "dimension1": length_cm, 
+        "dimension2": breadth_cm, 
+        "dimension3": height_cm, 
+        "weight": parcel_weight_kg, 
+        "reference": "" //(optional) A parcel description
+    }],
+    "additionalReferences": [{
+        "value": "reference_1"
+    }, {
+        "value": "reference_2"
+    }]
 }
 ```
 
 Parameter | FieldType | Case | Required | Note
 --------- | --------- | ---- | ---------| ---- 
-AccountNumber | String | No | Yes | 
-SendersRef | String | No | No | For tracking, reporting and invoice requests
-WaybillNumber | String | No(See below) | No | BEX issued number
+accountNumber | String | No | Yes | 
+sendersRef | String | No | No | For tracking, reporting and invoice requests
+autoGenerateWaybillNumber | Boolean | N/A | No* | If set to _true_, the BEX system will automatically generate a waybill number on your behalf.
+waybillNumber | String | No* | No | A unique waybill number. This field will be _required_ if _AutoGenerateWaybillNumber_ is set to _false_.
+instructions | String | No | No | Communicate additional info
 
-WaybillNumber is auto-generated by BEX and communicated in the service response when making use of alternative shipping stationary options such as thermal labels or A4 waybills
+*waybillNumber is auto-generated by BEX and communicated in the service response when making use of alternative shipping stationary options such as thermal labels or A4 waybills
 
 Parameter | FieldType | Case | Required | Note
 --------- | --------- | ---- | -------- | ---- 
-WaybillDate | Date | No | No | Date of collection by BEX. Format yyyy-mm-dd
-ServiceCode | String | No | Yes | The service delivery priority code
+waybillDate | Date | No | No | Date of collection by BEX. Format yyyy-mm-dd
+serviceCode | String | No | Yes | The service delivery priority code
 
 Service delivery code values are:
 
-*SDX - Sameday Express
-*DBD - Daybreak Delivery
-*ONC - Overnight Courier
-*NCA - Normal Cargo
-*BUD - Budget Cargo
+* SDX - Sameday Express
+* DBD - Daybreak Delivery
+* ONC - Overnight Courier
+* NCA - Normal Cargo
+* BUD - Budget Cargo
 
 Parameter | FieldType | Case | Required | Note
 --------- | --------- | ---- | -------- | ------- 
-OriginCompany | String | No | No | Company from which to collect
-OriginFloorBuilding | String | No | Yes | Floor, building, office park
-OriginStreet | String | No | Yes | Street for shipment collection
-OriginLocationName | String | No | Yes | Sender suburb
-OriginPostCode | String | No | Yes | Sender postcode
-SenderContactName | String | No | No | Contact person for collection/dispatch
-SenderTelephone | String | No | No | Contact person telephone number
-SenderMobile | String | No | No | Contact person mobile number
+senderCompany | String | No | No | Company from which to collect
+senderFloorBuilding | String | No | Yes | Floor, building, office park
+senderStreet | String | No | Yes | Street for shipment collection
+senderSuburb | String | No | Yes | Sender suburb
+senderCity | String | No | Yes | Sender town or city
+senderPostCode | String | No | Yes | Sender postcode
+senderProvince | String | No | No | Sender province.
+senderContactName | String | No | No | Contact person for collection/dispatch
+senderMobile | String | No | No | Contact person mobile number
+senderTel | String | No | No | Contact person telephone number
+senderTelHome | String | No | No | Contact person telephone number (home or alternate)
+senderLat | Double | N/A | No | Sender coordinate latitude value (we encourage the use of these)
+senderLon | Double | N/A | No | Sender coordintae longitude value (we encourage the use of these)
 
-SenderMobile is useful for shipment progress updates
+* senderMobile is useful for shipment progress updates
 
 Parameter | FieldType | Case | Required | Note
 --------- | --------- | ---- | -------- | ------- 
-SenderEmail | String | No | No | For progress updates 
-DestinationCompany | String | No | No | Receiver individual/company name
-DestinationFloorBuilding | String | No | No | Floor and building address.
+senderEmail | String | No | No | Contact person email address
+receiverCompany | String | No | No | Receiver individual/company name
+receiverFloorBuilding | String | No | No | Floor and building address.
 
 Used for single receiver shipment only (optional)
 
 Parameter | FieldType | Case | Required | Note
 --------- | --------- | ---- | -------- | ------- 
-DestinationStreet | String | No | No | Receiver street number and name
-DestinationLocationName | String | No | Yes | Receiver suburb .
-DestinationPostCode | String | Yes | No | Receiver postcode
-ReceiverContactName | String | No | No | Receiver name.
-ReceiverTelephone | String | No | No | Receiver telephone number
-ReceiverMobile | String | No | No | Useful for status updates
-ReceiverEmail | String | No | No | Useful for status updates
-InsuranceRequired | Boolean | No | No | 
+receiverStreet | String | No | Yes | Receiver street number and name
+receiverSuburb | String | No | Yes | Receiver suburb.
+receiverCity | String | No | Yes | Receiver city or town.
+receiverPostCode | String | Yes | No | Receiver postcode
+receiverProvince | String | No | No | Receiver province.
+receiverContactName | String | No | No | Receiver name.
+receiverMobile | String | No | No | Useful for status updates
+receiverEmail | String | No | No | Useful for status updates
+receiverTel | String | No | No | Receiver telephone number
+receiverTelHome | String | No | No | Receiver telephone number (home or alternate).
+receiverLat | Double | N/A | No | Receiver coordinate latitude value (we encourage the use of these)
+receiverLon | Double | N/A | No | Receiver coordinate longitude value (we encourage the use of these)
+insuranceRequired | Boolean | No | No | _true_ if insurance is required for this shipment.
 
-If TRUE the insurance surcharge is added to the waybill and insurance cover is placed for the goods during shipping
+If you specify _true_ for _insuranceRequired_, the insurance surcharge is added to the waybill and insurance cover is placed for the goods during shipping. The following fields 
+automatically become required:
 
 Parameter | FieldType | Case | Required | Note
 --------- | --------- | ---- | -------- | ------- 
-InsuranceValue | Float/Double | No | No | Insured value, in ZAR
-Instructions | String | No | No | Communicate additional info
-
-
-The following parameters MUST correspond to the Dimensions Array
-
-Parameter | FieldType | Required | Note
---------- | --------- | -------- | --------
-TotalPieces | Int | Yes | Total number of packages on this waybill number. Must match COUNT of individual parcel objects in the dimensions array.
-ActualWeight | Float | Yes | The total weight in kilograms, of all of the packages on this waybill number. Must match SUM of individual parcel objects in the dimensions array.
+insuranceValue | Float/Double | No | Yes* | Insured value, in ZAR. Omit this field if you _do not_ require insurance.
 
 <aside class="notice">
-    Should you not have the individual weights of each package to be shipped on the waybill
-you can state the total weight of all of the parcels in one of the dimension array’s weight field,
-followed by zeroes for the remaining weights in the dimensions array.
+  Should you not have the individual weights of each package to be shipped on the waybill
+  you can state the total weight of all of the parcels in one of the dimension array’s weight field,
+  followed by zeroes for the remaining weights in the dimensions array.
 </aside>
-
 
 ## Dimensioning
 
@@ -154,7 +172,7 @@ waybill shipping request.
 
 Parameter | FieldType | Case | Required
 --------- | --------- | ---- | -------- 
-Dimensions| Array | No | Yes |
+dims | Array | No | Yes | An array of parcels for this shipment.
 
 ### Dimensions Array
 
@@ -163,37 +181,42 @@ Dimensions| Array | No | Yes |
 
 FieldName | FieldType | Req | Description
 --------- | --------- | --- | -----------
-BarcodeNumber | String | No | The barcode number of the parcel label used for this package
-Dimension1 | Int | Yes | Length of the package, rounded up to the nearest whole centimeter
-Dimension2 | Int | Yes | Width of the package, rounded up to the nearest whole centimeter
-Dimension3 | Int | Yes | Height of the package, rounded up to the nearest whole centimeter
-Weight | Float | Yes | Actual weight of package in kilograms
-Reference | String | No | Tag this package with parcel specific information.
+barcode | String | Yes* | The barcode number of the parcel label used for this package.
+dimension1 | Int | Yes | Length of the package, rounded up to the nearest whole centimeter
+dimension2 | Int | Yes | Width of the package, rounded up to the nearest whole centimeter
+dimension3 | Int | Yes | Height of the package, rounded up to the nearest whole centimeter
+weight | Float | Yes | Actual weight of package in kilograms
+reference | String | No | Tag this package with parcel specific information.
 
-## Service Add-Ons
+* If you have specified _autoGenerateWaybillNumber_ as _true_, then the _barcode_ field may be left empty.
 
-The service add-ons sub-section contains information specific to additional options that can be
-requested over and above the respective delivery service product offerings. Currently this pertains to 
-after-hour delivery requests but will be extended to features such as live delivery e-mail
-and sms alerts.
+## Additional References Array
 
-Parameter | FieldType | Case | Required 
+You can include additional references to the waybill for ease of reference and search.
+
+Parameter | FieldType | Case | Required
 --------- | --------- | ---- | -------- 
-AdditionalSurcharges| Array | No | No 
+additionalReferences | Array | No | No | An array of additional references.
 
-### AdditionalSurcharges| Array
+### Additional References Array 
 
-FieldName | FieldType | Req 
---------- | --------- | ---
-SurchargeCode | String | No 
+Each additional reference has the following properties:
 
-The codes for the service add-ons that are requested:
-* SURSAT - Saturday Delivery
-* SURPUB - Public Holiday Delivery
-* SURAHS - After Hours Delivery Handling
+FieldName | FieldType | Req | Description
+--------- | --------- | --- | -----------
+value | String | Yes | The reference number you want to add.
+
+## Parcel Label Printing
+
+Parameter | FieldType | Req | Required
+--------- | --------- | ---- | -------- 
+returnParcelPrintingText | Boolean | No | Optional. If _true_, returns EPL thermal label data as part of the response for you to send to the thermal printer.
+printParcels | Boolean | No | Optional. If _true_, parcels are printed to the thermal label printer after submission using the _printUrl_ specified.
+printUrl | String | No | Optional. Specify the thermal printer URL to print to IF _printParcels=true_.
+printParcelsPrintNode | Boolean | No | Optional. Specify _true_ to use PrintNode to print the labels.
+
 
 ## Waybill Transportation
-
 
 > jQuery Waybill Submission Example.
 
@@ -210,116 +233,147 @@ The codes for the service add-ons that are requested:
 var tokenStr = '';
 var user = encodeURIComponent('someusername'); //encode the username
 var pass = encodeURIComponent('somepassword'); //encode the password
-var host = 'https://beta.bex.co.za';
+var host = 'https://api.bex.co.za';
 //********** Submit Waybill Service Call ***********
-// ADDRESSING
-var postData = {}
+var postData = {};
+
+//BASIC
+postData.waybillNumber = 'IT2701152404'; //or leave empty and set [autoGenerateWaybillNumber=true]
+postData.autoGenerateWaybillNumber = false; //set to [false] if you're supplying a waybill number.
+postData.waybillDate = '20150127';
 postData.accountNumber = '111983';
-postData.waybillNumber = 'IT2701152404';
-postData.waybillDate = '20150127';
-postData.sendersRef = 'WE HAVE A REFERENCE';
 postData.serviceCode = 'NCA';
-// SENDER ADDRESS
-postData.originCompany = 'THE BOEING COMPANY';
-postData.originFloorBuilding = 'UNIT 6 ASSEMBLY BUILDING';
-postData.originStreet = '21 AIRCRAFT LANE';
-postData.originLocationName = 'MARLBORO';
-postData.originPostCode = '2050';
-postData.senderContactName = 'JONATHAN';
-postData.senderTelephone = '0119299700';
-postData.senderMobile = '0821234321';
-postData.senderEmail = 'JONATHAN@BOEING.COM';
-// DESTINATION ADDRESS
-postData.destinationCompany = 'THE AIRLINER CO';
-postData.destinationFloorBuilding = '1ST FLOOR HEAD OFFICE';
-postData.destinationStreet = '21 TULP STREET';
-postData.destinationLocationName = 'MILNERTON';
-postData.destinationPostCode = '7401';
+postData.sendersRef = 'WE HAVE A REFERENCE';
+postData.instructions = 'DO NOT INVERT COMPONENT';
+
+//INSURANCE OPTIONS
+postData.insuranceRequired = false; //Set to true if you need insurance.
+postData.insuranceValue = 0; //Set the waybill value here if [insuranceRequired=true].
+
+//SENDER DETAILS
+//--Address
+postData.senderCompany = 'THE BOEING COMPANY';
+postData.senderFloorBuilding = 'UNIT 6 ASSEMBLY BUILDING';
+postData.senderStreet = '21 AIRCRAFT LANE';
+postData.senderSuburb = 'MARLBORO';
+postData.senderCity = 'SANDTON';
+postData.senderPostCode = '2050';
+postData.senderProvince = 'GAUTENG'; //optional
+postData.senderLat = null; //optional BUT WE ENCOURAGE the use of COORDINATES. Enter the LATITUDE here, e.g. -26.123496410189606
+postData.senderLon = null; //optional BUT WE ENCOURAGE the use of COORDINATES. Enter the LONGITUDE here, e.g. 28.205670867327754
+
+//--Contact
+postData.senderContactName = 'JONATHAN'; //optional
+postData.senderMobile = '0821234321'; //optional
+postData.senderEmail = 'JONATHAN@BOEING.COM'; //optional
+postData.senderTel = '0119299700'; //optional
+postData.senderTelHome = '0119299700'; //optional
+
+//RECEIVER DETAILS
+//--Address
+postData.receiverCompany = 'THE AIRLINER CO';
+postData.receiverFloorBuilding = '1ST FLOOR HEAD OFFICE';
+postData.receiverStreet = '21 TULP STREET';
+postData.receiverSuburb = 'MILNERTON';
+postData.receiverCity = 'CAPE TOWN';
+postData.receiverPostCode = '7401';
+postData.receiverProvince = 'WESTERN CAPE'; //optional
+postData.receiverLat = null; //optional BUT WE ENCOURAGE the use of COORDINATES. Enter the LATITUDE here, e.g. -26.123496410189606
+postData.receiverLon = null; //optional BUT WE ENCOURAGE the use of COORDINATES. Enter the LONGITUDE here, e.g. 28.205670867327754
+
+//--Contact
 postData.receiverContactName = 'DEREK';
-postData.receiverTelephone = '0218641202';
 postData.receiverMobile = '0833211234';
 postData.receiverEmail = 'DEREK@THEAIRLINER.COM';
-// GENERAL
-postData.insuranceRequired = true;
-postData.insuranceValue = 1000;
-postData.instructions = 'DO NOT INVERT COMPONENT';
-// PIECE INFORMATION
-var totalPieces = 2;
-var actualWeight = 12.3;
-// ADDITIONAL REFERENCES
-var additionalReferences = [];
-var reference1 = {};
-reference1.value = 'REFERENCE ONE';
-additionalReferences.push(reference1);
-postData.AdditionalReferneces = additionalReferences;
-// DIMENSIONING
-var dims = [];
-var firstDim = {};
-firstDim.barcodeNumber = postData.waybillNumber + 'P1';
-firstDim.Dimension1 = 10;
-firstDim.Dimension2 = 20;
-firstDim.Dimension3 = 30;
-firstDim.Weight = 12.3;
-firstDim.Reference = 'AIRFRAME COMPONENT';
-dims.push(firstDim);
-postData.Dimensions = dims;
-var jsonData = JSON.stringify(postData);
-jQuery.support.cors = true; //this will enable cross domain access for
-all services
-//call the service using jQuery ajax and passing the parameters
+postData.receiverTel = '0218641202';
+postData.receiverTelHome = '0218641202';
+
+//PARCELS AND DIMENSIONS
+var dims = [];
+var parcel1 = {};
+parcel1.barcode = postData.waybillNumber + '_P1'; //leave empty if [autoGenerateWaybillNumber=true].
+parcel1.dimension1 = 40; //Length (cm)
+parcel1.dimension2 = 30; //Breadth (cm) 
+parcel1.dimension3 = 1; //Height (cm)
+parcel1.weight = 6; //Parcel Weight (nearest whole kg)
+parcel1.reference = 'AIRFRAME COMPONENT'; //(optional)A reference for this parcel.
+dims.push(parcel1);
+
+//-->...continue adding the rest of the parcels
+
+postData.dims = dims;
+
+//ADDITIONAL REFERENCES []
+var additionalRefs = [];
+var ref1 = {};
+ref1.value = "ORDER 22341";
+additionalRefs.push(ref1);
+
+//-->...continue adding the rest of your references.
+
+postData.additionalReferences = additionalRefs;
+
+//THERMAL LABEL PRINTING
+postData.returnParcelPrintingText = false; //(optional) Returns EPL thermal label data as part of the response for you to send to the thermal printer.
+postData.printParcels = false; //(Optional) When set to [true], parcels are printed to the thermal label printer after submission using the [printUrl] specified.
+postData.printUrl = ''; //(optional) Specify the thermal label printer URL to print to IF [printParcels=true]
+postData.printParcelsPrintNode = false; //(optional) Specify [true] to use PrintNode to print the labels if [printParcels=true].
+
+//----- SUBMIT TO BEX -----//
+//NOTE: If your call fails, it will still be communicated as 200 OK. Inspect the [ex] property in the response for error information.
+jQuery.support.cors = true; //Enables cross-domain access to our services using jQuery ajax.
+
+//--Step 1: Get your token.
 $.ajax({
-url: host + '/api/service/login?username=' + user + '&password=' + pass, type: 'POST',
-async: false, //dont run asynchronously
-success: function (data) {
-if (data.ex) { //if the network call succeeds, it may still contain an error (ex)
-alert('The following error occured: ' + data.ex); //display the error
-return;
-}
-tokenStr = data.value;
-},
-error: function (ex) { //this will fire for network related issues
-alert(ex.responseText);
-}
-});
-//call the service using jQuery ajax and passing the parameters
+  url: host + '/api/service/login?userName=' + user + '&password=' + pass, 
+  type: 'POST', 
+  async: false, //No need for async here.
+  success: function (d) {
+    if (d.ex) {
+      alert('We couldnt complete the request. ' + d.ex);
+      return;
+    }
+
+    tokenStr = data.value;
+  }
+});
+
+//--Step 2: Submit your waybill request.
 $.ajax({
-type: 'POST',
-url: host + '/api/service/submitwaybillwia',
-data: jsonData,
-dataType: 'json',
-contentType: 'application/json; charset=UTF8',
-beforeSend: function (xhr) {
-xhr.setRequestHeader('token', tokenStr);
-},
-success: function (data) {
-if (data.ex) {
-document.write('An error occured: ' + data.ex);
-} else {
-document.write('A waybill entry was successfully created');
-}
-},
-error: function (ex) { //this will fire for network related issues
-alert(ex.responseText);
-}
-});
+  url: host + '/api/service/submitwaybillv4', 
+  type: 'POST', 
+  data: JSON.stringify(postData), 
+  dataType: 'json', 
+  contentType: 'application/json; charset=UTF8', 
+  beforeSend: function (xhr) {
+    //Add your token to the header
+    xhr.setRequestHeader('token', tokenStr);
+  }, 
+  success: function (d) {
+    if (d.ex) {
+        document.write('We failed to submit your waybill. ' + d.ex);
+        return;
+    }
+
+    document.write('Your waybill was created successfully.');
+  }
+});
 </script>
 </body>
 </html>
 ```
 
-
-The service supports GET and POST requests.We recommend POST requests to avoid caching issues.
-The service supports URL parameters or JSON parameters in the message body
+Our API uses POST requests and you should always ensure that you select POST when communicating with our servers. Our API endpoints supports 
+parameters being passed in the query string or via a JSON body.
 
 Example Service Call using JSON message body
 
-* URL: `https://api.bex.co.za/api/service/submitbexcollection`
+* URL: `https://api.bex.co.za/api/service/submitwaybillv4`
 * BODY: `{“accountNumber”:”112311”,”waybillNumber”:”ABC123456”, “waybillDate”:”2014-12-16”….. etc….. }`
 
 
 <aside class="notice">
     Please note that all fields must be URL encoded if special characters are used.
-
 </aside>
 
 
@@ -344,6 +398,10 @@ exception field will communicate the error encountered whilst processing the col
 and will suggest remedial action so as to ensure the successful saving and processing of the
 request on subsequent attempts.
 
+##Downloading Waybills
+As part of our offering, you can also download your waybill in A4 format.
+
+##Downloading Parcel Labels
 
 <aside class="notice">
     Should you experience any difficulties in the implementation of this service please contact BEX

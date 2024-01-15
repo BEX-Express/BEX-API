@@ -18,6 +18,13 @@ Service Relative URL: `api/service/login`
 
 > Make sure to replace `user123`and `pass123` with your integration account details.
 
+```json
+{
+  "username": "user123", 
+  "password": "pass123"
+}
+```
+
 ```javascript
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -57,6 +64,7 @@ Parameter | FieldType | Required | Description
 --------- | --------- | -------- | -----------
 username | String | Yes |Your integration account _username_.
 password | String | Yes |Your integration account _password_ (case sensitive).
+preferAlternateToken | Boolean | No | Set to _true_ if so required by the documentation.
 
 ## Transportation
 
@@ -98,8 +106,8 @@ value | string | Your unique and private token.
 isStrongPassword | string | Confirms whether your password meets our complexity requirements.
 isEmailVerified	| string | Your email address is used to recover forgotten passwords or lost tokens and needs to be verified before transactions are possible.
 email | string | The recovery email address against which this token is registered.
-signalRenabled | string | A feature-flag used internally on our platform.
-allowApiLogin | string | A feature-flag used internally to grant additional login rights to your user identity. This is not a requirement to use our API endpoints.
+signalRenabled | string | For internal use only.
+allowApiLogin | string | For internal use only.
 
 
 **With your token now generated you can proceed to call our security restricted API’s.**
@@ -108,7 +116,7 @@ allowApiLogin | string | A feature-flag used internally to grant additional logi
 
 ```javascript
 var settings = {
-  "url": "https://build.bex.co.za/api/service/submitwaybillwia",
+  "url": "https://build.bex.co.za/api/service/submitwaybillv4",
   "method": "POST",
   "timeout": 0,
   "headers": {
@@ -119,4 +127,4 @@ var settings = {
   }
 ```
 
-To do so, you *include it as a header attribute* in the HTTP headers of the call you are making to the respective API endpoints. The attribute is to be titled **token**
+To do so, you *include it into the request header* when making a call to one of our endpoints. The header key is **token**.

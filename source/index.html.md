@@ -4,7 +4,6 @@ title: BEX REST API Documentation
 language_tabs: # must be one of https://git.io/vQNgJ
   - json
   - javascript
-  - csharp
 
 toc_footers:
   - <a href='https://bex.co.za/signup'>Open a BEX account</a>
@@ -92,6 +91,7 @@ Some useful tools you can use to access the API's include:
 * <a href="https://requestbin.com">RequestBin</a> - Allows you test webhooks.
 * <a href="https://hookbin.com">Hookbin</a> - Another tool to test webhooks.
 
+[<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/18080551-d254d459-0578-41a2-a226-c9106577fc8b?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D18080551-d254d459-0578-41a2-a226-c9106577fc8b%26entityType%3Dcollection%26workspaceId%3Df4e6d6c2-24bc-49cd-8a3e-5dbc327bc6a9)
 
 # Authentication
 Authentication against the BEX API ecosystem is a two-part process and is required to prevent access to confidential client data. The process involves the generation of your API security token which is described in the next section. This token is then included in the HTTP headers of your API calls and serves to identify and authenticate you on our platform.

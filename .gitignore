@@ -25,3 +25,7 @@ doc/
 
 # Vagrant artifacts
 ubuntu-*-console.log
+.vs/BEX-API/v16/.suo
+.vs/ProjectSettings.json
+.vs/slnx.sqlite
+.vs/VSWorkspaceState.json

@@ -1,27 +1,23 @@
 # Login
-
 ## Overview
+The *login* service serves as the starting point from which a valid session token will be generated. You call this endpoint to authenticate yourself using your BEX credentials.
 
-The *login* service serves as the starting point from which a valid session token will be generated. You call this endpoint to authenticate your _username_ and _password_ user credentials.
-
-The BEX platform will validate your request and if successful, generate and return in the response object a token contained in the `"value":` attribute.
-
-This token is unique to your integration user identity and is to be kept private as it is the key needed to unlock access to the account security restricted API’s.
+The BEX platform will validate your request and if successful, generate and return in the response object a token contained in the `value` attribute.
 
 <aside class="notice">
-The token will not expire so once generated can be persisted securely on your side.
+  This token is unique to your integration user identity and is to be **kept safe and secure** at all times.
+
+  Should your token become compromised, please reach out to us as soon as possible.
 </aside>
 
 ## Endpoint
+The authentication endpoint is located at `https://api.bex.co.za/api/service/login`.
 
-Service Relative URL: `api/service/login`
-
-> Make sure to replace `user123`and `pass123` with your integration account details.
-
+> Ensure special characters are URL encoded.
 ```json
 {
-  "username": "user123", 
-  "password": "pass123"
+  "username": "your_bex_username", 
+  "password": "your_bex_password"
 }
 ```
 
@@ -34,24 +30,23 @@ Service Relative URL: `api/service/login`
 </head>
 <body>
 <script type="text/javascript">
-    var user = encodeURIComponent('user123'); //encode the username
-    var pass = encodeURIComponent('pass1234'); //encode the password
+    var user = encodeURIComponent('username'); //encode the username
+    var pass = encodeURIComponent('password'); //encode the password
     jQuery.support.cors = true; //this will enable cross domain access for all services
+
     //call the service using jQuery ajax and passing the parameters
     $.ajax({
-    url: 'https://api.bex.co.za/api/service/login?username=' + user + '&password=' + pass,
-    type: 'POST',
-    async: false, //dont run asynchronously
-    success: function (data) {
-    if (data.ex) { //if the network call succeeds, it may still contain an error (ex)
-    alert('The following error occured: ' + data.ex); //display the error
-    return;
-    };
-    alert('Your token is: ' + data.value); //display the valid token
-    },
-    error: function (ex) { //this will fire for network related issues
-        alert(ex.responseText);
+      url: 'https://api.bex.co.za/api/service/login?userName=' + user + '&password=' + pass, 
+      type: 'POST', 
+      async: false, //No need fora sync
+      success: function (d) {
+        if (d.ex) {
+          alert('An error has occurred. ' + d.ex);
+          return;
         }
+
+        alert('Your token is ' + d.value);
+      }
     });
 </script>
 </body>
@@ -65,19 +60,6 @@ Parameter | FieldType | Required | Description
 username | String | Yes |Your integration account _username_.
 password | String | Yes |Your integration account _password_ (case sensitive).
 preferAlternateToken | Boolean | No | Set to _true_ if so required by the documentation.
-
-## Transportation
-
-The service supports GET and POST requests. We recommend POST requests to avoid caching issues.
-The service supports URL parameters or JSON parameters in the message body
-
-Example Service Call using the URL Parameters
-
-URL: `http://insight.bex.co.za/api/service/login?username=user123&password=pass1234`
-
-<aside class="notice">
-    All URL-based field values must be URL encoded if special characters are used
-</aside>
 
 ## Response
 
@@ -101,30 +83,16 @@ The response body is structured as follows:
 
 Attribute | Type | Description
 --------- | ---- | -----------
-id | int | An internal BEX ID used to identify your user.
-value | string | Your unique and private token.
-isStrongPassword | string | Confirms whether your password meets our complexity requirements.
-isEmailVerified	| string | Your email address is used to recover forgotten passwords or lost tokens and needs to be verified before transactions are possible.
-email | string | The recovery email address against which this token is registered.
-signalRenabled | string | For internal use only.
-allowApiLogin | string | For internal use only.
+id | Int | An internal BEX ID used to identify your user.
+value | String | Your unique and private token.
+isStrongPassword | String | Confirms whether your password meets our complexity requirements.
+isEmailVerified	| String | Your email address is used to recover forgotten passwords or lost tokens and needs to be verified before transactions are possible.
+email | String | The recovery email address against which this token is registered.
+signalRenabled | Boolean | For internal use only.
+allowApiLogin | Boolean | For internal use only.
 
+With your token now generated you can proceed to call our security restricted API&#39;s.
 
-**With your token now generated you can proceed to call our security restricted API’s.**
-
-> Javascript showing the token defined in the headers.
-
-```javascript
-var settings = {
-  "url": "https://build.bex.co.za/api/service/submitwaybillv4",
-  "method": "POST",
-  "timeout": 0,
-  "headers": {
-// -- Example showing the token defined in the http headers
-    "token": "6mM7GCuPdaemdvGUATbNmC8GuPuPmdvGgCSg",
-// --------------------------------------------------------
-    "Content-Type": "application/json"
-  }
-```
-
-To do so, you *include it into the request header* when making a call to one of our endpoints. The header key is **token**.
+<aside class="notice">
+  Include your token in your request header. `token={your_token}`
+</aside>

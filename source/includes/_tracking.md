@@ -1,27 +1,26 @@
 # Tracking
-
 ## Overview
-
 You can query our courier platform for up-to-the-minute tracking information pertaining to your shipments. We have exposed a lightweight tracking service that returns non-sensitive tracking events for the shipments queried.
 To cater for customers wishing to display this tracking information on their own websites we include a schema definition in the tracking response that can be used to bind the fields to a client grid implemented on your website.
 
+The service allows for the submission of **up to ten (10) waybills and/or customer reference numbers** per API call.
+
+<aside class="notice">
+  We do not support partial matches nor do we support wildcards.
+</aside>
+
+You may submit a combination of waybill and/or reference numbers in a single call.
+
 ## Endpoint
-Service Relative URL: `/api/waybillquicktrackingv3customtreeview`
+The tracking API is located at `https://api.bex.co.za/api/service/waybillquicktrackingv3customtreeview`.
 
-## Transportation
+You can complete the request by using query parameters, for example `/api/service/waybillquicktrackingv3customtreeview?searchItems=Item_1,Item_2,Item_3` or by submitting a JSON request.
 
-The service allows for the submission of up to ten waybill and/or customer reference numbers per API call. We do not support partial matches nor do we support wildcards.
-You are however able to submit a combination of waybill and reference numbers in a single call and the platform will return results for matches, be it a waybill, a reference, or both.
-
-You can submit a **GET** request as follows:
-
-`https://api.bex.co.za/api/waybillquicktrackingv3customtreeview?searchItems=ACP1055352,MDH42240,MA210214`
-
-> Sample json message body
+> Sample json request
 
 ```json
 {
-	“searchItems”: ”ACP1055352,MDH42240,MA210214”
+  "searchItems": "ACP1055352,MDH42240,MA210214"
 }
 ```
 
@@ -29,7 +28,7 @@ You can submit a **GET** request as follows:
 
 Parameter | Type | Required | Description
 ----------| ---- | -------- | -----------
-searchItems | string | Yes | A comma separated list of items to be searched. Can be either a waybill, reference number, or a combination of both.
+searchItems | String | Yes | A comma separated list of items to be searched. Can be either a waybill, reference number, or a combination of both.
 
 ## Response
 
@@ -136,7 +135,6 @@ Attribute | Type | Description
 --------- | ---- | -----------
 id | int | Our internal ID which has no relevance to you.
 items |array | An array containing the tracking event objects.
-
 
 The _objects_ contained in the _items_ array are comprised as follows:
 

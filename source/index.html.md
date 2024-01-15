@@ -16,6 +16,7 @@ includes:
   - tracking
   - quoting
   - waybill
+  - waybilldownload
   - webhooks
 
 search: true
@@ -43,26 +44,18 @@ To make use of our API integration we require the following:
 **Note:** If you have multiple shipping accounts you are not required to transact under multiple integration identities (“tokens”). Our platform supports the assignment of multiple shipping accounts to a _single_ token, making integration across multiple business units easier.
 
 <aside class="notice">
-You may access the API over HTTP or HTTPS, but HTTPS is recommended if you wish to keep things secure.
+Our API endpoints should be accessed through HTTPS.
 </aside>
 
 # Request/Response Format
-The default response format is **JSON**. Requests with a message-body use plain JSON to set resource attributes.
-
-Successful requests will return a `200 OK` HTTP status.
+Our API endpoints will respond with **JSON** content accompanied by a `200 OK` HTTP status. THis includes any possible processing errors. Please see the Errors section.
 
 # Errors
-
 You can find the errors specific to each API endpoint under its dedicated API topic.
 
-We communicate API errors in the _ex:_ ( _ex_ ception ) attribute found in the base object of our API responses.
+API errors are communicated through the `ex` (short for _exception_) property inside the response body. Please inspect this property for any possible errors that may have occurred.
 
-**A word on success flags:**
-We return `200 OK` http status responses for **ALL** requests that make it to our server, **even if we run into an error when processing your request.**
-
-For API submissions that result in a processing error (read _validation and business logic/”elegant” type errors_) we include an attribute in the API response titled _ex:_ where we communicate the reason for the processing failure.
-
-A response could look as follows:
+A possible problematic response could look as follows:
 
 * HTTP status code: `200 OK`
 * API response: `"ex": "Account number is not registered for transactions with this token."`
@@ -70,30 +63,30 @@ A response could look as follows:
 ![200 OK with error ex:](200OK-response-with-ex-error.jpg)
 _Above: Note the **200 OK** status whilst receiving an error **"ex":** response_
 
-In instances where there is a technical breakdown in the processing of the API request, such as querying the wrong endpoint address, you will receive the appropriate http status code such as a `404 error`.
+In instances where there is a technical breakdown in the processing of the API request, such as querying the wrong endpoint address, you will receive the appropriate http status code such as a `404`.
 
 # Parameters
+All parameters as required by the relevant API endpoint may be provided in either query string format (e.g. `POST /getcustomquicktracking_v3?ref=test123`) OR as part of the body in `JSON` format.
 
-Almost all endpoints accept optional parameters which can be passed as an HTTP query string parameter, e.g. `GET /getcustomquicktracking_V3?ref=invoices`
+<aside class="notice">
+  Parameter values containing special characters should be URL encoded as needed.
+</aside>
 
-Parameters containing special characters that are passed in a URL request must have their data url encoded.
-
-All parameters are documented along each endpoint.
-
-# Libraries
-We do not currently offer any libraries for our API implementation. We are in the process of creating .NET wrappers that you can use in the future. We will publish more information on this topic once it is ready for use.
+The parameters the relevant API endpoint requires is discussed in its relevant section.
 
 # Tools
-Some useful tools you can use to access the API's include:
-
-* <a href="https://insomnia.rest">Insomnia</a> - Cross-platform GraphQL and REST client, available for Mac, Windows, and Linux.
-* <a href="https://getpostman.com">Postman</a> - Cross-platform REST client, available for Mac, Windows, and Linux.
-* <a href="https://requestbin.com">RequestBin</a> - Allows you test webhooks.
-* <a href="https://hookbin.com">Hookbin</a> - Another tool to test webhooks.
+You are free to use any IDE or tool that satisfies your needs. We do recommend the use of <a href="https://www.postman.com" target="_blank">**POSTMAN**</a> to test your requests to our server.
 
 [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/18080551-d254d459-0578-41a2-a226-c9106577fc8b?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D18080551-d254d459-0578-41a2-a226-c9106577fc8b%26entityType%3Dcollection%26workspaceId%3Df4e6d6c2-24bc-49cd-8a3e-5dbc327bc6a9)
+
+Other tools you could also look at are:
+
+* <a href="https://insomnia.rest" target="_blank">Insomnia</a> - Cross-platform GraphQL and REST client, available for Mac, Windows, and Linux.
+* <a href="https://getpostman.com" target="_blank">Postman</a> - Cross-platform REST client, available for Mac, Windows, and Linux.
+* <a href="https://requestbin.com" target="_blank">RequestBin</a> - Allows you test webhooks.
+* <a href="https://hookbin.com" target="_blank">Hookbin</a> - Another tool to test webhooks.
 
 # Authentication
 Authentication against the BEX API ecosystem is a two-part process and is required to prevent access to confidential client data. The process involves the generation of your API security token which is described in the next section. This token is then included in the HTTP headers of your API calls and serves to identify and authenticate you on our platform.
 
-API’s that serve non-sensitive client data such as our quick waybill <a href="tracking">tracking</a> do not require your token to be present in the API call and can be called anonymously.
+API&#39;s that serve non-sensitive client data such as our quick waybill <a href="tracking">tracking</a> do not require your token to be present in the API call and can be called anonymously.

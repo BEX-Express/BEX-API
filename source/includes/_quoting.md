@@ -1,16 +1,13 @@
 # Quoting
-
 ## Overview
 The BEX quoting service allows you to view dynamic shipping pricing across our range of delivery services. By providing us with your shipment addressing information we can return a pricing spread as well as delivery estimations which you can use to make a more informed shipping choice.
 
-It is important to note that quoting on our platform is a “just-in-time” process and we do not store your quotes (nor return a quote number) for later acceptance by yourself. Instead, our implementation is like that of airline bookings where prices quoted are as at “now”. If you choose not to make a booking the prices may change when next you log onto the platform.
+<aside class="notice">
+  It is important to note that quoting on our platform is a "just-in-time" process and we do not store your quotes (nor return a quote number) for later acceptance by yourself. Instead, our implementation is like that of airline bookings where prices quoted are as at "now". If you choose not to make a booking the prices may change when next you log onto the platform.  
+</aside>
 
 ## Endpoint
-Service Relative URL: `/api/getquoteservicedeliverypricingV2`
-
-
-
-## Parameters
+The quoting API endpoint is located at `https://api.bex.co.za/api/service/getquoteservicedeliverypricingv2`.
 
 > Sample json quoting message body
 
@@ -30,6 +27,7 @@ Service Relative URL: `/api/getquoteservicedeliverypricingV2`
 }
 ```
 
+## Parameters
 To offer an accurate price we require the following parameters from you.
 
 Parameter | Type | Description
@@ -48,7 +46,7 @@ destinationLatCoord | Decimal | The GPS latitude (north-south position) of your 
 destinationLonCoord | Decimal | The GPS longitude (east-west position) of your delivery location, expressed in decimal notation.
 
 <aside class="notice">
-If you provide us the GPS position of the respective collection and/or delivery locations you are not required to provide the Suburb, Town or Postcode information for that location. If you provide us with both (the GPS coordinates as well as the Suburb/Postcode pairs) we will favour and use exclusively the GPS position in the building of your quoted pricing.
+  If you provide us the GPS position of the respective collection and/or delivery locations you are not required to provide the Suburb, Town or Postcode information for that location. If you provide us with both (the GPS coordinates as well as the Suburb/Postcode pairs) we will favour and use exclusively the GPS position in the building of your quoted pricing.
 </aside>
 
 > We are flexible as to how you supply the addressing.

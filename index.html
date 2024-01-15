@@ -391,7 +391,7 @@ Couple this with our token based Authentication methods and standard HTTP verbs 
 Our API endpoints should be accessed through HTTPS.
 </aside>
 <h1 id='request-response-format'>Request/Response Format</h1>
-<p>Our API endpoints will respond with <strong>JSON</strong> content accompanied by a <code>200 OK</code> HTTP status. THis includes any possible processing errors. Please see the Errors section.</p>
+<p>Our API endpoints will respond with <strong>JSON</strong> content accompanied by a <code>200 OK</code> HTTP status. This includes any possible processing errors. Please see the Errors section.</p>
 <h1 id='errors'>Errors</h1>
 <p>You can find the errors specific to each API endpoint under its dedicated API topic.</p>
 
@@ -415,7 +415,7 @@ Our API endpoints should be accessed through HTTPS.
   Parameter values containing special characters should be URL encoded as needed.
 </aside>
 
-<p>The parameters the relevant API endpoint requires is discussed in its relevant section.</p>
+<p>The parameters the relevant API endpoint requires are discussed in its relevant section.</p>
 <h1 id='tools'>Tools</h1>
 <p>You are free to use any IDE or tool that satisfies your needs. We do recommend the use of <a href="https://www.postman.com" target="_blank"><strong>POSTMAN</strong></a> to test your requests to our server.</p>
 
@@ -439,7 +439,7 @@ Our API endpoints should be accessed through HTTPS.
 <p>The BEX platform will validate your request and if successful, generate and return in the response object a token contained in the <code>value</code> attribute.</p>
 
 <aside class="notice">
-  This token is unique to your integration user identity and is to be **kept safe and secure** at all times.
+  This token is unique to your integration user identity and is to be kept safe and secure at all times.
 
   Should your token become compromised, please reach out to us as soon as possible.
 </aside>
@@ -447,15 +447,13 @@ Our API endpoints should be accessed through HTTPS.
 <p>The authentication endpoint is located at <code>https://api.bex.co.za/api/service/login</code>.</p>
 
 <blockquote>
-<p>Ensure special characters are URL encoded.
-<code>json
-{
-  &quot;username&quot;: &quot;your_bex_username&quot;, 
-  &quot;password&quot;: &quot;your_bex_password&quot;
-}
-</code></p>
+<p>Ensure special characters are URL encoded.</p>
 </blockquote>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="o">&lt;!</span><span class="nx">DOCTYPE</span> <span class="nx">html</span><span class="o">&gt;</span>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your_bex_username"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your_bex_password"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="o">&lt;!</span><span class="nx">DOCTYPE</span> <span class="nx">html</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="nx">html</span> <span class="nx">xmlns</span><span class="o">=</span><span class="dl">"</span><span class="s2">http://www.w3.org/1999/xhtml</span><span class="dl">"</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">BEX</span> <span class="nx">API</span> <span class="nx">Login</span> <span class="nx">Example</span><span class="o">&lt;</span><span class="sr">/title</span><span class="err">&gt;
@@ -471,7 +469,7 @@ Our API endpoints should be accessed through HTTPS.
     <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
       <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://api.bex.co.za/api/service/login?userName=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">user</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">&amp;password=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">pass</span><span class="p">,</span> 
       <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span> 
-      <span class="na">async</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">//No need fora sync</span>
+      <span class="na">async</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">//No need for async</span>
       <span class="na">success</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">ex</span><span class="p">)</span> <span class="p">{</span>
           <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">An error has occurred. </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">d</span><span class="p">.</span><span class="nx">ex</span><span class="p">);</span>
@@ -577,7 +575,7 @@ Our API endpoints should be accessed through HTTPS.
 <p>With your token now generated you can proceed to call our security restricted API&#39;s.</p>
 
 <aside class="notice">
-  Include your token in your request header. `token={your_token}`
+  Include your token in your request header (token=&lt;your_bex_token&gt;).
 </aside>
 <h1 id='tracking'>Tracking</h1><h2 id='overview'>Overview</h2>
 <p>You can query our courier platform for up-to-the-minute tracking information pertaining to your shipments. We have exposed a lightweight tracking service that returns non-sensitive tracking events for the shipments queried.
@@ -1213,7 +1211,7 @@ The service allows for the communication of a number of shipping options, such a
 <h2 id='endpoint'>Endpoint</h2>
 <p>The waybill API endpoint is located at <code>https://api.bex.co.za/api/service/submitwaybillv4</code>.</p>
 
-<p>The parameter requirements for this API call have been broken down into three sub-sections,
+<p>The parameter requirements for this API call have been broken down into five sub-sections,
 namely:</p>
 
 <ul>
@@ -1621,7 +1619,7 @@ namely:</p>
 </tbody></table>
 
 <aside class="notice">
-  `senderMobile` and `senderEmail` are useful for shipment progress updates.
+  senderMobile and senderEmail are useful for shipment progress updates.
 </aside>
 <h3 id='receiver-address'>Receiver Address</h3>
 <table><thead>
@@ -1780,7 +1778,7 @@ namely:</p>
 
 <aside class="notice">
   Should you not have the individual weights of each package to be shipped on the waybill
-  you can state the total weight of all of the parcels in one of the dimension array’s weight field,
+  you can state the total weight of all of the parcels in one of the dimension array&#39;s weight field,
   followed by zeroes for the remaining weights in the dimensions array.
 </aside>
 
@@ -1955,16 +1953,10 @@ namely:</p>
 </aside>
 <h1 id='waybill-downloads'>Waybill Downloads</h1><h2 id='overview'>Overview</h2>
 <p>As part of our service offering we allow you to download an <em>e-waybill</em> and any parcel labels associated with the waybill. The <em>e-waybill</em> is in A4 format and can be printed using any printer at your disposal.</p>
-
-<aside class="notice">
-  The parcel labels are sized at 10.08cm x 14.98cm. You can print these using any printer at your disposal too.
-</aside>
 <h2 id='authentication'>Authentication</h2>
-<p>The stationery downloads service requires a different token than the one you have been using to access the other endpoints. </p>
+<p>The stationery download service requires a different token than the one you have been using to access the other endpoints. </p>
 
-<aside class="notice">
-  To access the stationery download service, please re-authenticate by adding/setting the `preferAlternateToken` to `true`, for example `https://api.bex.co.za/api/service/login?userName=your_username&password=your_password&preferAlternateToken=true`, and then use the new token in the response to download your stationery.
-</aside>
+<p>You will need to re-complete the authentication procedure but you are required to set the <code>preferAlternateToken</code> to <code>true</code>. This will result in a completely different token being issued for your request. You <strong>must use this new token</strong> for the stationery download service <strong>only</strong>.</p>
 <h2 id='ewaybill-download'>eWaybill Download</h2>
 <p>You can download the e-waybill from <code>https://api.bex.co.za/api/service/downloadewaybill</code>.</p>
 
@@ -1973,15 +1965,13 @@ namely:</p>
 </aside>
 
 <blockquote>
-<p>Supply only 1 waybill number per call.
-<code>json
-{
-  &quot;token&quot;: &quot;`alternate_token`&quot;, 
-  &quot;waybillNumber&quot;: &quot;waybill_number&quot;
-}
-</code></p>
+<p>Supply only 1 waybill number per call.</p>
 </blockquote>
-<h3 id='parameters'>Parameters</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"`alternate_token`"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"waybillNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"waybill_number"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2004,26 +1994,24 @@ namely:</p>
 </tr>
 </tbody></table>
 <h3 id='response'>Response</h3>
-<p>An error response will still contain the relevant error message in the <code>ex</code> parameter of the response. </p>
+<p>A successful response will be the resulting PDF document. If you are accessing it through a browser, the download will happen automatically. </p>
 
-<p><strong>However</strong>, a successful response will be the resulting PDF document. If you are accessing the service endpoint using query parameters inside a browser, the document will automatically download to your computer. </p>
+<p>If you decide to integrate using your own system or code, you will need to process the response accordingly.</p>
 
 <aside class="notice">
-  If you are accessing this service through code, you will need to process the result and save it to disk so that you can access the file.
+  An error response will still contain the relevant error message in the `ex` parameter of the response. 
 </aside>
 <h2 id='labels-downloads'>Labels Downloads</h2>
 <p>You can download &quot;thermal&quot; labels from <code>https://api.bex.co.za/api/service/downloadparcellabels</code>. </p>
 
 <blockquote>
-<p>Example JSON body.
-<code>json
-{
-  &quot;token&quot;: &quot;`alternate_token`&quot;, 
-  &quot;waybillNumbers&quot;: &quot;waybill_number_1,waybill_number_2,waybill_number_3,...&quot;
-}
-</code></p>
+<p>Example JSON body.</p>
 </blockquote>
-<h3 id='parameters-2'>Parameters</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"`alternate_token`"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"waybillNumbers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"waybill_number_1,waybill_number_2,waybill_number_3,..."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='parameters-2'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2046,15 +2034,15 @@ namely:</p>
 </tr>
 </tbody></table>
 <h3 id='response-2'>Response</h3>
-<p>An error response will still contain the relevant error message in the <code>ex</code> parameter of the response. </p>
+<p>A successful response will be the resulting PDF document. If you are accessing it through a browser, the download will happen automatically. </p>
 
-<p><strong>However</strong>, a successful response will be the resulting PDF document. If you are accessing the service endpoint using query parameters inside a browser, the document will automatically download to your computer. </p>
+<p>If you decide to integrate using your own system or code, you will need to process the response accordingly.</p>
 
 <aside class="notice">
-  If you are accessing this service through code, you will need to process the result and save it to disk so that you can access the file.
+  An error response will still contain the relevant error message in the `ex` parameter of the response. 
 </aside>
-
-<p>If you have requested multiple parcels and/or waybills in this request, the document will be multi-paged.</p>
+<h3 id='label-size'>Label Size</h3>
+<p>The downloadable label is sized at 10.08cm x 14.98cm and may be printed on any printer you have at your disposal.</p>
 <h1 id='webhooks-guide'>Webhooks Guide</h1><h2 id='getting-started'>Getting Started</h2>
 <p>In order to use our WebHooks, you need to ensure that you have a valid and actively trading customer account registered with BEX. Once you have your account number, you will need to request a WebHook API key from our <a href="mailto:it@bex.co.za?subject=WebHook%20API%20key%20Request">IT department</a>. We will communicate this to you but it is your responsibility to ensure the secrecy of it.</p>
 

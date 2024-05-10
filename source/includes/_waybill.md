@@ -306,7 +306,7 @@ For communication of parcel specific information for each package that comprises
 
 Parameter | FieldType | Case | Required
 --------- | --------- | ---- | -------- 
-dims | Array | No | Yes | An array of parcels for this shipment.
+dimensions | Array | No | Yes | An array of parcels for this shipment.
 
 <aside class="notice">
   Should you not have the individual weights of each package to be shipped on the waybill

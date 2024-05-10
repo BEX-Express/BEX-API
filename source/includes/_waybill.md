@@ -69,8 +69,7 @@ namely:
     "printParcels": false, //(optional) If _true_, parcels are printed to the thermal label printer after submission using the URL specified.
     "printUrl": "", //(optional) Specify the thermal label printer URL to print to IF _printParcels=true_.
     "printParcelsPrintNode": false, //(optional) Specify _true_ to use PrintNode to print the labels if _printParcels=true_.
-    "dims": [{
-        "barcode": "", //Leave empty to auto generate OR supply your own barcode number IF _autoGenerateWaybillNumber=false_.
+    "dimensions": [{
         "dimension1": length_cm, 
         "dimension2": breadth_cm, 
         "dimension3": height_cm, 
@@ -156,9 +155,8 @@ postData.receiverTel = '0218641202';
 postData.receiverTelHome = '0218641202';
 
 //PARCELS AND DIMENSIONS
-var dims = [];
+var dimensions = [];
 var parcel1 = {};
-parcel1.barcode = postData.waybillNumber + '_P1'; //leave empty if [autoGenerateWaybillNumber=true].
 parcel1.dimension1 = 40; //Length (cm)
 parcel1.dimension2 = 30; //Breadth (cm) 
 parcel1.dimension3 = 1; //Height (cm)

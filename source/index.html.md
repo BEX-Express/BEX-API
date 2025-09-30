@@ -77,7 +77,7 @@ The parameters the relevant API endpoint requires are discussed in its relevant 
 # Tools
 You are free to use any IDE or tool that satisfies your needs. We do recommend the use of <a href="https://www.postman.com" target="_blank">**POSTMAN**</a> to test your requests to our server.
 
-[<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/18080551-d254d459-0578-41a2-a226-c9106577fc8b?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D18080551-d254d459-0578-41a2-a226-c9106577fc8b%26entityType%3Dcollection%26workspaceId%3Df4e6d6c2-24bc-49cd-8a3e-5dbc327bc6a9)
+[<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://god.gw.postman.com/run-collection/37289786-9f57b8f8-96c9-4898-bda5-4514aca2ec85?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D37289786-9f57b8f8-96c9-4898-bda5-4514aca2ec85%26entityType%3Dcollection%26workspaceId%3D4cf8191c-8bd5-4790-ab64-f1296609276c)
 
 Other tools you could also look at are:
 
